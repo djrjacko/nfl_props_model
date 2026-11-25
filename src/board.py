@@ -1,7 +1,7 @@
 """Build the board the website shows.
 
     python src/board.py              # games kicking off in the next 36 hours
-    python src/board.py --hours 60   # the Friday run looks further ahead
+    python src/board.py --hours 60   # what the automatic runs use
     python src/board.py --literal    # price with the rules exactly as written
 
 It prices the cached odds (fetch_odds.py --pull) with the cached player status (fetch_status.py) and the
@@ -44,7 +44,7 @@ import fetch_odds
 import fetch_status
 import model
 import pregame
-from common import ROOT, az, load_config, scheduled_runs, utc_now
+from common import ROOT, az, daily_board_runs, load_config, outside_schedule, utc_now
 
 DOCS = ROOT / "docs"
 PICKS_FILE, TEXT_FILE, CHANGES_FILE = DOCS / "picks.json", DOCS / "board.txt", DOCS / "changes.json"
@@ -108,16 +108,27 @@ def repo_name() -> str | None:
 
 
 def next_runs(now: datetime, count: int = 5) -> list[dict]:
-    """The next runs: the fixed schedule in run.yml, plus the pre-kickoff runs pregame.yml will add for the
-    games in the odds cache that the fixed schedule does not reach in time."""
-    runs = {moment: "scheduled" for moment in scheduled_runs(now, now + timedelta(days=8))}
+    """The next runs to expect: the outside scheduler's daily runs (config.json describes them), and the run
+    the pregame check starts once inactives are due for each kickoff time in the odds cache."""
+    runs: dict[datetime, list[str]] = {moment: ["daily run"] for moment in daily_board_runs(now, now + timedelta(days=3))}
     if fetch_odds.EVENTS_FILE.exists():
         events = json.loads(fetch_odds.EVENTS_FILE.read_text(encoding="utf-8"))["data"]
+        waiting: dict[datetime, list[str]] = {}
         for entry in pregame.plan(now, events):
             if entry["state"] == "waiting" and entry["at"]:
-                runs.setdefault(entry["at"], f"before {entry['game']} kicks off")
-    return [{"utc": moment.isoformat(timespec="minutes"), "arizona": az(moment), "why": runs[moment]}
+                waiting.setdefault(entry["at"], []).append(entry["game"])
+        for moment, games in waiting.items():
+            runs.setdefault(moment, []).append(f"after inactives for {', '.join(games)}")
+    return [{"utc": moment.isoformat(timespec="minutes"), "arizona": az(moment), "why": ", ".join(runs[moment])}
             for moment in sorted(runs)[:count]]
+
+
+def schedule_summary() -> dict:
+    """The outside scheduler's jobs in a form the site can show: clock times in Arizona time, the look-ahead
+    its runs ask for, and the minutes of the hour at which it starts the pregame check."""
+    jobs = outside_schedule()
+    return {"board_runs": [datetime(2000, 1, 1, hour, minute).strftime("%I:%M %p").lstrip("0") for hour, minute in jobs["board_runs"]],
+            "board_hours": jobs["board_hours"], "check_minutes": jobs["check_minutes"]}
 
 
 # ------------------------------------------------------------- the under lean
@@ -429,6 +440,7 @@ def build(hours: float) -> tuple[dict, dict]:
         "boosts": allocate_boosts(tickets, config["boosts"], require_anchor),
         "anchor_rule": require_anchor,
         "credits": credits, "sources": sources, "notes": notes, "next_runs": next_runs(now),
+        "schedule": schedule_summary(),
         "calibration": "off (rules as written)" if model.CALIBRATION["rush_att"] == (0.0, 1.0) else "on",
         "rooting_teams": config["rooting_teams"],
     }

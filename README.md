@@ -1,16 +1,16 @@
 # NFL prop model and picks board
 
-An automatic board of NFL player prop picks. GitHub Actions runs it on a schedule, it writes JSON into
-`docs/`, and GitHub Pages serves a phone-friendly page that reads that JSON. It re-runs before kickoffs to
-catch inactives and line moves and says what changed.
+An automatic board of NFL player prop picks. An outside scheduler starts it on GitHub Actions several
+times a day, it writes JSON into `docs/`, and GitHub Pages serves a phone-friendly page that reads that
+JSON. It re-runs once inactives are due before each kickoff and says what changed.
 
 This is a personal model. Its probabilities have been checked against results, not against the books'
 lines, so whether its edges are real can only be judged from the picks log over time.
 
 ## How a run works
 
-Each run does four things in order, only for games kicking off in the look-ahead window (36 hours, or 60
-for the Friday run so it can see Sunday):
+Each run does four things in order, only for games kicking off in the look-ahead window (the `hours` the
+run is started with: 60 for every automatic run):
 
 | Step | Script | What it does |
 |---|---|---|
@@ -184,73 +184,80 @@ Tests: `.\.venv\Scripts\python.exe -m unittest discover -s tests -v`
 
 ## Schedule
 
-GitHub's cron is UTC; Arizona is UTC-7 all year. Scheduled runs can start several minutes late.
+GitHub's own cron never started a run in this repository, so neither workflow has a schedule. An outside
+scheduler (cron-job.org) is the only thing that starts runs, and it has two jobs. Times are Arizona time
+(`America/Phoenix`, UTC-7 all year).
 
-| Arizona time | Cron (UTC) | Purpose |
+| Job | When | What it starts |
 |---|---|---|
-| Fri 3:37 PM | `37 22 * * 5` | Final injury report board (looks 60 hours ahead) |
-| Sat 9:07 PM | `7 4 * * 0` | Roster moves and line moves |
-| Sun 6:37 AM | `37 13 * * 0` | Overnight line moves |
-| Sun 9:47 AM | `47 16 * * 0` | After early-game inactives |
-| Sun 10:37 AM | `37 17 * * 0` | Final early check |
-| Sun 1:07 PM | `7 20 * * 0` | After late-game inactives |
-| Sun 5:07 PM | `7 0 * * 1` | After Sunday-night inactives |
-| Wed 9:07 PM | `7 4 * * 4` | Thursday game |
-| Thu 3:07 PM | `7 22 * * 4` | Thursday game |
-| Thu 4:52 PM | `52 23 * * 4` | Thursday game, after inactives |
-| Sun 9:07 PM | `7 4 * * 1` | Monday game |
-| Mon 3:07 PM | `7 22 * * 1` | Monday game |
-| Mon 4:52 PM | `52 23 * * 1` | Monday game, after inactives |
+| Board | Every day at 6:37 AM, 3:37 PM and 9:07 PM | `run.yml` with `hours` 60: the board for every game kicking off in the next 60 hours |
+| Check | Every 15 minutes, at :00, :15, :30 and :45 | `pregame.yml`: a free look at the kickoffs, which starts a board run once inactives are due |
 
-A run costs 3 credits for the game lines (spreads, totals, moneylines) plus 5 to 7 for each game in the
-window. A normal week costs roughly 380 to 460 Odds API credits.
+`config.json` repeats those facts under `outside_schedule`, so that the board can list the next runs and a
+run started by the check asks for the same `hours`. Changing them there does not change the scheduler:
+when a job changes at cron-job.org, change `config.json` to match.
 
-### Kickoffs the fixed schedule misses
+### Runs after inactives
 
-Inactives come out 90 minutes before kickoff, and the table above only has a run after that point for the
-usual Thursday-night, Sunday and Monday-night kickoffs. `.github/workflows/pregame.yml` covers the rest.
-Every 15 minutes from September to February (4:07 AM to 7:52 PM Arizona time) it runs `src/pregame.py`,
-which reads the upcoming games from The Odds API's free events feed and starts "Run the prop board" when a
-game is 85 to 25 minutes from kickoff and nothing has run since inactives were due. A game counts as
-covered when a fixed run falls 85 to 40 minutes before its kickoff. If a fixed run is 20 minutes overdue
-and never started, the check stops waiting for it and starts one.
+Inactives come out 90 minutes before kickoff. Each check runs `src/pregame.py`, which reads the upcoming
+games from The Odds API's free events feed. A game is due from 85 minutes before kickoff (five minutes
+after its inactives are due) until 25 minutes before. The first check inside that window starts "Run the
+prop board", which puts the run 70 to 85 minutes before kickoff. Nothing waits for a daily run.
 
-That picks up Wednesday games, Thanksgiving, Saturdays late in the season and early kickoffs abroad. It
-also picks up September and October, when Eastern daylight time puts every kickoff an hour earlier on the
-Arizona clock than the fixed times assume. The check itself costs no credits; each run it starts costs the
-same as any other.
+| Kickoff | Inactives due | Check that starts the run |
+|---|---|---|
+| 11:00 AM | 9:30 AM | 9:45 AM |
+| 2:05 PM | 12:35 PM | 12:45 PM |
+| 2:25 PM | 12:55 PM | 1:00 PM |
+| 6:00 PM | 4:30 PM | 4:45 PM |
+| 6:15 PM or 6:20 PM | 4:45 PM or 4:50 PM | 5:00 PM |
 
-```
-python src/pregame.py   # show which games are covered, which get their own run, and when
-```
+**No second run since inactives.** Once a board run has started inside a game's window, every later check
+leaves that game alone, so a kickoff time gets one run however many checks follow. Any board run counts,
+whoever started it: a daily run that happens to land in the window, or a tap on the Re-run tab. A run from
+before the window does not count. Games that kick off together share one run. Kickoffs 20 minutes apart
+get one each, because their inactives come out 20 minutes apart.
 
-`run.yml` also holds one dated line for the Wednesday November 25, 2026 game. A dated cron line repeats
-every year, so delete it once that game has been played.
-
-GitHub turns scheduled workflows off after 60 days without a commit. During the season the board commits
-keep them alive; before a new season, check the Actions tab and re-enable both workflows if needed.
-
-### Starting runs from an outside scheduler
-
-GitHub does not promise that a scheduled workflow starts on time, or at all. On 2026-11-25, the day after
-this repository was created, it had not started one. Anything that can send a web request on a timer can
-do the job instead, using GitHub's "create a workflow dispatch event" call.
-
-To start a board run (`OWNER/REPO` is this repository's address after `github.com/`):
+If a check cannot start the run, the next check tries again, until 25 minutes before kickoff. A run that
+starts and then fails still counts as the run, so the checks do not start another one.
 
 ```
-POST https://api.github.com/repos/OWNER/REPO/actions/workflows/run.yml/dispatches
+python src/pregame.py   # show each upcoming game and the check that will start its run
+```
+
+### What it costs
+
+A run costs 3 credits for the game lines (spreads, totals, moneylines) plus 5 to 7 for each game in its
+window, and nothing when no game is in the window. A check is free. With the two jobs above a week has 21
+daily runs and 6 to 10 runs after inactives, and costs roughly 750 to 1,000 Odds API credits.
+
+### The calls the scheduler sends
+
+Both jobs use GitHub's "create a workflow dispatch event" call. For the board:
+
+```
+POST https://api.github.com/repos/djrjacko/nfl_props_model/actions/workflows/run.yml/dispatches
 
 Accept: application/vnd.github+json
 Authorization: Bearer YOUR_TOKEN
 X-GitHub-Api-Version: 2026-03-10
 Content-Type: application/json
 
-{"ref":"main","inputs":{"hours":"36"}}
+{"ref":"main","inputs":{"hours":"60"}}
 ```
 
-To start the pre-kickoff check, the address ends in `pregame.yml/dispatches` and the body is
-`{"ref":"main"}`. That workflow takes no inputs, and GitHub refuses a body that names one.
+For the check, which takes no inputs (GitHub refuses a body that names one):
+
+```
+POST https://api.github.com/repos/djrjacko/nfl_props_model/actions/workflows/pregame.yml/dispatches
+
+Accept: application/vnd.github+json
+Authorization: Bearer YOUR_TOKEN
+X-GitHub-Api-Version: 2026-03-10
+Content-Type: application/json
+
+{"ref":"main"}
+```
 
 GitHub answers `200` when the run has started, with the run's id and address in the reply. Without the
 `X-GitHub-Api-Version` line it answers `204` with an empty reply instead; both mean started. `401` means
@@ -259,29 +266,13 @@ the token is wrong, expired or missing, and `422` that the body is wrong, such a
 answers when a token does not cover the repository or lacks Actions write.
 
 **The token** is a fine-grained personal access token limited to this repository with Actions set to Read
-and write, made the same way as the one for the Re-run tab. Make a separate one for the scheduler, so that
+and write, made the same way as the one for the Re-run tab. Keep a separate one for the scheduler, so that
 either can be deleted without breaking the other. Whoever holds it can start and cancel runs here, which
 spends Odds API credits, and nothing else.
 
-**When to send it.** `hours` is text: `"36"`, or `"60"` for the Friday run so that it can see Sunday. The
-times are Arizona time (`America/Phoenix`, UTC-7 all year):
-
-| Day | Start `run.yml` at | `hours` |
-|---|---|---|
-| Fri | 3:37 PM | 60 |
-| Sat | 9:07 PM | 36 |
-| Sun | 6:37 AM, 9:47 AM, 10:37 AM, 1:07 PM, 5:07 PM, 9:07 PM | 36 |
-| Mon | 3:07 PM, 4:52 PM | 36 |
-| Wed | 9:07 PM | 36 |
-| Thu | 3:07 PM, 4:52 PM | 36 |
-
-Start `pregame.yml` every 15 minutes at :07, :22, :37 and :52, from 4:07 AM to 7:52 PM, September to
-February. A check is free and spends credits only when it starts a board run. It also starts one when a
-fixed run just before a kickoff is 20 minutes overdue, so on its own it keeps the runs after inactives
-going.
-
-If GitHub's own schedule fires as well, each time gets two runs and costs twice the credits. The Actions
-tab filtered to the event `schedule` shows whether it has started; if it has, stop one of the two.
+**If the scheduler stops,** nothing runs. The board's "Updated" time on the site and the Actions tab show
+it; the Re-run tab starts a run by hand. Do not put a `schedule:` block back into a workflow as a spare:
+if GitHub's cron ever does fire, every time would get two runs and cost twice the credits.
 
 ## Settings
 
@@ -295,6 +286,9 @@ tab filtered to the event `schedule` shows whether it has started; if it has, st
 - `require_anchor` `true` (the default) makes every same-game ticket and boost start from an anchor leg: an
   RB rush attempts or rush yards over, an anytime TD, or a team moneyline. `false` turns the rule off and
   moneylines are no longer used.
+- `outside_schedule` what the outside scheduler is set to do (see Schedule): `board_runs` are its daily
+  times in Arizona time on a 24-hour clock, `board_hours` the `hours` its runs ask for, and `check_minutes`
+  the minutes of the hour at which it starts the check. It describes the jobs; it does not create them.
 
 The Odds API key lives in `.env` locally and in the repository secret `ODDS_API_KEY` for Actions. It is
 never printed, logged or cached.

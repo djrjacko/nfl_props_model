@@ -1,17 +1,17 @@
-"""Start a board run shortly before any kickoff that the fixed schedule does not reach in time.
+"""Start a board run once inactives are due for a game.
 
-Inactives are announced 90 minutes before kickoff. The fixed schedule in run.yml has a run soon after that
-for the usual Thursday-night, Sunday and Monday-night kickoffs. Other games have none: a Wednesday game,
-Thanksgiving afternoon, a Saturday late in the season, an early kickoff abroad. A small workflow
-(pregame.yml) runs this script every 15 minutes, and when such a game is 85 to 25 minutes from kickoff
-with no board run since inactives were due, it starts "Run the prop board" itself.
+Inactives are announced 90 minutes before kickoff. An outside scheduler starts pregame.yml every 15 minutes
+and pregame.yml runs this script. The first check that falls 85 to 25 minutes before a kickoff, with no
+board run started since that game's inactives were due, starts "Run the prop board". Later checks see that
+run and start nothing, so each kickoff time gets one run. A board run started some other way inside that
+window (one of the scheduler's daily runs, or a tap on the site) counts as that run too.
 
     python src/pregame.py            # show what it would do; starts nothing
     python src/pregame.py --trigger  # start the board run if one is due (what pregame.yml does)
 
-A game counts as covered when a fixed run in run.yml falls 85 to 40 minutes before its kickoff. The games
-come from The Odds API's events feed, which costs no credits. Only the standard library is used, so the
-15-minute check installs nothing.
+The games come from The Odds API's events feed, which costs no credits. Only the standard library is used,
+so a check installs nothing. config.json "outside_schedule" describes the scheduler's jobs. It supplies the
+look-ahead a started run asks for and the times shown for runs still to come; it decides nothing.
 """
 from __future__ import annotations
 
@@ -25,15 +25,12 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta
 
-from common import BOARD_WORKFLOW, PREGAME_WORKFLOW, ROOT, TEAM_ABBR, az, odds_api_key, scheduled_runs, utc_now
+from common import BOARD_WORKFLOW, ROOT, TEAM_ABBR, az, daily_board_runs, first_check, odds_api_key, outside_schedule, utc_now
 
 EVENTS_URL = "https://api.the-odds-api.com/v4/sports/americanfootball_nfl/events"
-LEAD = timedelta(minutes=85)  # earliest a pre-kickoff run is useful: five minutes after inactives are due
+LEAD = timedelta(minutes=85)  # a run is useful from here on: five minutes after inactives are due
 LATEST = timedelta(minutes=25)  # closer to kickoff than this, a run would land too late to act on
-COVERED_UNTIL = timedelta(minutes=40)  # a fixed run between LEAD and this before kickoff covers the game
-NO_SHOW = timedelta(minutes=20)  # how overdue a fixed run can be before this script stops waiting for it
 LOOK_AHEAD = timedelta(hours=40)  # how far ahead to list games when showing the plan
-BOARD_HOURS = "36"
 
 
 def fetch_events(key: str, now: datetime) -> list[dict]:
@@ -58,33 +55,42 @@ def label(event: dict) -> str:
     return f"{TEAM_ABBR.get(event['away_team'], event['away_team'])}@{TEAM_ABBR.get(event['home_team'], event['home_team'])}"
 
 
+def expected_run(opens: datetime, closes: datetime) -> tuple[datetime | None, str | None]:
+    """When the run for a game is expected, and what starts it: ("check" or "daily"). It is the first pregame
+    check between `opens` and `closes`, unless one of the scheduler's daily board runs lands in that window
+    before the check does, in which case the check will find that run and start nothing."""
+    check = first_check(opens)
+    daily = daily_board_runs(opens - timedelta(seconds=1), closes)
+    if daily and (check is None or daily[0] < check):
+        return daily[0], "daily"
+    if check is not None and check <= closes:
+        return check, "check"
+    return None, None
+
+
 def plan(now: datetime, events: list[dict], recent_runs: list[datetime] | None = None) -> list[dict]:
-    """What to do about each upcoming game. `recent_runs` are the start times of recent board runs."""
+    """What to do about each upcoming game. `recent_runs` are the start times of recent board runs, however
+    they were started.
+
+    The rule: a game is due from 85 minutes before kickoff (five minutes after its inactives are due) until
+    25 minutes before, unless a board run has already started since then. One run is enough for every game
+    that shares that kickoff time.
+    """
     out = []
     for event in sorted(events, key=kickoff):
         kick = kickoff(event)
         opens, closes = kick - LEAD, kick - LATEST
-        entry = {"game": label(event), "kickoff": kick, "state": None, "at": None, "why": ""}
-        fixed = [run for run in scheduled_runs(opens - timedelta(minutes=1), kick - COVERED_UNTIL) if run >= opens]
+        entry = {"game": label(event), "kickoff": kick, "state": None, "at": None, "by": None, "why": ""}
         done = [run for run in (recent_runs or []) if opens <= run <= kick]
-        # GitHub occasionally drops a scheduled run. If the fixed one is 20 minutes overdue with nothing
-        # started, stop waiting for it.
-        no_show = bool(fixed) and not done and fixed[0] + NO_SHOW < now <= closes
         if done:
             entry.update(state="done", at=done[0], why=f"a board run already started at {az(done[0])}")
-        elif no_show:
-            entry.update(state="due", at=now, why=f"the fixed run at {az(fixed[0])} never started")
-        elif fixed:
-            entry.update(state="covered", at=fixed[0], why=f"the fixed schedule has a run at {az(fixed[0])}")
         elif now > closes:
             entry.update(state="late", why="less than 25 minutes to kickoff")
         elif now >= opens:
-            entry.update(state="due", at=now, why="no run since inactives were due")
+            entry.update(state="due", at=now, why="no board run since inactives were due")
         else:
-            ticks = scheduled_runs(opens - timedelta(minutes=1), closes, PREGAME_WORKFLOW)
-            ticks = [tick for tick in ticks if tick >= opens]
-            entry.update(state="waiting", at=ticks[0] if ticks else None,
-                         why="its own run comes at the first check after inactives are due")
+            at, by = expected_run(opens, closes)
+            entry.update(state="waiting", at=at, by=by, why="inactives are not due yet")
         out.append(entry)
     return out
 
@@ -92,9 +98,15 @@ def plan(now: datetime, events: list[dict], recent_runs: list[datetime] | None =
 def describe(entries: list[dict]) -> list[str]:
     lines = []
     for entry in entries:
-        what = {"covered": f"covered: {entry['why']}", "done": f"done: {entry['why']}", "late": f"skipped: {entry['why']}",
-                "due": "DUE NOW: starting a board run",
-                "waiting": f"own run about {az(entry['at'])}" if entry["at"] else "own run, but no check is scheduled in time"}[entry["state"]]
+        if entry["state"] == "waiting" and entry["by"] == "check":
+            what = f"board run at the {az(entry['at'])} check, the first after inactives are due"
+        elif entry["state"] == "waiting" and entry["by"] == "daily":
+            what = f"covered by the daily run at {az(entry['at'])}, which comes after inactives are due"
+        elif entry["state"] == "waiting":
+            what = "no check or daily run falls between inactives and kickoff"
+        else:
+            what = {"done": f"done: {entry['why']}", "late": f"skipped: {entry['why']}",
+                    "due": "DUE NOW: starting a board run"}[entry["state"]]
         lines.append(f"  {entry['game']:<9}{az(entry['kickoff']):<25}{what}")
     return lines
 
@@ -140,14 +152,15 @@ def recent_board_runs(repo: str, token: str | None, since: datetime) -> list[dat
 
 
 def start_board_run(repo: str, token: str) -> None:
+    """Start "Run the prop board" with the same look-ahead the scheduler's own runs use."""
     status, data = github("POST", f"/repos/{repo}/actions/workflows/{BOARD_WORKFLOW.name}/dispatches", token,
-                          {"ref": "main", "inputs": {"hours": BOARD_HOURS}})
+                          {"ref": "main", "inputs": {"hours": outside_schedule()["board_hours"]}})
     if status not in (200, 204):
         raise RuntimeError(f"could not start the board run (HTTP {status}): {data.get('message', '')}")
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Start a board run before kickoffs the fixed schedule misses.")
+    parser = argparse.ArgumentParser(description="Start a board run once inactives are due for a game.")
     parser.add_argument("--trigger", action="store_true", help="actually start the board run when a game is due")
     args = parser.parse_args()
     if hasattr(sys.stdout, "reconfigure"):

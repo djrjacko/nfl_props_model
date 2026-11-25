@@ -399,13 +399,16 @@ function renderRerun() {
   const p = state.picks, root = $("rerun"), out = [], name = repo();
   const status = el("div", "run-status"); status.id = "run-status"; status.setAttribute("aria-live", "polite");
   const cost = "Each run costs about 3 credits plus 5 to 7 per game in the window, and takes about a minute.";
+  // the automatic runs' look-ahead comes with the board; the first button uses the same one so a tap does not shrink the board
+  const jobs = p.schedule || {};
+  const usual = Number(jobs.board_hours) || 60, other = usual === 36 ? 60 : 36;
   const card = el("div", "card");
   add(card, el("div", "who", "Run the board now"));
   if (!name) {
     add(card, el("p", "meta", "Open the repository on GitHub, then Actions, “Run the prop board”, “Run workflow”."));
   } else if (token()) {
-    const go = el("button", "button", "Run now"); go.type = "button"; go.dataset.run = "1"; go.onclick = () => startRun(36);
-    const wide = el("button", "button secondary", "Run now, looking 60 hours ahead"); wide.type = "button"; wide.dataset.run = "1"; wide.onclick = () => startRun(60);
+    const go = el("button", "button", `Run now, looking ${usual} hours ahead`); go.type = "button"; go.dataset.run = "1"; go.onclick = () => startRun(usual);
+    const wide = el("button", "button secondary", `Run now, looking ${other} hours ahead`); wide.type = "button"; wide.dataset.run = "1"; wide.onclick = () => startRun(other);
     const drop = el("button", "linklike", "Forget the token on this phone"); drop.type = "button";
     drop.onclick = () => { forget(TOKEN_KEY); run.message = "Token removed from this phone."; run.link = null; renderRerun(); };
     add(card, go, wide, status, el("p", "meta", cost), drop);
@@ -432,16 +435,17 @@ function renderRerun() {
     link.href = `https://github.com/${name}/actions/workflows/run.yml`; link.target = "_blank"; link.rel = "noopener";
     const steps = el("ol");
     ["Tap the button above and sign in to GitHub if asked.", "Tap “Run workflow” on the right.",
-      "Leave hours at 36, or enter 60 to see Sunday from Friday. Tap the green “Run workflow”.",
+      `Leave hours at ${usual}, the same as the automatic runs. Tap the green “Run workflow”.`,
       "Give it about two minutes, then come back here and tap Refresh."].forEach((text) => add(steps, el("li", null, text)));
     out.push(add(manual, link, steps));
   }
 
   out.push(heading("Next runs"));
   const runs = el("ul", "plain card");
-  (p.next_runs || []).forEach((item) => add(runs, el("li", null, item.arizona + (item.why && item.why !== "scheduled" ? ` · ${item.why}` : ""))));
-  if (!(p.next_runs || []).length) add(runs, el("li", null, "The schedule could not be read."));
-  out.push(runs, el("div", "meta", "Games the fixed schedule does not reach get their own run about 80 minutes before kickoff. GitHub can start a run several minutes late."));
+  (p.next_runs || []).forEach((item) => add(runs, el("li", null, item.arizona + (item.why ? ` · ${item.why}` : ""))));
+  if (!(p.next_runs || []).length) add(runs, el("li", null, "No runs could be worked out."));
+  const daily = (jobs.board_runs || []).join(", "), checks = (jobs.check_minutes || []).map((m) => `:${String(m).padStart(2, "0")}`).join(", ");
+  out.push(runs, el("div", "meta", `An outside scheduler starts every run; GitHub starts none by itself. It builds the board each day at ${daily || "set times"} Arizona time, and at ${checks || "regular minutes"} of every hour it checks the kickoffs: the first check after a game's inactives are due starts a run, 70 to 85 minutes before kickoff. If the scheduler stops, nothing runs until you tap Run now.`));
 
   out.push(heading("By hand on your PC"));
   const hand = el("div", "card");

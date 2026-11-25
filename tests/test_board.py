@@ -7,15 +7,19 @@ These use small made-up legs so every rule can be checked exactly.
 """
 from __future__ import annotations
 
+import json
 import sys
+import tempfile
 import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 import board  # noqa: E402
+import common  # noqa: E402
 
 NOW = datetime(2026, 11, 29, 16, 0, tzinfo=timezone.utc)
 KICK = (NOW + timedelta(hours=3)).isoformat(timespec="minutes")
@@ -359,6 +363,50 @@ class ChangeTests(unittest.TestCase):
         changes = board.diff(make_board([old], when=NOW - timedelta(hours=5)), make_board([]), [], NOW)
         self.assertEqual(changes["removed"], [])
         self.assertEqual(changes["kicked_off"], 1)
+
+
+class NextRunsTests(unittest.TestCase):
+    """The Re-run tab lists the runs to expect. The jobs are set here, so config.json can change freely."""
+
+    JOBS = {"outside_schedule": {"board_runs": ["06:37", "15:37", "21:07"], "board_hours": 60, "check_minutes": [0, 15, 30, 45]}}
+    EVENTS = {"data": [
+        {"id": "a", "away_team": "Green Bay Packers", "home_team": "Los Angeles Rams", "commence_time": "2026-11-26T01:00:00Z"},
+        {"id": "b", "away_team": "Chicago Bears", "home_team": "Detroit Lions", "commence_time": "2026-11-26T18:00:00Z"},
+        {"id": "c", "away_team": "Philadelphia Eagles", "home_team": "Dallas Cowboys", "commence_time": "2026-11-26T21:30:00Z"},
+        {"id": "d", "away_team": "Kansas City Chiefs", "home_team": "Buffalo Bills", "commence_time": "2026-11-27T01:20:00Z"}]}
+
+    def next_runs(self, now: datetime, events: dict | None) -> list[tuple[str, str]]:
+        folder = Path(tempfile.mkdtemp())
+        if events is not None:
+            (folder / "events.json").write_text(json.dumps(events), encoding="utf-8")
+        with mock.patch.object(board.fetch_odds, "EVENTS_FILE", folder / "events.json"), \
+                mock.patch.object(common, "load_config", return_value=self.JOBS):
+            return [(run["arizona"], run["why"]) for run in board.next_runs(now)]
+
+    def test_daily_runs_and_the_runs_after_inactives_come_in_time_order(self):
+        four_pm = datetime(2026, 11, 25, 23, 0, tzinfo=timezone.utc)  # Wednesday 4:00 PM in Arizona
+        self.assertEqual(self.next_runs(four_pm, self.EVENTS), [
+            ("Wed Nov 25 4:45 PM MST", "after inactives for GB@LA"),
+            ("Wed Nov 25 9:07 PM MST", "daily run"),
+            ("Thu Nov 26 6:37 AM MST", "daily run"),
+            ("Thu Nov 26 9:45 AM MST", "after inactives for CHI@DET"),
+            ("Thu Nov 26 1:15 PM MST", "after inactives for PHI@DAL")])
+
+    def test_without_cached_games_only_the_daily_runs_are_known(self):
+        four_pm = datetime(2026, 11, 25, 23, 0, tzinfo=timezone.utc)
+        runs = self.next_runs(four_pm, None)
+        self.assertEqual(runs[:2], [("Wed Nov 25 9:07 PM MST", "daily run"), ("Thu Nov 26 6:37 AM MST", "daily run")])
+        self.assertEqual({why for _, why in runs}, {"daily run"})
+
+    def test_games_with_one_kickoff_time_share_a_line(self):
+        twins = {"data": [dict(self.EVENTS["data"][1]), {**self.EVENTS["data"][2], "commence_time": "2026-11-26T18:00:00Z"}]}
+        runs = self.next_runs(datetime(2026, 11, 26, 14, 0, tzinfo=timezone.utc), twins)  # Thursday 7:00 AM in Arizona
+        self.assertEqual(runs[0], ("Thu Nov 26 9:45 AM MST", "after inactives for CHI@DET, PHI@DAL"))
+
+    def test_the_site_is_told_what_the_jobs_are(self):
+        with mock.patch.object(common, "load_config", return_value=self.JOBS):
+            self.assertEqual(board.schedule_summary(), {"board_runs": ["6:37 AM", "3:37 PM", "9:07 PM"], "board_hours": "60",
+                                                        "check_minutes": [0, 15, 30, 45]})
 
 
 class TextTests(unittest.TestCase):

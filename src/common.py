@@ -29,6 +29,13 @@ DEFAULT_CONFIG = {
     # Every boost and same-game ticket must start from an anchor leg: an RB rush attempts or rush yards over,
     # an anytime TD, or a team moneyline. false goes back to "any legs that share a game script".
     "require_anchor": True,
+    # What the outside scheduler is set to do. Nothing here starts anything: the jobs live at the scheduler.
+    # These lines describe them, so the board can list the next runs and the pregame check can say when it
+    # will act. Change them when the jobs change.
+    #   board_runs     times of day, Arizona time, at which it starts run.yml ("HH:MM", 24-hour clock)
+    #   board_hours    the hours value it sends; a run started by the pregame check uses the same value
+    #   check_minutes  minutes of every hour at which it starts pregame.yml
+    "outside_schedule": {"board_runs": ["06:37", "15:37", "21:07"], "board_hours": 60, "check_minutes": [0, 15, 30, 45]},
 }
 
 
@@ -36,7 +43,10 @@ def load_config() -> dict:
     """config.json laid over the defaults above."""
     config = copy.deepcopy(DEFAULT_CONFIG)
     if CONFIG_FILE.exists():
-        config.update(json.loads(CONFIG_FILE.read_text(encoding="utf-8")))
+        mine = json.loads(CONFIG_FILE.read_text(encoding="utf-8"))
+        # a config.json that sets only part of the outside schedule keeps the defaults for the rest
+        mine["outside_schedule"] = {**config["outside_schedule"], **mine.get("outside_schedule", {})}
+        config.update(mine)
     return config
 
 
@@ -84,46 +94,75 @@ def odds_api_key() -> tuple[str, str]:
     raise LookupError("no API key found. Put it in .env as ODDS_API_KEY=... or set the ODDS_API_KEY environment variable.")
 
 
-# ------------------------------------------------- reading the workflow schedules
+# --------------------------------------------------------- the outside schedule
 
 WORKFLOWS = ROOT / ".github" / "workflows"
-BOARD_WORKFLOW = WORKFLOWS / "run.yml"  # the fixed schedule of board runs
-PREGAME_WORKFLOW = WORKFLOWS / "pregame.yml"  # the 15-minute check that adds runs before off-schedule kickoffs
+BOARD_WORKFLOW = WORKFLOWS / "run.yml"  # builds and publishes the board
+PREGAME_WORKFLOW = WORKFLOWS / "pregame.yml"  # the check that starts a board run once inactives are due
+
+# Neither workflow has a schedule of its own: GitHub's cron never started a run in this repository, so an
+# outside scheduler starts both with GitHub's "workflow dispatch" call (see the README's Schedule section).
 
 
-def _cron_field(text: str) -> set[int] | None:
-    """One cron field as a set of numbers, or None for '*'. Understands lists and ranges: '7,22' and '11-23'."""
-    if text == "*":
-        return None
-    values: set[int] = set()
-    for part in text.split(","):
-        low, _, high = part.partition("-")
-        values.update(range(int(low), int(high or low) + 1))
-    return values
+def outside_schedule() -> dict:
+    """The outside scheduler's jobs, from config.json:
+    {"board_runs": [(hour, minute), ...] in Arizona time, "board_hours": "60", "check_minutes": [0, 15, 30, 45]}.
 
-
-def scheduled_runs(start: datetime, end: datetime, workflow: Path = BOARD_WORKFLOW) -> list[datetime]:
-    """Every moment after `start` and up to `end` at which a cron line in a workflow file fires (cron is UTC).
-
-    The schedule is read from the workflow file itself, so it is written down in one place only.
+    The pregame check runs through here, so a value that cannot be read falls back to its default instead of
+    stopping the check: a typo in a description must not cost a run before a kickoff.
     """
-    if not workflow.exists():
-        return []
-    found: set[datetime] = set()
-    for expression in re.findall(r"cron:\s*[\"']([^\"']+)[\"']", workflow.read_text(encoding="utf-8")):
-        minutes, hours, days, months, weekdays = (_cron_field(field) for field in expression.split())
-        day = start.astimezone(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
-        while day <= end:
-            cron_weekday = (day.weekday() + 1) % 7  # cron counts from Sunday = 0 (7 also means Sunday)
-            on_date = days is None or day.day in days
-            on_weekday = weekdays is None or cron_weekday in weekdays or (cron_weekday == 0 and 7 in weekdays)
-            # cron's own rule: when both the date and the weekday are given, either one is enough
-            day_matches = (on_date or on_weekday) if (days is not None and weekdays is not None) else (on_date and on_weekday)
-            if day_matches and (months is None or day.month in months):
-                for hour in sorted(hours if hours is not None else range(24)):
-                    for minute in sorted(minutes if minutes is not None else range(60)):
-                        moment = day.replace(hour=hour, minute=minute)
-                        if start < moment <= end:
-                            found.add(moment)
-            day += timedelta(days=1)
+    usual = DEFAULT_CONFIG["outside_schedule"]
+    raw = {**usual, **(load_config().get("outside_schedule") or {})}
+
+    def clock(text) -> tuple[int, int]:
+        hour, minute = (int(part) for part in str(text).split(":"))
+        if not (0 <= hour < 24 and 0 <= minute < 60):
+            raise ValueError(text)
+        return hour, minute
+
+    def read(key: str, convert):
+        try:
+            return convert(raw[key])
+        except (TypeError, ValueError):
+            return convert(usual[key])
+
+    def hours(value) -> str:
+        if not float(value) > 0:
+            raise ValueError(value)
+        return f"{float(value):g}"
+
+    def minutes(values) -> list[int]:
+        found = sorted({int(value) for value in values})
+        if any(not 0 <= value < 60 for value in found):
+            raise ValueError(values)
+        return found
+
+    return {"board_runs": read("board_runs", lambda values: sorted(clock(value) for value in values)),
+            "board_hours": read("board_hours", hours), "check_minutes": read("check_minutes", minutes)}
+
+
+def daily_board_runs(start: datetime, end: datetime) -> list[datetime]:
+    """The outside scheduler's board runs after `start` and up to `end`."""
+    found = []
+    day = start.astimezone(ARIZONA).replace(hour=0, minute=0, second=0, microsecond=0)
+    while day <= end:
+        for hour, minute in outside_schedule()["board_runs"]:
+            moment = day.replace(hour=hour, minute=minute)
+            if start < moment <= end:
+                found.append(moment.astimezone(timezone.utc))
+        day += timedelta(days=1)
     return sorted(found)
+
+
+def first_check(moment: datetime) -> datetime | None:
+    """The outside scheduler's first pregame check at or after `moment`, or None if it makes no checks.
+    Arizona is a whole number of hours from UTC, so the minute of the hour is the same in both."""
+    minutes = outside_schedule()["check_minutes"]
+    if not minutes:
+        return None
+    tick = moment.replace(second=0, microsecond=0)
+    if tick < moment:
+        tick += timedelta(minutes=1)
+    while tick.minute not in minutes:
+        tick += timedelta(minutes=1)
+    return tick

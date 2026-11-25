@@ -1,17 +1,15 @@
 name: Pregame check
 
-# Every 15 minutes during the season this looks for a game that is 85 to 25 minutes from kickoff and has
-# no board run since inactives were due (they come out 90 minutes before kickoff). If the fixed schedule
-# in run.yml does not reach that game in time, it starts "Run the prop board" itself. That covers
-# Wednesday games, Thanksgiving afternoon, Saturdays, early kickoffs abroad and the weeks when Eastern
-# daylight time moves kickoffs an hour earlier on the Arizona clock.
+# An outside scheduler starts this check every 15 minutes. It has no schedule of its own, because GitHub's
+# cron never started a run in this repository.
+#
+# Each check looks for a game that is 85 to 25 minutes from kickoff with no board run since its inactives
+# were due (they come out 90 minutes before kickoff). The first check that finds one starts "Run the prop
+# board". Later checks see that run and start nothing, so each kickoff time gets one run.
 #
 # The check costs no Odds API credits (the events feed is free) and installs nothing. It only spends
 # credits when it starts a board run.
 on:
-  schedule:
-    # 4:07 AM to 7:52 PM Arizona time, September to February. Cron is UTC; Arizona is UTC-7 all year.
-    - cron: "7,22,37,52 11-23,0-2 * 1,2,9-12 *"
   workflow_dispatch:
 
 permissions:

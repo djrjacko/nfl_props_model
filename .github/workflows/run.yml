@@ -1,37 +1,17 @@
 name: Run the prop board
 
-# GitHub's cron is UTC. Arizona is UTC-7 all year (no daylight saving), so each time below is
-# written with its Arizona equivalent. The minutes are odd on purpose: runs queued on the hour
-# are the ones GitHub delays most. Scheduled runs can still start several minutes late.
+# This workflow has no schedule of its own. GitHub's cron never started a run in this repository, so every
+# run is started from outside with GitHub's "workflow dispatch" call:
+#   - an outside scheduler starts it a few times a day (the README's Schedule section lists its jobs)
+#   - pregame.yml starts it at the first check after a game's inactives are due
+#   - the Re-run tab on the site and the "Run workflow" button on GitHub start it by hand
 on:
-  schedule:
-    # Sunday slate
-    - cron: "37 22 * * 5"   # Fri 3:37 PM MST   final injury report board (this run looks 60 hours ahead)
-    - cron: "7 4 * * 0"     # Sat 9:07 PM MST   roster moves and line moves
-    - cron: "37 13 * * 0"   # Sun 6:37 AM MST   overnight line moves
-    - cron: "47 16 * * 0"   # Sun 9:47 AM MST   after early-game inactives
-    - cron: "37 17 * * 0"   # Sun 10:37 AM MST  final early check
-    - cron: "7 20 * * 0"    # Sun 1:07 PM MST   after late-game inactives
-    - cron: "7 0 * * 1"     # Sun 5:07 PM MST   after Sunday-night inactives
-    # Thursday game
-    - cron: "7 4 * * 4"     # Wed 9:07 PM MST
-    - cron: "7 22 * * 4"    # Thu 3:07 PM MST
-    - cron: "52 23 * * 4"   # Thu 4:52 PM MST   after inactives
-    # Monday game
-    - cron: "7 4 * * 1"     # Sun 9:07 PM MST
-    - cron: "7 22 * * 1"    # Mon 3:07 PM MST
-    - cron: "52 23 * * 1"   # Mon 4:52 PM MST   after inactives
-    # One-off: Wed Nov 25 2026 4:37 PM MST, after inactives for GB@LA (6:00 PM kickoff). A cron line with a
-    # date repeats every year, so delete this line once that game has been played.
-    - cron: "37 23 25 11 *"
-  # Kickoffs this fixed schedule does not reach (other Wednesdays, holidays, Saturdays) are picked up by
-  # pregame.yml, which starts this workflow about 80 minutes before them.
   workflow_dispatch:
     inputs:
       hours:
-        description: "Look ahead this many hours for kickoffs (36 normally, 60 to see Sunday from Friday)"
+        description: "Look ahead this many hours for kickoffs (the outside jobs send 60)"
         required: true
-        default: "36"
+        default: "60"
 
 permissions:
   contents: write   # the run commits docs/ and logs/ back to the repo
@@ -57,21 +37,13 @@ jobs:
 
       - name: Decide how far ahead to look
         env:
-          EVENT: ${{ github.event_name }}
-          SCHEDULE: ${{ github.event.schedule }}
           ASKED: ${{ inputs.hours }}
         run: |
-          hours=36
-          if [ "$EVENT" = "workflow_dispatch" ]; then
-            case "$ASKED" in
-              ''|*[!0-9.]*) echo "hours must be a number, got '$ASKED'"; exit 1 ;;
-              *) hours="$ASKED" ;;
-            esac
-          elif [ "$SCHEDULE" = "37 22 * * 5" ]; then
-            hours=60   # Friday afternoon plus 36 hours ends before any Sunday kickoff
-          fi
-          echo "HOURS=$hours" >> "$GITHUB_ENV"
-          echo "Looking $hours hours ahead."
+          case "$ASKED" in
+            ''|*[!0-9.]*) echo "hours must be a number, got '$ASKED'"; exit 1 ;;
+          esac
+          echo "HOURS=$ASKED" >> "$GITHUB_ENV"
+          echo "Looking $ASKED hours ahead."
 
       - name: Unit tests
         run: python -m unittest discover -s tests

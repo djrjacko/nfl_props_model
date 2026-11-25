@@ -1,21 +1,16 @@
 {
- "generated_utc": "2026-11-25T19:13:53+00:00",
- "generated_arizona": "Wed Nov 25 12:13 PM MST",
- "previous_utc": "2026-11-25T18:53:42+00:00",
- "previous_arizona": "Wed Nov 25 11:53 AM MST",
- "headline": "1 line moved, 1 price moved since Wed Nov 25 11:53 AM MST.",
+ "generated_utc": "2026-11-25T19:50:08+00:00",
+ "generated_arizona": "Wed Nov 25 12:50 PM MST",
+ "previous_utc": "2026-11-25T19:13:53+00:00",
+ "previous_arizona": "Wed Nov 25 12:13 PM MST",
+ "headline": "1 price moved since Wed Nov 25 12:13 PM MST.",
  "added": [],
  "removed": [],
- "line_moved": [
-  {
-   "id": "00-0039738|player_rush_yds|under",
-   "text": "Line moved: Blake Corum rush yards 57.5 to 58.5 (DK); still under, edge 9.2%."
-  }
- ],
+ "line_moved": [],
  "price_moved": [
   {
    "id": "00-0034827|player_anytime_td|yes",
-   "text": "Price moved: DJ Moore anytime TD was FD +250, now DK +245; edge 6.2%."
+   "text": "Price moved: DJ Moore anytime TD was DK +245, now FD +250; edge 6.0%."
   }
  ],
  "status_changed": [],

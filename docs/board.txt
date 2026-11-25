@@ -1,5 +1,5 @@
 NFL PROP BOARD
-Updated Wed Nov 25 12:13 PM MST | Odds API credits: 28 this run, 175 used, 19,825 left
+Updated Wed Nov 25 12:50 PM MST | Odds API credits: 28 this run, 203 used, 19,797 left
 Window: games kicking off in the next 60 hours | calibration on
 
   GB@LA    Wed Nov 25 6:00 PM MST   LA -2.5, total 43.5
@@ -337,8 +337,8 @@ B TIER (edge 5% to 8%, or any flag): 56
      favourites on average; as 8.5-point favourites it is set at 46%.
      flag: books differ: DK 2.5, FD 3.5
      flag: snap share moved 89% to 54%
-  32. Blake Corum (LA RB, GB@LA) under 58.5 rush yards  DK -114
-     model 59.6% | book 50.4% | edge +9.2% | rules as written 48.5%
+  32. Blake Corum (LA RB, GB@LA) under 58.5 rush yards  DK -115
+     model 59.6% | book 50.5% | edge +9.1% | rules as written 48.5%
      A typical game is about 51 yards against 58.5: 12.2 carries at 4.7 a carry (his 5.1 blended
      with the 4.1 GB allow). Their run rate was 52% over five games as 7.1-point favourites on
      average; as 2.5-point favourites it is set at 50%.
@@ -422,8 +422,8 @@ B TIER (edge 5% to 8%, or any flag): 56
      A typical game is about 88 yards against 82.5: 20.6 carries at 4.4 a carry (his 5.0 blended
      with the 3.6 KC allow). Their run rate was 48% over five games as 9.1-point favourites on
      average; as 2.75-point favourites it is set at 46%.
-  45. DJ Moore (BUF WR, KC@BUF) anytime TD  DK +245
-     model 30.3% | book 24.1% | edge +6.2% | rules as written 46.3%
+  45. DJ Moore (BUF WR, KC@BUF) anytime TD  FD +250
+     model 30.3% | book 24.3% | edge +6.0% | rules as written 46.3%
      Model gives 30% to score: 22% of BUF's red-zone chances and 11% of their touches, with BUF
      priced for 2.8 touchdowns.
      flag: role change: Dalton Kincaid missed the last 1 and may return
@@ -438,16 +438,12 @@ B TIER (edge 5% to 8%, or any flag): 56
      Model gives 61% to score: 32% of DAL's red-zone chances and 33% of their touches, with DAL
      priced for 3.4 touchdowns.
      flag: role change: Tyler Goodson is out but played in 1 of the last 3 games
-  48. Blake Corum (LA RB, GB@LA) anytime TD  DK +140
-     model 40.8% | book 35.0% | edge +5.9% | rules as written 49.6%
-     Model gives 41% to score: 27% of LA's red-zone chances and 23% of their touches, with LA
-     priced for 2.5 touchdowns.
-  49. Xavier Worthy (KC WR, KC@BUF) anytime TD  DK +475
+  48. Xavier Worthy (KC WR, KC@BUF) anytime TD  DK +475
      model 19.9% | book 14.5% | edge +5.4% | rules as written 25.7%
      Model gives 20% to score: 13% of KC's red-zone chances and 9% of their touches, with KC
      priced for 2.3 touchdowns.
      flag: role change: Kenneth Walker III is out but played in 1 of the last 3 games
-  50. DK Metcalf (PIT WR, DEN@PIT) over 2.5 receptions  FD -130
+  49. DK Metcalf (PIT WR, DEN@PIT) over 2.5 receptions  FD -130
      model 58.2% | book 52.8% | edge +5.4% | rules as written 46.8%
      Projects 3.2 catches against 2.5: 20% of about 34 team targets (22% this season, 14% over
      his last 3), at a 52% catch rate. Their run rate was 39% over five games as 1.2-point
@@ -455,33 +451,37 @@ B TIER (edge 5% to 8%, or any flag): 56
      flag: QB change: Mason Rudolph is listed first, Aaron Rodgers played last game
      flag: calibration flips the literal lean
      flag: snap share moved 87% to 62%
-  51. Kaleb Johnson (GB RB, GB@LA) under 9.5 rush attempts  DK -118  [rooting conflict]
+  50. Kaleb Johnson (GB RB, GB@LA) under 9.5 rush attempts  DK -118  [rooting conflict]
      model 56.4% | book 51.0% | edge +5.3% | rules as written 54.2%
      Projects 9.4 carries against 9.5: GB run about 23 times and he has taken 40% of them over
      his last 3 games.
      flag: role change: Pierre Strong missed the last 1 and may return
      flag: role change: Josh Jacobs missed the last 1 and may return
-  52. Darius Cooper (PHI WR, PHI@DAL) over 26.5 receiving yards  FD -114
+  51. Darius Cooper (PHI WR, PHI@DAL) over 26.5 receiving yards  FD -114
      model 55.2% | book 50.0% | edge +5.2% | rules as written 78.0%
      A typical game is about 30 yards against 26.5: 15% of about 30 team targets (12% this
      season, 23% over his last 3) at 8.0 a target (his 7.4 blended with the 8.9 DAL allow).
      Their run rate was 42% over five games as 4.0-point underdogs on average; as 8.5-point
      underdogs it is set at 41%.
      flag: role change: Elijah Mitchell missed the last 1 and may return
-  53. Dallas Goedert (PHI TE, PHI@DAL) under 31.5 receiving yards  DK -110
+  52. Dallas Goedert (PHI TE, PHI@DAL) under 31.5 receiving yards  DK -110
      model 54.7% | book 49.6% | edge +5.1% | rules as written 58.0%
      A typical game is about 28 yards against 31.5: 15% of about 30 team targets (16% this
      season, 12% over his last 3) at 7.6 a target (his 7.9 blended with the 7.1 DAL allow).
      Their run rate was 42% over five games as 4.0-point underdogs on average; as 8.5-point
      underdogs it is set at 41%.
      flag: role change: Elijah Mitchell missed the last 1 and may return
-  54. Makai Lemon (PHI WR, PHI@DAL) over 2.5 receptions  DK -173
+  53. Makai Lemon (PHI WR, PHI@DAL) over 2.5 receptions  DK -173
      model 65.0% | book 59.8% | edge +5.1% | rules as written 81.6%
      Projects 3.5 catches against 2.5: 20% of about 30 team targets (19% this season, 22% over
      his last 3), at a 65% catch rate. Their run rate was 42% over five games as 4.0-point
      underdogs on average; as 8.5-point underdogs it is set at 41%.
      flag: books differ: DK 2.5, FD 3.5
      flag: role change: Elijah Mitchell missed the last 1 and may return
+  54. Blake Corum (LA RB, GB@LA) anytime TD  DK +135
+     model 40.8% | book 35.7% | edge +5.1% | rules as written 49.6%
+     Model gives 41% to score: 27% of LA's red-zone chances and 23% of their touches, with LA
+     priced for 2.5 touchdowns.
   55. Josh Downs (KC WR, KC@BUF) under 3.5 receptions  FD -154
      model 61.8% | book 56.7% | edge +5.1% | rules as written 56.0%
      Projects 3.2 catches against 3.5: 14% of about 36 team targets (14% this season, 14% over
@@ -506,9 +506,9 @@ SKIPS: 31
   after vig.
   [popular] CeeDee Lamb anytime TD (DK -160): Model gives 43% to score, the price implies 54%
   after vig.
-  [popular] Rashee Rice anytime TD (DK +205): Model gives 19% to score, the price implies 27%
-  after vig.
   [popular] Emmett Johnson anytime TD (FD -155): Model gives 45% to score, the price implies 52%
+  after vig.
+  [popular] Travis Kelce anytime TD (FD +210): Model gives 21% to score, the price implies 27%
   after vig.
   [popular] Jaylen Warren anytime TD (FD +190): Model gives 25% to score, the price implies 30%
   after vig.
@@ -571,9 +571,8 @@ SKIPS: 31
   trust; the book probably knows something the model does not.
 
 WHAT CHANGED
-  1 line moved, 1 price moved since Wed Nov 25 11:53 AM MST.
-  Line moved: Blake Corum rush yards 57.5 to 58.5 (DK); still under, edge 9.2%.
-  Price moved: DJ Moore anytime TD was FD +250, now DK +245; edge 6.2%.
+  1 price moved since Wed Nov 25 12:13 PM MST.
+  Price moved: DJ Moore anytime TD was DK +245, now FD +250; edge 6.0%.
 
 NOTES
   - 10 quarterback anytime TD props were not priced: the touch-share method does not describe

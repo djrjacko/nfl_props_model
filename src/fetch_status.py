@@ -651,7 +651,8 @@ def main() -> int:
         sys.stdout.reconfigure(errors="replace")
     status = build(args.hours, use_espn=not args.no_espn)
     STATUS_DIR.mkdir(parents=True, exist_ok=True)
-    STATUS_FILE.write_text(json.dumps(status, indent=1), encoding="utf-8")
+    STATUS_FILE.write_text(json.dumps(status, indent=1), encoding="utf-8", newline="
+")
     report(status)
     return 0
 

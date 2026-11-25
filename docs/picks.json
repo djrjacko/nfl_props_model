@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-11-25T05:08:04+00:00",
- "generated_arizona": "Tue Nov 24 10:08 PM MST",
+ "generated_utc": "2026-11-25T05:39:39+00:00",
+ "generated_arizona": "Tue Nov 24 10:39 PM MST",
  "repo": "djrjacko/nfl_props_model",
  "window_hours": 36.0,
  "season": 2026,
@@ -574,11 +574,11 @@
    "side": "yes",
    "line": null,
    "book": "DK",
-   "price": 145,
+   "price": 140,
    "books": {
     "DK": {
      "line": null,
-     "yes": 145.0
+     "yes": 140.0
     },
     "FD": {
      "line": null,
@@ -587,8 +587,8 @@
    },
    "projection": 0.53,
    "model_prob": 0.4137,
-   "implied_prob": 0.3401,
-   "edge": 0.0735,
+   "implied_prob": 0.3458,
+   "edge": 0.0679,
    "literal_prob": 0.5021,
    "tier": "B",
    "flags": [],
@@ -610,12 +610,12 @@
    "market": "anytime TD",
    "side": "yes",
    "line": null,
-   "book": "DK",
-   "price": 165,
+   "book": "FD",
+   "price": 170,
    "projection": 0.2,
    "model_prob": 0.1828,
-   "implied_prob": 0.3144,
-   "edge": -0.1316,
+   "implied_prob": 0.3142,
+   "edge": -0.1314,
    "kind": "popular",
    "reason": "Model gives 18% to score, the price implies 31% after vig."
   },
@@ -1031,9 +1031,9 @@
       "player": "Blake Corum",
       "team": "LA",
       "bet": "anytime TD",
-      "price": 145,
+      "price": 140,
       "model_prob": 0.4137,
-      "edge": 0.0735,
+      "edge": 0.0679,
       "tier": "B",
       "flagged": false
      }
@@ -1045,11 +1045,11 @@
     ],
     "anchor": "00-0033110|player_receptions|under",
     "anchor_player": "Tyler Higbee",
-    "decimal": 7.721,
-    "price": 672,
+    "decimal": 7.563,
+    "price": 656,
     "model_prob": 0.1944,
-    "implied_prob": 0.0959,
-    "value": 0.5012,
+    "implied_prob": 0.0975,
+    "value": 0.4705,
     "rooting_conflict": false,
     "flagged_legs": 2
    }
@@ -1169,14 +1169,14 @@
  ],
  "credits": {
   "this_run": 7,
-  "used": 21,
-  "remaining": 19979
+  "used": 28,
+  "remaining": 19972
  },
  "sources": {
-  "odds_pulled_utc": "2026-11-25T05:08:01+00:00",
-  "status_generated_utc": "2026-11-25T05:08:03+00:00",
+  "odds_pulled_utc": "2026-11-25T05:39:37+00:00",
+  "status_generated_utc": "2026-11-25T05:39:38+00:00",
   "status_source": "espn",
-  "nflverse_fetched_utc": "2026-11-25T05:08:01+00:00",
+  "nflverse_fetched_utc": "2026-11-25T05:39:36+00:00",
   "last_completed_week": 11
  },
  "notes": [

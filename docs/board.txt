@@ -1,5 +1,5 @@
 NFL PROP BOARD
-Updated Tue Nov 24 10:08 PM MST | Odds API credits: 7 this run, 21 used, 19,979 left
+Updated Tue Nov 24 10:39 PM MST | Odds API credits: 7 this run, 28 used, 19,972 left
 Window: games kicking off in the next 36 hours | calibration on
 
   GB@LA    Wed Nov 25 6:00 PM MST   LA -2.5, total 44
@@ -52,10 +52,10 @@ SAME GAME PARLAYS, 3 LEGS
     - Tyler Higbee under 3.5 receptions (-128)  (flagged)
     - Kyren Williams under 3.5 receptions (-130)  (flagged)
     - Kaleb Johnson under 10.5 rush attempts (-139)  (flagged)
-  DK about +672: model 19% against 10% implied [GB@LA: LA ahead]
+  DK about +656: model 19% against 10% implied [GB@LA: LA ahead]
     - Tyler Higbee under 3.5 receptions (-128)  (flagged)
     - Kyren Williams under 3.5 receptions (-130)  (flagged)
-    - Blake Corum anytime TD (+145)
+    - Blake Corum anytime TD (+140)
 
 A TIER (edge 8% or more, no flags): 5
   1. Tucker Kraft (GB TE, GB@LA) under 39.5 receiving yards  DK -114  [rooting conflict]
@@ -123,13 +123,13 @@ B TIER (edge 5% to 8%, or any flag): 8
      his last 3 games.
      flag: role change: Pierre Strong missed the last 1 and may return
      flag: role change: Josh Jacobs missed the last 1 and may return
-  8. Blake Corum (LA RB, GB@LA) anytime TD  DK +145
-     model 41.4% | book 34.0% | edge +7.3% | rules as written 50.2%
+  8. Blake Corum (LA RB, GB@LA) anytime TD  DK +140
+     model 41.4% | book 34.6% | edge +6.8% | rules as written 50.2%
      Model gives 41% to score: 27% of LA's red-zone chances and 23% of their touches, with LA
      priced for 2.6 touchdowns.
 
 SKIPS: 3
-  [popular] Christian Watson anytime TD (DK +165): Model gives 18% to score, the price implies
+  [popular] Christian Watson anytime TD (FD +170): Model gives 18% to score, the price implies
   31% after vig.
   [popular] Blake Corum over 11.5 rush attempts (DK -135): Model gives the over 51%, the price
   implies 54% after vig: a typical game is about 12.2 against a line of 11.5.
@@ -138,7 +138,7 @@ SKIPS: 3
   85%.
 
 WHAT CHANGED
-  Nothing changed since Tue Nov 24 9:42 PM MST.
+  Nothing changed since Tue Nov 24 10:08 PM MST.
 
 NOTES
   - 30 posted props were not priced because the player's role is too small to trust (under 6

@@ -3,9 +3,11 @@ name: Pregame check
 # An outside scheduler starts this check every 15 minutes. It has no schedule of its own, because GitHub's
 # cron never started a run in this repository.
 #
-# Each check looks for a game that is 85 to 25 minutes from kickoff with no board run since its inactives
-# were due (they come out 90 minutes before kickoff). The first check that finds one starts "Run the prop
-# board". Later checks see that run and start nothing, so each kickoff time gets one run.
+# Each check looks for a game that is 85 to 25 minutes from kickoff with no successful board run since its
+# inactives were due (they come out 90 minutes before kickoff). The first check that finds one starts "Run
+# the prop board". Once a run has succeeded, later checks start nothing, so each kickoff time gets one good
+# run. A run that fails or is cancelled is retried by the next check, twice at most; after that the check
+# writes a notice to docs/notices.json, which the last step publishes for the site to show.
 #
 # The check costs no Odds API credits (the events feed is free) and installs nothing. It only spends
 # credits when it starts a board run.
@@ -13,8 +15,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  actions: write   # to start the board workflow and to see whether one has already started
-  contents: read
+  actions: write    # to start the board workflow and to see how earlier runs ended
+  contents: write   # to publish docs/notices.json on the rare check that changes it
 
 concurrency:
   group: pregame-check
@@ -32,3 +34,18 @@ jobs:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
           GH_TOKEN: ${{ github.token }}
         run: python3 src/pregame.py --trigger
+
+      - name: Publish the notice file if this check changed it
+        # Almost every check leaves the file alone and this step does nothing. If the push loses a race with a
+        # board run, the step fails harmlessly: the next check works the notice out again and publishes it.
+        run: |
+          if [ -z "$(git status --porcelain docs/notices.json)" ]; then
+            echo "No notice to publish."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/notices.json
+          git commit -m "Notice update $(TZ=America/Phoenix date '+%a %b %d %-I:%M %p') MST"
+          git pull --rebase
+          git push

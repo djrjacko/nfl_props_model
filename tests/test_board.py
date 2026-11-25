@@ -409,6 +409,36 @@ class NextRunsTests(unittest.TestCase):
                                                         "check_minutes": [0, 15, 30, 45]})
 
 
+class MissedRunNoteTests(unittest.TestCase):
+    """The pregame check writes a notice when a run after inactives was given up on. Boards built after that
+    game has kicked off repeat it in their notes for twelve hours."""
+
+    NOTICE = {"kickoff_utc": "2026-11-26T01:00+00:00", "games": ["GB@LA"], "posted_utc": "2026-11-26T00:30:20+00:00",
+              "posted_arizona": "Wed Nov 25 5:30 PM MST", "text": "The board was not rebuilt after inactives for GB@LA (made-up notice)."}
+
+    def notes(self, now: datetime, content: str | None) -> list[str]:
+        folder = Path(tempfile.mkdtemp())
+        if content is not None:
+            (folder / "notices.json").write_text(content, encoding="utf-8")
+        with mock.patch.object(board.pregame, "NOTICES_FILE", folder / "notices.json"):
+            return board.missed_run_notes(now)
+
+    def test_a_notice_is_repeated_once_its_game_has_kicked_off(self):
+        content = json.dumps({"notices": [self.NOTICE]})
+        kick = datetime(2026, 11, 26, 1, 0, tzinfo=timezone.utc)
+        # before kickoff a board being built is the rebuild itself, so it must not say there was none
+        self.assertEqual(self.notes(kick - timedelta(minutes=20), content), [])
+        self.assertEqual(self.notes(kick + timedelta(hours=3, minutes=7), content), [self.NOTICE["text"]])  # the 9:07 PM daily run
+        self.assertEqual(self.notes(kick + timedelta(hours=12, minutes=1), content), [])
+
+    def test_no_file_or_a_broken_one_adds_nothing(self):
+        now = datetime(2026, 11, 26, 4, 7, tzinfo=timezone.utc)
+        self.assertEqual(self.notes(now, None), [])
+        self.assertEqual(self.notes(now, "not json"), [])
+        self.assertEqual(self.notes(now, json.dumps({"notices": [{"kickoff_utc": "not a time", "text": "x"}, {"text": "no kickoff"}]})), [])
+        self.assertEqual(self.notes(now, json.dumps({"notices": []})), [])
+
+
 class TextTests(unittest.TestCase):
     def board_text(self, legs: list[dict], rule_on: bool) -> str:
         lines = board.moneyline_legs(slate()) if rule_on else []

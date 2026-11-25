@@ -24,6 +24,8 @@ Outputs:
 - `docs/picks.json` everything the Board tab shows
 - `docs/board.txt` the same board as plain text
 - `docs/changes.json` what changed since the previous run, in plain words
+- `docs/notices.json` written by the pregame check, not by a run: a notice when a run after inactives was
+  given up on (usually empty)
 - `logs/picks_log.csv` one row per recommended leg per run, for grading against box scores later
 - `logs/odds_credits.csv` one row per paid Odds API call
 - `logs/practice_log.csv` practice participation seen each run, used for the "no practice this week" gate
@@ -212,14 +214,25 @@ prop board", which puts the run 70 to 85 minutes before kickoff. Nothing waits f
 | 6:00 PM | 4:30 PM | 4:45 PM |
 | 6:15 PM or 6:20 PM | 4:45 PM or 4:50 PM | 5:00 PM |
 
-**No second run since inactives.** Once a board run has started inside a game's window, every later check
-leaves that game alone, so a kickoff time gets one run however many checks follow. Any board run counts,
-whoever started it: a daily run that happens to land in the window, or a tap on the Re-run tab. A run from
-before the window does not count. Games that kick off together share one run. Kickoffs 20 minutes apart
-get one each, because their inactives come out 20 minutes apart.
+**No second run since inactives.** Once a board run that started inside a game's window has finished
+successfully, every later check leaves that game alone, so a kickoff time gets one good run however many
+checks follow. Any board run counts, whoever started it: a daily run that happens to land in the window,
+or a tap on the Re-run tab. A run from before the window does not count. Games that kick off together
+share one run. Kickoffs 20 minutes apart get one each, because their inactives come out 20 minutes apart.
 
-If a check cannot start the run, the next check tries again, until 25 minutes before kickoff. A run that
-starts and then fails still counts as the run, so the checks do not start another one.
+**A failed run is retried, twice at most.** A run that fails or is cancelled does not count. The next
+check inside the window starts another one, up to two retries per kickoff: for a 6:00 PM kickoff that is
+4:45 PM, then 5:00 PM, then 5:15 PM. A run that is still going is waited for. If the third run fails too,
+or a run fails with no check left inside the window, the check stops and writes a notice to
+`docs/notices.json`. The site shows the notice above the board and in its notes a minute or two later, and
+boards built after that kickoff repeat it in their notes for twelve hours. A run that succeeds before
+kickoff after all, such as a tap on the Re-run tab, takes the notice down.
+
+A run that fails before the odds pull costs nothing. One that fails after it costs what any run costs, so
+the most a kickoff can cost is three runs.
+
+If a check cannot start the run at all because GitHub refuses the call, the next check tries again, until
+25 minutes before kickoff.
 
 ```
 python src/pregame.py   # show each upcoming game and the check that will start its run

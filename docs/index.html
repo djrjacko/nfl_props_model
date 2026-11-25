@@ -143,6 +143,19 @@ function repo() {
   return state.picks && state.picks.repo;
 }
 
+// Notices come from the pregame check when a run after inactives was given up on. They live in their own
+// small file because no board can be built at that moment. The board still shows if the file is missing.
+async function loadNotices(bust) {
+  try {
+    const answer = await fetch(`notices.json${bust}`, { cache: "no-store" });
+    if (!answer.ok) return [];
+    const stillCurrent = (notice) => Date.now() < new Date(notice.kickoff_utc).getTime() + 12 * 3600000;
+    return ((await answer.json()).notices || []).filter((notice) => notice && notice.text && stillCurrent(notice));
+  } catch (error) {
+    return [];
+  }
+}
+
 async function load() {
   const bust = `?t=${Date.now()}`;  // a new address every time, so the phone never shows a stale board
   $("refresh").disabled = true;
@@ -152,6 +165,7 @@ async function load() {
     state.picks = await picks.json();
     const changes = await fetch(`changes.json${bust}`, { cache: "no-store" });
     state.changes = changes.ok ? await changes.json() : null;
+    state.notices = await loadNotices(bust);
     render();
   } catch (error) {
     $("updated").textContent = "Could not load";
@@ -216,6 +230,8 @@ function renderBoard() {
   const hidden = (item) => state.hideConflicts && item.rooting_conflict;
   const ageHours = (Date.now() - new Date(p.generated_utc).getTime()) / 3600000;
   if (ageHours > 6) out.push(el("div", "banner", `This board is ${Math.round(ageHours)} hours old. Lines and injuries may have moved; see the Re-run tab.`));
+  const notices = (state.notices || []).map((notice) => notice.text);
+  notices.forEach((text) => out.push(el("div", "banner", text)));
   out.push(el("div", "summary", p.summary.line));
   if (p.summary.warning) out.push(el("div", "banner", p.summary.warning));
 
@@ -269,10 +285,11 @@ function renderBoard() {
     out.push(list);
   } else out.push(el("div", "meta", "No popular props to warn about."));
 
-  if (p.notes.length) {
+  const notes = notices.filter((text) => !p.notes.includes(text)).concat(p.notes);  // a later board repeats a notice in its own notes
+  if (notes.length) {
     out.push(heading("Notes"));
     const list = el("ul", "plain card");
-    p.notes.forEach((note) => add(list, el("li", null, note)));
+    notes.forEach((note) => add(list, el("li", null, note)));
     out.push(list);
   }
   const s = p.sources;

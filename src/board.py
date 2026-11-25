@@ -123,6 +123,23 @@ def next_runs(now: datetime, count: int = 5) -> list[dict]:
             for moment in sorted(runs)[:count]]
 
 
+def missed_run_notes(now: datetime) -> list[str]:
+    """Notes about runs after inactives that were given up on, from the notice file the pregame check writes.
+
+    Only games that have already kicked off are repeated here, as a record on the next boards. Before kickoff
+    the site shows the notice itself, and a board built then is the very rebuild the notice says was missing.
+    """
+    out = []
+    for notice in pregame.load_notices():
+        try:
+            kick = datetime.fromisoformat(notice["kickoff_utc"])
+        except (TypeError, ValueError):
+            continue
+        if kick < now <= kick + pregame.NOTICE_LIFE:
+            out.append(str(notice["text"]))
+    return out
+
+
 def schedule_summary() -> dict:
     """The outside scheduler's jobs in a form the site can show: clock times in Arizona time, the look-ahead
     its runs ask for, and the minutes of the hour at which it starts the pregame check."""
@@ -404,7 +421,7 @@ def build(hours: float) -> tuple[dict, dict]:
     require_anchor = bool(config.get("require_anchor", True))
     anchors = moneyline_legs(slate, set(config["rooting_teams"])) if require_anchor else []
     tickets = {size: ticket_candidates(legs, size, anchors, require_anchor) for size in (2, 3)}
-    notes = list(result["notes"])
+    notes = missed_run_notes(now) + list(result["notes"])
     flipped = sum(1 for leg in legs if leg.get("literal_agrees") is False)
     if flipped:
         notes.append(f"{plural(flipped, 'leg')} on this board carry the flag \"{model.FLIP_FLAG}\": the calibrated model and "

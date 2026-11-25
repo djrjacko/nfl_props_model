@@ -215,7 +215,7 @@ def resolve_seasons(games: pd.DataFrame, requested: list[int] | None, today: dat
         current = max(requested)
         history = sorted(set(requested))
     else:
-        started = games.loc[games["gameday"] <= today.isoformat(), "season"]
+        started = games.loc[gameday_text(games) <= today.isoformat(), "season"]
         current = int(started.max())
         history = [current]
     finished = games[(games["season"] == current) & games["home_score"].notna()]
@@ -292,12 +292,24 @@ def load(key: str, columns: list[str] | None = None) -> pd.DataFrame:
     frames = [pd.read_parquet(DATA_DIR / name, columns=columns) for name in names]
     if not frames:
         raise FileNotFoundError(f"nflverse has not published '{key}' for this season yet")
-    return frames[0] if len(frames) == 1 else pd.concat(frames, ignore_index=True)
+    frame = frames[0] if len(frames) == 1 else pd.concat(frames, ignore_index=True)
+    if key == "schedules" and "gameday" in frame.columns:
+        frame["gameday"] = gameday_text(frame)
+    return frame
+
+
+def gameday_text(games: pd.DataFrame) -> pd.Series:
+    """The schedule's game date as 'YYYY-MM-DD' text, whichever way nflverse stored it.
+
+    It was text until the file published on 2026-11-25 at 17:39 UTC, which stores it as a date. A date
+    cannot be compared with or joined to text, so everything reads the column through this.
+    """
+    return pd.to_datetime(games["gameday"], errors="coerce").dt.strftime("%Y-%m-%d")
 
 
 def kickoff_arizona(games: pd.DataFrame) -> pd.Series:
     """Kickoff as an Arizona-time timestamp, from the schedule's Eastern gameday + gametime."""
-    eastern = pd.to_datetime(games["gameday"] + " " + games["gametime"], errors="coerce")
+    eastern = pd.to_datetime(gameday_text(games) + " " + games["gametime"].astype(str), errors="coerce")
     return eastern.dt.tz_localize(EASTERN, ambiguous="NaT", nonexistent="NaT").dt.tz_convert(ARIZONA)
 
 

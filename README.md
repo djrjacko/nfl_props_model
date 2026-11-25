@@ -43,10 +43,11 @@ QB anytime touchdowns.
 4. **Anytime TD.** His share of the team's scoring chances times the touchdowns the spread and total imply.
    A quarterback's anytime TD is not priced: a share of touches does not describe how a quarterback
    scores, so those props are left off every tier and ticket and counted in the board's notes.
-5. **Probability and edge.** Counts use a Poisson-family distribution and yards a right-skewed gamma curve
-   (see "The yards curve" below). Edge is the model probability minus the book's probability with the vig
-   removed. Anytime TD is priced Yes-only, so its vig is removed by scaling each game's list to the
-   expected number of different scorers.
+5. **Probability and edge.** Counts use a Poisson-family distribution. Rushing yards use a right-skewed
+   gamma curve and receiving yards a normal curve centred on the typical game (see "The yards curves"
+   below). Edge is the model probability minus the book's probability with the vig removed. Anytime TD is
+   priced Yes-only, so its vig is removed by scaling each game's list to the expected number of different
+   scorers.
 6. **Legs.** Edge of 5% or more, at the better of the two books. A tier is 8% or more with no flags; B tier
    is 5% to 8% or any flag. Edges of 20% or more are listed as "not trusted" instead of offered, and a
    player needs a real role (6 carries or 3 targets a game, 35% of snaps for a touchdown).
@@ -74,7 +75,7 @@ QB anytime touchdowns.
 The rules above were back-tested on 2026 weeks 5 to 11, projecting each player-game from earlier games
 only. As written they ran high and were too sure of themselves, so a calibration layer sits on top:
 projections are pulled toward the middle, counts use a negative binomial instead of a pure Poisson, the
-yards curve leans right instead of being a normal around the average, target share leans on the season,
+yards curves are built around the typical game instead of the average, target share leans on the season,
 and the touchdown share blends red-zone share with overall touches. Every leg also carries a "literal"
 probability, which is the same bet priced by the rules exactly as written, so the two can be compared over
 a season.
@@ -88,28 +89,29 @@ Two ideas were tested and left out because they made the back-test worse: handin
 share to the others, and taking shares only from the games since a long-term absence began. Those
 situations are flagged instead. The second comparison is reprinted by `--backtest`.
 
-### The yards curve
+### The yards curves
 
 Yards are lopsided: a few big games pull the average up, and only about 42% of results beat the
-projection. Since 2026-11-25 yards follow a gamma curve whose average is the calibrated projection. Its
-spread is the league-wide spread moved toward the player's own game log, with the log counting as its
-number of games against 12 games of the league figure. A game log on its own understates how far a
-projection can miss, and fitting on it alone made the back-test worse. A log normal was tested too and
-did worse than both the gamma and the curve it replaced.
+projection. Two curves deal with that, and `YARDS_CURVE` in `model.py` says which one each stat uses:
 
-The curve it replaced was a normal centred on the typical game (about 0.87 of the average). It is still in
-`model.py`: `YARDS_CURVE` chooses `"gamma"` or `"normal"` for rushing and for receiving separately.
+- **Rushing yards use a gamma curve** whose average is the calibrated projection. Its spread is the
+  league-wide spread moved toward the player's own game log, with the log counting as its number of games
+  against 12 games of the league figure. A game log on its own understates how far a projection can miss,
+  and fitting on it alone made the back-test worse.
+- **Receiving yards use a normal curve** centred on the typical game (about 0.86 of the average), with the
+  league-wide spread.
 
-What the change did, on 2026 weeks 5 to 11 (`--backtest` prints this, section 3):
+Both curves were tried for both stats on 2026 weeks 5 to 11 (`--backtest` prints them side by side,
+section 3), and so was a log normal, which did worse than either:
 
 - **Rushing yards:** the gamma is closer. At a line 50% above the projection the under hit 80.8% of the
-  time; the gamma says 82.2%, the normal said 83.5%. For backs projected for 50 yards or more the normal
-  overstated unders by 6 to 7 points and the gamma by about 3.5.
-- **Receiving yards:** about level overall. For players projected under 40 yards the gamma makes unders
-  more likely than the normal did, and the results side with the normal: at a line 25% above the
-  projection the under hit 67.8%; the gamma says 71.2%, the normal said 66.9%.
-- **The under lean did not go away.** A right-skewed curve puts the typical game below the average, which
-  is what makes unders likely in the first place. Both curves still overstate unders at lines well above
+  time; the gamma says 82.2%, the normal 83.5%. For backs projected for 50 yards or more the normal
+  overstates unders by 6 to 7 points and the gamma by about 3.5.
+- **Receiving yards:** about level overall, but for players projected under 40 yards the gamma makes
+  unders more likely than the results support. At a line 25% above the projection the under hit 67.8%;
+  the gamma says 71.2%, the normal 66.9%. That is why receiving yards stayed on the normal.
+- **Neither curve removes the under lean.** A lopsided curve puts the typical game below the average,
+  which is what makes unders likely in the first place. Both still overstate unders at lines well above
   the projection, by 1 to 4 points.
 - The gamma is too generous to overs at rushing lines far below the projection (77.6% said, 72.6%
   happened, at a line half the projection). That is where the blowout rule's alt lines sit.
@@ -227,6 +229,59 @@ every year, so delete it once that game has been played.
 
 GitHub turns scheduled workflows off after 60 days without a commit. During the season the board commits
 keep them alive; before a new season, check the Actions tab and re-enable both workflows if needed.
+
+### Starting runs from an outside scheduler
+
+GitHub does not promise that a scheduled workflow starts on time, or at all. On 2026-11-25, the day after
+this repository was created, it had not started one. Anything that can send a web request on a timer can
+do the job instead, using GitHub's "create a workflow dispatch event" call.
+
+To start a board run (`OWNER/REPO` is this repository's address after `github.com/`):
+
+```
+POST https://api.github.com/repos/OWNER/REPO/actions/workflows/run.yml/dispatches
+
+Accept: application/vnd.github+json
+Authorization: Bearer YOUR_TOKEN
+X-GitHub-Api-Version: 2026-03-10
+Content-Type: application/json
+
+{"ref":"main","inputs":{"hours":"36"}}
+```
+
+To start the pre-kickoff check, the address ends in `pregame.yml/dispatches` and the body is
+`{"ref":"main"}`. That workflow takes no inputs, and GitHub refuses a body that names one.
+
+GitHub answers `200` when the run has started, with the run's id and address in the reply. Without the
+`X-GitHub-Api-Version` line it answers `204` with an empty reply instead; both mean started. `401` means
+the token is wrong, expired or missing, and `422` that the body is wrong, such as `hours` sent to
+`pregame.yml`. Those four were seen on this repository on 2026-11-25. `403` or `404` is what GitHub
+answers when a token does not cover the repository or lacks Actions write.
+
+**The token** is a fine-grained personal access token limited to this repository with Actions set to Read
+and write, made the same way as the one for the Re-run tab. Make a separate one for the scheduler, so that
+either can be deleted without breaking the other. Whoever holds it can start and cancel runs here, which
+spends Odds API credits, and nothing else.
+
+**When to send it.** `hours` is text: `"36"`, or `"60"` for the Friday run so that it can see Sunday. The
+times are Arizona time (`America/Phoenix`, UTC-7 all year):
+
+| Day | Start `run.yml` at | `hours` |
+|---|---|---|
+| Fri | 3:37 PM | 60 |
+| Sat | 9:07 PM | 36 |
+| Sun | 6:37 AM, 9:47 AM, 10:37 AM, 1:07 PM, 5:07 PM, 9:07 PM | 36 |
+| Mon | 3:07 PM, 4:52 PM | 36 |
+| Wed | 9:07 PM | 36 |
+| Thu | 3:07 PM, 4:52 PM | 36 |
+
+Start `pregame.yml` every 15 minutes at :07, :22, :37 and :52, from 4:07 AM to 7:52 PM, September to
+February. A check is free and spends credits only when it starts a board run. It also starts one when a
+fixed run just before a kickoff is 20 minutes overdue, so on its own it keeps the runs after inactives
+going.
+
+If GitHub's own schedule fires as well, each time gets two runs and costs twice the credits. The Actions
+tab filtered to the event `schedule` shows whether it has started; if it has, stop one of the two.
 
 ## Settings
 

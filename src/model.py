@@ -16,8 +16,8 @@ How a projection is built (the rules come from the owner's betting audit):
                  total imply for his team. Running backs, receivers and tight ends only: a quarterback's
                  anytime TD is not priced, because a share of touches does not describe how he scores
 
-  probability    Poisson family for attempts, receptions and touchdowns; a right-skewed gamma curve for
-                 yards (the audit said normal; see point 3 below)
+  probability    Poisson family for attempts, receptions and touchdowns; for yards a right-skewed
+                 gamma curve (rushing) or a normal curve (receiving), see point 3 below
   edge           model probability minus the book's probability with the vig removed
 
 The calibration layer. Back-testing those rules on 2026 weeks 5-11 (every player-game projected
@@ -32,14 +32,16 @@ from earlier games only) showed three things, and each has a measured correction
      said 85% for things that happened 71% of the time. Counts use a negative binomial, which is a
      Poisson with the variance widened by a measured factor (1.0 gives back the pure Poisson).
   3. Yardage is lopsided: big games pull the average up, and only 42% of results beat the average.
-     Yards therefore follow a gamma curve whose average is the calibrated projection. Its spread is
-     the league-wide spread moved toward the player's own game log, which counts as his games against
-     12 games of the league figure (a game log alone understates how far a projection can miss). The
-     curve it replaced on 2026-11-25, a normal centred on the typical game at about 0.87 x the
-     average, is kept as YARDS_CURVE "normal" and can be chosen for either stat. The gamma is the
-     closer of the two for rushing yards. For receiving yards they are about level, and for small
-     receiving roles the gamma makes unders more likely than the results support. --backtest prints
-     both side by side.
+     Two curves handle that, and YARDS_CURVE says which one each stat uses:
+       rushing yards    a gamma curve whose average is the calibrated projection. Its spread is the
+                        league-wide spread moved toward the player's own game log, which counts as
+                        his games against 12 games of the league figure (a game log alone
+                        understates how far a projection can miss).
+       receiving yards  a normal curve centred on the typical game, about 0.86 x the average, with
+                        the league-wide spread.
+     Both were tried for both stats on 2026-11-25. The gamma was the closer one for rushing yards.
+     For receiving yards it made unders more likely for small roles than the results support, so
+     receiving yards stayed on the normal. --backtest prints the two side by side.
 
   Touchdowns: a pure red-zone share said 62% for players who scored 52% of the time, and 6% for
   players who scored 13%. The share used is 0.015 + 0.20 x red-zone share + 0.60 x overall share of
@@ -101,12 +103,16 @@ SCORERS_INTERCEPT, SCORERS_SLOPE = -0.85, 0.114
 CALIBRATION = {"rush_att": (1.71, 0.822), "rush_yds": (5.49, 0.860), "rec": (0.314, 0.829), "rec_yds": (3.42, 0.860)}
 DISPERSION = {"rush_att": 2.5, "rec": 1.3}  # variance / mean; 1.0 is a pure Poisson
 SIGMA = {"rush_yds": (22.0, 0.19), "rec_yds": (14.5, 0.41)}  # league-wide spread of yards = base + slope x average
-# Yards follow a right-skewed gamma curve whose average is the calibrated projection. Its spread starts from
-# SIGMA and is moved toward the player's own game log, which counts as his games against YARDS_PRIOR_GAMES games
-# of the league spread. A player's own log alone understates how far a projection can miss (variance / mean^2 of
-# 0.27 in the logs against 0.48 in the back-test for rushing), which is why the league spread keeps most of the weight.
-# per stat: "gamma", or "normal" for the earlier curve (a normal centred on the typical game)
-YARDS_CURVE = {"rush_yds": "gamma", "rec_yds": "gamma"}
+# The curve each kind of yards uses: "gamma" or "normal".
+#   gamma   leans right, and its average is the calibrated projection. Its spread starts from SIGMA and is moved
+#           toward the player's own game log, which counts as his games against YARDS_PRIOR_GAMES games of the
+#           league spread. A log alone understates how far a projection can miss (variance / mean^2 of 0.27 in
+#           the logs against 0.48 in the back-test for rushing), so the league spread keeps most of the weight.
+#   normal  centred on the typical game (YARDS_CENTRE x the average), with the league spread.
+# Back-tested 2026-11-25. The gamma is the closer one for rushing. For receivers projected under 40 yards it
+# overstates unders (71.2% said, 67.8% happened at a line 25% above the projection; the normal said 66.9%), so
+# receiving yards use the normal.
+YARDS_CURVE = {"rush_yds": "gamma", "rec_yds": "normal"}
 YARDS_PRIOR_GAMES = 12
 CV2_LIMITS = (0.08, 2.5)
 YARDS_CENTRE = {"rush_yds": 0.88, "rec_yds": 0.86}  # normal curve only: the typical game as a fraction of the average
@@ -1039,7 +1045,7 @@ def print_backtest(t: Tables) -> None:
                 literal = np.mean([normal_over_under(line, mean, SIGMA[stat][0] + SIGMA[stat][1] * mean)[0]
                                    for line, mean in zip(lines, s[f"raw_{stat}"])])
             print(f"  {label:<17}{f'{offset:+.0%}':<20}{(s[f'a_{stat}'] > lines).mean():>14.1%}{said:>12.1%}{literal:>20.1%}")
-    print("\n3. yards: the right-skewed gamma curve against the normal curve it replaced, on the same projections")
+    print("\n3. yards: the right-skewed gamma curve and the normal curve, on the same projections")
     offsets = (-0.5, -0.25, 0.0, 0.25, 0.5)
     for label, stat, mask, _ in checks:
         if stat not in SIGMA:
@@ -1060,13 +1066,14 @@ def print_backtest(t: Tables) -> None:
         print(f"  {label} (n={len(s)}): chance of the over at a line set this far from the projection")
         print(f"    {'':<22}" + "".join(f"{f'{offset:+.0%}':>9}" for offset in offsets) + f"{'Brier score':>14}")
         print(f"    {'over happened':<22}" + "".join(f"{value:>9.1%}" for value in table["happened"]))
-        for curve, name in (("gamma", "gamma (in use)"), ("normal", "normal (before)")):
+        for curve in ("gamma", "normal"):
+            name = f"{curve} ({'in use' if YARDS_CURVE[stat] == curve else 'not in use'})"
             print(f"    {name:<22}" + "".join(f"{value:>9.1%}" for value in table[curve]) + f"{np.mean(miss[curve]):>14.4f}")
         for position, offset in ((3, 0.25), (4, 0.5)):
             print(f"    under at a line {offset:.0%} above the projection: happened {1 - table['happened'][position]:.1%} | "
-                  f"gamma says {1 - table['gamma'][position]:.1%} | normal said {1 - table['normal'][position]:.1%}")
+                  f"gamma says {1 - table['gamma'][position]:.1%} | normal says {1 - table['normal'][position]:.1%}")
     print("  A lower Brier score is better. Under legs sit at lines above the projection, so the last two rows of each")
-    print("  block show what the change of curve does to under edges.")
+    print("  block show what the choice of curve does to under edges.")
     print("\n4. anytime TD: how often players the model put in each range actually scored (RB, WR and TE; quarterbacks are not priced)")
     td = bt[bt["position"].isin(MARKETS["player_anytime_td"]["positions"])].copy()
     td["said"], td["literal"] = 1 - np.exp(-td["p_td"]), 1 - np.exp(-td["td_red_zone_only"])

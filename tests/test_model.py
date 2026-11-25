@@ -132,12 +132,22 @@ class MathTests(unittest.TestCase):
         self.assertGreaterEqual(model.yards_cv2("rush_yds", mean, [60] * 40), low)
         self.assertLessEqual(model.yards_cv2("rec_yds", 6.0, [0, 0, 0, 0, 0, 0, 0, 90]), high)
 
-    def test_the_earlier_normal_curve_is_still_there(self):
-        mean = 60.0
-        over, under = model.normal_yards_over_under("rush_yds", model.YARDS_CENTRE["rush_yds"] * mean, mean)
-        self.assertAlmostEqual(over, 0.5)
-        self.assertEqual(set(model.YARDS_CURVE), {"rush_yds", "rec_yds"})
-        self.assertTrue(set(model.YARDS_CURVE.values()) <= {"gamma", "normal"})
+    def test_each_kind_of_yards_uses_its_own_curve(self):
+        # decided 2026-11-25 from the back-test: the gamma for rushing yards, the normal for receiving yards
+        self.assertEqual(model.YARDS_CURVE, {"rush_yds": "gamma", "rec_yds": "normal"})
+        mean, line = 60.0, 70.5
+        self.assertEqual(model.model_probability("rush_yds", line, mean),
+                         model.gamma_over_under(line, mean, model.league_cv2("rush_yds", mean)))
+        self.assertEqual(model.model_probability("rush_yds", line, mean, 0.3), model.gamma_over_under(line, mean, 0.3))
+        self.assertEqual(model.model_probability("rec_yds", line, mean), model.normal_yards_over_under("rec_yds", line, mean))
+        # the normal takes no notice of a fitted spread: it uses the league spread
+        self.assertEqual(model.model_probability("rec_yds", line, mean, 0.3), model.model_probability("rec_yds", line, mean))
+        # each curve is a coin flip at its own typical game, and that game is below the average
+        for stat in ("rush_yds", "rec_yds"):
+            typical = model.typical_yards(stat, mean)
+            self.assertLess(typical, mean)
+            self.assertAlmostEqual(model.model_probability(stat, typical, mean)[0], 0.5, places=6)
+        self.assertAlmostEqual(model.typical_yards("rec_yds", mean), model.YARDS_CENTRE["rec_yds"] * mean)
 
     def test_calibrated_and_literal_agree_only_on_the_same_side(self):
         # over or under: the same side of 50%, whatever the book says

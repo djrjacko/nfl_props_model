@@ -55,7 +55,7 @@ def main() -> None:
     props[props["event_id"].isin(keep)].to_csv(OUT / "props.csv", index=False, lineterminator="\n")
     lines[lines["event_id"].isin(keep)].to_csv(OUT / "game_lines.csv", index=False, lineterminator="\n")
     shutil.copyfile(fetch_status.STATUS_FILE, OUT / "status.json")
-    (OUT / "season.txt").write_text(f"{season}\n", encoding="utf-8")
+    (OUT / "season.txt").write_text(f"{season}\n", encoding="utf-8", newline="\n")
     print(f"  props.csv, game_lines.csv, status.json, season.txt -> {OUT.relative_to(ROOT)}")
 
 

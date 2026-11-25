@@ -1,0 +1,16 @@
+# secrets: the Odds API key lives here locally and in the ODDS_API_KEY Actions secret
+.env
+
+# python
+.venv/
+__pycache__/
+*.pyc
+
+# downloaded nflverse files (re-fetched on every run, about 21 MB)
+data/nflverse/
+
+# editor and OS noise
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

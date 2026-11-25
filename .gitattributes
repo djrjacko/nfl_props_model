@@ -1,0 +1,4 @@
+# Same line endings on Windows and on the GitHub Actions runner (Linux),
+# so files the workflow commits do not show up as changed locally.
+* text=auto eol=lf
+*.parquet binary

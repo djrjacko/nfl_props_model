@@ -1,216 +1,174 @@
 {
- "generated_utc": "2026-11-25T15:05:05+00:00",
- "generated_arizona": "Wed Nov 25 8:05 AM MST",
- "previous_utc": "2026-11-25T05:39:39+00:00",
- "previous_arizona": "Tue Nov 24 10:39 PM MST",
- "headline": "44 added, 5 line moved, 1 tier changed since Tue Nov 24 10:39 PM MST.",
+ "generated_utc": "2026-11-25T17:47:04+00:00",
+ "generated_arizona": "Wed Nov 25 10:47 AM MST",
+ "previous_utc": "2026-11-25T15:05:05+00:00",
+ "previous_arizona": "Wed Nov 25 8:05 AM MST",
+ "headline": "6 added, 9 removed, 8 line moved, 10 price moved, 6 tier changed since Wed Nov 25 8:05 AM MST.",
  "added": [
   {
-   "id": "00-0037248|player_anytime_td|yes",
-   "text": "Added: James Cook anytime TD (DK -105), A tier, because its game is now inside the window."
+   "id": "00-0036912|player_reception_yds|over",
+   "text": "Added: DeVonta Smith over 63.5 receiving yards (FD -114), B tier, because the edge is now 8.7%."
   },
   {
-   "id": "00-0039139|player_receptions|under",
-   "text": "Added: Jahmyr Gibbs under 4.5 receptions (FD -122), A tier, because its game is now inside the window."
+   "id": "00-0037248|player_rush_yds|over",
+   "text": "Added: James Cook over 82.5 rush yards (DK -112), B tier, because the edge is now 6.3%."
   },
   {
-   "id": "00-0040735|player_receptions|under",
-   "text": "Added: Luther Burden III under 4.5 receptions (FD +122), A tier, because its game is now inside the window."
+   "id": "00-0038933|player_reception_yds|under",
+   "text": "Added: Dalton Kincaid under 40.5 receiving yards (FD -114), B tier, because the edge is now 6.2%."
   },
   {
-   "id": "00-0040735|player_reception_yds|under",
-   "text": "Added: Luther Burden III under 60.5 receiving yards (FD -114), A tier, because its game is now inside the window."
+   "id": "00-0032464|player_reception_yds|under",
+   "text": "Added: Kalif Raymond under 26.5 receiving yards (DK -113), B tier, because the edge is now 5.1%."
   },
   {
-   "id": "00-0039065|player_reception_yds|under",
-   "text": "Added: Sam LaPorta under 44.5 receiving yards (DK -111), A tier, because its game is now inside the window."
+   "id": "00-0040867|player_receptions|over",
+   "text": "Added: Makai Lemon over 2.5 receptions (DK -173), B tier, because the edge is now 5.1%."
   },
   {
-   "id": "00-0040236|player_rush_attempts|over",
-   "text": "Added: Kyle Monangai over 8.5 rush attempts (DK -114), A tier, because its game is now inside the window."
-  },
+   "id": "00-0039410|player_reception_yds|under",
+   "text": "Added: Ryan Flournoy under 30.5 receiving yards (DK -110), B tier, because the edge is now 5.1%."
+  }
+ ],
+ "removed": [
   {
-   "id": "00-0040236|player_anytime_td|yes",
-   "text": "Added: Kyle Monangai anytime TD (FD +145), A tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0039919|player_reception_yds|under",
-   "text": "Added: Rome Odunze under 47.5 receiving yards (FD -114), A tier, because its game is now inside the window."
+   "id": "00-0038996|player_reception_yds|under",
+   "text": "Removed: Tucker Kraft under 39.5 receiving yards (DK -110), the model's edge grew to 22%, which is too large to trust."
   },
   {
    "id": "00-0033077|player_anytime_td|yes",
-   "text": "Added: Dak Prescott anytime TD (FD +650), A tier, because its game is now inside the window."
+   "text": "Removed: Dak Prescott anytime TD (FD +650), quarterback anytime TDs are no longer priced."
   },
   {
    "id": "00-0033106|player_anytime_td|yes",
-   "text": "Added: Jared Goff anytime TD (DK +1300), A tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0036358|player_receptions|under",
-   "text": "Added: CeeDee Lamb under 7.5 receptions (DK -136), A tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0040236|player_rush_yds|over",
-   "text": "Added: Kyle Monangai over 33.5 rush yards (DK -116), A tier, because its game is now inside the window."
+   "text": "Removed: Jared Goff anytime TD (DK +1300), quarterback anytime TDs are no longer priced."
   },
   {
    "id": "00-0039139|player_rush_yds|under",
-   "text": "Added: Jahmyr Gibbs under 92.5 rush yards (DK -110), A tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0038124|player_reception_yds|under",
-   "text": "Added: Christian Watson under 75.5 receiving yards (DK -111), B tier, because the edge is now 20.0%."
-  },
-  {
-   "id": "00-0035537|player_receptions|over",
-   "text": "Added: Ty Johnson over 2.5 receptions (DK +136), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0039894|player_receptions|over",
-   "text": "Added: Xavier Worthy over 2.5 receptions (DK +125), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0034844|player_rush_yds|under",
-   "text": "Added: Saquon Barkley under 65.5 rush yards (DK -109), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0039894|player_reception_yds|over",
-   "text": "Added: Xavier Worthy over 19.5 receiving yards (DK -111), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0036275|player_anytime_td|yes",
-   "text": "Added: D'Andre Swift anytime TD (FD -125), B tier, because its game is now inside the window."
+   "text": "Removed: Jahmyr Gibbs under 92.5 rush yards (DK -110), the edge fell from 9.0% to 3.0%."
   },
   {
    "id": "00-0038134|player_anytime_td|yes",
-   "text": "Added: Kenneth Walker III anytime TD (DK -125), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0036358|player_reception_yds|under",
-   "text": "Added: CeeDee Lamb under 90.5 receiving yards (DK -113), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0036997|player_rush_yds|under",
-   "text": "Added: Javonte Williams under 76.5 rush yards (FD -114), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0034351|player_receptions|under",
-   "text": "Added: Dallas Goedert under 3.5 receptions (DK -120), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0038997|player_receptions|under",
-   "text": "Added: Josh Downs under 3.5 receptions (FD -118), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0037247|player_reception_yds|under",
-   "text": "Added: George Pickens under 71.5 receiving yards (DK -113), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0036997|player_rush_attempts|under",
-   "text": "Added: Javonte Williams under 19.5 rush attempts (DK -128), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0039901|player_receptions|over",
-   "text": "Added: Keon Coleman over 2.5 receptions (FD +144), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0038997|player_reception_yds|under",
-   "text": "Added: Josh Downs under 41.5 receiving yards (FD -114), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0039067|player_receptions|under",
-   "text": "Added: Rashee Rice under 4.5 receptions (FD -114), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0039410|player_receptions|under",
-   "text": "Added: Ryan Flournoy under 3.5 receptions (FD -194), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0034827|player_anytime_td|yes",
-   "text": "Added: DJ Moore anytime TD (DK +240), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0039894|player_anytime_td|yes",
-   "text": "Added: Xavier Worthy anytime TD (DK +500), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0040867|player_reception_yds|over",
-   "text": "Added: Makai Lemon over 29.5 receiving yards (FD -114), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0039067|player_reception_yds|under",
-   "text": "Added: Rashee Rice under 47.5 receiving yards (FD -114), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0039139|player_anytime_td|yes",
-   "text": "Added: Jahmyr Gibbs anytime TD (DK -255), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0030506|player_reception_yds|under",
-   "text": "Added: Travis Kelce under 46.5 receiving yards (FD -114), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0034351|player_reception_yds|under",
-   "text": "Added: Dallas Goedert under 32.5 receiving yards (DK -112), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0030506|player_receptions|under",
-   "text": "Added: Travis Kelce under 4.5 receptions (DK -153), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0034827|player_reception_yds|under",
-   "text": "Added: DJ Moore under 50.5 receiving yards (FD -114), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0036997|player_anytime_td|yes",
-   "text": "Added: Javonte Williams anytime TD (FD -180), B tier, because its game is now inside the window."
+   "text": "Removed: Kenneth Walker III anytime TD (DK -125), the books no longer offer it."
   },
   {
    "id": "00-0039901|player_reception_yds|over",
-   "text": "Added: Keon Coleman over 24.5 receiving yards (DK -110), B tier, because its game is now inside the window."
+   "text": "Removed: Keon Coleman over 24.5 receiving yards (DK -110), line moved 24.5 to 25.5 and the edge is now 3.5%."
   },
   {
    "id": "00-0037248|player_rush_attempts|over",
-   "text": "Added: James Cook over 19.5 rush attempts (DK +101), B tier, because its game is now inside the window."
+   "text": "Removed: James Cook over 19.5 rush attempts (DK +101), the edge fell from 5.4% to 3.2%."
   },
   {
    "id": "00-0032464|player_receptions|over",
-   "text": "Added: Kalif Raymond over 2.5 receptions (DK -102), B tier, because its game is now inside the window."
+   "text": "Removed: Kalif Raymond over 2.5 receptions (DK -102), the edge fell from 5.3% to 0.4%."
   },
   {
    "id": "00-0040024|player_reception_yds|over",
-   "text": "Added: Darius Cooper over 26.5 receiving yards (FD -114), B tier, because its game is now inside the window."
+   "text": "Removed: Darius Cooper over 26.5 receiving yards (FD -114), the edge fell from 5.2% to 0.9%."
   }
  ],
- "removed": [],
  "line_moved": [
   {
-   "id": "00-0040667|player_reception_yds|under",
-   "text": "Line moved: Matthew Golden receiving yards 76.5 to 75.5 (DK); still under, edge 12.2%."
+   "id": "00-0040735|player_reception_yds|under",
+   "text": "Line moved: Luther Burden III receiving yards 60.5 to 61.5 (DK); still under, edge 18.7%."
+  },
+  {
+   "id": "00-0034351|player_reception_yds|under",
+   "text": "Line moved: Dallas Goedert receiving yards 32.5 to 31.5 (DK); still under, edge 8.1%."
+  },
+  {
+   "id": "00-0038124|player_reception_yds|under",
+   "text": "Line moved: Christian Watson receiving yards 75.5 to 73.5 (FD); still under, edge 17.4%."
+  },
+  {
+   "id": "00-0039738|player_rush_yds|under",
+   "text": "Line moved: Blake Corum rush yards 57.5 to 58.5 (DK); still under, edge 9.2%."
   },
   {
    "id": "00-0033110|player_reception_yds|under",
-   "text": "Line moved: Tyler Higbee receiving yards 31.5 to 30.5 (DK); still under, edge 11.9%."
+   "text": "Line moved: Tyler Higbee receiving yards 30.5 to 29.5 (FD); still under, edge 17.4%."
   },
   {
-   "id": "00-0037840|player_rush_attempts|under",
-   "text": "Line moved: Kyren Williams rush attempts 13.5 to 12.5 (DK); still under, edge 11.9%."
+   "id": "00-0037247|player_reception_yds|under",
+   "text": "Line moved: George Pickens receiving yards 71.5 to 69.5 (DK); still under, edge 8.3%."
+  },
+  {
+   "id": "00-0040667|player_reception_yds|under",
+   "text": "Line moved: Matthew Golden receiving yards 75.5 to 74.5 (DK); still under, edge 10.8%."
+  },
+  {
+   "id": "00-0039919|player_reception_yds|under",
+   "text": "Line moved: Rome Odunze receiving yards 47.5 to 48.5 (DK); still under, edge 13.3%."
+  }
+ ],
+ "price_moved": [
+  {
+   "id": "00-0038124|player_receptions|under",
+   "text": "Price moved: Christian Watson under 4.5 receptions was DK +117, now FD +108; edge 12.9%."
+  },
+  {
+   "id": "00-0038997|player_receptions|under",
+   "text": "Price moved: Josh Downs under 3.5 receptions was FD -118, now DK -115; edge 11.4%."
+  },
+  {
+   "id": "00-0033110|player_receptions|under",
+   "text": "Price moved: Tyler Higbee under 3.5 receptions was DK -134, now FD -148; edge 17.0%."
+  },
+  {
+   "id": "00-0040236|player_anytime_td|yes",
+   "text": "Price moved: Kyle Monangai anytime TD was FD +145, now DK +165; edge 14.9%."
+  },
+  {
+   "id": "00-0039894|player_receptions|over",
+   "text": "Price moved: Xavier Worthy over 2.5 receptions was DK +125, now FD +120; edge 17.7%."
+  },
+  {
+   "id": "00-0040735|player_receptions|under",
+   "text": "Price moved: Luther Burden III under 4.5 receptions was FD +122, now DK +124; edge 17.2%."
+  },
+  {
+   "id": "00-0039901|player_receptions|over",
+   "text": "Price moved: Keon Coleman over 2.5 receptions was FD +144, now DK +147; edge 9.9%."
+  },
+  {
+   "id": "00-0040667|player_receptions|under",
+   "text": "Price moved: Matthew Golden under 5.5 receptions was DK +101, now FD -106; edge 11.7%."
+  },
+  {
+   "id": "00-0039894|player_anytime_td|yes",
+   "text": "Price moved: Xavier Worthy anytime TD was DK +500, now DK +475; edge 5.5%."
   },
   {
    "id": "00-0040142|player_rush_attempts|under",
-   "text": "Line moved: Kaleb Johnson rush attempts 10.5 to 9.5 (DK); still under, edge 9.5%."
-  },
-  {
-   "id": "00-0037840|player_rush_yds|under",
-   "text": "Line moved: Kyren Williams rush yards 56.5 to 53.5 (FD); still under, edge 10.2%."
+   "text": "Price moved: Kaleb Johnson under 9.5 rush attempts was DK +101, now DK -118; edge 5.3%."
   }
  ],
- "price_moved": [],
  "status_changed": [],
  "tier_changed": [
   {
-   "id": "00-0037840|player_rush_yds|under",
-   "text": "Tier changed: Kyren Williams under 53.5 rush yards went from B to A (edge 13.2% to 10.2%)."
+   "id": "00-0039738|player_rush_yds|under",
+   "text": "Tier changed: Blake Corum under 58.5 rush yards went from A to B (new flag: calibration flips the literal lean)."
+  },
+  {
+   "id": "00-0040735|player_receptions|under",
+   "text": "Tier changed: Luther Burden III under 4.5 receptions went from A to B (new flag: calibration flips the literal lean)."
+  },
+  {
+   "id": "00-0040667|player_reception_yds|under",
+   "text": "Tier changed: Matthew Golden under 74.5 receiving yards went from A to B (new flag: calibration flips the literal lean)."
+  },
+  {
+   "id": "00-0039919|player_reception_yds|under",
+   "text": "Tier changed: Rome Odunze under 48.5 receiving yards went from A to B (new flag: calibration flips the literal lean)."
+  },
+  {
+   "id": "00-0040667|player_receptions|under",
+   "text": "Tier changed: Matthew Golden under 5.5 receptions went from A to B (new flag: calibration flips the literal lean)."
+  },
+  {
+   "id": "00-0036358|player_receptions|under",
+   "text": "Tier changed: CeeDee Lamb under 7.5 receptions went from A to B (new flag: calibration flips the literal lean)."
   }
  ],
  "kicked_off": 0

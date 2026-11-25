@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-11-25T04:42:17+00:00",
- "generated_arizona": "Tue Nov 24 9:42 PM MST",
+ "generated_utc": "2026-11-25T05:08:04+00:00",
+ "generated_arizona": "Tue Nov 24 10:08 PM MST",
  "repo": "djrjacko/nfl_props_model",
  "window_hours": 36.0,
  "season": 2026,
@@ -1169,14 +1169,14 @@
  ],
  "credits": {
   "this_run": 7,
-  "used": 14,
-  "remaining": 19986
+  "used": 21,
+  "remaining": 19979
  },
  "sources": {
-  "odds_pulled_utc": "2026-11-25T04:42:14+00:00",
-  "status_generated_utc": "2026-11-25T04:42:15+00:00",
+  "odds_pulled_utc": "2026-11-25T05:08:01+00:00",
+  "status_generated_utc": "2026-11-25T05:08:03+00:00",
   "status_source": "espn",
-  "nflverse_fetched_utc": "2026-11-25T04:42:14+00:00",
+  "nflverse_fetched_utc": "2026-11-25T05:08:01+00:00",
   "last_completed_week": 11
  },
  "notes": [
@@ -1184,16 +1184,29 @@
  ],
  "next_runs": [
   {
+   "utc": "2026-11-25T23:37+00:00",
+   "arizona": "Wed Nov 25 4:37 PM MST",
+   "why": "scheduled"
+  },
+  {
    "utc": "2026-11-26T04:07+00:00",
-   "arizona": "Wed Nov 25 9:07 PM MST"
+   "arizona": "Wed Nov 25 9:07 PM MST",
+   "why": "scheduled"
   },
   {
    "utc": "2026-11-26T22:07+00:00",
-   "arizona": "Thu Nov 26 3:07 PM MST"
+   "arizona": "Thu Nov 26 3:07 PM MST",
+   "why": "scheduled"
   },
   {
    "utc": "2026-11-26T23:52+00:00",
-   "arizona": "Thu Nov 26 4:52 PM MST"
+   "arizona": "Thu Nov 26 4:52 PM MST",
+   "why": "scheduled"
+  },
+  {
+   "utc": "2026-11-27T22:37+00:00",
+   "arizona": "Fri Nov 27 3:37 PM MST",
+   "why": "scheduled"
   }
  ],
  "calibration": "on",

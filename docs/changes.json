@@ -1,28 +1,14 @@
 {
- "generated_utc": "2026-11-25T04:42:17+00:00",
- "generated_arizona": "Tue Nov 24 9:42 PM MST",
- "previous_utc": "2026-11-25T04:41:00+00:00",
- "previous_arizona": "Tue Nov 24 9:41 PM MST",
- "headline": "2 line moved, 1 tier changed since Tue Nov 24 9:41 PM MST.",
+ "generated_utc": "2026-11-25T05:08:04+00:00",
+ "generated_arizona": "Tue Nov 24 10:08 PM MST",
+ "previous_utc": "2026-11-25T04:42:17+00:00",
+ "previous_arizona": "Tue Nov 24 9:42 PM MST",
+ "headline": "Nothing changed since Tue Nov 24 9:42 PM MST.",
  "added": [],
  "removed": [],
- "line_moved": [
-  {
-   "id": "00-0037840|player_rush_attempts|under",
-   "text": "Line moved: Kyren Williams rush attempts 12.5 to 13.5 (DK); still under, edge 11.0%."
-  },
-  {
-   "id": "00-0037840|player_rush_yds|under",
-   "text": "Line moved: Kyren Williams rush yards 55.5 to 56.5 (DK); still under, edge 13.2%."
-  }
- ],
+ "line_moved": [],
  "price_moved": [],
  "status_changed": [],
- "tier_changed": [
-  {
-   "id": "00-0037840|player_rush_yds|under",
-   "text": "Tier changed: Kyren Williams under 56.5 rush yards went from A to B (new flag: books differ: DK 56.5, FD 53.5)."
-  }
- ],
+ "tier_changed": [],
  "kicked_off": 0
 }

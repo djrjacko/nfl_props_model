@@ -1,5 +1,5 @@
 NFL PROP BOARD
-Updated Tue Nov 24 9:42 PM MST | Odds API credits: 7 this run, 14 used, 19,986 left
+Updated Tue Nov 24 10:08 PM MST | Odds API credits: 7 this run, 21 used, 19,979 left
 Window: games kicking off in the next 36 hours | calibration on
 
   GB@LA    Wed Nov 25 6:00 PM MST   LA -2.5, total 44
@@ -138,11 +138,7 @@ SKIPS: 3
   85%.
 
 WHAT CHANGED
-  2 line moved, 1 tier changed since Tue Nov 24 9:41 PM MST.
-  Line moved: Kyren Williams rush attempts 12.5 to 13.5 (DK); still under, edge 11.0%.
-  Line moved: Kyren Williams rush yards 55.5 to 56.5 (DK); still under, edge 13.2%.
-  Tier changed: Kyren Williams under 56.5 rush yards went from A to B (new flag: books differ:
-  DK 56.5, FD 53.5).
+  Nothing changed since Tue Nov 24 9:42 PM MST.
 
 NOTES
   - 30 posted props were not priced because the player's role is too small to trust (under 6

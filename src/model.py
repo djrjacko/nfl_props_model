@@ -13,9 +13,11 @@ How a projection is built (the rules come from the owner's betting audit):
   yards          volume x efficiency, where efficiency is 60% the player's own and 40% what the
                  opponent has allowed to his position
   anytime TD     the player's share of his team's scoring chances x the touchdowns the spread and
-                 total imply for his team
+                 total imply for his team. Running backs, receivers and tight ends only: a quarterback's
+                 anytime TD is not priced, because a share of touches does not describe how he scores
 
-  probability    Poisson family for attempts, receptions and touchdowns; normal for yards
+  probability    Poisson family for attempts, receptions and touchdowns; a right-skewed gamma curve for
+                 yards (the audit said normal; see point 3 below)
   edge           model probability minus the book's probability with the vig removed
 
 The calibration layer. Back-testing those rules on 2026 weeks 5-11 (every player-game projected
@@ -30,13 +32,26 @@ from earlier games only) showed three things, and each has a measured correction
      said 85% for things that happened 71% of the time. Counts use a negative binomial, which is a
      Poisson with the variance widened by a measured factor (1.0 gives back the pure Poisson).
   3. Yardage is lopsided: big games pull the average up, and only 42% of results beat the average.
-     The normal curve is therefore centred on the typical (median) game, about 0.87 x the average.
+     Yards therefore follow a gamma curve whose average is the calibrated projection. Its spread is
+     the league-wide spread moved toward the player's own game log, which counts as his games against
+     12 games of the league figure (a game log alone understates how far a projection can miss). The
+     curve it replaced on 2026-11-25, a normal centred on the typical game at about 0.87 x the
+     average, is kept as YARDS_CURVE "normal" and can be chosen for either stat. The gamma is the
+     closer of the two for rushing yards. For receiving yards they are about level, and for small
+     receiving roles the gamma makes unders more likely than the results support. --backtest prints
+     both side by side.
 
   Touchdowns: a pure red-zone share said 62% for players who scored 52% of the time, and 6% for
   players who scored 13%. The share used is 0.015 + 0.20 x red-zone share + 0.60 x overall share of
   the team's carries and targets, which was accurate in every bucket.
 
---literal switches all of that off. --backtest prints the evidence again from current data. The
+Every leg is also priced by the rules exactly as written (its "literal" probability). When the two
+disagree about the side, the leg is flagged "calibration flips the literal lean": for an over or an
+under that means the two probabilities fall on opposite sides of 50%, and for a touchdown that the
+as-written probability is not above the book's. A flagged leg cannot be A tier and board.py keeps it
+out of every same-game ticket and boost.
+
+--literal switches the calibration off. --backtest prints the evidence again from current data. The
 fit and the check use the same weeks, with a split-sample check done by hand on 2026-11-24.
 """
 from __future__ import annotations
@@ -85,9 +100,18 @@ SCORERS_INTERCEPT, SCORERS_SLOPE = -0.85, 0.114
 # ---- the calibration layer (see the module docstring); use_literal_rules() neutralises all of it
 CALIBRATION = {"rush_att": (1.71, 0.822), "rush_yds": (5.49, 0.860), "rec": (0.314, 0.829), "rec_yds": (3.42, 0.860)}
 DISPERSION = {"rush_att": 2.5, "rec": 1.3}  # variance / mean; 1.0 is a pure Poisson
-YARDS_CENTRE = {"rush_yds": 0.88, "rec_yds": 0.86}  # the typical game as a fraction of the average game
-SIGMA = {"rush_yds": (22.0, 0.19), "rec_yds": (14.5, 0.41)}  # spread of yards = base + slope x average
+SIGMA = {"rush_yds": (22.0, 0.19), "rec_yds": (14.5, 0.41)}  # league-wide spread of yards = base + slope x average
+# Yards follow a right-skewed gamma curve whose average is the calibrated projection. Its spread starts from
+# SIGMA and is moved toward the player's own game log, which counts as his games against YARDS_PRIOR_GAMES games
+# of the league spread. A player's own log alone understates how far a projection can miss (variance / mean^2 of
+# 0.27 in the logs against 0.48 in the back-test for rushing), which is why the league spread keeps most of the weight.
+# per stat: "gamma", or "normal" for the earlier curve (a normal centred on the typical game)
+YARDS_CURVE = {"rush_yds": "gamma", "rec_yds": "gamma"}
+YARDS_PRIOR_GAMES = 12
+CV2_LIMITS = (0.08, 2.5)
+YARDS_CENTRE = {"rush_yds": 0.88, "rec_yds": 0.86}  # normal curve only: the typical game as a fraction of the average
 TD_SHARE = (0.015, 0.20, 0.60)  # floor + x red-zone share + x overall carry-and-target share
+FLIP_FLAG = "calibration flips the literal lean"  # the calibrated model and the rules as written disagree on the side
 
 MIN_EDGE = 0.05
 A_TIER_EDGE = 0.08
@@ -111,7 +135,8 @@ MARKETS = {
     "player_rush_yds": {"stat": "rush_yds", "kind": "yards", "positions": ("RB",), "label": "rush yards"},
     "player_receptions": {"stat": "rec", "kind": "count", "positions": ("RB", "WR", "TE"), "label": "receptions"},
     "player_reception_yds": {"stat": "rec_yds", "kind": "yards", "positions": ("WR", "TE"), "label": "receiving yards"},
-    "player_anytime_td": {"stat": "td", "kind": "td", "positions": SKILL, "label": "anytime TD"},
+    # Quarterbacks are left out: the touch-share method does not describe how a quarterback scores.
+    "player_anytime_td": {"stat": "td", "kind": "td", "positions": ("RB", "WR", "TE"), "label": "anytime TD"},
 }
 ALT_OF = {"player_rush_yds": "player_rush_yds_alternate", "player_reception_yds": "player_reception_yds_alternate"}
 BOOK_NAME = {"draftkings": "DK", "fanduel": "FD"}
@@ -128,6 +153,8 @@ def use_literal_rules() -> None:
         SHARE_RECENT[kind] = 1.0
     for stat in YARDS_CENTRE:
         YARDS_CENTRE[stat] = 1.0
+    for stat in YARDS_CURVE:
+        YARDS_CURVE[stat] = "normal"
     globals()["TD_SHARE"] = (0.0, 1.0, 0.0)
 
 
@@ -175,15 +202,103 @@ def normal_over_under(line: float, centre: float, sigma: float) -> tuple[float, 
     return 1.0 - under, under
 
 
-def model_probability(stat: str, line: float | None, mean: float) -> tuple[float, float]:
-    """(P(over or yes), P(under or no)) for a calibrated projection of `mean`."""
+def gamma_cdf(x: float, shape: float, scale: float) -> float:
+    """P(X <= x) for a gamma curve: the regularised lower incomplete gamma function, by series below
+    shape + 1 and by continued fraction above it."""
+    if x <= 0:
+        return 0.0
+    z = x / scale
+    log_front = -z + shape * math.log(z) - math.lgamma(shape)
+    if z < shape + 1.0:
+        term = total = 1.0 / shape
+        n = shape
+        for _ in range(500):
+            n += 1.0
+            term *= z / n
+            total += term
+            if abs(term) < abs(total) * 1e-12:
+                break
+        return min(1.0, total * math.exp(log_front))
+    tiny = 1e-300
+    b = z + 1.0 - shape
+    c, d = 1.0 / tiny, 1.0 / b
+    h = d
+    for i in range(1, 500):
+        an = -i * (i - shape)
+        b += 2.0
+        d = an * d + b
+        d = tiny if abs(d) < tiny else d
+        c = b + an / c
+        c = tiny if abs(c) < tiny else c
+        d = 1.0 / d
+        delta = d * c
+        h *= delta
+        if abs(delta - 1.0) < 1e-12:
+            break
+    return max(0.0, 1.0 - math.exp(log_front) * h)
+
+
+def gamma_over_under(line: float, mean: float, cv2: float) -> tuple[float, float]:
+    """P(over), P(under) for yards with this average and this spread (cv2 = variance / mean squared)."""
+    shape = 1.0 / cv2
+    under = gamma_cdf(line, shape, mean / shape)
+    return 1.0 - under, under
+
+
+def gamma_median(mean: float, cv2: float) -> float:
+    """The game a player is as likely to beat as to miss. It sits below the average because the curve leans right."""
+    shape = 1.0 / cv2
+    low, high = 0.0, mean
+    for _ in range(60):
+        middle = (low + high) / 2.0
+        if gamma_cdf(middle, shape, mean / shape) < 0.5:
+            low = middle
+        else:
+            high = middle
+    return (low + high) / 2.0
+
+
+def league_cv2(stat: str, mean: float) -> float:
+    """The league-wide spread of yards around a projection, as variance / mean squared."""
+    base, slope = SIGMA[stat]
+    mean = max(mean, 1.0)
+    return ((base + slope * mean) / mean) ** 2
+
+
+def yards_cv2(stat: str, mean: float, game_log) -> float:
+    """Spread for one player: the league spread moved toward the spread in his own game log."""
+    cv2 = league_cv2(stat, mean)
+    log = np.asarray(game_log, dtype=float)
+    if len(log) >= 3 and log.mean() >= 5.0:
+        own = float(log.var(ddof=1) / log.mean() ** 2)
+        cv2 = (len(log) * own + YARDS_PRIOR_GAMES * cv2) / (len(log) + YARDS_PRIOR_GAMES)
+    return float(min(max(cv2, CV2_LIMITS[0]), CV2_LIMITS[1]))
+
+
+def normal_yards_over_under(stat: str, line: float, mean: float) -> tuple[float, float]:
+    """The yards curve used before the gamma: a normal centred on the typical game, with the league spread."""
+    base, slope = SIGMA[stat]
+    return normal_over_under(line, YARDS_CENTRE[stat] * mean, base + slope * max(mean, 0.0))
+
+
+def typical_yards(stat: str, mean: float, cv2: float | None = None) -> float:
+    """The median of whichever yards curve is in use."""
+    if YARDS_CURVE[stat] == "gamma":
+        return gamma_median(max(mean, 1e-6), cv2 if cv2 is not None else league_cv2(stat, mean))
+    return YARDS_CENTRE[stat] * mean
+
+
+def model_probability(stat: str, line: float | None, mean: float, cv2: float | None = None) -> tuple[float, float]:
+    """(P(over or yes), P(under or no)) for a calibrated projection of `mean`. `cv2` is the yards spread
+    fitted for the player; without it the league spread is used."""
     if stat == "td":
         yes = 1.0 - math.exp(-mean)
         return yes, 1.0 - yes
     if stat in DISPERSION:
         return count_over_under(line, max(mean, 1e-6), DISPERSION[stat])
-    base, slope = SIGMA[stat]
-    return normal_over_under(line, YARDS_CENTRE[stat] * mean, base + slope * max(mean, 0.0))
+    if YARDS_CURVE[stat] == "gamma":
+        return gamma_over_under(line, max(mean, 1e-6), cv2 if cv2 is not None else league_cv2(stat, mean))
+    return normal_yards_over_under(stat, line, mean)
 
 
 def literal_probability(stat: str, line: float | None, mean: float) -> tuple[float, float]:
@@ -196,6 +311,17 @@ def literal_probability(stat: str, line: float | None, mean: float) -> tuple[flo
         return count_over_under(line, max(mean, 1e-6), 1.0)
     base, slope = SIGMA[stat]
     return normal_over_under(line, mean, base + slope * max(mean, 0.0))
+
+
+def literal_agrees(stat: str, model_p: float, literal_p: float, fair_p: float) -> bool:
+    """Do the calibrated model and the rules as written point the same way on this bet?
+
+    For an over or an under: both probabilities on the same side of 50%. For a touchdown, which has no other
+    side to take: both above the book's probability with the vig removed.
+    """
+    if stat == "td":
+        return bool(model_p > fair_p and literal_p > fair_p)
+    return bool((model_p > 0.5) == (literal_p > 0.5))  # bool(): a numpy true/false cannot be written to JSON
 
 
 def expected_scorers(total: float) -> float:
@@ -422,6 +548,12 @@ def project_player(t: Tables, gsis_id: str, team: str, opponent: str, kick, fav:
     literal = {"rush_att": lit_att, "rush_yds": lit_att * ypc, "rec": lit_targets * catch_rate,
                "rec_yds": lit_targets * ypt, "td": rz_share * team_tds}
 
+    means = {stat: _calibrate(stat, raw[stat]) for stat in ("rush_att", "rush_yds", "rec", "rec_yds")}
+    # the yards curve for this player: its spread comes partly from his own game log with this team
+    cv2 = {"rush_yds": yards_cv2("rush_yds", means["rush_yds"], history["rushing_yards"]),
+           "rec_yds": yards_cv2("rec_yds", means["rec_yds"], history["receiving_yards"])}
+    typical = {stat: typical_yards(stat, means[stat], cv2[stat]) for stat in cv2}
+
     missed = int((t.team_before(team, kick)["kick"] > recent["kick"].iloc[-1]).sum())  # team games since he last played
     return {
         "gsis_id": gsis_id, "name": recent["name"].iloc[-1], "team": team, "opponent": opponent, "position": position,
@@ -433,9 +565,8 @@ def project_player(t: Tables, gsis_id: str, team: str, opponent: str, kick, fav:
         "own_ypc": float(own_ypc), "opp_ypc": float(opp_ypc), "ypc": float(ypc),
         "own_ypt": float(own_ypt), "opp_ypt": float(opp_ypt), "ypt": float(ypt), "catch_rate": float(catch_rate),
         "rz_share": rz_share, "rz_share_plain": rz_share_plain, "touch_share": touch_share, "td_share": td_share,
-        "team_tds": team_tds, "raw": raw, "literal": literal,
-        "rush_att": _calibrate("rush_att", raw["rush_att"]), "rush_yds": _calibrate("rush_yds", raw["rush_yds"]),
-        "rec": _calibrate("rec", raw["rec"]), "rec_yds": _calibrate("rec_yds", raw["rec_yds"]),
+        "team_tds": team_tds, "raw": raw, "literal": literal, "cv2": cv2, "typical": typical,
+        "rush_att": means["rush_att"], "rush_yds": means["rush_yds"], "rec": means["rec"], "rec_yds": means["rec_yds"],
         "td": td_share * team_tds,
     }
 
@@ -464,7 +595,18 @@ def _slate_games(t: Tables, lines: pd.DataFrame) -> list[dict]:
         kick = pd.Timestamp(first["commence_time"])
         known = t.games[(t.games["home_team"] == first["home"]) & (t.games["away_team"] == first["away"])
                         & ((t.games["kick"] - kick).abs() < pd.Timedelta(days=3))]
+        # Moneylines are not picks. They are carried so a same-game ticket can be anchored on one, priced at
+        # the book's own probability with the vig removed (no edge is claimed).
+        money: dict[str, dict] = {}
+        if "home_ml" in rows.columns:
+            for row in rows.itertuples():
+                if pd.notna(row.home_ml) and pd.notna(row.away_ml):
+                    fair_home, fair_away = devig_two_way(row.home_ml, row.away_ml)
+                    book = BOOK_NAME.get(row.book, row.book)
+                    money.setdefault(first["home"], {})[book] = {"price": int(row.home_ml), "fair": round(fair_home, 4)}
+                    money.setdefault(first["away"], {})[book] = {"price": int(row.away_ml), "fair": round(fair_away, 4)}
         games.append({
+            "moneylines": money,
             "event_id": event_id, "game_id": known["game_id"].iloc[0] if len(known) else None,
             "week": int(known["week"].iloc[0]) if len(known) else None, "game": f"{first['away']}@{first['home']}",
             "away": first["away"], "home": first["home"], "kick": kick, "kickoff_utc": kick.isoformat(timespec="minutes"),
@@ -512,7 +654,7 @@ def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dic
     games = _slate_games(t, lines)
     pool = t.players[(t.players["last_season"] == t.season) & ~t.players["status"].isin(NOT_ON_TEAM)]
     legs, skips, gated, notes, projections, priced = [], [], [], [], [], []
-    too_small = 0
+    too_small = quarterback_tds = 0
 
     for game in games:
         rows = props[props["event_id"] == game["event_id"]]
@@ -547,6 +689,9 @@ def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dic
             proj["status"] = entry["status"] if entry else "active"
             proj["drop"], proj["status_flag"] = _availability(entry)
             players[who["gsis_id"]] = proj
+        # quarterback touchdown props are not priced, so they do not take one of the "popular" places either
+        quarterbacks = {p["book_name"] for p in players.values() if p["position"] == "QB"}
+        popular_td_rows = td_rows[~td_rows["player"].isin(quarterbacks)]
 
         # team context: starting QB, and who else on the team has a real role
         team_notes: dict[str, dict] = {}
@@ -587,17 +732,21 @@ def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dic
 
         for gsis_id, proj in players.items():
             team, info = proj["team"], team_notes[proj["team"]]
-            projections.append({"game": game["game"], **{k: proj[k] for k in (
-                "name", "team", "position", "games_used", "carry_share", "target_share", "snap_share", "rush_att",
-                "rush_yds", "rec", "rec_yds", "td", "status")}})
+            projections.append({"game": game["game"], "typical_rush_yds": proj["typical"]["rush_yds"],
+                                "typical_rec_yds": proj["typical"]["rec_yds"], **{k: proj[k] for k in (
+                                    "name", "team", "position", "games_used", "carry_share", "target_share", "snap_share",
+                                    "rush_att", "rush_yds", "rec", "rec_yds", "td", "status")}})
             player_rows = rows[rows["player"] == proj["book_name"]]
             starter = (proj["snap_share"] or 0) >= STARTER_SNAP_SHARE
             for market, spec in MARKETS.items():
                 market_rows = player_rows[player_rows["market"] == market]
                 if market_rows.empty or proj["position"] not in spec["positions"]:
+                    if not market_rows.empty and spec["stat"] == "td" and proj["position"] == "QB":
+                        quarterback_tds += 1
                     continue
                 stat, kind = spec["stat"], spec["kind"]
                 mean = proj[stat]
+                spread = proj["cv2"].get(stat)  # the fitted yards spread; None for counts and touchdowns
                 offers = _offers(market_rows)
                 if ((stat in ("rush_att", "rush_yds") and proj["raw"]["rush_att"] < MIN_ROLE["carries"])
                         or (stat in ("rec", "rec_yds") and proj["raw"]["targets"] < MIN_ROLE["targets"])
@@ -616,7 +765,7 @@ def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dic
                     if offer["line"] is None or "over" not in offer or "under" not in offer:
                         continue
                     fair_over, fair_under = devig_two_way(offer["over"], offer["under"])
-                    p_over, p_under = model_probability(stat, offer["line"], mean)
+                    p_over, p_under = model_probability(stat, offer["line"], mean, spread)
                     options.append(("over", book, offer["line"], offer["over"], p_over, fair_over))
                     options.append(("under", book, offer["line"], offer["under"], p_under, fair_under))
                 if not options:
@@ -628,7 +777,12 @@ def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dic
                                "market_key": market, "market": spec["label"], "side": side, "line": line,
                                "book": BOOK_NAME.get(book, book), "price": int(price), "edge": round(edge, 4)})
 
+                # The calibrated model and the rules as written must point the same way for a leg to be trusted
+                # fully: the same side of 50% for an over/under, and both above the book's price for a touchdown.
+                agrees = literal_agrees(stat, model_p, literal_p, fair_p)
                 flags = list(info["flags"])
+                if not agrees:
+                    flags.append(FLIP_FLAG)
                 if proj["status_flag"]:
                     flags.append(proj["status_flag"])
                 book_lines = {b: o["line"] for b, o in offers.items() if o["line"] is not None}
@@ -672,7 +826,7 @@ def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dic
                 group = f"{game['game']}: {ahead} ahead"
                 conflict = side == "under" and team in rooting  # wins when a team the owner roots for does badly
 
-                shown = YARDS_CENTRE[stat] * mean if kind == "yards" else mean
+                shown = proj["typical"][stat] if kind == "yards" else mean
                 leg = {
                     "id": f"{gsis_id}|{market}|{side}", "game_id": game["game_id"], "game": game["game"],
                     "kickoff_utc": game["kickoff_utc"], "player": proj["name"], "player_id": gsis_id,
@@ -680,7 +834,8 @@ def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dic
                     "market_key": market, "side": side, "line": line, "book": BOOK_NAME.get(book, book), "price": int(price),
                     "books": {BOOK_NAME.get(b, b): o for b, o in offers.items()}, "projection": round(shown, 2),
                     "average": round(mean, 2), "model_prob": round(model_p, 4), "implied_prob": round(fair_p, 4),
-                    "edge": round(edge, 4), "literal_prob": round(literal_p, 4), "tier": None, "flags": flags,
+                    "edge": round(edge, 4), "literal_prob": round(literal_p, 4), "literal_agrees": agrees, "tier": None,
+                    "flags": flags,
                     "tags": ["rooting conflict"] if conflict else [], "rooting_conflict": conflict,
                     "status": proj["status"], "correlation_group": group, "correlation_role": role, "starter": starter,
                     # this side at every book that offers it, so a same-game ticket can be priced at one book
@@ -690,7 +845,7 @@ def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dic
                     "reasoning": _reasoning(stat, side, line, proj, game),
                 }
                 drop = proj["drop"] and f"{proj['name']} {proj['drop']}" or info["drop"]
-                popular = _is_popular(stat, side, proj, players, td_rows)
+                popular = _is_popular(stat, side, proj, players, popular_td_rows)
                 if drop:
                     gated.append({"id": leg["id"], "player": proj["name"], "team": team, "market": spec["label"], "reason": drop})
                     if popular:
@@ -704,9 +859,11 @@ def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dic
                 if kind == "yards" and game["blowout"] and is_favorite and starter:
                     why = (f"Blowout rule: {team} are favoured by {abs(game['home_spread']):g}, so starters may sit late and "
                            "the main yardage line is not used")
-                    alt = _alt_line(leg, player_rows, market, offers, mean, stat, proj["literal"][stat])
+                    alt = _alt_line(leg, player_rows, market, offers, mean, stat, proj["literal"][stat], spread)
                     if alt and MIN_EDGE <= alt["edge"] < BIG_EDGE:
-                        alt["flags"] = flags + ["blowout: lower alt line in place of the main line"]
+                        alt["flags"] = ([flag for flag in flags if flag != FLIP_FLAG]
+                                        + ([] if alt["literal_agrees"] else [FLIP_FLAG])
+                                        + ["blowout: lower alt line in place of the main line"])
                         alt["reasoning"] = f"{why}. {alt['reasoning']} The first-half version is the other option if your book has it."
                         alt["tier"] = "B"
                         legs.append(alt)
@@ -729,6 +886,9 @@ def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dic
     legs.sort(key=lambda leg: (leg["tier"], -leg["edge"]))
     order = {"popular": 0, "injury": 1, "blowout": 2, "not trusted": 3}
     skips.sort(key=lambda s: (order[s["kind"]], s["edge"] if s["kind"] != "not trusted" else -s["edge"]))
+    if quarterback_tds:
+        notes.append(f"{quarterback_tds} quarterback anytime TD props were not priced: the touch-share method does "
+                     "not describe how a quarterback scores")
     if too_small:
         notes.append(f"{too_small} posted props were not priced because the player's role is too small to trust "
                      f"(under {MIN_ROLE['carries']:g} carries or {MIN_ROLE['targets']:g} targets a game, or under "
@@ -768,7 +928,7 @@ def _skip_reason(stat: str, leg: dict, shown: float) -> str:
 
 
 def _alt_line(leg: dict, player_rows: pd.DataFrame, market: str, offers: dict, mean: float, stat: str,
-              literal_mean: float) -> dict | None:
+              literal_mean: float, spread: float | None) -> dict | None:
     """Blowout rule: the best lower alt Over, with the main market's margin taken off its one-sided price."""
     alts = player_rows[(player_rows["market"] == ALT_OF.get(market)) & (player_rows["side"] == "Over")
                        & (player_rows["price"] >= ALT_PRICE_FLOOR)]
@@ -779,9 +939,10 @@ def _alt_line(leg: dict, player_rows: pd.DataFrame, market: str, offers: dict, m
         main = offers.get(row.book, {})
         hold = (american_to_prob(main["over"]) + american_to_prob(main["under"]) - 1.0) if "over" in main and "under" in main else DEFAULT_HOLD
         fair = american_to_prob(row.price) / (1.0 + hold)
-        model_p = model_probability(stat, float(row.line), mean)[0]
+        model_p = model_probability(stat, float(row.line), mean, spread)[0]
         if best is None or model_p - fair > best["edge"]:
             book = BOOK_NAME.get(row.book, row.book)
+            literal_p = literal_probability(stat, float(row.line), literal_mean)[0]
             # an alt over is an over, so it never profits from the player's own team doing badly
             ahead = leg["team"] if stat == "rush_yds" else leg["opponent"]
             best = {**leg, "id": leg["id"].rsplit("|", 1)[0] + "|over|alt", "side": "over", "tags": [],
@@ -789,7 +950,7 @@ def _alt_line(leg: dict, player_rows: pd.DataFrame, market: str, offers: dict, m
                     "correlation_role": "rb_volume" if stat == "rush_yds" else "target_volume",
                     "market": leg["market"] + " (alt line)", "line": float(row.line), "book": book, "price": int(row.price),
                     "model_prob": round(model_p, 4), "implied_prob": round(fair, 4), "edge": round(model_p - fair, 4),
-                    "literal_prob": round(literal_probability(stat, float(row.line), literal_mean)[0], 4),
+                    "literal_prob": round(literal_p, 4), "literal_agrees": literal_agrees(stat, model_p, literal_p, fair),
                     "offers": [{"book": book, "line": float(row.line), "price": int(row.price), "model_prob": round(model_p, 4),
                                 "implied_prob": round(fair, 4), "edge": round(model_p - fair, 4)}],
                     "reasoning": f"Alt line {float(row.line):g} at {int(row.price):+d}: model {model_p:.0%} against {fair:.0%} implied."}
@@ -809,14 +970,14 @@ def _reasoning(stat: str, side: str, line: float | None, p: dict, game: dict) ->
         return (f"Projects {p['rush_att']:.1f} carries against {line:g}: {team} run about {tp['runs']:.0f} times and he has "
                 f"taken {p['carry_share']:.0%} of them over his last {n} games.{script}")
     if stat == "rush_yds":
-        return (f"A typical game is about {YARDS_CENTRE['rush_yds'] * p['rush_yds']:.0f} yards against {line:g}: {p['rush_att']:.1f} carries "
+        return (f"A typical game is about {p['typical']['rush_yds']:.0f} yards against {line:g}: {p['rush_att']:.1f} carries "
                 f"at {p['ypc']:.1f} a carry (his {p['own_ypc']:.1f} blended with the {p['opp_ypc']:.1f} {p['opponent']} allow).{script}")
     if stat == "rec":
         return (f"Projects {p['rec']:.1f} catches against {line:g}: {p['target_share']:.0%} of about {tp['targets']:.0f} team "
                 f"targets ({p['season_target_share']:.0%} this season, {p['recent_target_share']:.0%} over his last {n}), at a "
                 f"{p['catch_rate']:.0%} catch rate.{script}")
     if stat == "rec_yds":
-        return (f"A typical game is about {YARDS_CENTRE['rec_yds'] * p['rec_yds']:.0f} yards against {line:g}: {p['target_share']:.0%} of about "
+        return (f"A typical game is about {p['typical']['rec_yds']:.0f} yards against {line:g}: {p['target_share']:.0%} of about "
                 f"{tp['targets']:.0f} team targets ({p['season_target_share']:.0%} this season, {p['recent_target_share']:.0%} over "
                 f"his last {n}) at {p['ypt']:.1f} a target (his {p['own_ypt']:.1f} blended with the {p['opp_ypt']:.1f} "
                 f"{p['opponent']} allow).{script}")
@@ -841,6 +1002,7 @@ def backtest(t: Tables, first_week: int = 5) -> pd.DataFrame:
                 "raw_rush_att": proj["raw"]["rush_att"], "raw_rush_yds": proj["raw"]["rush_yds"], "raw_rec": proj["raw"]["rec"],
                 "raw_rec_yds": proj["raw"]["rec_yds"], "p_rush_att": proj["rush_att"], "p_rush_yds": proj["rush_yds"],
                 "p_rec": proj["rec"], "p_rec_yds": proj["rec_yds"], "p_td": proj["td"],
+                "cv2_rush_yds": proj["cv2"]["rush_yds"], "cv2_rec_yds": proj["cv2"]["rec_yds"],
                 "td_red_zone_only": proj["rz_share"] * proj["team_tds"],
                 "a_rush_att": actual.carries, "a_rush_yds": actual.rushing_yards, "a_rec": actual.receptions,
                 "a_rec_yds": actual.receiving_yards, "a_td": float(actual.rushing_tds + actual.receiving_tds > 0),
@@ -866,17 +1028,47 @@ def print_backtest(t: Tables) -> None:
     print(f"  {'stat':<17}{'line vs projection':<20}{'over happened':>14}{'model said':>12}{'literal rules said':>20}")
     for label, stat, mask, _ in checks:
         s = bt[mask]
+        spreads = s[f"cv2_{stat}"] if f"cv2_{stat}" in s else [None] * len(s)
         for offset in (-0.25, 0.0, 0.25):
             lines = np.floor(s[f"p_{stat}"] * (1 + offset)) + 0.5
-            said = np.mean([model_probability(stat, line, mean)[0] for line, mean in zip(lines, s[f"p_{stat}"])])
+            said = np.mean([model_probability(stat, line, mean, cv2)[0]
+                            for line, mean, cv2 in zip(lines, s[f"p_{stat}"], spreads)])
             if stat in DISPERSION:
                 literal = np.mean([count_over_under(line, max(mean, 1e-6))[0] for line, mean in zip(lines, s[f"raw_{stat}"])])
             else:
                 literal = np.mean([normal_over_under(line, mean, SIGMA[stat][0] + SIGMA[stat][1] * mean)[0]
                                    for line, mean in zip(lines, s[f"raw_{stat}"])])
             print(f"  {label:<17}{f'{offset:+.0%}':<20}{(s[f'a_{stat}'] > lines).mean():>14.1%}{said:>12.1%}{literal:>20.1%}")
-    print("\n3. anytime TD: how often players the model put in each range actually scored")
-    td = bt[bt["position"].isin(SKILL)].copy()
+    print("\n3. yards: the right-skewed gamma curve against the normal curve it replaced, on the same projections")
+    offsets = (-0.5, -0.25, 0.0, 0.25, 0.5)
+    for label, stat, mask, _ in checks:
+        if stat not in SIGMA:
+            continue
+        s = bt[mask]
+        means, spreads, actual = s[f"p_{stat}"].to_numpy(), s[f"cv2_{stat}"].to_numpy(), s[f"a_{stat}"].to_numpy()
+        table = {"happened": [], "gamma": [], "normal": []}
+        miss = {"gamma": [], "normal": []}
+        for offset in offsets:
+            lines = np.floor(means * (1 + offset)) + 0.5
+            over = actual > lines
+            said = {"gamma": np.array([gamma_over_under(line, max(mean, 1e-6), cv2)[0] for line, mean, cv2 in zip(lines, means, spreads)]),
+                    "normal": np.array([normal_yards_over_under(stat, line, mean)[0] for line, mean in zip(lines, means)])}
+            table["happened"].append(over.mean())
+            for curve in said:
+                table[curve].append(said[curve].mean())
+                miss[curve].append(((said[curve] - over) ** 2).mean())
+        print(f"  {label} (n={len(s)}): chance of the over at a line set this far from the projection")
+        print(f"    {'':<22}" + "".join(f"{f'{offset:+.0%}':>9}" for offset in offsets) + f"{'Brier score':>14}")
+        print(f"    {'over happened':<22}" + "".join(f"{value:>9.1%}" for value in table["happened"]))
+        for curve, name in (("gamma", "gamma (in use)"), ("normal", "normal (before)")):
+            print(f"    {name:<22}" + "".join(f"{value:>9.1%}" for value in table[curve]) + f"{np.mean(miss[curve]):>14.4f}")
+        for position, offset in ((3, 0.25), (4, 0.5)):
+            print(f"    under at a line {offset:.0%} above the projection: happened {1 - table['happened'][position]:.1%} | "
+                  f"gamma says {1 - table['gamma'][position]:.1%} | normal said {1 - table['normal'][position]:.1%}")
+    print("  A lower Brier score is better. Under legs sit at lines above the projection, so the last two rows of each")
+    print("  block show what the change of curve does to under edges.")
+    print("\n4. anytime TD: how often players the model put in each range actually scored (RB, WR and TE; quarterbacks are not priced)")
+    td = bt[bt["position"].isin(MARKETS["player_anytime_td"]["positions"])].copy()
     td["said"], td["literal"] = 1 - np.exp(-td["p_td"]), 1 - np.exp(-td["td_red_zone_only"])
     print(f"  {'model range':<14}{'n':>5}{'model said':>12}{'scored':>9}   |  {'red-zone share only':<21}{'n':>5}{'said':>8}{'scored':>9}")
     edges = [0, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 1.0]
@@ -885,7 +1077,7 @@ def print_backtest(t: Tables) -> None:
         left = f"{len(a):>5}{a['said'].mean():>12.1%}{a['a_td'].mean():>9.1%}" if len(a) else f"{0:>5}{'-':>12}{'-':>9}"
         right = f"{len(b):>5}{b['literal'].mean():>8.1%}{b['a_td'].mean():>9.1%}" if len(b) else f"{0:>5}{'-':>8}{'-':>9}"
         print(f"  {f'{lo:.0%}-{hi:.0%}':<14}{left}   |  {'':<21}{right}")
-    print("\n4. tested and not adopted: taking shares only from the games since a long-term absence began")
+    print("\n5. tested and not adopted: taking shares only from the games since a long-term absence began")
     for line in absence_window_check(t):
         print(f"  {line}")
     print("\nThe calibration constants were fitted on these same weeks, so this is a fit check, not a forecast test.")
@@ -960,8 +1152,8 @@ def print_slate(result: dict) -> None:
         for p in sorted(table, key=lambda p: (p["team"], -(p["rush_att"] + p["rec"]))):
             snap = f"{p['snap_share']:.0%}" if p["snap_share"] is not None else "-"
             print(f"  {p['name'][:21]:<22}{p['position']:<4}{p['team']:<5}{p['games_used']:>3}{p['carry_share']:>8.0%}"
-                  f"{p['target_share']:>7.0%}{snap:>7}{p['rush_att']:>9.1f}{YARDS_CENTRE['rush_yds'] * p['rush_yds']:>9.0f}{p['rec']:>9.1f}"
-                  f"{YARDS_CENTRE['rec_yds'] * p['rec_yds']:>8.0f}{1 - math.exp(-p['td']):>6.0%}  {p['status']}")
+                  f"{p['target_share']:>7.0%}{snap:>7}{p['rush_att']:>9.1f}{p['typical_rush_yds']:>9.0f}{p['rec']:>9.1f}"
+                  f"{p['typical_rec_yds']:>8.0f}{1 - math.exp(-p['td']):>6.0%}  {p['status']}")
     print(f"\nLEGS with an edge of {MIN_EDGE:.0%} or more: {len(result['legs'])}")
     for leg in result["legs"]:
         line = "" if leg["line"] is None else f" {leg['line']:g}"

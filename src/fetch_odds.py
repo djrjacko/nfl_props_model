@@ -11,7 +11,7 @@ are only spent with --pull.
 
 Credit rules (the-odds-api.com/liveapi/guides/v4, read 2026-11-24):
     /events              free
-    /odds                markets asked for x bookmaker groups  -> spreads, totals = 2
+    /odds                markets asked for x bookmaker groups  -> spreads, totals, moneyline = 3
     /events/{id}/odds    markets returned  x bookmaker groups  -> up to 5 per game, 7 with alt lines
 Up to 10 bookmakers count as one group; only DraftKings and FanDuel are requested.
 
@@ -48,7 +48,8 @@ from common import ROOT, TEAM_ABBR, az, odds_api_key, utc_now
 API = "https://api.the-odds-api.com/v4"
 SPORT = "americanfootball_nfl"
 BOOKMAKERS = ("draftkings", "fanduel")
-GAME_MARKETS = ("spreads", "totals")
+# h2h is the moneyline. It is never a pick on its own: the board only uses it to anchor a same-game ticket.
+GAME_MARKETS = ("spreads", "totals", "h2h")
 PROP_MARKETS = (
     "player_rush_attempts",
     "player_rush_yds",
@@ -74,7 +75,7 @@ LOG_FIELDS = ["time_utc", "time_arizona", "call", "event_id", "matchup", "market
               "cost", "used", "remaining"]
 
 GAME_LINE_COLUMNS = ["event_id", "commence_time", "away", "home", "book", "home_spread", "home_spread_price",
-                     "away_spread_price", "total", "over_price", "under_price"]
+                     "away_spread_price", "total", "over_price", "under_price", "home_ml", "away_ml"]
 PROP_COLUMNS = ["event_id", "commence_time", "away", "home", "book", "market", "player", "side", "line", "price",
                 "last_update", "fetched_utc"]
 
@@ -226,6 +227,10 @@ def _game_line_rows(events: list[dict]) -> list[dict]:
                         row["total"], row["over_price"] = out.get("point"), out.get("price")
                     elif market["key"] == "totals" and out["name"] == "Under":
                         row["under_price"] = out.get("price")
+                    elif market["key"] == "h2h" and out["name"] == ev["home_team"]:
+                        row["home_ml"] = out.get("price")
+                    elif market["key"] == "h2h" and out["name"] == ev["away_team"]:
+                        row["away_ml"] = out.get("price")
             rows.append(row)
     return rows
 
@@ -299,7 +304,7 @@ def dry_run(key: str, source: str, hours: float, use_alts: bool) -> int:
         print(f"  {label:<12}{what:<46}{amount:>9} credits{note}")
 
     print("\na real pull would cost:")
-    cost_row("game lines", "spreads + totals, DraftKings + FanDuel", str(len(GAME_MARKETS)))
+    cost_row("game lines", "spreads, totals, moneylines; DraftKings + FanDuel", str(len(GAME_MARKETS)))
     cost_row("props", f"{n} game{'s' if n != 1 else ''} x {len(PROP_MARKETS)} markets", str(n * len(PROP_MARKETS)),
              "   (billed only for markets the books have posted)")
     if use_alts:
@@ -339,7 +344,8 @@ def pull(key: str, source: str, hours: float, max_age_min: float, use_alts: bool
     # ---- game lines: one call for every game in the window
     wanted_ids = {e["id"] for e in events}
     record = _fresh(GAME_LINES_FILE, max_age_min)
-    if record and wanted_ids <= {e["id"] for e in record["data"]}:
+    if (record and wanted_ids <= {e["id"] for e in record["data"]}
+            and set(GAME_MARKETS) <= set(record["params"]["markets"].split(","))):
         note = "reused from cache, 0 credits"
     else:
         params = {"bookmakers": ",".join(BOOKMAKERS), "markets": ",".join(GAME_MARKETS), "oddsFormat": "american",
@@ -356,7 +362,9 @@ def pull(key: str, source: str, hours: float, max_age_min: float, use_alts: bool
         for row in lines[lines["event_id"] == event["id"]].itertuples():
             spread = "no spread" if pd.isna(row.home_spread) else f"{row.home} {row.home_spread:+g}"
             total = "no total" if pd.isna(row.total) else f"total {row.total:g}"
-            quotes.append(f"{row.book}: {spread}, {total}")
+            money = "no moneyline" if pd.isna(row.home_ml) or pd.isna(row.away_ml) else (
+                f"moneyline {row.away} {int(row.away_ml):+d} / {row.home} {int(row.home_ml):+d}")
+            quotes.append(f"{row.book}: {spread}, {total}, {money}")
         print(f"  {_matchup(event):<9}{az(_kickoff(event)):<25}" + (" | ".join(quotes) or "no lines posted yet"))
 
     # ---- props: one call per game

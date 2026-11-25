@@ -15,7 +15,7 @@ for the Friday run so it can see Sunday):
 | Step | Script | What it does |
 |---|---|---|
 | 1 | `src/fetch_nflverse.py` | Downloads nflverse files: weekly player stats, play by play, snap counts, depth charts, injuries, the schedule and the player id table. Stops if a column the model needs has disappeared. |
-| 2 | `src/fetch_odds.py --pull` | The Odds API: spreads and totals, then props for each game (rush attempts, rush yards, receptions, receiving yards, anytime TD) from DraftKings and FanDuel only. Games with a spread of 10 or more also get alt yardage lines. Logs every credit spent. |
+| 2 | `src/fetch_odds.py --pull` | The Odds API: spreads, totals and moneylines, then props for each game (rush attempts, rush yards, receptions, receiving yards, anytime TD) from DraftKings and FanDuel only. Games with a spread of 10 or more also get alt yardage lines. Logs every credit spent. |
 | 3 | `src/fetch_status.py` | ESPN's public JSON for who is out, doubtful, questionable or inactive and who the starting QB is, with nflverse as the fallback. |
 | 4 | `src/board.py` | Runs `src/model.py` and writes the board files. |
 
@@ -31,7 +31,8 @@ Outputs:
 ## The model
 
 Only these props: RB rushing attempts, RB rushing yards, RB/WR/TE receptions, WR/TE receiving yards, and
-anytime touchdown. No game totals and no QB passing props.
+anytime touchdown for running backs, receivers and tight ends. No game totals, no QB passing props and no
+QB anytime touchdowns.
 
 1. **Team volume.** Plays and run rate over the team's last 5 games, recency weighted. The run rate moves
    0.3 points per point of spread, relative to the spreads those 5 games were played at.
@@ -40,12 +41,19 @@ anytime touchdown. No game totals and no QB passing props.
 3. **Yards.** Volume times efficiency, where efficiency is 60% the player's own and 40% what the opponent
    has allowed to his position.
 4. **Anytime TD.** His share of the team's scoring chances times the touchdowns the spread and total imply.
-5. **Probability and edge.** Counts use a Poisson-family distribution and yards a normal curve. Edge is the
-   model probability minus the book's probability with the vig removed. Anytime TD is priced Yes-only, so
-   its vig is removed by scaling each game's list to the expected number of different scorers.
+   A quarterback's anytime TD is not priced: a share of touches does not describe how a quarterback
+   scores, so those props are left off every tier and ticket and counted in the board's notes.
+5. **Probability and edge.** Counts use a Poisson-family distribution and yards a right-skewed gamma curve
+   (see "The yards curve" below). Edge is the model probability minus the book's probability with the vig
+   removed. Anytime TD is priced Yes-only, so its vig is removed by scaling each game's list to the
+   expected number of different scorers.
 6. **Legs.** Edge of 5% or more, at the better of the two books. A tier is 8% or more with no flags; B tier
    is 5% to 8% or any flag. Edges of 20% or more are listed as "not trusted" instead of offered, and a
    player needs a real role (6 carries or 3 targets a game, 35% of snaps for a touchdown).
+   **The two models must agree.** Every leg is also priced by the rules exactly as written. For an over or
+   an under, the calibrated probability and the as-written one must fall on the same side of 50%; for a
+   touchdown, both must be above the book's probability. A leg that fails gets the flag "calibration
+   flips the literal lean", which puts it in B tier and keeps it out of every ticket and boost.
 7. **Injury gate.** A leg is dropped when the player or his starting QB is out, doubtful, inactive, or
    questionable with practice evidence this week that is all "did not practice". Questionable players are
    flagged.
@@ -53,7 +61,12 @@ anytime touchdown. No game totals and no QB passing props.
    line; the board offers a lower alt line if one has an edge, and says so. TD legs are unaffected.
 9. **Game scripts.** Legs are grouped by which team being ahead helps them, and same-game tickets are built
    inside a group, one leg per player, at one book.
-10. **Boosts.** The 50% boost goes to the safest 2-leg ticket priced +150 to +250 and the 100% boost to the
+10. **The anchor rule.** Every ticket starts from an anchor leg: a running back's rush attempts or rush
+    yards over, an anytime TD, or a team moneyline. The other legs come from the same game script, so no
+    ticket is made of unders alone. The model has no view on who wins a game, so a moneyline is carried at
+    the book's own probability with the vig removed: it adds no edge and is marked that way on the ticket.
+    Set `require_anchor` to `false` in `config.json` to go back to "any legs that share a game script".
+11. **Boosts.** The 50% boost goes to the safest 2-leg ticket priced +150 to +250 and the 100% boost to the
     best 3-leg ticket priced +300 to +400. The same anchor leg is never on both.
 
 ### The calibration layer
@@ -61,8 +74,8 @@ anytime touchdown. No game totals and no QB passing props.
 The rules above were back-tested on 2026 weeks 5 to 11, projecting each player-game from earlier games
 only. As written they ran high and were too sure of themselves, so a calibration layer sits on top:
 projections are pulled toward the middle, counts use a negative binomial instead of a pure Poisson, the
-yards curve is centred on the typical game rather than the average, target share leans on the season, and
-the touchdown share blends red-zone share with overall touches. Every leg also carries a "literal"
+yards curve leans right instead of being a normal around the average, target share leans on the season,
+and the touchdown share blends red-zone share with overall touches. Every leg also carries a "literal"
 probability, which is the same bet priced by the rules exactly as written, so the two can be compared over
 a season.
 
@@ -75,6 +88,32 @@ Two ideas were tested and left out because they made the back-test worse: handin
 share to the others, and taking shares only from the games since a long-term absence began. Those
 situations are flagged instead. The second comparison is reprinted by `--backtest`.
 
+### The yards curve
+
+Yards are lopsided: a few big games pull the average up, and only about 42% of results beat the
+projection. Since 2026-11-25 yards follow a gamma curve whose average is the calibrated projection. Its
+spread is the league-wide spread moved toward the player's own game log, with the log counting as its
+number of games against 12 games of the league figure. A game log on its own understates how far a
+projection can miss, and fitting on it alone made the back-test worse. A log normal was tested too and
+did worse than both the gamma and the curve it replaced.
+
+The curve it replaced was a normal centred on the typical game (about 0.87 of the average). It is still in
+`model.py`: `YARDS_CURVE` chooses `"gamma"` or `"normal"` for rushing and for receiving separately.
+
+What the change did, on 2026 weeks 5 to 11 (`--backtest` prints this, section 3):
+
+- **Rushing yards:** the gamma is closer. At a line 50% above the projection the under hit 80.8% of the
+  time; the gamma says 82.2%, the normal said 83.5%. For backs projected for 50 yards or more the normal
+  overstated unders by 6 to 7 points and the gamma by about 3.5.
+- **Receiving yards:** about level overall. For players projected under 40 yards the gamma makes unders
+  more likely than the normal did, and the results side with the normal: at a line 25% above the
+  projection the under hit 67.8%; the gamma says 71.2%, the normal said 66.9%.
+- **The under lean did not go away.** A right-skewed curve puts the typical game below the average, which
+  is what makes unders likely in the first place. Both curves still overstate unders at lines well above
+  the projection, by 1 to 4 points.
+- The gamma is too generous to overs at rushing lines far below the projection (77.6% said, 72.6%
+  happened, at a line half the projection). That is where the blowout rule's alt lines sit.
+
 ### What is still unverified
 
 - How ESPN shows game-day inactives before kickoff. Until that has been seen live, "inactive" comes from an
@@ -83,6 +122,8 @@ situations are flagged instead. The second comparison is reprinted by `--backtes
 - The blowout rule has only run in a unit test with a made-up alt line.
 - Same-game ticket prices are the legs multiplied together. A book prices a same-game parlay shorter than
   that when the legs move together, so check the real price before using a boost.
+- A moneyline on a ticket is priced from the book's own odds. The model does not predict winners, so a
+  ticket's edge comes only from its other legs.
 
 ## The website
 
@@ -159,7 +200,8 @@ GitHub's cron is UTC; Arizona is UTC-7 all year. Scheduled runs can start severa
 | Mon 3:07 PM | `7 22 * * 1` | Monday game |
 | Mon 4:52 PM | `52 23 * * 1` | Monday game, after inactives |
 
-A normal week costs roughly 370 to 450 Odds API credits.
+A run costs 3 credits for the game lines (spreads, totals, moneylines) plus 5 to 7 for each game in the
+window. A normal week costs roughly 380 to 460 Odds API credits.
 
 ### Kickoffs the fixed schedule misses
 
@@ -195,6 +237,9 @@ keep them alive; before a new season, check the Actions tab and re-enable both w
   them. Use nflverse team codes such as `GB`.
 - `boosts` the boosts you usually have: size, maximum stake, number of legs, price range, and whether to
   pick the safest ticket or the best-value one.
+- `require_anchor` `true` (the default) makes every same-game ticket and boost start from an anchor leg: an
+  RB rush attempts or rush yards over, an anytime TD, or a team moneyline. `false` turns the rule off and
+  moneylines are no longer used.
 
 The Odds API key lives in `.env` locally and in the repository secret `ODDS_API_KEY` for Actions. It is
 never printed, logged or cached.

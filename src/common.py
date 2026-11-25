@@ -26,6 +26,9 @@ DEFAULT_CONFIG = {
         {"name": "50% boost", "boost": 0.5, "max_stake": 50, "legs": 2, "min_price": 150, "max_price": 250, "pick": "safest"},
         {"name": "100% boost", "boost": 1.0, "max_stake": 25, "legs": 3, "min_price": 300, "max_price": 400, "pick": "best"},
     ],
+    # Every boost and same-game ticket must start from an anchor leg: an RB rush attempts or rush yards over,
+    # an anytime TD, or a team moneyline. false goes back to "any legs that share a game script".
+    "require_anchor": True,
 }
 
 

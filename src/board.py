@@ -16,6 +16,16 @@ Same-game tickets. Legs are grouped by game script (see model.py): everything in
 same team being ahead. A ticket takes one leg per player from one group, all priced at the same book. The
 price shown is the legs multiplied together; a book prices a same-game parlay shorter than that when the
 legs move together, so check the real price before using a boost on it.
+
+Two rules decide which legs a ticket may use:
+
+  - A leg the calibrated model and the rules as written disagree on (model.FLIP_FLAG) is never used.
+  - The anchor rule (config.json "require_anchor", on by default): every ticket starts from an anchor leg,
+    which is a running back's rush attempts or rush yards over, an anytime TD, or a team moneyline, and
+    the other legs come from the same game script. So no ticket is made of unders alone. The model has no
+    view on who wins a game, so a moneyline is carried at the book's own probability with the vig removed
+    and adds no edge of its own. With the rule off, moneylines are not used and any same-script legs can
+    be combined, as before.
 """
 from __future__ import annotations
 
@@ -49,8 +59,11 @@ LOG_FIELDS = ["run_utc", "run_arizona", "game_id", "game", "kickoff_utc", "playe
               "tier", "flags", "tags", "status", "correlation_group", "projection"]
 LEG_FIELDS = ["id", "game", "game_id", "kickoff_utc", "player", "player_id", "position", "team", "opponent", "market",
               "market_key", "side", "line", "book", "price", "books", "projection", "model_prob", "implied_prob", "edge",
-              "literal_prob", "tier", "flags", "tags", "rooting_conflict", "status", "correlation_group",
+              "literal_prob", "literal_agrees", "tier", "flags", "tags", "rooting_conflict", "status", "correlation_group",
               "correlation_role", "reasoning"]
+MONEYLINE = "moneyline"
+ANCHOR_RUSH_MARKETS = ("player_rush_attempts", "player_rush_yds")  # only running backs are priced in these
+ANCHOR_RULE = "an RB rush attempts or rush yards over, an anytime TD or a team moneyline"
 
 
 # ---------------------------------------------------------------- small pieces
@@ -65,8 +78,8 @@ def decimal_to_american(decimal: float) -> int:
 
 
 def bet_text(leg: dict) -> str:
-    """'under 12.5 rush attempts' or 'anytime TD'."""
-    if leg["side"] == "yes":
+    """'under 12.5 rush attempts', 'anytime TD' or 'moneyline'."""
+    if leg["line"] is None:
         return leg["market"]
     return f"{leg['side']} {leg['line']:g} {leg['market']}"
 
@@ -127,31 +140,74 @@ def summarise(legs: list[dict]) -> dict:
 # --------------------------------------------------------- same-game tickets
 
 
-def ticket_candidates(legs: list[dict], size: int) -> list[dict]:
-    """Every ticket of `size` legs that shares a game script, uses one leg per player and sits at one book."""
+def is_anchor(leg: dict) -> bool:
+    """A leg a ticket may be built on: a running back's rush attempts or rush yards over, an anytime TD, or a
+    team moneyline. An under is never an anchor."""
+    if leg.get("market_key") == MONEYLINE or leg["side"] == "yes":
+        return True
+    return leg["side"] == "over" and leg.get("market_key") in ANCHOR_RUSH_MARKETS
+
+
+def moneyline_legs(slate: list[dict], rooting: set[str] | frozenset[str] = frozenset()) -> list[dict]:
+    """One leg-shaped entry for each team with a posted moneyline, for anchoring tickets only.
+
+    They are never picks. The model has no view on who wins, so each one carries the book's own probability
+    with the vig removed and an edge of zero. A moneyline sits on the script "that team ahead". It is a
+    rooting conflict when the other team is one the owner roots for.
+    """
+    out = []
+    for game in slate:
+        for team, books in (game.get("moneylines") or {}).items():
+            opponent = game["home"] if team == game["away"] else game["away"]
+            conflict = opponent in rooting
+            out.append({
+                "id": f"{game['game']}|{MONEYLINE}|{team}", "game": game["game"], "player": team, "player_id": f"team:{team}",
+                "team": team, "opponent": opponent, "market": "moneyline", "market_key": MONEYLINE, "side": "win",
+                "line": None, "tier": None, "flags": [], "tags": ["rooting conflict"] if conflict else [],
+                "rooting_conflict": conflict, "literal_agrees": True, "correlation_group": f"{game['game']}: {team} ahead",
+                "offers": [{"book": book, "line": None, "price": offer["price"], "model_prob": offer["fair"],
+                            "implied_prob": offer["fair"], "edge": 0.0} for book, offer in sorted(books.items())],
+            })
+    return out
+
+
+def ticket_candidates(legs: list[dict], size: int, moneylines: list[dict] | tuple = (),
+                      require_anchor: bool = True) -> list[dict]:
+    """Every ticket of `size` legs that shares a game script, uses one leg per player and sits at one book.
+
+    A leg whose calibrated and as-written probabilities disagree is never used. With `require_anchor`, a
+    ticket must hold an anchor leg (see is_anchor), so none is made of unders alone, and `moneylines` are
+    offered as anchors; the anchor recorded is the likeliest of the ticket's anchor legs. Without it the
+    moneylines are ignored, any same-script legs can be combined and the anchor is simply the likeliest leg.
+    """
     groups: dict[str, list[dict]] = {}
-    for leg in legs:
-        if leg.get("correlation_group"):
+    for leg in list(legs) + (list(moneylines) if require_anchor else []):
+        if leg.get("correlation_group") and leg.get("literal_agrees", True):
             groups.setdefault(leg["correlation_group"], []).append(leg)
     tickets = []
     for group, members in groups.items():
         for book in ("DK", "FD"):
+            # a moneyline has no model edge to clear; every other leg needs the minimum edge at this book
             priced = [(leg, offer) for leg in members for offer in leg["offers"]
-                      if offer["book"] == book and offer["edge"] >= model.MIN_EDGE]
+                      if offer["book"] == book and (offer["edge"] >= model.MIN_EDGE or leg.get("market_key") == MONEYLINE)]
             for combo in itertools.combinations(priced, size):
                 if len({leg["player_id"] for leg, _ in combo}) < size:
                     continue
+                anchors = [pair for pair in combo if is_anchor(pair[0])] if require_anchor else list(combo)
+                if not anchors:
+                    continue  # the anchor rule: nothing to build on, for example a ticket of unders alone
                 decimal = model_prob = implied = 1.0
                 for _, offer in combo:
                     decimal *= american_to_decimal(offer["price"])
                     model_prob *= offer["model_prob"]
                     implied *= offer["implied_prob"]
-                anchor = max(combo, key=lambda pair: pair[1]["model_prob"])[0]
+                anchor = max(anchors, key=lambda pair: pair[1]["model_prob"])[0]
                 tickets.append({
                     "size": size, "group": group, "game": combo[0][0]["game"], "book": book,
                     "legs": [{"id": leg["id"], "player": leg["player"], "team": leg["team"], "bet": bet_text({**leg, "line": offer["line"]}),
                               "price": offer["price"], "model_prob": offer["model_prob"], "edge": offer["edge"],
-                              "tier": leg["tier"], "flagged": bool(leg["flags"])} for leg, offer in combo],
+                              "tier": leg["tier"], "flagged": bool(leg["flags"]), "anchor": leg["id"] == anchor["id"],
+                              "moneyline": leg.get("market_key") == MONEYLINE} for leg, offer in combo],
                     "leg_ids": sorted(leg["id"] for leg, _ in combo), "anchor": anchor["id"], "anchor_player": anchor["player"],
                     "decimal": round(decimal, 3), "price": decimal_to_american(decimal),
                     # the legs are treated as independent here; legs that share a script hit together more often
@@ -179,8 +235,10 @@ def suggest(tickets: list[dict], limit: int = SUGGESTED_PER_SIZE) -> list[dict]:
     return chosen
 
 
-def allocate_boosts(tickets_by_size: dict[int, list[dict]], rules: list[dict]) -> list[dict]:
-    """One ticket per boost. The bigger boost chooses first, and no ticket's anchor leg appears on another."""
+def allocate_boosts(tickets_by_size: dict[int, list[dict]], rules: list[dict], require_anchor: bool = False) -> list[dict]:
+    """One ticket per boost. The bigger boost chooses first, and no ticket's anchor leg appears on another.
+    `require_anchor` only changes the wording when nothing can be offered."""
+    kind = "anchored same-script" if require_anchor else "same-script"
     taken_anchors: set[str] = set()
     taken_legs: set[str] = set()
     out = []
@@ -216,11 +274,12 @@ def allocate_boosts(tickets_by_size: dict[int, list[dict]], rules: list[dict]) -
                              "other boost's ticket, so none is offered.")
         elif pool:
             nearest = min(pool, key=lambda t: min(abs(t["price"] - rule["min_price"]), abs(t["price"] - rule["max_price"])))
-            entry["note"] = (f"No {rule['legs']}-leg same-script ticket is priced {entry['range']} on this slate. "
+            entry["note"] = (f"No {rule['legs']}-leg {kind} ticket is priced {entry['range']} on this slate. "
                              f"The nearest is {nearest['price']:+d} at {nearest['book']}: "
                              + " + ".join(f"{leg['player']} {leg['bet']}" for leg in nearest["legs"]) + ".")
         else:
-            entry["note"] = f"No {rule['legs']}-leg same-script ticket can be built from this board's legs."
+            entry["note"] = (f"No {rule['legs']}-leg {kind} ticket can be built from this board's legs."
+                             + (f" A ticket has to start from {ANCHOR_RULE}." if require_anchor else ""))
         out.append(entry)
     return sorted(out, key=lambda e: e["boost"])
 
@@ -269,6 +328,8 @@ def diff(previous: dict | None, board: dict, priced: list[dict], now: datetime) 
             why = "the blowout rule now applies to this game"
         elif leg["game"] not in new_games:
             why = "its game is outside this run's window"
+        elif leg.get("position") == "QB" and leg.get("market_key") == "player_anytime_td":
+            why = "quarterback anytime TDs are no longer priced"
         elif current is None:
             why = "the books no longer offer it"
         elif leg["line"] is not None and current["line"] is not None and current["line"] != leg["line"]:
@@ -329,8 +390,14 @@ def build(hours: float) -> tuple[dict, dict]:
     for game in slate:
         game["kickoff_arizona"] = az(datetime.fromisoformat(game["kickoff_utc"]))
 
-    tickets = {size: ticket_candidates(legs, size) for size in (2, 3)}
+    require_anchor = bool(config.get("require_anchor", True))
+    anchors = moneyline_legs(slate, set(config["rooting_teams"])) if require_anchor else []
+    tickets = {size: ticket_candidates(legs, size, anchors, require_anchor) for size in (2, 3)}
     notes = list(result["notes"])
+    flipped = sum(1 for leg in legs if leg.get("literal_agrees") is False)
+    if flipped:
+        notes.append(f"{plural(flipped, 'leg')} on this board carry the flag \"{model.FLIP_FLAG}\": the calibrated model and "
+                     "the rules as written point opposite ways, so they sit in B tier and are left out of every ticket.")
     sources = {"odds_pulled_utc": None, "status_generated_utc": None, "status_source": None,
                "nflverse_fetched_utc": nfl.run_info()["fetched_utc"], "last_completed_week": nfl.run_info()["last_completed_week"]}
     credits = {"this_run": None, "used": None, "remaining": None}
@@ -359,7 +426,8 @@ def build(hours: float) -> tuple[dict, dict]:
         "window_hours": hours, "season": result["season"], "slate": slate, "summary": summarise(legs),
         "legs": [{k: leg.get(k) for k in LEG_FIELDS} for leg in legs], "skips": skips, "gated": gated,
         "sgps": {"two_leg": suggest(tickets[2]), "three_leg": suggest(tickets[3])},
-        "boosts": allocate_boosts(tickets, config["boosts"]),
+        "boosts": allocate_boosts(tickets, config["boosts"], require_anchor),
+        "anchor_rule": require_anchor,
         "credits": credits, "sources": sources, "notes": notes, "next_runs": next_runs(now),
         "calibration": "off (rules as written)" if model.CALIBRATION["rush_att"] == (0.0, 1.0) else "on",
         "rooting_teams": config["rooting_teams"],
@@ -370,8 +438,12 @@ def build(hours: float) -> tuple[dict, dict]:
 def ticket_lines(ticket: dict, indent: str = "    ") -> list[str]:
     head = (f"{ticket['book']} about {ticket['price']:+d}: model {ticket['model_prob']:.0%} against {ticket['implied_prob']:.0%} "
             f"implied [{ticket['group']}]" + ("  [rooting conflict]" if ticket["rooting_conflict"] else ""))
-    return [indent + head] + [f"{indent}  - {leg['player']} {leg['bet']} ({leg['price']:+d})"
-                              + ("  (flagged)" if leg["flagged"] else "") for leg in ticket["legs"]]
+    def mark(leg: dict) -> str:
+        if leg.get("moneyline"):
+            return "  [anchor: the book's own odds, no model edge]" if leg.get("anchor") else "  [the book's own odds, no model edge]"
+        return ("  [anchor]" if leg.get("anchor") else "") + ("  (flagged)" if leg["flagged"] else "")
+
+    return [indent + head] + [f"{indent}  - {leg['player']} {leg['bet']} ({leg['price']:+d}){mark(leg)}" for leg in ticket["legs"]]
 
 
 def render_text(board: dict, changes: dict) -> str:
@@ -390,7 +462,10 @@ def render_text(board: dict, changes: dict) -> str:
     if board["summary"]["warning"]:
         out.append(f"WARNING: {board['summary']['warning']}")
 
+    anchored = board.get("anchor_rule", False)
     out += ["", "BOOSTS"]
+    out += wrap(f"Anchor rule on: every ticket starts from {ANCHOR_RULE}, then adds legs on the same game script."
+                if anchored else "Anchor rule off: a ticket can be any legs that share a game script.", "  ")
     for boost in board["boosts"]:
         out.append(f"  {boost['name']} (${boost['max_stake']} max, {boost['legs']} legs, {boost['range']}, {boost['pick']})")
         if boost["ticket"]:
@@ -408,7 +483,8 @@ def render_text(board: dict, changes: dict) -> str:
     for label, key in (("SAME GAME PARLAYS, 2 LEGS", "two_leg"), ("SAME GAME PARLAYS, 3 LEGS", "three_leg")):
         out += ["", label]
         if not board["sgps"][key]:
-            out.append("  none: no legs share a game script at the same book")
+            out.append("  none: no anchor leg shares a game script with enough other legs at the same book" if anchored
+                       else "  none: no legs share a game script at the same book")
         for ticket in board["sgps"][key]:
             out += ticket_lines(ticket, "  ")
 

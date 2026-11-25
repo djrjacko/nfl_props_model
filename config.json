@@ -3,5 +3,6 @@
   "boosts": [
     {"name": "50% boost", "boost": 0.5, "max_stake": 50, "legs": 2, "min_price": 150, "max_price": 250, "pick": "safest"},
     {"name": "100% boost", "boost": 1.0, "max_stake": 25, "legs": 3, "min_price": 300, "max_price": 400, "pick": "best"}
-  ]
+  ],
+  "require_anchor": true
 }

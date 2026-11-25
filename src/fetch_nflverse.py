@@ -169,11 +169,18 @@ def fetch_file(tag: str, filename: str, manifest: dict, force: bool = False) -> 
     checked = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
     last_error: Exception | None = None
-    for attempt in range(1, 4):
+    not_found = False
+    for attempt in range(1, 5):
         try:
             with requests.get(url, headers=headers, stream=True, timeout=(15, 180)) as r:
                 if r.status_code == 404:
-                    raise FileNotFoundError(f"nflverse has no file {filename} in release '{tag}' ({url})")
+                    # nflverse replaces a release file by deleting it and uploading the new one, so a file can
+                    # be missing for a few seconds (seen on games.parquet, 2026-11-25). Wait and look again.
+                    not_found = True
+                    if attempt < 4:
+                        time.sleep(4 * attempt)
+                    continue
+                not_found = False
                 same_etag = bool(headers) and r.headers.get("ETag") == known.get("etag")
                 if r.status_code == 304 or same_etag:
                     known["checked_utc"] = checked
@@ -197,7 +204,9 @@ def fetch_file(tag: str, filename: str, manifest: dict, force: bool = False) -> 
         except requests.RequestException as exc:  # network trouble or a 5xx: wait and retry
             last_error = exc
             time.sleep(3 * attempt)
-    raise RuntimeError(f"could not download {url} after 3 tries: {last_error}")
+    if not_found:
+        raise FileNotFoundError(f"nflverse has no file {filename} in release '{tag}' ({url})")
+    raise RuntimeError(f"could not download {url} after 4 tries: {last_error}")
 
 
 def resolve_seasons(games: pd.DataFrame, requested: list[int] | None, today: date) -> tuple[int, list[int], int]:

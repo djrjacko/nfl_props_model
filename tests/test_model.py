@@ -74,9 +74,82 @@ class MathTests(unittest.TestCase):
 
     def test_yards_are_a_coin_flip_at_the_typical_game(self):
         mean = 60.0
-        over, under = model.model_probability("rush_yds", model.YARDS_CENTRE["rush_yds"] * mean, mean)
+        typical = model.typical_yards("rush_yds", mean)
+        over, under = model.model_probability("rush_yds", typical, mean)
+        self.assertAlmostEqual(over, 0.5, places=6)
+        self.assertAlmostEqual(over + under, 1.0)
+        self.assertLess(typical, mean)  # the curve leans right, so the typical game is below the average one
+        self.assertLess(model.model_probability("rush_yds", mean, mean)[0], 0.5)
+
+    def test_gamma_curve_matches_the_closed_forms(self):
+        e = 2.718281828459045
+        # shape 1 is the exponential curve: P(X <= x) = 1 - e^(-x / scale). 3 uses the series, 30 the continued fraction
+        self.assertAlmostEqual(model.gamma_cdf(3.0, 1.0, 10.0), 1 - e ** -0.3, places=9)
+        self.assertAlmostEqual(model.gamma_cdf(30.0, 1.0, 10.0), 1 - e ** -3.0, places=9)
+        # shape 2: P(X <= x) = 1 - e^(-z) (1 + z) with z = x / scale
+        self.assertAlmostEqual(model.gamma_cdf(10.0, 2.0, 10.0), 1 - e ** -1.0 * 2.0, places=9)
+        self.assertAlmostEqual(model.gamma_cdf(50.0, 2.0, 10.0), 1 - e ** -5.0 * 6.0, places=9)
+        self.assertEqual(model.gamma_cdf(0.0, 2.0, 10.0), 0.0)
+        self.assertEqual(model.gamma_cdf(-5.0, 2.0, 10.0), 0.0)
+
+    def test_gamma_yards_have_the_asked_for_average_and_spread(self):
+        mean, cv2 = 60.0, 0.4
+        step = 0.05
+        grid = [step * i for i in range(1, 40001)]  # out to 2,000 yards
+        mass = [model.gamma_over_under(x - step, mean, cv2)[0] - model.gamma_over_under(x, mean, cv2)[0] for x in grid]
+        got_mean = sum((x - step / 2) * m for x, m in zip(grid, mass))
+        got_var = sum((x - step / 2 - got_mean) ** 2 * m for x, m in zip(grid, mass))
+        self.assertAlmostEqual(sum(mass), 1.0, places=6)
+        self.assertAlmostEqual(got_mean, mean, places=2)
+        self.assertAlmostEqual(got_var / mean ** 2, cv2, places=3)
+
+    def test_gamma_yards_lean_right(self):
+        mean, cv2 = 60.0, 0.4
+        sigma = mean * cv2 ** 0.5
+        far_over = model.gamma_over_under(mean + 2.5 * sigma, mean, cv2)[0]
+        same_normal = model.normal_over_under(mean + 2.5 * sigma, mean, sigma)[0]
+        self.assertGreater(far_over, same_normal)  # big games are likelier than a normal with the same spread allows
+        self.assertLess(model.gamma_median(mean, cv2), mean)
+        overs = [model.gamma_over_under(line, mean, cv2)[0] for line in (20.5, 40.5, 60.5, 80.5, 120.5)]
+        self.assertEqual(overs, sorted(overs, reverse=True))
+
+    def test_yards_spread_moves_toward_the_players_own_game_log(self):
+        mean = 60.0
+        league = model.league_cv2("rush_yds", mean)
+        base, slope = model.SIGMA["rush_yds"]
+        self.assertAlmostEqual(league, ((base + slope * mean) / mean) ** 2)
+        self.assertAlmostEqual(model.yards_cv2("rush_yds", mean, [70, 50]), league)  # under three games: league spread only
+        self.assertAlmostEqual(model.yards_cv2("rush_yds", mean, [0, 2, 1, 3]), league)  # too few yards to say anything
+        steady, wild = [58, 62, 60, 61, 59, 60], [5, 150, 20, 110, 8, 67]
+        self.assertLess(model.yards_cv2("rush_yds", mean, steady), league)
+        self.assertGreater(model.yards_cv2("rush_yds", mean, wild), league)
+        # the log counts as its number of games against YARDS_PRIOR_GAMES games of the league spread
+        log = pd.Series(wild, dtype=float)
+        own = log.var(ddof=1) / log.mean() ** 2
+        expected = (len(log) * own + model.YARDS_PRIOR_GAMES * league) / (len(log) + model.YARDS_PRIOR_GAMES)
+        self.assertAlmostEqual(model.yards_cv2("rush_yds", mean, wild), expected)
+        low, high = model.CV2_LIMITS
+        self.assertGreaterEqual(model.yards_cv2("rush_yds", mean, [60] * 40), low)
+        self.assertLessEqual(model.yards_cv2("rec_yds", 6.0, [0, 0, 0, 0, 0, 0, 0, 90]), high)
+
+    def test_the_earlier_normal_curve_is_still_there(self):
+        mean = 60.0
+        over, under = model.normal_yards_over_under("rush_yds", model.YARDS_CENTRE["rush_yds"] * mean, mean)
         self.assertAlmostEqual(over, 0.5)
-        self.assertLess(model.model_probability("rush_yds", mean, mean)[0], 0.5)  # the average game is above the typical one
+        self.assertEqual(set(model.YARDS_CURVE), {"rush_yds", "rec_yds"})
+        self.assertTrue(set(model.YARDS_CURVE.values()) <= {"gamma", "normal"})
+
+    def test_calibrated_and_literal_agree_only_on_the_same_side(self):
+        # over or under: the same side of 50%, whatever the book says
+        self.assertTrue(model.literal_agrees("rec", 0.60, 0.55, 0.45))
+        self.assertTrue(model.literal_agrees("rec", 0.45, 0.40, 0.38))
+        self.assertFalse(model.literal_agrees("rec", 0.60, 0.45, 0.45))
+        self.assertFalse(model.literal_agrees("rush_yds", 0.48, 0.52, 0.40))
+        # touchdown: both above the book's probability
+        self.assertTrue(model.literal_agrees("td", 0.41, 0.50, 0.34))
+        self.assertTrue(model.literal_agrees("td", 0.41, 0.36, 0.34))
+        self.assertFalse(model.literal_agrees("td", 0.41, 0.30, 0.34))
+        self.assertFalse(model.literal_agrees("td", 0.30, 0.41, 0.34))
 
     def test_touchdown_probability(self):
         yes, no = model.model_probability("td", None, 0.5)
@@ -190,11 +263,74 @@ class CachedGameTests(unittest.TestCase):
         self.assertFalse([l for l in self.result["legs"] if l["player"] in ("CJ Daniels", "Max Klare", "Mark Redman")])
 
     def test_a_teammate_out_inside_the_window_is_flagged(self):
-        higbee = [l for l in self.result["legs"] if l["player"] == "Tyler Higbee"]
-        self.assertTrue(higbee)
-        for leg in higbee:
-            self.assertTrue(any("Puka Nacua" in flag for flag in leg["flags"]))
+        # Puka Nacua is out but played in two of the Rams' last three games, so target shares there describe a
+        # different line-up: every Rams leg that rests on a target share says so and cannot be A tier
+        flagged = [l for l in self.result["legs"] if any("Puka Nacua" in flag for flag in l["flags"])]
+        self.assertTrue(flagged)
+        for leg in flagged:
+            self.assertEqual(leg["team"], "LA")
+            self.assertIn(leg["market"], ("receptions", "receiving yards", "anytime TD"))
             self.assertEqual(leg["tier"], "B")
+        rams_catches = [l for l in self.result["legs"] if l["team"] == "LA" and l["market"] in ("receptions", "receiving yards")]
+        self.assertEqual({l["id"] for l in rams_catches}, {l["id"] for l in flagged if l["market"] != "anytime TD"})
+
+    def test_quarterback_touchdowns_are_not_priced(self):
+        quarterbacks = {p["name"] for p in self.result["projections"] if p["position"] == "QB"}
+        posted = set(self.props[self.props["market"] == "player_anytime_td"]["player"])
+        self.assertTrue(quarterbacks & posted)  # the books do post them, so this checks something
+        everything = self.result["legs"] + self.result["skips"] + self.result["priced"]
+        self.assertFalse([row for row in everything if row["player"] in quarterbacks])
+        self.assertNotIn("QB", model.MARKETS["player_anytime_td"]["positions"])
+        self.assertTrue(any(f"{len(quarterbacks & posted)} quarterback anytime TD props were not priced" in note
+                            for note in self.result["notes"]))
+
+    def test_a_leg_the_two_models_disagree_on_is_flagged_and_kept_out_of_the_a_tier(self):
+        flipped = [l for l in self.result["legs"] if not l["literal_agrees"]]
+        self.assertTrue(flipped)
+        for leg in self.result["legs"]:
+            with self.subTest(leg=leg["id"]):
+                if leg["side"] == "yes":
+                    expected = leg["literal_prob"] > leg["implied_prob"]
+                else:
+                    expected = (leg["model_prob"] > 0.5) == (leg["literal_prob"] > 0.5)
+                self.assertEqual(leg["literal_agrees"], expected)
+                self.assertEqual(model.FLIP_FLAG in leg["flags"], not expected)
+                if not expected:
+                    self.assertEqual(leg["tier"], "B")
+        # the known case: the rules as written lean over on Matthew Golden's catches, the calibrated model under
+        golden = next(l for l in self.result["legs"] if l["player"] == "Matthew Golden" and l["market"] == "receptions")
+        self.assertEqual(golden["side"], "under")
+        self.assertFalse(golden["literal_agrees"])
+        self.assertIn("calibration flips the literal lean", golden["flags"])
+        self.assertEqual(golden["tier"], "B")
+        self.assertGreaterEqual(golden["edge"], model.A_TIER_EDGE)  # the edge alone would have made it A tier
+
+    def test_the_result_can_be_written_as_json(self):
+        # board.py writes legs, skips, gated players and the slate to docs/picks.json; a numpy value in any of
+        # them stops the whole run
+        lines = self.lines.copy()
+        lines["home_ml"], lines["away_ml"] = [-143, -146], [121, 124]
+        for result in (self.result, self.price(lines=lines)):
+            text = json.dumps({key: result[key] for key in ("games", "legs", "skips", "gated", "notes", "priced")})
+            self.assertEqual(len(json.loads(text)["legs"]), len(result["legs"]))
+        for leg in self.result["legs"]:
+            self.assertIs(type(leg["literal_agrees"]), bool)
+
+    def test_moneylines_are_carried_for_ticket_anchors(self):
+        self.assertEqual(self.result["games"][0]["moneylines"], {})  # the cached lines were pulled before moneylines were
+        lines = self.lines.copy()
+        lines["home_ml"] = [-143, -146]
+        lines["away_ml"] = [121, 124]
+        money = self.price(lines=lines)["games"][0]["moneylines"]
+        self.assertEqual(set(money), {"GB", "LA"})
+        self.assertEqual(money["LA"]["DK"]["price"], -143)
+        self.assertEqual(money["GB"]["FD"]["price"], 124)
+        for book in ("DK", "FD"):
+            self.assertAlmostEqual(money["LA"][book]["fair"] + money["GB"][book]["fair"], 1.0, places=3)
+        self.assertAlmostEqual(money["LA"]["DK"]["fair"], model.devig_two_way(-143, 121)[0], places=4)
+        # a book with only one side posted gives no moneyline for either team
+        lines.loc[lines["book"] == "fanduel", "away_ml"] = None
+        self.assertEqual(set(self.price(lines=lines)["games"][0]["moneylines"]["LA"]), {"DK"})
 
     def test_an_empty_window_gives_an_empty_board(self):
         result = self.price(props=self.props.iloc[0:0], lines=self.lines.iloc[0:0])
@@ -303,14 +439,25 @@ class CachedGameTests(unittest.TestCase):
         self.assertEqual(alt[0]["tier"], "B")
         self.assertTrue(any(flag.startswith("blowout") for flag in alt[0]["flags"]))
         self.assertIn("Blowout rule", alt[0]["reasoning"])
-        # Rams starters with no alt line priced: main yardage line skipped with the reason given
+        self.assertEqual(alt[0]["correlation_group"], "GB@LA: LA ahead")  # an alt over is a rush yards over
+        # no Rams starter keeps a main yardage line
         starters = [l for l in result["legs"] if l["team"] == "LA" and l["starter"]
                     and l["market"] in ("rush yards", "receiving yards")]
         self.assertFalse(starters)
-        self.assertTrue(any(s["kind"] == "blowout" for s in result["skips"]))
         # touchdown legs and the underdog's legs are untouched by the rule
         self.assertTrue([l for l in result["legs"] if l["team"] == "GB" and l["market"] == "receiving yards"])
         self.assertTrue([l for l in result["legs"] + result["skips"] if l["team"] == "LA" and l["market"] == "anytime TD"])
+
+    def test_blowout_with_no_alt_line_skips_the_main_line_and_says_why(self):
+        lines = self.lines.copy()
+        lines["home_spread"] = -10.5
+        result = self.price(lines=lines)  # the cached props hold no alt lines
+        self.assertFalse([l for l in result["legs"] if l["player"] == "Kyren Williams" and "rush yards" in l["market"]])
+        skipped = [s for s in result["skips"] if s["player"] == "Kyren Williams" and s["market"] == "rush yards"]
+        self.assertEqual(len(skipped), 1)
+        self.assertEqual(skipped[0]["kind"], "blowout")
+        self.assertIn("Blowout rule: LA are favoured by 10.5", skipped[0]["reason"])
+        self.assertIn("No alt line with a 5% edge was priced", skipped[0]["reason"])
 
 
 if __name__ == "__main__":

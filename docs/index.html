@@ -188,13 +188,18 @@ function legCard(leg) {
   return add(card, why);
 }
 
+function legNote(leg) {
+  if (leg.moneyline) return leg.anchor ? " (anchor, the book's own odds)" : " (the book's own odds)";
+  return (leg.anchor ? " (anchor)" : "") + (leg.flagged ? " (flagged)" : "");
+}
+
 function ticketCard(ticket, heading, boostedPrice) {
   const card = el("div", "card ticket");
   if (heading) add(card, el("div", "meta", heading));
   add(card, add(el("div", "row"), el("div", "who", `${ticket.book} about ${signed(ticket.price)}`),
     el("div", "price", boostedPrice !== undefined ? `boosted ${signed(boostedPrice)}` : "")));
   const list = el("ul");
-  ticket.legs.forEach((leg) => add(list, add(el("li"), el("span", null, `${leg.player} ${leg.bet}${leg.flagged ? " (flagged)" : ""}`), el("span", "price", signed(leg.price)))));
+  ticket.legs.forEach((leg) => add(list, add(el("li"), el("span", null, `${leg.player} ${leg.bet}${legNote(leg)}`), el("span", "price", signed(leg.price)))));
   add(card, list, el("div", "meta", `Model ${pct(ticket.model_prob, 0)} against ${pct(ticket.implied_prob, 0)} implied · ${ticket.group}`));
   if (ticket.rooting_conflict) add(card, el("span", "chip tag", "rooting conflict"));
   return card;
@@ -231,6 +236,8 @@ function renderBoard() {
   }
 
   out.push(heading("Boosts"));
+  if (p.anchor_rule === true) out.push(el("div", "meta", "Anchor rule on: every ticket starts from an RB rush attempts or rush yards over, an anytime TD or a team moneyline, then adds legs on the same game script. A moneyline is priced at the book's own odds, so the model claims no edge on it."));
+  if (p.anchor_rule === false) out.push(el("div", "meta", "Anchor rule off: a ticket can be any legs that share a game script."));
   p.boosts.forEach((boost) => {
     const label = `${boost.name} · $${boost.max_stake} max · ${boost.legs} legs priced ${boost.range} · ${boost.pick}`;
     if (boost.ticket && !hidden(boost.ticket)) out.push(ticketCard(boost.ticket, label, boost.ticket.boosted_price));
@@ -391,7 +398,7 @@ async function startRun(hours) {
 function renderRerun() {
   const p = state.picks, root = $("rerun"), out = [], name = repo();
   const status = el("div", "run-status"); status.id = "run-status"; status.setAttribute("aria-live", "polite");
-  const cost = "Each run costs about 2 credits plus 5 to 7 per game in the window, and takes about a minute.";
+  const cost = "Each run costs about 3 credits plus 5 to 7 per game in the window, and takes about a minute.";
   const card = el("div", "card");
   add(card, el("div", "who", "Run the board now"));
   if (!name) {

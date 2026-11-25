@@ -21,6 +21,11 @@ on:
     - cron: "7 4 * * 1"     # Sun 9:07 PM MST
     - cron: "7 22 * * 1"    # Mon 3:07 PM MST
     - cron: "52 23 * * 1"   # Mon 4:52 PM MST   after inactives
+    # One-off: Wed Nov 25 2026 4:37 PM MST, after inactives for GB@LA (6:00 PM kickoff). A cron line with a
+    # date repeats every year, so delete this line once that game has been played.
+    - cron: "37 23 25 11 *"
+  # Kickoffs this fixed schedule does not reach (other Wednesdays, holidays, Saturdays) are picked up by
+  # pregame.yml, which starts this workflow about 80 minutes before them.
   workflow_dispatch:
     inputs:
       hours:

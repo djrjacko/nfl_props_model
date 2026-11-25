@@ -89,12 +89,34 @@ situations are flagged instead. The second comparison is reprinted by `--backtes
 `docs/index.html` is a single file with three tabs: Board, Changes and Re-run. It reads `picks.json` and
 `changes.json` with a fresh address every time so a phone never shows a stale board. Times are Arizona
 time. The top of the board counts overs, unders and TDs and warns when more than 75% of the legs are
-unders.
+unders. The Re-run tab starts a run with one tap and lists the next runs.
 
 ## Re-running by hand
 
-**On GitHub:** open the Actions tab, pick "Run the prop board", press "Run workflow". The Re-run tab on
-the site links straight to that page.
+**From the site:** the Re-run tab has a "Run now" button once a token is saved on the phone (see below).
+
+**On GitHub:** open the Actions tab, pick "Run the prop board", press "Run workflow". The Re-run tab
+links straight to that page.
+
+### The one-tap button and its token
+
+Starting a run needs a GitHub token. A token written into the page would be readable by anyone, so the
+page asks for one once and keeps it in that browser's storage on that device only. It is sent to
+`api.github.com` and nowhere else.
+
+1. On the phone, open the Re-run tab and tap "Create the token on GitHub". The form opens with the name,
+   a 90-day expiry and the Actions permission filled in.
+2. Under "Repository access" choose "Only select repositories" and pick this repository.
+3. Check that Permissions shows Actions: Read and write (Metadata: Read-only is added automatically).
+4. Tap "Generate token", copy it, go back to the Re-run tab, paste it and tap "Save on this phone".
+
+What that token can do: start, cancel and read workflow runs in this one repository. It cannot read or
+change code, secrets or settings. To revoke it, delete it on GitHub under Settings, Developer settings,
+Personal access tokens, Fine-grained tokens. When it expires, create a new one the same way.
+
+One thing to know: every GitHub Pages site under the same account shares one web address origin, so a
+script on another Pages site of yours could read this browser storage. Keep that in mind before adding
+third-party scripts to any of them.
 
 **On your PC** (PowerShell, from the project folder):
 
@@ -137,8 +159,32 @@ GitHub's cron is UTC; Arizona is UTC-7 all year. Scheduled runs can start severa
 | Mon 3:07 PM | `7 22 * * 1` | Monday game |
 | Mon 4:52 PM | `52 23 * * 1` | Monday game, after inactives |
 
-A normal week costs roughly 370 to 450 Odds API credits. Weeks with games on other days (Thanksgiving,
-Saturdays late in the season) are only partly covered by this schedule; use a manual run for those.
+A normal week costs roughly 370 to 450 Odds API credits.
+
+### Kickoffs the fixed schedule misses
+
+Inactives come out 90 minutes before kickoff, and the table above only has a run after that point for the
+usual Thursday-night, Sunday and Monday-night kickoffs. `.github/workflows/pregame.yml` covers the rest.
+Every 15 minutes from September to February (4:07 AM to 7:52 PM Arizona time) it runs `src/pregame.py`,
+which reads the upcoming games from The Odds API's free events feed and starts "Run the prop board" when a
+game is 85 to 25 minutes from kickoff and nothing has run since inactives were due. A game counts as
+covered when a fixed run falls 85 to 40 minutes before its kickoff. If a fixed run is 20 minutes overdue
+and never started, the check stops waiting for it and starts one.
+
+That picks up Wednesday games, Thanksgiving, Saturdays late in the season and early kickoffs abroad. It
+also picks up September and October, when Eastern daylight time puts every kickoff an hour earlier on the
+Arizona clock than the fixed times assume. The check itself costs no credits; each run it starts costs the
+same as any other.
+
+```
+python src/pregame.py   # show which games are covered, which get their own run, and when
+```
+
+`run.yml` also holds one dated line for the Wednesday November 25, 2026 game. A dated cron line repeats
+every year, so delete it once that game has been played.
+
+GitHub turns scheduled workflows off after 60 days without a commit. During the season the board commits
+keep them alive; before a new season, check the Actions tab and re-enable both workflows if needed.
 
 ## Settings
 

@@ -71,7 +71,12 @@
   .kind { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin-right: 6px; }
   .toggle { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--muted); margin: 10px 0 0; min-height: 44px; }
   .toggle input { width: 20px; height: 20px; }
-  .button { display: block; text-align: center; background: var(--accent); color: var(--card); font-weight: 700; text-decoration: none; border-radius: 12px; padding: 14px; margin: 10px 0; }
+  .button { display: block; width: 100%; text-align: center; background: var(--accent); color: var(--card); font: inherit; font-weight: 700; text-decoration: none; border: 1px solid var(--accent); border-radius: 12px; padding: 14px; margin: 10px 0; cursor: pointer; }
+  .button.secondary { background: none; color: var(--accent); border-color: var(--line); font-weight: 600; }
+  .button[disabled] { opacity: 0.5; cursor: default; }
+  .field { display: block; width: 100%; font: inherit; font-size: 16px; padding: 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--text); margin: 8px 0; }
+  .linklike { background: none; border: 0; color: var(--accent); font: inherit; font-size: 0.88rem; padding: 10px 0; cursor: pointer; }
+  .run-status { margin: 8px 0; font-size: 0.95rem; min-height: 1.4em; font-weight: 600; }
   ol { padding-left: 1.3em; margin: 8px 0; }
   ol li { margin: 4px 0; }
   code { background: var(--bg); border-radius: 6px; padding: 1px 5px; font-size: 0.86em; word-break: break-word; }
@@ -286,32 +291,150 @@ function renderChanges() {
   root.replaceChildren(...out);
 }
 
+// ---- one-tap run: a token kept only in this browser starts the workflow through GitHub's API
+const TOKEN_KEY = "boardRunToken";
+const run = { busy: false, message: "", link: null };
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+function token() { return recall(TOKEN_KEY) || ""; }
+function forget(key) { try { localStorage.removeItem(key); } catch (e) { /* private window */ } }
+
+function github(path, options = {}, withToken = token()) {
+  const headers = { Accept: "application/vnd.github+json" };
+  if (withToken) headers.Authorization = `Bearer ${withToken}`;
+  if (options.body) headers["Content-Type"] = "application/json";
+  return fetch(`https://api.github.com${path}`, { ...options, headers, cache: "no-store" });
+}
+
+function paintRun() {
+  const box = $("run-status");
+  if (!box) return;
+  box.replaceChildren(document.createTextNode(run.message));
+  if (run.link) {
+    const link = el("a", null, " Open the run on GitHub.");
+    link.href = run.link; link.target = "_blank"; link.rel = "noopener";
+    box.appendChild(link);
+  }
+  document.querySelectorAll("[data-run]").forEach((button) => { button.disabled = run.busy; });
+}
+function say(message, link) { run.message = message; run.link = link || null; paintRun(); }
+
+async function saveToken(value) {
+  const pasted = value.trim();
+  if (!pasted) return say("Paste the token first.");
+  say("Checking the token with GitHub…");
+  try {
+    const answer = await github(`/repos/${repo()}/actions/workflows/run.yml`, {}, pasted);
+    if (answer.status === 401) return say("GitHub did not accept that token. Check that all of it was copied.");
+    if (!answer.ok) return say(`GitHub answered ${answer.status} for that token. It needs access to this repository.`);
+  } catch (error) {
+    return say("Could not reach GitHub to check the token. Try again.");
+  }
+  remember(TOKEN_KEY, pasted);
+  run.message = "Token saved on this phone."; run.link = null;
+  renderRerun();
+}
+
+async function startRun(hours) {
+  if (run.busy) return;
+  run.busy = true;
+  say("Starting the run…");
+  const clicked = Date.now(), before = state.picks.generated_utc, name = repo();
+  try {
+    const path = `/repos/${name}/actions/workflows/run.yml/dispatches`;
+    const body = { ref: "main", inputs: { hours: String(hours) } };
+    let answer = await github(path, { method: "POST", body: JSON.stringify({ ...body, return_run_details: true }) });
+    if (answer.status === 400 || answer.status === 422) answer = await github(path, { method: "POST", body: JSON.stringify(body) });
+    if (answer.status === 401) throw new Error("GitHub rejected the token. It may have expired or been deleted: forget it below and add a new one.");
+    if (answer.status === 403 || answer.status === 404) throw new Error("The token is not allowed to start this workflow. It needs this repository and Actions set to Read and write.");
+    if (answer.status !== 200 && answer.status !== 204) throw new Error(`GitHub answered ${answer.status} when starting the run.`);
+    let id = null, link = null;
+    if (answer.status === 200) { const details = await answer.json(); id = details.workflow_run_id; link = details.html_url; }
+    say("Run started. Waiting for GitHub to pick it up…", link);
+
+    let finished = null;
+    for (let i = 0; i < 60 && !finished; i++) {
+      await sleep(6000);
+      let current = null;
+      if (id) {
+        const one = await github(`/repos/${name}/actions/runs/${id}`);
+        if (one.ok) current = await one.json();
+      } else {
+        const list = await github(`/repos/${name}/actions/workflows/run.yml/runs?event=workflow_dispatch&per_page=5`);
+        if (list.ok) current = ((await list.json()).workflow_runs || []).find((w) => new Date(w.created_at).getTime() >= clicked - 20000) || null;
+        if (current) id = current.id;
+      }
+      if (!current) continue;
+      link = current.html_url;
+      if (current.status === "completed") finished = current;
+      else say(current.status === "in_progress" ? "Running: fetching data, pulling odds, building the board…" : "Queued on GitHub…", link);
+    }
+    if (!finished) throw new Error("The run is taking longer than six minutes.");
+    if (finished.conclusion !== "success") { run.busy = false; return say(`The run ended with “${finished.conclusion}”.`, link); }
+
+    say("Run finished. Waiting for the site to pick up the new board…", link);
+    for (let i = 0; i < 30; i++) {
+      await sleep(6000);
+      const fresh = await fetch(`picks.json?t=${Date.now()}`, { cache: "no-store" });
+      if (fresh.ok && (await fresh.json()).generated_utc !== before) {
+        run.busy = false; run.message = "Done. The board is updated."; run.link = link;
+        await load();
+        return;
+      }
+    }
+    throw new Error("The run finished but the site has not updated yet. Tap Refresh in a minute.");
+  } catch (error) {
+    run.busy = false;
+    say(String(error.message || error), run.link);
+  }
+}
+
 function renderRerun() {
   const p = state.picks, root = $("rerun"), out = [], name = repo();
+  const status = el("div", "run-status"); status.id = "run-status"; status.setAttribute("aria-live", "polite");
+  const cost = "Each run costs about 2 credits plus 5 to 7 per game in the window, and takes about a minute.";
   const card = el("div", "card");
   add(card, el("div", "who", "Run the board now"));
+  if (!name) {
+    add(card, el("p", "meta", "Open the repository on GitHub, then Actions, “Run the prop board”, “Run workflow”."));
+  } else if (token()) {
+    const go = el("button", "button", "Run now"); go.type = "button"; go.dataset.run = "1"; go.onclick = () => startRun(36);
+    const wide = el("button", "button secondary", "Run now, looking 60 hours ahead"); wide.type = "button"; wide.dataset.run = "1"; wide.onclick = () => startRun(60);
+    const drop = el("button", "linklike", "Forget the token on this phone"); drop.type = "button";
+    drop.onclick = () => { forget(TOKEN_KEY); run.message = "Token removed from this phone."; run.link = null; renderRerun(); };
+    add(card, go, wide, status, el("p", "meta", cost), drop);
+  } else {
+    const params = new URLSearchParams({ name: "NFL board run button", description: "Starts the prop board run from my phone", expires_in: "90", actions: "write" });
+    const make = el("a", null, "Create the token on GitHub");
+    make.href = `https://github.com/settings/personal-access-tokens/new?${params}`; make.target = "_blank"; make.rel = "noopener";
+    const steps = el("ol");
+    add(steps, add(el("li"), make, document.createTextNode(". The name, a 90-day expiry and the Actions permission are filled in.")),
+      el("li", null, `Under “Repository access” choose “Only select repositories” and pick ${name.split("/")[1]}.`),
+      el("li", null, "Check that Permissions shows Actions: Read and write, then tap “Generate token”."),
+      el("li", null, "Copy the token, come back to this page and paste it below."));
+    const field = el("input", "field"); field.type = "password"; field.placeholder = "Paste the token here";
+    field.autocomplete = "off"; field.autocapitalize = "none"; field.spellcheck = false; field.setAttribute("aria-label", "GitHub token");
+    const save = el("button", "button", "Save on this phone"); save.type = "button"; save.onclick = () => saveToken(field.value);
+    add(card, el("p", null, "One tap needs a GitHub token that only this phone keeps. Set it up once:"), steps, field, save, status,
+      el("p", "meta", "The token stays in this browser's storage and is sent only to api.github.com. It can start, stop and read runs in this one repository and nothing else. You can delete it any time on GitHub under Settings, Developer settings, Fine-grained tokens."));
+  }
+  out.push(card);
+
   if (name) {
-    const link = el("a", "button", "Open the Run workflow page");
+    const manual = add(el("details", "card"), el("summary", null, "Run it from GitHub instead"));
+    const link = el("a", "button secondary", "Open the Run workflow page");
     link.href = `https://github.com/${name}/actions/workflows/run.yml`; link.target = "_blank"; link.rel = "noopener";
     const steps = el("ol");
     ["Tap the button above and sign in to GitHub if asked.", "Tap “Run workflow” on the right.",
       "Leave hours at 36, or enter 60 to see Sunday from Friday. Tap the green “Run workflow”.",
-      "Give it about two minutes, then come back here and reload."].forEach((text) => add(steps, el("li", null, text)));
-    add(card, link, steps);
-  } else add(card, el("p", "meta", "Open the repository on GitHub, then Actions, “Run the prop board”, “Run workflow”."));
-  add(card, el("p", "meta", "Each run costs about 2 credits plus 5 to 7 per game in the window."));
-  out.push(card);
+      "Give it about two minutes, then come back here and tap Refresh."].forEach((text) => add(steps, el("li", null, text)));
+    out.push(add(manual, link, steps));
+  }
 
-  out.push(heading("Next scheduled runs"));
+  out.push(heading("Next runs"));
   const runs = el("ul", "plain card");
-  (p.next_runs || []).forEach((run) => add(runs, el("li", null, run.arizona)));
+  (p.next_runs || []).forEach((item) => add(runs, el("li", null, item.arizona + (item.why && item.why !== "scheduled" ? ` · ${item.why}` : ""))));
   if (!(p.next_runs || []).length) add(runs, el("li", null, "The schedule could not be read."));
-  out.push(runs, el("div", "meta", "GitHub can start a scheduled run several minutes late."));
-
-  out.push(heading("Why there is no one-tap button"));
-  out.push(add(el("div", "card"),
-    el("p", null, "Starting a run needs a GitHub token. A token written into this page would be readable by anyone who opens it, so the page links to GitHub instead."),
-    el("p", "meta", "A one-tap button is possible if you keep a token only on your own phone: you would paste a fine-grained token (this repo, Actions write only) once, the browser would store it on the device, and the button would call GitHub directly. Say so if you want that added.")));
+  out.push(runs, el("div", "meta", "Games the fixed schedule does not reach get their own run about 80 minutes before kickoff. GitHub can start a run several minutes late."));
 
   out.push(heading("By hand on your PC"));
   const hand = el("div", "card");
@@ -320,6 +443,7 @@ function renderRerun() {
   add(hand, el("p", "meta", "Run them in that order from the project folder, then commit and push docs/ and logs/."));
   out.push(hand);
   root.replaceChildren(...out);
+  paintRun();
 }
 
 function render() {

@@ -24,7 +24,6 @@ import csv
 import itertools
 import json
 import os
-import re
 import subprocess
 import sys
 import textwrap
@@ -34,7 +33,8 @@ import fetch_nflverse as nfl
 import fetch_odds
 import fetch_status
 import model
-from common import ROOT, az, load_config, utc_now
+import pregame
+from common import ROOT, az, load_config, scheduled_runs, utc_now
 
 DOCS = ROOT / "docs"
 PICKS_FILE, TEXT_FILE, CHANGES_FILE = DOCS / "picks.json", DOCS / "board.txt", DOCS / "changes.json"
@@ -94,22 +94,17 @@ def repo_name() -> str | None:
     return tail[:-4] if tail.endswith(".git") else tail or None
 
 
-def next_runs(now: datetime, count: int = 3) -> list[dict]:
-    """The next scheduled runs, read from the workflow file so the schedule lives in one place."""
-    workflow = ROOT / ".github" / "workflows" / "run.yml"
-    if not workflow.exists():
-        return []
-    times = []
-    for expression in re.findall(r"cron:\s*[\"']([^\"']+)[\"']", workflow.read_text(encoding="utf-8")):
-        minute, hour, _, _, weekday = expression.split()
-        if not (minute.isdigit() and hour.isdigit() and (weekday.isdigit() or weekday == "*")):
-            continue  # this only understands the "minute hour * * weekday" form the workflow uses
-        for days in range(9):
-            day = (now + timedelta(days=days)).replace(hour=int(hour), minute=int(minute), second=0, microsecond=0)
-            cron_weekday = (day.weekday() + 1) % 7  # cron counts from Sunday = 0
-            if day > now and (weekday == "*" or int(weekday) == cron_weekday):
-                times.append(day)
-    return [{"utc": moment.isoformat(timespec="minutes"), "arizona": az(moment)} for moment in sorted(set(times))[:count]]
+def next_runs(now: datetime, count: int = 5) -> list[dict]:
+    """The next runs: the fixed schedule in run.yml, plus the pre-kickoff runs pregame.yml will add for the
+    games in the odds cache that the fixed schedule does not reach in time."""
+    runs = {moment: "scheduled" for moment in scheduled_runs(now, now + timedelta(days=8))}
+    if fetch_odds.EVENTS_FILE.exists():
+        events = json.loads(fetch_odds.EVENTS_FILE.read_text(encoding="utf-8"))["data"]
+        for entry in pregame.plan(now, events):
+            if entry["state"] == "waiting" and entry["at"]:
+                runs.setdefault(entry["at"], f"before {entry['game']} kicks off")
+    return [{"utc": moment.isoformat(timespec="minutes"), "arizona": az(moment), "why": runs[moment]}
+            for moment in sorted(runs)[:count]]
 
 
 # ------------------------------------------------------------- the under lean

@@ -1,0 +1,36 @@
+name: Pregame check
+
+# Every 15 minutes during the season this looks for a game that is 85 to 25 minutes from kickoff and has
+# no board run since inactives were due (they come out 90 minutes before kickoff). If the fixed schedule
+# in run.yml does not reach that game in time, it starts "Run the prop board" itself. That covers
+# Wednesday games, Thanksgiving afternoon, Saturdays, early kickoffs abroad and the weeks when Eastern
+# daylight time moves kickoffs an hour earlier on the Arizona clock.
+#
+# The check costs no Odds API credits (the events feed is free) and installs nothing. It only spends
+# credits when it starts a board run.
+on:
+  schedule:
+    # 4:07 AM to 7:52 PM Arizona time, September to February. Cron is UTC; Arizona is UTC-7 all year.
+    - cron: "7,22,37,52 11-23,0-2 * 1,2,9-12 *"
+  workflow_dispatch:
+
+permissions:
+  actions: write   # to start the board workflow and to see whether one has already started
+  contents: read
+
+concurrency:
+  group: pregame-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Start a board run if a kickoff needs one
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+        run: python3 src/pregame.py --trigger

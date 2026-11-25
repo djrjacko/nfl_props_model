@@ -34,7 +34,6 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-import os
 import sys
 import time
 from datetime import datetime, timedelta, timezone
@@ -44,7 +43,7 @@ from typing import Any
 import pandas as pd
 import requests
 
-from common import ROOT, TEAM_ABBR, az, utc_now
+from common import ROOT, TEAM_ABBR, az, odds_api_key, utc_now
 
 API = "https://api.the-odds-api.com/v4"
 SPORT = "americanfootball_nfl"
@@ -89,16 +88,10 @@ class OddsApiError(RuntimeError):
 
 def load_key() -> tuple[str, str]:
     """Return (key, where it came from). The key itself is never shown anywhere."""
-    key = os.environ.get("ODDS_API_KEY", "").strip()
-    if key:
-        return key, "the ODDS_API_KEY environment variable"
-    env_file = ROOT / ".env"
-    if env_file.exists():
-        for line in env_file.read_text(encoding="utf-8-sig").splitlines():
-            name, _, value = line.strip().partition("=")
-            if name.strip() == "ODDS_API_KEY" and value.strip():
-                return value.strip().strip("\"'"), ".env"
-    raise OddsApiError("no API key found. Put it in .env as ODDS_API_KEY=... or set the ODDS_API_KEY environment variable.")
+    try:
+        return odds_api_key()
+    except LookupError as exc:
+        raise OddsApiError(str(exc)) from None
 
 
 # ------------------------------------------------------------------ API calls

@@ -238,8 +238,15 @@ def _game_line_rows(events: list[dict]) -> list[dict]:
 
 
 def game_lines() -> pd.DataFrame:
-    """Latest pull: one row per game per bookmaker. home_spread is negative when the home team is favoured."""
-    return pd.DataFrame(_game_line_rows(_read(GAME_LINES_FILE)["data"]), columns=GAME_LINE_COLUMNS)
+    """Latest pull: one row per game per bookmaker, for the games in the latest window only.
+
+    home_spread is negative when the home team is favoured. An empty table means no games were in the window.
+    """
+    wanted = {event["id"] for event in _read(EVENTS_FILE)["data"]}
+    if not wanted or not GAME_LINES_FILE.exists():
+        return pd.DataFrame(columns=GAME_LINE_COLUMNS)
+    events = [event for event in _read(GAME_LINES_FILE)["data"] if event["id"] in wanted]
+    return pd.DataFrame(_game_line_rows(events), columns=GAME_LINE_COLUMNS)
 
 
 def _prop_rows(record: dict) -> list[dict]:

@@ -196,6 +196,42 @@ class CachedGameTests(unittest.TestCase):
             self.assertTrue(any("Puka Nacua" in flag for flag in leg["flags"]))
             self.assertEqual(leg["tier"], "B")
 
+    def test_an_empty_window_gives_an_empty_board(self):
+        result = self.price(props=self.props.iloc[0:0], lines=self.lines.iloc[0:0])
+        self.assertEqual((result["games"], result["legs"], result["skips"], result["gated"]), ([], [], [], []))
+
+    def test_every_leg_carries_the_literal_probability(self):
+        for leg in self.result["legs"]:
+            self.assertTrue(0.0 < leg["literal_prob"] < 1.0)
+        golden = next(l for l in self.result["legs"] if l["player"] == "Matthew Golden" and l["market"] == "receptions")
+        literal_mean = model.project_player(self.tables, self.ids["Matthew Golden"], "GB", "LA", self.kick, -2.5, 44.0)["literal"]["rec"]
+        self.assertAlmostEqual(golden["literal_prob"], model.count_over_under(golden["line"], literal_mean, 1.0)[1], places=3)
+        self.assertLess(golden["literal_prob"], 0.5)  # the rules as written lean over here; the calibrated model leans under
+        self.assertGreater(golden["model_prob"], 0.5)
+
+    def test_rooting_conflict_marks_unders_on_a_rooted_team_and_nothing_else(self):
+        plain = self.result  # priced with no rooting teams
+        self.assertFalse(any(l["rooting_conflict"] for l in plain["legs"]))
+        rooted = model.price_slate(self.tables, self.props, self.lines, self.status, rooting=frozenset({"GB", "MIL"}))
+        self.assertEqual(len(rooted["legs"]), len(plain["legs"]))  # tagged, never removed
+        for before, after in zip(plain["legs"], rooted["legs"]):
+            self.assertEqual((before["id"], before["tier"], before["edge"]), (after["id"], after["tier"], after["edge"]))
+        for leg in rooted["legs"]:
+            expected = leg["team"] == "GB" and leg["side"] == "under"
+            self.assertEqual(leg["rooting_conflict"], expected)
+            self.assertEqual(leg["tags"], ["rooting conflict"] if expected else [])
+        self.assertTrue(any(l["rooting_conflict"] for l in rooted["legs"]))
+
+    def test_legs_are_grouped_by_the_game_script_that_helps_them(self):
+        for leg in self.result["legs"]:
+            ahead = leg["correlation_group"].split(": ")[1].replace(" ahead", "")
+            if leg["market"] in ("rush attempts", "rush yards"):
+                self.assertEqual(ahead, leg["team"] if leg["side"] == "over" else leg["opponent"])
+            elif leg["market"] in ("receptions", "receiving yards"):
+                self.assertEqual(ahead, leg["opponent"] if leg["side"] == "over" else leg["team"])
+            else:
+                self.assertEqual(ahead, leg["team"])
+
     # ---- the injury gate
 
     def with_player_status(self, name: str, team: str, state: str, practice: dict | None = None) -> dict:

@@ -20,3 +20,6 @@ data/status/
 .idea/
 Thumbs.db
 .DS_Store
+
+# local preview server config for the desktop app
+.claude/

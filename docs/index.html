@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<title>NFL Prop Board</title>
+<style>
+  :root {
+    --bg: #f4f5f7; --card: #ffffff; --text: #14181f; --muted: #5b6472; --line: #e1e5eb;
+    --accent: #1f5fd1; --a-tier: #17733a; --a-bg: #e3f4e8; --b-tier: #8a5a00; --b-bg: #fbf0d4;
+    --flag: #a8261c; --flag-bg: #fdeceb; --tag: #5b36b8; --tag-bg: #efe9fb; --warn-bg: #fff3cf; --warn-line: #e8c33c;
+    --good: #17733a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1116; --card: #171b22; --text: #e8ebf0; --muted: #9aa4b2; --line: #2a313c;
+      --accent: #7fb0ff; --a-tier: #5fd083; --a-bg: #15301e; --b-tier: #e6b94a; --b-bg: #332a10;
+      --flag: #ff9d94; --flag-bg: #3a1c1a; --tag: #c9b3ff; --tag-bg: #2a2143; --warn-bg: #342c0f; --warn-line: #7d6a1d;
+      --good: #5fd083;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { position: sticky; top: 0; z-index: 5; background: var(--card); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top); }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+  .top { padding-top: 10px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .refresh { min-height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--accent); font: inherit; font-weight: 600; font-size: 0.88rem; cursor: pointer; }
+  .refresh[disabled] { color: var(--muted); }
+  h1 { font-size: 1.15rem; margin: 0; letter-spacing: -0.01em; }
+  .updated { color: var(--muted); font-size: 0.82rem; margin-top: 1px; }
+  nav { display: flex; margin-top: 8px; }
+  nav button { flex: 1; min-height: 44px; background: none; border: 0; border-bottom: 3px solid transparent; color: var(--muted); font: inherit; font-weight: 600; cursor: pointer; }
+  nav button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+  main { padding: 14px 0 48px; }
+  section[hidden] { display: none; }
+  h2 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 24px 0 8px; }
+  h2 .count { font-weight: 400; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; }
+  .banner { border: 1px solid var(--warn-line); background: var(--warn-bg); border-radius: 12px; padding: 10px 14px; margin-bottom: 10px; font-size: 0.93rem; }
+  .summary { font-weight: 650; font-size: 1.02rem; margin: 2px 0 10px; }
+  .meta { color: var(--muted); font-size: 0.84rem; }
+  .game { font-size: 0.93rem; padding: 3px 0 7px; }
+  .game span { display: block; }
+  .game b { font-weight: 650; }
+  .row { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+  .who { font-weight: 650; }
+  .bet { font-size: 1.02rem; margin: 4px 0 8px; }
+  .price { white-space: nowrap; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .tier { display: inline-block; min-width: 1.5em; text-align: center; border-radius: 6px; font-size: 0.78rem; font-weight: 700; padding: 1px 6px; margin-right: 6px; vertical-align: 1px; }
+  .tier.A { color: var(--a-tier); background: var(--a-bg); }
+  .tier.B { color: var(--b-tier); background: var(--b-bg); }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 6px 0; }
+  .stat { background: var(--bg); border-radius: 8px; padding: 6px 4px; text-align: center; }
+  .stat span { display: block; font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .stat b { font-variant-numeric: tabular-nums; font-size: 0.98rem; }
+  .stat.edge b { color: var(--good); }
+  .chip { display: inline-block; border-radius: 999px; font-size: 0.76rem; font-weight: 600; padding: 2px 9px; margin: 4px 6px 0 0; }
+  .chip.tag { color: var(--tag); background: var(--tag-bg); }
+  .chip.status { color: var(--b-tier); background: var(--b-bg); }
+  .flag { color: var(--flag); background: var(--flag-bg); border-radius: 8px; padding: 6px 9px; font-size: 0.85rem; margin-top: 6px; }
+  details { margin-top: 8px; }
+  summary { color: var(--accent); font-size: 0.88rem; font-weight: 600; cursor: pointer; padding: 4px 0; }
+  details p { margin: 6px 0 0; font-size: 0.92rem; }
+  .ticket ul, .plain { list-style: none; margin: 6px 0 0; padding: 0; }
+  .ticket li { padding: 3px 0; font-size: 0.93rem; display: flex; justify-content: space-between; gap: 10px; }
+  .plain li { padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 0.93rem; }
+  .plain li:last-child { border-bottom: 0; }
+  .kind { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin-right: 6px; }
+  .toggle { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--muted); margin: 10px 0 0; min-height: 44px; }
+  .toggle input { width: 20px; height: 20px; }
+  .button { display: block; text-align: center; background: var(--accent); color: var(--card); font-weight: 700; text-decoration: none; border-radius: 12px; padding: 14px; margin: 10px 0; }
+  ol { padding-left: 1.3em; margin: 8px 0; }
+  ol li { margin: 4px 0; }
+  code { background: var(--bg); border-radius: 6px; padding: 1px 5px; font-size: 0.86em; word-break: break-word; }
+  a { color: var(--accent); }
+  footer { color: var(--muted); font-size: 0.78rem; margin-top: 28px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>NFL Prop Board</h1>
+        <div class="updated" id="updated">Loading…</div>
+      </div>
+      <button id="refresh" class="refresh" type="button">Refresh</button>
+    </div>
+    <nav role="tablist">
+      <button role="tab" id="t-board" data-tab="board" aria-selected="true">Board</button>
+      <button role="tab" id="t-changes" data-tab="changes" aria-selected="false">Changes</button>
+      <button role="tab" id="t-rerun" data-tab="rerun" aria-selected="false">Re-run</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="board" role="tabpanel" aria-labelledby="t-board"></section>
+  <section id="changes" role="tabpanel" aria-labelledby="t-changes" hidden></section>
+  <section id="rerun" role="tabpanel" aria-labelledby="t-rerun" hidden></section>
+</main>
+
+<script>
+"use strict";
+const state = { picks: null, changes: null, hideConflicts: false, tab: "board" };
+const $ = (id) => document.getElementById(id);
+
+function el(tag, cls, text) {
+  const node = document.createElement(tag);
+  if (cls) node.className = cls;
+  if (text !== undefined && text !== null) node.textContent = text;
+  return node;
+}
+function add(parent, ...children) { children.forEach((child) => child && parent.appendChild(child)); return parent; }
+const pct = (x, digits = 1) => (x * 100).toFixed(digits) + "%";
+const signed = (n) => (n > 0 ? "+" : "") + n;
+const betText = (leg) => (leg.side === "yes" ? leg.market : `${leg.side} ${leg.line} ${leg.market}`);
+function remember(key, value) { try { localStorage.setItem(key, value); } catch (e) { /* private window */ } }
+function recall(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+
+function ago(utc) {
+  const minutes = Math.max(0, Math.round((Date.now() - new Date(utc).getTime()) / 60000));
+  if (minutes < 1) return "just now";
+  if (minutes < 60) return `${minutes} min ago`;
+  const hours = Math.floor(minutes / 60);
+  return hours < 48 ? `${hours} h ${minutes % 60} min ago` : `${Math.floor(hours / 24)} days ago`;
+}
+
+// The repo is read from the page address (owner.github.io/name), so no account name is written in this file.
+function repo() {
+  if (location.hostname.endsWith(".github.io")) {
+    const name = location.pathname.split("/").filter(Boolean)[0];
+    if (name) return `${location.hostname.split(".")[0]}/${name}`;
+  }
+  return state.picks && state.picks.repo;
+}
+
+async function load() {
+  const bust = `?t=${Date.now()}`;  // a new address every time, so the phone never shows a stale board
+  $("refresh").disabled = true;
+  try {
+    const picks = await fetch(`picks.json${bust}`, { cache: "no-store" });
+    if (!picks.ok) throw new Error(`picks.json answered ${picks.status}`);
+    state.picks = await picks.json();
+    const changes = await fetch(`changes.json${bust}`, { cache: "no-store" });
+    state.changes = changes.ok ? await changes.json() : null;
+    render();
+  } catch (error) {
+    $("updated").textContent = "Could not load";
+    const box = add(el("div", "card"), el("div", "who", "The board could not be loaded."), el("p", "meta", String(error.message || error)));
+    const retry = el("a", "button", "Try again");
+    retry.href = "#"; retry.onclick = (event) => { event.preventDefault(); load(); };
+    $("board").replaceChildren(add(box, retry));
+  } finally {
+    $("refresh").disabled = false;
+  }
+}
+
+function stat(label, value, cls) {
+  return add(el("div", "stat" + (cls ? " " + cls : "")), el("span", null, label), el("b", null, value));
+}
+
+function legCard(leg) {
+  const card = el("div", "card");
+  const left = add(el("div"), add(el("div", "who"), el("span", "tier " + leg.tier, leg.tier), document.createTextNode(leg.player)),
+    el("div", "meta", `${leg.team} ${leg.position} · ${leg.game}`));
+  add(card, add(el("div", "row"), left, el("div", "price", `${leg.book} ${signed(leg.price)}`)));
+  add(card, el("div", "bet", betText(leg)));
+  add(card, add(el("div", "stats"), stat("Model", pct(leg.model_prob)), stat("Book", pct(leg.implied_prob)),
+    stat("Edge", "+" + pct(leg.edge), "edge"), stat("As written", pct(leg.literal_prob))));
+  const chips = el("div");
+  (leg.tags || []).forEach((tag) => add(chips, el("span", "chip tag", tag)));
+  if (leg.status && leg.status !== "active") add(chips, el("span", "chip status", leg.status));
+  if (chips.childNodes.length) add(card, chips);
+  (leg.flags || []).forEach((flag) => add(card, el("div", "flag", flag)));
+  const why = add(el("details"), el("summary", null, "Why"), el("p", null, leg.reasoning));
+  const books = Object.entries(leg.books || {}).map(([book, o]) =>
+    o.yes !== undefined ? `${book} ${signed(o.yes)}` : `${book} ${o.line}: over ${signed(o.over)}, under ${signed(o.under)}`).join(" · ");
+  add(why, el("p", "meta", `Game script: ${leg.correlation_group}. Typical game: ${leg.projection}. ${books}`));
+  return add(card, why);
+}
+
+function ticketCard(ticket, heading, boostedPrice) {
+  const card = el("div", "card ticket");
+  if (heading) add(card, el("div", "meta", heading));
+  add(card, add(el("div", "row"), el("div", "who", `${ticket.book} about ${signed(ticket.price)}`),
+    el("div", "price", boostedPrice !== undefined ? `boosted ${signed(boostedPrice)}` : "")));
+  const list = el("ul");
+  ticket.legs.forEach((leg) => add(list, add(el("li"), el("span", null, `${leg.player} ${leg.bet}${leg.flagged ? " (flagged)" : ""}`), el("span", "price", signed(leg.price)))));
+  add(card, list, el("div", "meta", `Model ${pct(ticket.model_prob, 0)} against ${pct(ticket.implied_prob, 0)} implied · ${ticket.group}`));
+  if (ticket.rooting_conflict) add(card, el("span", "chip tag", "rooting conflict"));
+  return card;
+}
+
+function heading(text, count) {
+  const h = el("h2", null, text);
+  if (count !== undefined) add(h, el("span", "count", ` · ${count}`));
+  return h;
+}
+
+function renderBoard() {
+  const p = state.picks, root = $("board"), out = [];
+  const hidden = (item) => state.hideConflicts && item.rooting_conflict;
+  const ageHours = (Date.now() - new Date(p.generated_utc).getTime()) / 3600000;
+  if (ageHours > 6) out.push(el("div", "banner", `This board is ${Math.round(ageHours)} hours old. Lines and injuries may have moved; see the Re-run tab.`));
+  out.push(el("div", "summary", p.summary.line));
+  if (p.summary.warning) out.push(el("div", "banner", p.summary.warning));
+
+  const slate = el("div", "card");
+  if (!p.slate.length) add(slate, el("div", "meta", `No games with posted odds kick off in the next ${p.window_hours} hours.`));
+  p.slate.forEach((g) => add(slate, add(el("div", "game"), add(el("span"), el("b", null, g.game), document.createTextNode(`  ${g.kickoff_arizona}`)),
+    el("span", "meta", `${g.home} ${signed(g.home_spread)}, total ${g.total}${g.blowout ? " · blowout rule" : ""}`))));
+  const credits = p.credits.remaining === null ? "Odds API credits not recorded"
+    : `Odds API credits: ${p.credits.this_run} this run, ${p.credits.used.toLocaleString()} used, ${p.credits.remaining.toLocaleString()} left`;
+  add(slate, el("div", "meta", credits));
+  out.push(slate);
+
+  const conflicts = p.legs.filter((leg) => leg.rooting_conflict).length;
+  if (conflicts) {
+    const box = el("input"); box.type = "checkbox"; box.checked = state.hideConflicts;
+    box.onchange = () => { state.hideConflicts = box.checked; remember("hideConflicts", box.checked ? "1" : ""); renderBoard(); };
+    out.push(add(el("label", "toggle"), box, document.createTextNode(`Hide the ${conflicts} rooting-conflict legs (${(p.rooting_teams || []).join(", ")})`)));
+  }
+
+  out.push(heading("Boosts"));
+  p.boosts.forEach((boost) => {
+    const label = `${boost.name} · $${boost.max_stake} max · ${boost.legs} legs priced ${boost.range} · ${boost.pick}`;
+    if (boost.ticket && !hidden(boost.ticket)) out.push(ticketCard(boost.ticket, label, boost.ticket.boosted_price));
+    else if (boost.ticket && boost.alternative) out.push(ticketCard(boost.alternative, label, boost.alternative.boosted_price));
+    else out.push(add(el("div", "card"), el("div", "meta", label), el("div", null, boost.ticket ? "The only ticket in range has a rooting conflict." : boost.note)));
+    if (boost.ticket && boost.alternative && !hidden(boost.ticket)) out.push(ticketCard(boost.alternative, "If you skip that one for the rooting conflict", boost.alternative.boosted_price));
+  });
+  out.push(el("div", "meta", "Ticket prices are the legs multiplied together. A book prices a same-game parlay shorter than that when the legs move together, so check the real price is still in range before using a boost."));
+
+  [["Same-game parlays, 2 legs", p.sgps.two_leg], ["Same-game parlays, 3 legs", p.sgps.three_leg]].forEach(([title, tickets]) => {
+    const shown = tickets.filter((ticket) => !hidden(ticket));
+    out.push(heading(title, shown.length));
+    if (!shown.length) out.push(el("div", "meta", "None on this board."));
+    shown.forEach((ticket) => out.push(ticketCard(ticket)));
+  });
+
+  [["A", "A tier · edge 8% or more, no flags"], ["B", "B tier · edge 5% to 8%, or any flag"]].forEach(([tier, title]) => {
+    const legs = p.legs.filter((leg) => leg.tier === tier && !hidden(leg));
+    out.push(heading(title, legs.length));
+    if (!legs.length) out.push(el("div", "meta", "None on this board."));
+    legs.forEach((leg) => out.push(legCard(leg)));
+  });
+
+  out.push(heading("Skips", p.skips.length));
+  if (p.skips.length) {
+    const list = el("ul", "plain card");
+    p.skips.forEach((skip) => add(list, add(el("li"), el("span", "kind", skip.kind),
+      document.createTextNode(`${skip.player} ${betText(skip)} (${skip.book} ${signed(skip.price)}). ${skip.reason}`))));
+    out.push(list);
+  } else out.push(el("div", "meta", "No popular props to warn about."));
+
+  if (p.notes.length) {
+    out.push(heading("Notes"));
+    const list = el("ul", "plain card");
+    p.notes.forEach((note) => add(list, el("li", null, note)));
+    out.push(list);
+  }
+  const s = p.sources;
+  out.push(el("footer", null, `Odds pulled ${s.odds_pulled_utc ? ago(s.odds_pulled_utc) : "never"} from The Odds API (DraftKings, FanDuel). ` +
+    `Player status ${s.status_generated_utc ? ago(s.status_generated_utc) : "not available"} (${s.status_source || "none"}). ` +
+    `Usage data from nflverse through week ${s.last_completed_week}. Calibration ${p.calibration}. Model output for personal use, not advice.`));
+  root.replaceChildren(...out);
+}
+
+function renderChanges() {
+  const c = state.changes, root = $("changes"), out = [];
+  if (!c) { root.replaceChildren(el("div", "card", "No change log has been written yet.")); return; }
+  out.push(el("div", "summary", c.headline));
+  if (c.previous_arizona) out.push(el("div", "meta", `Comparing ${c.generated_arizona} with ${c.previous_arizona}.`));
+  [["Ruled out and status", c.status_changed], ["Removed", c.removed], ["Added", c.added], ["Line moved", c.line_moved],
+    ["Price moved", c.price_moved], ["Tier changed", c.tier_changed]].forEach(([title, items]) => {
+    if (!items || !items.length) return;
+    out.push(heading(title, items.length));
+    const list = el("ul", "plain card");
+    items.forEach((item) => add(list, el("li", null, item.text)));
+    out.push(list);
+  });
+  root.replaceChildren(...out);
+}
+
+function renderRerun() {
+  const p = state.picks, root = $("rerun"), out = [], name = repo();
+  const card = el("div", "card");
+  add(card, el("div", "who", "Run the board now"));
+  if (name) {
+    const link = el("a", "button", "Open the Run workflow page");
+    link.href = `https://github.com/${name}/actions/workflows/run.yml`; link.target = "_blank"; link.rel = "noopener";
+    const steps = el("ol");
+    ["Tap the button above and sign in to GitHub if asked.", "Tap “Run workflow” on the right.",
+      "Leave hours at 36, or enter 60 to see Sunday from Friday. Tap the green “Run workflow”.",
+      "Give it about two minutes, then come back here and reload."].forEach((text) => add(steps, el("li", null, text)));
+    add(card, link, steps);
+  } else add(card, el("p", "meta", "Open the repository on GitHub, then Actions, “Run the prop board”, “Run workflow”."));
+  add(card, el("p", "meta", "Each run costs about 2 credits plus 5 to 7 per game in the window."));
+  out.push(card);
+
+  out.push(heading("Next scheduled runs"));
+  const runs = el("ul", "plain card");
+  (p.next_runs || []).forEach((run) => add(runs, el("li", null, run.arizona)));
+  if (!(p.next_runs || []).length) add(runs, el("li", null, "The schedule could not be read."));
+  out.push(runs, el("div", "meta", "GitHub can start a scheduled run several minutes late."));
+
+  out.push(heading("Why there is no one-tap button"));
+  out.push(add(el("div", "card"),
+    el("p", null, "Starting a run needs a GitHub token. A token written into this page would be readable by anyone who opens it, so the page links to GitHub instead."),
+    el("p", "meta", "A one-tap button is possible if you keep a token only on your own phone: you would paste a fine-grained token (this repo, Actions write only) once, the browser would store it on the device, and the button would call GitHub directly. Say so if you want that added.")));
+
+  out.push(heading("By hand on your PC"));
+  const hand = el("div", "card");
+  ["python src/fetch_nflverse.py", "python src/fetch_odds.py --pull", "python src/fetch_status.py", "python src/board.py"]
+    .forEach((command) => add(hand, add(el("p"), el("code", null, command))));
+  add(hand, el("p", "meta", "Run them in that order from the project folder, then commit and push docs/ and logs/."));
+  out.push(hand);
+  root.replaceChildren(...out);
+}
+
+function render() {
+  const p = state.picks;
+  $("updated").textContent = `Updated ${p.generated_arizona} · ${ago(p.generated_utc)}`;
+  renderBoard(); renderChanges(); renderRerun();
+}
+
+function show(tab) {
+  state.tab = tab;
+  document.querySelectorAll("nav button").forEach((button) => button.setAttribute("aria-selected", String(button.dataset.tab === tab)));
+  ["board", "changes", "rerun"].forEach((id) => { $(id).hidden = id !== tab; });
+  history.replaceState(null, "", tab === "board" ? location.pathname : `#${tab}`);
+  window.scrollTo(0, 0);
+}
+
+const tabFromAddress = () => (["changes", "rerun"].includes(location.hash.slice(1)) ? location.hash.slice(1) : "board");
+document.querySelectorAll("nav button").forEach((button) => { button.onclick = () => show(button.dataset.tab); });
+window.addEventListener("hashchange", () => show(tabFromAddress()));
+$("refresh").onclick = load;
+state.hideConflicts = recall("hideConflicts") === "1";
+if (tabFromAddress() !== "board") show(tabFromAddress());
+load();
+setInterval(() => { if (state.picks) $("updated").textContent = `Updated ${state.picks.generated_arizona} · ${ago(state.picks.generated_utc)}`; }, 60000);
+setInterval(() => { if (!document.hidden) load(); }, 5 * 60000);
+document.addEventListener("visibilitychange", () => { if (!document.hidden) load(); });
+</script>
+</body>
+</html>

@@ -53,7 +53,7 @@ import pandas as pd
 import fetch_nflverse as nfl
 import fetch_odds
 import fetch_status
-from common import az, norm_name, utc_now
+from common import az, load_config, norm_name, utc_now
 
 # ----------------------------------------------------------------- constants
 
@@ -184,6 +184,18 @@ def model_probability(stat: str, line: float | None, mean: float) -> tuple[float
         return count_over_under(line, max(mean, 1e-6), DISPERSION[stat])
     base, slope = SIGMA[stat]
     return normal_over_under(line, YARDS_CENTRE[stat] * mean, base + slope * max(mean, 0.0))
+
+
+def literal_probability(stat: str, line: float | None, mean: float) -> tuple[float, float]:
+    """The same question answered by the rules exactly as written: a pure Poisson for counts and a normal
+    centred on the average for yards. `mean` is the uncalibrated projection."""
+    if stat == "td":
+        yes = 1.0 - math.exp(-mean)
+        return yes, 1.0 - yes
+    if stat in DISPERSION:
+        return count_over_under(line, max(mean, 1e-6), 1.0)
+    base, slope = SIGMA[stat]
+    return normal_over_under(line, mean, base + slope * max(mean, 0.0))
 
 
 def expected_scorers(total: float) -> float:
@@ -404,6 +416,12 @@ def project_player(t: Tables, gsis_id: str, team: str, opponent: str, kick, fav:
     td_share = floor + on_red_zone * rz_share + on_touches * touch_share
     team_tds = implied_team_tds(total / 2 + fav / 2)
 
+    # The same player under the rules exactly as written, kept beside the calibrated numbers so the two can be
+    # compared over a season: last-3 shares only, no pull toward the middle, red-zone share alone for touchdowns.
+    lit_att, lit_targets = team_proj["runs"] * recent_carry, team_proj["targets"] * recent_target
+    literal = {"rush_att": lit_att, "rush_yds": lit_att * ypc, "rec": lit_targets * catch_rate,
+               "rec_yds": lit_targets * ypt, "td": rz_share * team_tds}
+
     missed = int((t.team_before(team, kick)["kick"] > recent["kick"].iloc[-1]).sum())  # team games since he last played
     return {
         "gsis_id": gsis_id, "name": recent["name"].iloc[-1], "team": team, "opponent": opponent, "position": position,
@@ -415,7 +433,7 @@ def project_player(t: Tables, gsis_id: str, team: str, opponent: str, kick, fav:
         "own_ypc": float(own_ypc), "opp_ypc": float(opp_ypc), "ypc": float(ypc),
         "own_ypt": float(own_ypt), "opp_ypt": float(opp_ypt), "ypt": float(ypt), "catch_rate": float(catch_rate),
         "rz_share": rz_share, "rz_share_plain": rz_share_plain, "touch_share": touch_share, "td_share": td_share,
-        "team_tds": team_tds, "raw": raw,
+        "team_tds": team_tds, "raw": raw, "literal": literal,
         "rush_att": _calibrate("rush_att", raw["rush_att"]), "rush_yds": _calibrate("rush_yds", raw["rush_yds"]),
         "rec": _calibrate("rec", raw["rec"]), "rec_yds": _calibrate("rec_yds", raw["rec_yds"]),
         "td": td_share * team_tds,
@@ -483,12 +501,17 @@ def _availability(entry: dict | None) -> tuple[str | None, str | None]:
     return None, None
 
 
-def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dict | None) -> dict:
-    """Turn cached odds into legs, skips and gated players. Nothing here touches the network."""
+def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dict | None,
+                rooting: frozenset[str] | set[str] = frozenset()) -> dict:
+    """Turn cached odds into legs, skips and gated players. Nothing here touches the network.
+
+    `rooting` is the set of teams the owner roots for: a leg that wins when one of them does badly is tagged
+    "rooting conflict" and otherwise treated like any other leg.
+    """
     by_id, by_status_name, status_teams = _status_lookup(status)
     games = _slate_games(t, lines)
     pool = t.players[(t.players["last_season"] == t.season) & ~t.players["status"].isin(NOT_ON_TEAM)]
-    legs, skips, gated, notes, projections = [], [], [], [], []
+    legs, skips, gated, notes, projections, priced = [], [], [], [], [], []
     too_small = 0
 
     for game in games:
@@ -600,6 +623,10 @@ def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dic
                     continue
                 side, book, line, price, model_p, fair_p = max(options, key=lambda o: (o[4] - o[5], o[3]))
                 edge = model_p - fair_p
+                literal_p = literal_probability(stat, line, proj["literal"][stat])[1 if side == "under" else 0]
+                priced.append({"id": f"{gsis_id}|{market}|{side}", "player_id": gsis_id, "player": proj["name"], "team": team,
+                               "market_key": market, "market": spec["label"], "side": side, "line": line,
+                               "book": BOOK_NAME.get(book, book), "price": int(price), "edge": round(edge, 4)})
 
                 flags = list(info["flags"])
                 if proj["status_flag"]:
@@ -630,24 +657,20 @@ def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dic
                         flags.append(f"role change: {mate['name']} missed the last {mate['missed']} and may return")
 
                 is_favorite = game["favorite"] == team
-                script = "favorite" if game["fav"][team] >= 1 else ("underdog" if game["fav"][team] <= -1 else "even")
+                # Legs share a game script when the same team being ahead helps all of them: that team's backs
+                # run more and its players score, it throws less, and the other side runs less and throws more.
                 primary = max((m for m in info["roles"] if m["position"] in ("WR", "TE")), key=lambda m: m["target_share"], default=None)
-                group = role = None
-                if side in ("over", "yes"):
-                    if proj["position"] == "RB" and stat in ("rush_att", "rush_yds"):
-                        group, role = f"{team} run game ({script})", "rb_volume"
-                    elif stat == "td" and proj["position"] == "RB":
-                        group, role = f"{team} run game ({script})", "rb_td"
-                    elif stat == "td" and primary and primary["gsis_id"] == gsis_id:
-                        group, role = (f"{team} run game ({script})" if script == "favorite" else f"{team} pass game ({script})"), "primary_target_td"
-                    elif stat == "td":
-                        group, role = f"{team} pass game ({script})", "target_td"
-                    else:
-                        group, role = f"{team} pass game ({script})", "target_volume"
-                elif stat in ("rush_att", "rush_yds"):  # unders that need the same thing: this team running less
-                    group, role = f"{team} run game unders", "rb_volume_under"
+                other = proj["opponent"]
+                if stat == "td":
+                    ahead = team
+                    role = "rb_td" if proj["position"] == "RB" else (
+                        "primary_target_td" if primary and primary["gsis_id"] == gsis_id else "td")
+                elif stat in ("rush_att", "rush_yds"):
+                    ahead, role = (team, "rb_volume") if side == "over" else (other, "rb_volume_under")
                 else:
-                    group, role = f"{team} pass game unders", "target_volume_under"
+                    ahead, role = (other, "target_volume") if side == "over" else (team, "target_volume_under")
+                group = f"{game['game']}: {ahead} ahead"
+                conflict = side == "under" and team in rooting  # wins when a team the owner roots for does badly
 
                 shown = YARDS_CENTRE[stat] * mean if kind == "yards" else mean
                 leg = {
@@ -657,8 +680,13 @@ def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dic
                     "market_key": market, "side": side, "line": line, "book": BOOK_NAME.get(book, book), "price": int(price),
                     "books": {BOOK_NAME.get(b, b): o for b, o in offers.items()}, "projection": round(shown, 2),
                     "average": round(mean, 2), "model_prob": round(model_p, 4), "implied_prob": round(fair_p, 4),
-                    "edge": round(edge, 4), "tier": None, "flags": flags, "status": proj["status"],
-                    "correlation_group": group, "correlation_role": role, "starter": starter,
+                    "edge": round(edge, 4), "literal_prob": round(literal_p, 4), "tier": None, "flags": flags,
+                    "tags": ["rooting conflict"] if conflict else [], "rooting_conflict": conflict,
+                    "status": proj["status"], "correlation_group": group, "correlation_role": role, "starter": starter,
+                    # this side at every book that offers it, so a same-game ticket can be priced at one book
+                    "offers": [{"book": BOOK_NAME.get(b, b), "line": ln, "price": int(pr), "model_prob": round(mp, 4),
+                                "implied_prob": round(fp, 4), "edge": round(mp - fp, 4)}
+                               for s, b, ln, pr, mp, fp in options if s == side],
                     "reasoning": _reasoning(stat, side, line, proj, game),
                 }
                 drop = proj["drop"] and f"{proj['name']} {proj['drop']}" or info["drop"]
@@ -676,7 +704,7 @@ def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dic
                 if kind == "yards" and game["blowout"] and is_favorite and starter:
                     why = (f"Blowout rule: {team} are favoured by {abs(game['home_spread']):g}, so starters may sit late and "
                            "the main yardage line is not used")
-                    alt = _alt_line(leg, player_rows, market, offers, mean, stat)
+                    alt = _alt_line(leg, player_rows, market, offers, mean, stat, proj["literal"][stat])
                     if alt and MIN_EDGE <= alt["edge"] < BIG_EDGE:
                         alt["flags"] = flags + ["blowout: lower alt line in place of the main line"]
                         alt["reasoning"] = f"{why}. {alt['reasoning']} The first-half version is the other option if your book has it."
@@ -709,6 +737,7 @@ def price_slate(t: Tables, props: pd.DataFrame, lines: pd.DataFrame, status: dic
         "generated_utc": utc_now().isoformat(timespec="seconds"), "season": t.season,
         "games": [{k: v for k, v in g.items() if k != "kick"} for g in games],
         "legs": legs, "skips": skips, "gated": gated, "notes": sorted(set(notes)), "projections": projections,
+        "priced": priced,  # every prop the model put a number on, leg or not: board.py uses it to explain changes
     }
 
 
@@ -738,7 +767,8 @@ def _skip_reason(stat: str, leg: dict, shown: float) -> str:
             f"a typical game is about {shown:.1f} against a line of {leg['line']:g}.")
 
 
-def _alt_line(leg: dict, player_rows: pd.DataFrame, market: str, offers: dict, mean: float, stat: str) -> dict | None:
+def _alt_line(leg: dict, player_rows: pd.DataFrame, market: str, offers: dict, mean: float, stat: str,
+              literal_mean: float) -> dict | None:
     """Blowout rule: the best lower alt Over, with the main market's margin taken off its one-sided price."""
     alts = player_rows[(player_rows["market"] == ALT_OF.get(market)) & (player_rows["side"] == "Over")
                        & (player_rows["price"] >= ALT_PRICE_FLOOR)]
@@ -751,10 +781,17 @@ def _alt_line(leg: dict, player_rows: pd.DataFrame, market: str, offers: dict, m
         fair = american_to_prob(row.price) / (1.0 + hold)
         model_p = model_probability(stat, float(row.line), mean)[0]
         if best is None or model_p - fair > best["edge"]:
-            best = {**leg, "id": leg["id"].rsplit("|", 1)[0] + "|over|alt", "side": "over", "correlation_group": None,
-                    "correlation_role": None, "market": leg["market"] + " (alt line)", "line": float(row.line),
-                    "book": BOOK_NAME.get(row.book, row.book), "price": int(row.price), "model_prob": round(model_p, 4),
-                    "implied_prob": round(fair, 4), "edge": round(model_p - fair, 4),
+            book = BOOK_NAME.get(row.book, row.book)
+            # an alt over is an over, so it never profits from the player's own team doing badly
+            ahead = leg["team"] if stat == "rush_yds" else leg["opponent"]
+            best = {**leg, "id": leg["id"].rsplit("|", 1)[0] + "|over|alt", "side": "over", "tags": [],
+                    "rooting_conflict": False, "correlation_group": f"{leg['game']}: {ahead} ahead",
+                    "correlation_role": "rb_volume" if stat == "rush_yds" else "target_volume",
+                    "market": leg["market"] + " (alt line)", "line": float(row.line), "book": book, "price": int(row.price),
+                    "model_prob": round(model_p, 4), "implied_prob": round(fair, 4), "edge": round(model_p - fair, 4),
+                    "literal_prob": round(literal_probability(stat, float(row.line), literal_mean)[0], 4),
+                    "offers": [{"book": book, "line": float(row.line), "price": int(row.price), "model_prob": round(model_p, 4),
+                                "implied_prob": round(fair, 4), "edge": round(model_p - fair, 4)}],
                     "reasoning": f"Alt line {float(row.line):g} at {int(row.price):+d}: model {model_p:.0%} against {fair:.0%} implied."}
     return best
 
@@ -848,7 +885,63 @@ def print_backtest(t: Tables) -> None:
         left = f"{len(a):>5}{a['said'].mean():>12.1%}{a['a_td'].mean():>9.1%}" if len(a) else f"{0:>5}{'-':>12}{'-':>9}"
         right = f"{len(b):>5}{b['literal'].mean():>8.1%}{b['a_td'].mean():>9.1%}" if len(b) else f"{0:>5}{'-':>8}{'-':>9}"
         print(f"  {f'{lo:.0%}-{hi:.0%}':<14}{left}   |  {'':<21}{right}")
+    print("\n4. tested and not adopted: taking shares only from the games since a long-term absence began")
+    for line in absence_window_check(t):
+        print(f"  {line}")
     print("\nThe calibration constants were fitted on these same weeks, so this is a fit check, not a forecast test.")
+
+
+def absence_window_check(t: Tables, first_week: int = 5) -> list[str]:
+    """Back-test of an idea that is NOT in the model, kept so it can be re-checked as the season goes on.
+
+    The idea: when a teammate with a real role has been out for at least one game and is still out, take
+    everyone else's share only from the games since his absence began (the latest absence if several),
+    instead of the model's shares. Each is scored against the share the player actually got.
+    """
+    rows = []
+    for game in t.team_games[t.team_games["week"] >= first_week].itertuples():
+        prior = t.player_games[(t.player_games["team"] == game.team) & (t.player_games["kick"] < game.kick)]
+        if prior.empty:
+            continue
+        last_team_kick = prior["kick"].max()
+        now = t.player_games[(t.player_games["game_id"] == game.game_id) & (t.player_games["team"] == game.team)]
+        per = prior.groupby("gsis_id").agg(position=("position", "last"), carries=("carries", "sum"),
+                                           runs=("team_rush_att", "sum"), targets=("targets", "sum"),
+                                           throws=("team_targets", "sum"), last=("kick", "max"))
+        absent = per[~per.index.isin(now["gsis_id"]) & (per["last"] < last_team_kick)]
+        starts = {
+            "carry": absent[(absent["position"] == "RB") & (absent["carries"] / absent["runs"] >= ROLE_SHARE["carry"])]["last"].max(),
+            "target": absent[absent["targets"] / absent["throws"] >= ROLE_SHARE["target"]]["last"].max(),
+        }
+        if pd.isna(starts["carry"]) and pd.isna(starts["target"]):
+            continue
+        for actual in now.itertuples():
+            proj = project_player(t, actual.gsis_id, game.team, game.opponent, game.kick, game.fav, game.total_line)
+            if proj is None or proj["games_missed"]:
+                continue
+            mine = prior[prior["gsis_id"] == actual.gsis_id]
+            for kind, stat, total, team_now, positions, floor in (
+                    ("carry", "carries", "team_rush_att", game.rush_att, ("RB",), 0.08),
+                    ("target", "targets", "team_targets", game.targets, ("RB", "WR", "TE"), 0.05)):
+                if pd.isna(starts[kind]) or actual.position not in positions or proj[f"{kind}_share"] < floor:
+                    continue
+                since = mine[mine["kick"] > starts[kind]]
+                if since.empty or not since[total].sum():
+                    continue
+                rows.append({"kind": kind, "model": proj[f"{kind}_share"], "since": since[stat].sum() / since[total].sum(),
+                             "actual": getattr(actual, stat) / max(team_now, 1), "games": len(since)})
+    found = pd.DataFrame(rows)
+    lines = []
+    for kind in ("target", "carry"):
+        s = found[found["kind"] == kind] if len(found) else found
+        if len(s) < 20:
+            lines.append(f"{kind} share: too few cases to judge yet ({len(s)})")
+            continue
+        miss_model, miss_since = (s["model"] - s["actual"]).abs().mean(), (s["since"] - s["actual"]).abs().mean()
+        verdict = "the model's shares are closer" if miss_model <= miss_since else "the since-absence window is closer"
+        lines.append(f"{kind + ' share':<13} n={len(s):>4}  average miss: model's shares {miss_model:.3f}, since-absence window "
+                     f"{miss_since:.3f}  ->  {verdict}")
+    return lines
 
 
 # ----------------------------------------------------------------------- CLI
@@ -873,12 +966,14 @@ def print_slate(result: dict) -> None:
     for leg in result["legs"]:
         line = "" if leg["line"] is None else f" {leg['line']:g}"
         print(f"  [{leg['tier']}] {leg['player']} ({leg['team']} {leg['position']}) {leg['side']}{line} {leg['market']} "
-              f"{leg['book']} {leg['price']:+d} | model {leg['model_prob']:.1%} vs {leg['implied_prob']:.1%} = edge {leg['edge']:+.1%}")
+              f"{leg['book']} {leg['price']:+d} | model {leg['model_prob']:.1%} vs {leg['implied_prob']:.1%} = edge {leg['edge']:+.1%}"
+              f" | literal {leg['literal_prob']:.1%}")
         print(f"        {leg['reasoning']}")
         if leg["flags"]:
             print(f"        flags: {'; '.join(leg['flags'])}")
-        if leg["correlation_group"]:
-            print(f"        correlation: {leg['correlation_group']} [{leg['correlation_role']}]")
+        if leg["tags"]:
+            print(f"        tags: {'; '.join(leg['tags'])}")
+        print(f"        script: {leg['correlation_group']} [{leg['correlation_role']}]")
     print(f"\nSKIPS: {len(result['skips'])}")
     for skip in result["skips"]:
         line = "" if skip["line"] is None else f" {skip['line']:g}"
@@ -899,7 +994,8 @@ def run() -> dict:
         status = fetch_status.load()
     except FileNotFoundError:
         status = None
-    return price_slate(load_tables(), fetch_odds.props(), fetch_odds.game_lines(), status)
+    return price_slate(load_tables(), fetch_odds.props(), fetch_odds.game_lines(), status,
+                       rooting=frozenset(load_config()["rooting_teams"]))
 
 
 def main() -> int:

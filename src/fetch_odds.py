@@ -202,7 +202,7 @@ def _log(call: str, credits: dict, event: dict | None = None, asked: int = 0, re
     is_new = not CREDIT_LOG.exists()
     now = utc_now()
     with open(CREDIT_LOG, "a", newline="", encoding="utf-8") as fh:
-        writer = csv.DictWriter(fh, fieldnames=LOG_FIELDS)
+        writer = csv.DictWriter(fh, fieldnames=LOG_FIELDS, lineterminator="\n")
         if is_new:
             writer.writeheader()
         writer.writerow({

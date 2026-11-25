@@ -23,19 +23,17 @@ import sys
 import time
 from dataclasses import dataclass
 from datetime import date, datetime, timezone
-from pathlib import Path
-from zoneinfo import ZoneInfo
 
 import pandas as pd
 import pyarrow.parquet as pq
 import requests
 
-ROOT = Path(__file__).resolve().parents[1]
+from common import ARIZONA, ROOT, az
+
 DATA_DIR = ROOT / "data" / "nflverse"
 MANIFEST_PATH = DATA_DIR / "_manifest.json"
 BASE_URL = "https://github.com/nflverse/nflverse-data/releases/download"
 
-ARIZONA = ZoneInfo("America/Phoenix")  # UTC-7 all year, no daylight saving
 EASTERN = "America/New_York"  # nflverse schedule times (gameday/gametime) are US Eastern
 
 # The model uses "last 5 games" windows. Until the current season has this many
@@ -291,10 +289,6 @@ def kickoff_arizona(games: pd.DataFrame) -> pd.Series:
 # ------------------------------------------------------------------ reporting
 
 
-def _az(moment: datetime) -> str:
-    return moment.astimezone(ARIZONA).strftime("%a %b %d %I:%M %p").replace(" 0", " ") + " MST"
-
-
 def _table(df: pd.DataFrame) -> None:
     with pd.option_context("display.width", 250, "display.max_columns", 50):
         print("\n".join("  " + line for line in df.to_string(index=False).splitlines()))
@@ -310,7 +304,7 @@ def report() -> bool:
     """Print the shape of everything on disk. Returns False if a required column is missing."""
     run = run_info()
     season, last_week = run["current_season"], run["last_completed_week"]
-    print(f"\nNFLVERSE DATA | season {season} | last completed week {last_week} | checked {_az(datetime.now(timezone.utc))}")
+    print(f"\nNFLVERSE DATA | season {season} | last completed week {last_week} | checked {az(datetime.now(timezone.utc))}")
     print(f"stored in {DATA_DIR}\n")
 
     ok = True
@@ -366,7 +360,7 @@ def report() -> bool:
     dc = load("depth_charts", list(BY_KEY["depth_charts"].required))
     latest = dc[dc["dt"] == dc["dt"].max()]
     newest = datetime.fromisoformat(dc["dt"].max().replace("Z", "+00:00"))
-    _heading("depth_charts", f"{dc['dt'].nunique()} snapshots since {dc['dt'].min()[:10]} | newest {_az(newest)} "
+    _heading("depth_charts", f"{dc['dt'].nunique()} snapshots since {dc['dt'].min()[:10]} | newest {az(newest)} "
                              f"covers {latest['team'].nunique()} teams, {len(latest):,} rows")
     team = sorted(latest["team"].unique())[0]
     skill = latest[(latest["team"] == team) & latest["pos_abb"].isin(["QB", "RB", "WR", "TE"])]

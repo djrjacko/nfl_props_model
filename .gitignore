@@ -9,6 +9,9 @@ __pycache__/
 # downloaded nflverse files (re-fetched on every run, about 21 MB)
 data/nflverse/
 
+# raw Odds API responses: the API's terms do not allow republishing them as files
+data/odds/
+
 # editor and OS noise
 .vscode/
 .idea/

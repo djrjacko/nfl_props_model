@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-11-25T17:47:04+00:00",
- "generated_arizona": "Wed Nov 25 10:47 AM MST",
+ "generated_utc": "2026-11-25T18:20:31+00:00",
+ "generated_arizona": "Wed Nov 25 11:20 AM MST",
  "repo": "djrjacko/nfl_props_model",
  "window_hours": 36.0,
  "season": 2026,
@@ -9,8 +9,8 @@
    "moneylines": {
     "LA": {
      "DK": {
-      "price": -143,
-      "fair": 0.5653
+      "price": -141,
+      "fair": 0.5628
      },
      "FD": {
       "price": -146,
@@ -19,8 +19,8 @@
     },
     "GB": {
      "DK": {
-      "price": 121,
-      "fair": 0.4347
+      "price": 120,
+      "fair": 0.4372
      },
      "FD": {
       "price": 124,
@@ -183,58 +183,15 @@
   }
  ],
  "summary": {
-  "legs": 54,
-  "overs": 10,
-  "unders": 36,
+  "legs": 53,
+  "overs": 14,
+  "unders": 31,
   "tds": 8,
-  "under_share": 0.667,
-  "line": "54 legs: 10 overs, 36 unders, 8 TDs",
+  "under_share": 0.585,
+  "line": "53 legs: 14 overs, 31 unders, 8 TDs",
   "warning": null
  },
  "legs": [
-  {
-   "id": "00-0039065|player_reception_yds|under",
-   "game": "CHI@DET",
-   "game_id": "2026_12_CHI_DET",
-   "kickoff_utc": "2026-11-26T18:00+00:00",
-   "player": "Sam LaPorta",
-   "player_id": "00-0039065",
-   "position": "TE",
-   "team": "DET",
-   "opponent": "CHI",
-   "market": "receiving yards",
-   "market_key": "player_reception_yds",
-   "side": "under",
-   "line": 44.5,
-   "book": "DK",
-   "price": -111,
-   "books": {
-    "DK": {
-     "line": 44.5,
-     "over": -113.0,
-     "under": -111.0
-    },
-    "FD": {
-     "line": 44.5,
-     "over": -114.0,
-     "under": -114.0
-    }
-   },
-   "projection": 31.84,
-   "model_prob": 0.6858,
-   "implied_prob": 0.4979,
-   "edge": 0.1879,
-   "literal_prob": 0.5576,
-   "literal_agrees": true,
-   "tier": "A",
-   "flags": [],
-   "tags": [],
-   "rooting_conflict": false,
-   "status": "active",
-   "correlation_group": "CHI@DET: DET ahead",
-   "correlation_role": "target_volume_under",
-   "reasoning": "A typical game is about 32 yards against 44.5: 18% of about 29 team targets (18% this season, 18% over his last 3) at 7.5 a target (his 7.8 blended with the 7.1 CHI allow). Their run rate was 51% over five games as 3.8-point favourites on average; as 1.5-point underdogs it is set at 49%."
-  },
   {
    "id": "00-0040735|player_reception_yds|under",
    "game": "CHI@DET",
@@ -259,14 +216,14 @@
     },
     "FD": {
      "line": 60.5,
-     "over": -114.0,
-     "under": -114.0
+     "over": -113.0,
+     "under": -113.0
     }
    },
-   "projection": 45.4,
-   "model_prob": 0.6869,
+   "projection": 44.63,
+   "model_prob": 0.6814,
    "implied_prob": 0.5,
-   "edge": 0.1869,
+   "edge": 0.1814,
    "literal_prob": 0.5408,
    "literal_agrees": true,
    "tier": "A",
@@ -277,6 +234,51 @@
    "correlation_group": "CHI@DET: CHI ahead",
    "correlation_role": "target_volume_under",
    "reasoning": "A typical game is about 45 yards against 61.5: 22% of about 30 team targets (22% this season, 23% over his last 3) at 8.5 a target (his 9.1 blended with the 7.5 DET allow). Their run rate was 48% over five games as 5.5-point favourites on average; as 1.5-point favourites it is set at 47%."
+  },
+  {
+   "id": "00-0038996|player_reception_yds|under",
+   "game": "GB@LA",
+   "game_id": "2026_12_GB_LA",
+   "kickoff_utc": "2026-11-26T01:00+00:00",
+   "player": "Tucker Kraft",
+   "player_id": "00-0038996",
+   "position": "TE",
+   "team": "GB",
+   "opponent": "LA",
+   "market": "receiving yards",
+   "market_key": "player_reception_yds",
+   "side": "under",
+   "line": 39.5,
+   "book": "DK",
+   "price": -113,
+   "books": {
+    "DK": {
+     "line": 39.5,
+     "over": -111.0,
+     "under": -113.0
+    },
+    "FD": {
+     "line": 37.5,
+     "over": -113.0,
+     "under": -113.0
+    }
+   },
+   "projection": 26.55,
+   "model_prob": 0.6833,
+   "implied_prob": 0.5021,
+   "edge": 0.1812,
+   "literal_prob": 0.6594,
+   "literal_agrees": true,
+   "tier": "A",
+   "flags": [],
+   "tags": [
+    "rooting conflict"
+   ],
+   "rooting_conflict": true,
+   "status": "active",
+   "correlation_group": "GB@LA: GB ahead",
+   "correlation_role": "target_volume_under",
+   "reasoning": "A typical game is about 27 yards against 39.5: 15% of about 33 team targets (16% this season, 13% over his last 3) at 6.4 a target (his 6.8 blended with the 5.7 LA allow)."
   },
   {
    "id": "00-0039139|player_receptions|under",
@@ -322,6 +324,49 @@
    "reasoning": "Projects 3.6 catches against 4.5: 18% of about 29 team targets (18% this season, 18% over his last 3), at a 78% catch rate. Their run rate was 51% over five games as 3.8-point favourites on average; as 1.5-point underdogs it is set at 49%."
   },
   {
+   "id": "00-0039065|player_reception_yds|under",
+   "game": "CHI@DET",
+   "game_id": "2026_12_CHI_DET",
+   "kickoff_utc": "2026-11-26T18:00+00:00",
+   "player": "Sam LaPorta",
+   "player_id": "00-0039065",
+   "position": "TE",
+   "team": "DET",
+   "opponent": "CHI",
+   "market": "receiving yards",
+   "market_key": "player_reception_yds",
+   "side": "under",
+   "line": 44.5,
+   "book": "DK",
+   "price": -111,
+   "books": {
+    "DK": {
+     "line": 44.5,
+     "over": -113.0,
+     "under": -111.0
+    },
+    "FD": {
+     "line": 44.5,
+     "over": -113.0,
+     "under": -113.0
+    }
+   },
+   "projection": 32.26,
+   "model_prob": 0.659,
+   "implied_prob": 0.4979,
+   "edge": 0.1611,
+   "literal_prob": 0.5576,
+   "literal_agrees": true,
+   "tier": "A",
+   "flags": [],
+   "tags": [],
+   "rooting_conflict": false,
+   "status": "active",
+   "correlation_group": "CHI@DET: DET ahead",
+   "correlation_role": "target_volume_under",
+   "reasoning": "A typical game is about 32 yards against 44.5: 18% of about 29 team targets (18% this season, 18% over his last 3) at 7.5 a target (his 7.8 blended with the 7.1 CHI allow). Their run rate was 51% over five games as 3.8-point favourites on average; as 1.5-point underdogs it is set at 49%."
+  },
+  {
    "id": "00-0040236|player_anytime_td|yes",
    "game": "CHI@DET",
    "game_id": "2026_12_CHI_DET",
@@ -349,8 +394,8 @@
    },
    "projection": 0.67,
    "model_prob": 0.4888,
-   "implied_prob": 0.34,
-   "edge": 0.1488,
+   "implied_prob": 0.3401,
+   "edge": 0.1487,
    "literal_prob": 0.5997,
    "literal_agrees": true,
    "tier": "A",
@@ -390,8 +435,8 @@
    },
    "projection": 0.84,
    "model_prob": 0.5682,
-   "implied_prob": 0.4242,
-   "edge": 0.1439,
+   "implied_prob": 0.4255,
+   "edge": 0.1426,
    "literal_prob": 0.5292,
    "literal_agrees": true,
    "tier": "A",
@@ -546,8 +591,8 @@
     },
     "FD": {
      "line": 34.5,
-     "over": -114.0,
-     "under": -114.0
+     "over": -113.0,
+     "under": -113.0
     }
    },
    "projection": 39.57,
@@ -566,53 +611,6 @@
    "reasoning": "A typical game is about 40 yards against 33.5: 10.8 carries at 4.3 a carry (his 4.8 blended with the 3.7 DET allow). Their run rate was 48% over five games as 5.5-point favourites on average; as 1.5-point favourites it is set at 47%."
   },
   {
-   "id": "00-0038996|player_receptions|under",
-   "game": "GB@LA",
-   "game_id": "2026_12_GB_LA",
-   "kickoff_utc": "2026-11-26T01:00+00:00",
-   "player": "Tucker Kraft",
-   "player_id": "00-0038996",
-   "position": "TE",
-   "team": "GB",
-   "opponent": "LA",
-   "market": "receptions",
-   "market_key": "player_receptions",
-   "side": "under",
-   "line": 3.5,
-   "book": "FD",
-   "price": 118,
-   "books": {
-    "DK": {
-     "line": 4.5,
-     "over": 128.0,
-     "under": -164.0
-    },
-    "FD": {
-     "line": 3.5,
-     "over": -158.0,
-     "under": 118.0
-    }
-   },
-   "projection": 3.12,
-   "model_prob": 0.6247,
-   "implied_prob": 0.4283,
-   "edge": 0.1965,
-   "literal_prob": 0.6371,
-   "literal_agrees": true,
-   "tier": "B",
-   "flags": [
-    "books differ: DK 4.5, FD 3.5"
-   ],
-   "tags": [
-    "rooting conflict"
-   ],
-   "rooting_conflict": true,
-   "status": "active",
-   "correlation_group": "GB@LA: GB ahead",
-   "correlation_role": "target_volume_under",
-   "reasoning": "Projects 3.1 catches against 3.5: 15% of about 33 team targets (16% this season, 13% over his last 3), at a 68% catch rate."
-  },
-  {
    "id": "00-0035537|player_receptions|over",
    "game": "KC@BUF",
    "game_id": "2026_12_KC_BUF",
@@ -625,14 +623,14 @@
    "market": "receptions",
    "market_key": "player_receptions",
    "side": "over",
-   "line": 2.5,
+   "line": 1.5,
    "book": "DK",
-   "price": 136,
+   "price": -182,
    "books": {
     "DK": {
-     "line": 2.5,
-     "over": 136.0,
-     "under": -174.0
+     "line": 1.5,
+     "over": -182.0,
+     "under": 142.0
     },
     "FD": {
      "line": 2.5,
@@ -641,13 +639,14 @@
     }
    },
    "projection": 3.24,
-   "model_prob": 0.5946,
-   "implied_prob": 0.4002,
-   "edge": 0.1944,
-   "literal_prob": 0.7686,
+   "model_prob": 0.7943,
+   "implied_prob": 0.6097,
+   "edge": 0.1847,
+   "literal_prob": 0.9117,
    "literal_agrees": true,
    "tier": "B",
    "flags": [
+    "books differ: DK 1.5, FD 2.5",
     "part-time role (28% of snaps)",
     "role change: Dalton Kincaid missed the last 1 and may return"
    ],
@@ -656,7 +655,54 @@
    "status": "active",
    "correlation_group": "KC@BUF: KC ahead",
    "correlation_role": "target_volume",
-   "reasoning": "Projects 3.2 catches against 2.5: 12% of about 34 team targets (11% this season, 14% over his last 3), at a 87% catch rate. Their run rate was 48% over five games as 9.1-point favourites on average; as 2.75-point favourites it is set at 46%."
+   "reasoning": "Projects 3.2 catches against 1.5: 12% of about 34 team targets (11% this season, 14% over his last 3), at a 87% catch rate. Their run rate was 48% over five games as 9.1-point favourites on average; as 2.75-point favourites it is set at 46%."
+  },
+  {
+   "id": "00-0038124|player_reception_yds|under",
+   "game": "GB@LA",
+   "game_id": "2026_12_GB_LA",
+   "kickoff_utc": "2026-11-26T01:00+00:00",
+   "player": "Christian Watson",
+   "player_id": "00-0038124",
+   "position": "WR",
+   "team": "GB",
+   "opponent": "LA",
+   "market": "receiving yards",
+   "market_key": "player_reception_yds",
+   "side": "under",
+   "line": 73.5,
+   "book": "FD",
+   "price": -113,
+   "books": {
+    "DK": {
+     "line": 72.5,
+     "over": -110.0,
+     "under": -114.0
+    },
+    "FD": {
+     "line": 73.5,
+     "over": -113.0,
+     "under": -113.0
+    }
+   },
+   "projection": 54.54,
+   "model_prob": 0.6802,
+   "implied_prob": 0.5,
+   "edge": 0.1802,
+   "literal_prob": 0.5215,
+   "literal_agrees": true,
+   "tier": "B",
+   "flags": [
+    "snap share moved 63% to 85%"
+   ],
+   "tags": [
+    "rooting conflict"
+   ],
+   "rooting_conflict": true,
+   "status": "active",
+   "correlation_group": "GB@LA: GB ahead",
+   "correlation_role": "target_volume_under",
+   "reasoning": "A typical game is about 55 yards against 73.5: 22% of about 33 team targets (22% this season, 23% over his last 3) at 9.4 a target (his 10.7 blended with the 7.4 LA allow)."
   },
   {
    "id": "00-0039894|player_receptions|over",
@@ -702,98 +748,6 @@
    "correlation_group": "KC@BUF: BUF ahead",
    "correlation_role": "target_volume",
    "reasoning": "Projects 3.3 catches against 2.5: 16% of about 36 team targets (17% this season, 12% over his last 3), at a 64% catch rate. Their run rate was 43% over five games as 7.5-point favourites on average; as 2.75-point underdogs it is set at 40%."
-  },
-  {
-   "id": "00-0038124|player_reception_yds|under",
-   "game": "GB@LA",
-   "game_id": "2026_12_GB_LA",
-   "kickoff_utc": "2026-11-26T01:00+00:00",
-   "player": "Christian Watson",
-   "player_id": "00-0038124",
-   "position": "WR",
-   "team": "GB",
-   "opponent": "LA",
-   "market": "receiving yards",
-   "market_key": "player_reception_yds",
-   "side": "under",
-   "line": 73.5,
-   "book": "FD",
-   "price": -113,
-   "books": {
-    "DK": {
-     "line": 72.5,
-     "over": -110.0,
-     "under": -114.0
-    },
-    "FD": {
-     "line": 73.5,
-     "over": -113.0,
-     "under": -113.0
-    }
-   },
-   "projection": 56.09,
-   "model_prob": 0.6742,
-   "implied_prob": 0.5,
-   "edge": 0.1742,
-   "literal_prob": 0.5215,
-   "literal_agrees": true,
-   "tier": "B",
-   "flags": [
-    "snap share moved 63% to 85%"
-   ],
-   "tags": [
-    "rooting conflict"
-   ],
-   "rooting_conflict": true,
-   "status": "active",
-   "correlation_group": "GB@LA: GB ahead",
-   "correlation_role": "target_volume_under",
-   "reasoning": "A typical game is about 56 yards against 73.5: 22% of about 33 team targets (22% this season, 23% over his last 3) at 9.4 a target (his 10.7 blended with the 7.4 LA allow)."
-  },
-  {
-   "id": "00-0033110|player_reception_yds|under",
-   "game": "GB@LA",
-   "game_id": "2026_12_GB_LA",
-   "kickoff_utc": "2026-11-26T01:00+00:00",
-   "player": "Tyler Higbee",
-   "player_id": "00-0033110",
-   "position": "TE",
-   "team": "LA",
-   "opponent": "GB",
-   "market": "receiving yards",
-   "market_key": "player_reception_yds",
-   "side": "under",
-   "line": 29.5,
-   "book": "FD",
-   "price": -113,
-   "books": {
-    "DK": {
-     "line": 29.5,
-     "over": -110.0,
-     "under": -114.0
-    },
-    "FD": {
-     "line": 29.5,
-     "over": -113.0,
-     "under": -113.0
-    }
-   },
-   "projection": 18.71,
-   "model_prob": 0.6737,
-   "implied_prob": 0.5,
-   "edge": 0.1737,
-   "literal_prob": 0.5239,
-   "literal_agrees": true,
-   "tier": "B",
-   "flags": [
-    "role change: Puka Nacua is out but played in 2 of the last 3 games"
-   ],
-   "tags": [],
-   "rooting_conflict": false,
-   "status": "active",
-   "correlation_group": "GB@LA: LA ahead",
-   "correlation_role": "target_volume_under",
-   "reasoning": "A typical game is about 19 yards against 29.5: 12% of about 31 team targets (12% this season, 13% over his last 3) at 6.9 a target (his 7.1 blended with the 6.5 GB allow). Their run rate was 52% over five games as 7.1-point favourites on average; as 2.5-point favourites it is set at 50%."
   },
   {
    "id": "00-0040735|player_receptions|under",
@@ -913,10 +867,10 @@
      "under": -114.0
     }
    },
-   "projection": 28.4,
-   "model_prob": 0.6564,
+   "projection": 30.75,
+   "model_prob": 0.6502,
    "implied_prob": 0.4958,
-   "edge": 0.1606,
+   "edge": 0.1544,
    "literal_prob": 0.6402,
    "literal_agrees": true,
    "tier": "B",
@@ -928,7 +882,7 @@
    "status": "active",
    "correlation_group": "KC@BUF: BUF ahead",
    "correlation_role": "target_volume",
-   "reasoning": "A typical game is about 28 yards against 19.5: 16% of about 36 team targets (17% this season, 12% over his last 3) at 6.7 a target (his 6.6 blended with the 7.0 BUF allow). Their run rate was 43% over five games as 7.5-point favourites on average; as 2.75-point underdogs it is set at 40%."
+   "reasoning": "A typical game is about 31 yards against 19.5: 16% of about 36 team targets (17% this season, 12% over his last 3) at 6.7 a target (his 6.6 blended with the 7.0 BUF allow). Their run rate was 43% over five games as 7.5-point favourites on average; as 2.75-point underdogs it is set at 40%."
   },
   {
    "id": "00-0034844|player_rush_yds|under",
@@ -1019,95 +973,96 @@
    "reasoning": "Model gives 64% to score: 46% of CHI's red-zone chances and 30% of their touches, with CHI priced for 3.5 touchdowns."
   },
   {
-   "id": "00-0039919|player_reception_yds|under",
-   "game": "CHI@DET",
-   "game_id": "2026_12_CHI_DET",
-   "kickoff_utc": "2026-11-26T18:00+00:00",
-   "player": "Rome Odunze",
-   "player_id": "00-0039919",
-   "position": "WR",
-   "team": "CHI",
-   "opponent": "DET",
-   "market": "receiving yards",
-   "market_key": "player_reception_yds",
-   "side": "under",
-   "line": 48.5,
-   "book": "DK",
-   "price": -114,
-   "books": {
-    "DK": {
-     "line": 48.5,
-     "over": -110.0,
-     "under": -114.0
-    },
-    "FD": {
-     "line": 47.5,
-     "over": -114.0,
-     "under": -114.0
-    }
-   },
-   "projection": 39.26,
-   "model_prob": 0.6374,
-   "implied_prob": 0.5042,
-   "edge": 0.1331,
-   "literal_prob": 0.478,
-   "literal_agrees": false,
-   "tier": "B",
-   "flags": [
-    "calibration flips the literal lean"
-   ],
-   "tags": [],
-   "rooting_conflict": false,
-   "status": "active",
-   "correlation_group": "CHI@DET: CHI ahead",
-   "correlation_role": "target_volume_under",
-   "reasoning": "A typical game is about 39 yards against 48.5: 18% of about 30 team targets (18% this season, 19% over his last 3) at 8.8 a target (his 9.7 blended with the 7.5 DET allow). Their run rate was 48% over five games as 5.5-point favourites on average; as 1.5-point favourites it is set at 47%."
-  },
-  {
-   "id": "00-0038997|player_reception_yds|under",
+   "id": "00-0036637|player_receptions|over",
    "game": "KC@BUF",
    "game_id": "2026_12_KC_BUF",
    "kickoff_utc": "2026-11-27T01:20+00:00",
-   "player": "Josh Downs",
-   "player_id": "00-0038997",
-   "position": "WR",
+   "player": "Noah Gray",
+   "player_id": "00-0036637",
+   "position": "TE",
    "team": "KC",
    "opponent": "BUF",
-   "market": "receiving yards",
-   "market_key": "player_reception_yds",
-   "side": "under",
-   "line": 41.5,
+   "market": "receptions",
+   "market_key": "player_receptions",
+   "side": "over",
+   "line": 1.5,
    "book": "FD",
-   "price": -114,
+   "price": -102,
    "books": {
     "DK": {
-     "line": 40.5,
+     "line": 1.5,
      "over": -115.0,
-     "under": -109.0
+     "under": -111.0
     },
     "FD": {
-     "line": 41.5,
-     "over": -114.0,
-     "under": -114.0
+     "line": 1.5,
+     "over": -102.0,
+     "under": -130.0
     }
    },
-   "projection": 31.74,
-   "model_prob": 0.6294,
-   "implied_prob": 0.5,
-   "edge": 0.1294,
-   "literal_prob": 0.5019,
+   "projection": 2.22,
+   "model_prob": 0.6122,
+   "implied_prob": 0.4718,
+   "edge": 0.1403,
+   "literal_prob": 0.7668,
    "literal_agrees": true,
    "tier": "B",
    "flags": [
-    "only 2 games of history with KC",
+    "questionable (Ribs; practice: full Tue, full Wed)",
     "role change: Kenneth Walker III is out but played in 1 of the last 3 games"
    ],
    "tags": [],
    "rooting_conflict": false,
+   "status": "questionable",
+   "correlation_group": "KC@BUF: BUF ahead",
+   "correlation_role": "target_volume",
+   "reasoning": "Projects 2.2 catches against 1.5: 9% of about 36 team targets (8% this season, 11% over his last 3), at a 74% catch rate. Their run rate was 43% over five games as 7.5-point favourites on average; as 2.75-point underdogs it is set at 40%."
+  },
+  {
+   "id": "00-0036358|player_reception_yds|under",
+   "game": "PHI@DAL",
+   "game_id": "2026_12_PHI_DAL",
+   "kickoff_utc": "2026-11-26T21:30+00:00",
+   "player": "CeeDee Lamb",
+   "player_id": "00-0036358",
+   "position": "WR",
+   "team": "DAL",
+   "opponent": "PHI",
+   "market": "receiving yards",
+   "market_key": "player_reception_yds",
+   "side": "under",
+   "line": 90.5,
+   "book": "DK",
+   "price": -113,
+   "books": {
+    "DK": {
+     "line": 90.5,
+     "over": -111.0,
+     "under": -113.0
+    },
+    "FD": {
+     "line": 87.5,
+     "over": -114.0,
+     "under": -114.0
+    }
+   },
+   "projection": 73.77,
+   "model_prob": 0.6319,
+   "implied_prob": 0.5021,
+   "edge": 0.1298,
+   "literal_prob": 0.4328,
+   "literal_agrees": false,
+   "tier": "B",
+   "flags": [
+    "calibration flips the literal lean",
+    "books differ: DK 90.5, FD 87.5"
+   ],
+   "tags": [],
+   "rooting_conflict": false,
    "status": "active",
-   "correlation_group": "KC@BUF: KC ahead",
+   "correlation_group": "PHI@DAL: DAL ahead",
    "correlation_role": "target_volume_under",
-   "reasoning": "A typical game is about 32 yards against 41.5: 14% of about 36 team targets (14% this season, 14% over his last 2) at 8.2 a target (his 9.0 blended with the 7.0 BUF allow). Their run rate was 43% over five games as 7.5-point favourites on average; as 2.75-point underdogs it is set at 40%."
+   "reasoning": "A typical game is about 74 yards against 90.5: 33% of about 35 team targets (32% this season, 34% over his last 3) at 8.2 a target (his 8.3 blended with the 8.0 PHI allow). Their run rate was 45% over five games as 3.7-point favourites on average; as 8.5-point favourites it is set at 46%."
   },
   {
    "id": "00-0038124|player_receptions|under",
@@ -1128,8 +1083,8 @@
    "books": {
     "DK": {
      "line": 4.5,
-     "over": -120.0,
-     "under": -106.0
+     "over": -140.0,
+     "under": 110.0
     },
     "FD": {
      "line": 4.5,
@@ -1156,6 +1111,99 @@
    "correlation_group": "GB@LA: GB ahead",
    "correlation_role": "target_volume_under",
    "reasoning": "Projects 4.3 catches against 4.5: 22% of about 33 team targets (22% this season, 23% over his last 3), at a 65% catch rate."
+  },
+  {
+   "id": "00-0036637|player_reception_yds|over",
+   "game": "KC@BUF",
+   "game_id": "2026_12_KC_BUF",
+   "kickoff_utc": "2026-11-27T01:20+00:00",
+   "player": "Noah Gray",
+   "player_id": "00-0036637",
+   "position": "TE",
+   "team": "KC",
+   "opponent": "BUF",
+   "market": "receiving yards",
+   "market_key": "player_reception_yds",
+   "side": "over",
+   "line": 12.5,
+   "book": "DK",
+   "price": -111,
+   "books": {
+    "DK": {
+     "line": 12.5,
+     "over": -111.0,
+     "under": -113.0
+    },
+    "FD": {
+     "line": 12.5,
+     "over": -114.0,
+     "under": -114.0
+    }
+   },
+   "projection": 20.01,
+   "model_prob": 0.6227,
+   "implied_prob": 0.4979,
+   "edge": 0.1248,
+   "literal_prob": 0.7241,
+   "literal_agrees": true,
+   "tier": "B",
+   "flags": [
+    "questionable (Ribs; practice: full Tue, full Wed)",
+    "role change: Kenneth Walker III is out but played in 1 of the last 3 games"
+   ],
+   "tags": [],
+   "rooting_conflict": false,
+   "status": "questionable",
+   "correlation_group": "KC@BUF: BUF ahead",
+   "correlation_role": "target_volume",
+   "reasoning": "A typical game is about 20 yards against 12.5: 9% of about 36 team targets (8% this season, 11% over his last 3) at 7.4 a target (his 7.8 blended with the 6.7 BUF allow). Their run rate was 43% over five games as 7.5-point favourites on average; as 2.75-point underdogs it is set at 40%."
+  },
+  {
+   "id": "00-0040667|player_reception_yds|under",
+   "game": "GB@LA",
+   "game_id": "2026_12_GB_LA",
+   "kickoff_utc": "2026-11-26T01:00+00:00",
+   "player": "Matthew Golden",
+   "player_id": "00-0040667",
+   "position": "WR",
+   "team": "GB",
+   "opponent": "LA",
+   "market": "receiving yards",
+   "market_key": "player_reception_yds",
+   "side": "under",
+   "line": 74.5,
+   "book": "DK",
+   "price": -110,
+   "books": {
+    "DK": {
+     "line": 74.5,
+     "over": -114.0,
+     "under": -110.0
+    },
+    "FD": {
+     "line": 74.5,
+     "over": -113.0,
+     "under": -113.0
+    }
+   },
+   "projection": 61.38,
+   "model_prob": 0.6179,
+   "implied_prob": 0.4958,
+   "edge": 0.1221,
+   "literal_prob": 0.3925,
+   "literal_agrees": false,
+   "tier": "B",
+   "flags": [
+    "calibration flips the literal lean"
+   ],
+   "tags": [
+    "rooting conflict"
+   ],
+   "rooting_conflict": true,
+   "status": "active",
+   "correlation_group": "GB@LA: GB ahead",
+   "correlation_role": "target_volume_under",
+   "reasoning": "A typical game is about 61 yards against 74.5: 30% of about 33 team targets (28% this season, 33% over his last 3) at 8.0 a target (his 8.4 blended with the 7.4 LA allow)."
   },
   {
    "id": "00-0040667|player_receptions|under",
@@ -1205,143 +1253,94 @@
    "reasoning": "Projects 5.1 catches against 5.5: 30% of about 33 team targets (28% this season, 33% over his last 3), at a 58% catch rate."
   },
   {
-   "id": "00-0038997|player_receptions|under",
-   "game": "KC@BUF",
-   "game_id": "2026_12_KC_BUF",
-   "kickoff_utc": "2026-11-27T01:20+00:00",
-   "player": "Josh Downs",
-   "player_id": "00-0038997",
+   "id": "00-0039919|player_reception_yds|under",
+   "game": "CHI@DET",
+   "game_id": "2026_12_CHI_DET",
+   "kickoff_utc": "2026-11-26T18:00+00:00",
+   "player": "Rome Odunze",
+   "player_id": "00-0039919",
    "position": "WR",
-   "team": "KC",
-   "opponent": "BUF",
-   "market": "receptions",
-   "market_key": "player_receptions",
-   "side": "under",
-   "line": 3.5,
-   "book": "DK",
-   "price": -115,
-   "books": {
-    "DK": {
-     "line": 3.5,
-     "over": -111.0,
-     "under": -115.0
-    },
-    "FD": {
-     "line": 3.5,
-     "over": -112.0,
-     "under": -118.0
-    }
-   },
-   "projection": 3.15,
-   "model_prob": 0.6182,
-   "implied_prob": 0.5042,
-   "edge": 0.1141,
-   "literal_prob": 0.5602,
-   "literal_agrees": true,
-   "tier": "B",
-   "flags": [
-    "only 2 games of history with KC",
-    "role change: Kenneth Walker III is out but played in 1 of the last 3 games"
-   ],
-   "tags": [],
-   "rooting_conflict": false,
-   "status": "active",
-   "correlation_group": "KC@BUF: KC ahead",
-   "correlation_role": "target_volume_under",
-   "reasoning": "Projects 3.2 catches against 3.5: 14% of about 36 team targets (14% this season, 14% over his last 2), at a 67% catch rate. Their run rate was 43% over five games as 7.5-point favourites on average; as 2.75-point underdogs it is set at 40%."
-  },
-  {
-   "id": "00-0036358|player_reception_yds|under",
-   "game": "PHI@DAL",
-   "game_id": "2026_12_PHI_DAL",
-   "kickoff_utc": "2026-11-26T21:30+00:00",
-   "player": "CeeDee Lamb",
-   "player_id": "00-0036358",
-   "position": "WR",
-   "team": "DAL",
-   "opponent": "PHI",
+   "team": "CHI",
+   "opponent": "DET",
    "market": "receiving yards",
    "market_key": "player_reception_yds",
    "side": "under",
-   "line": 90.5,
-   "book": "DK",
-   "price": -113,
-   "books": {
-    "DK": {
-     "line": 90.5,
-     "over": -111.0,
-     "under": -113.0
-    },
-    "FD": {
-     "line": 87.5,
-     "over": -114.0,
-     "under": -114.0
-    }
-   },
-   "projection": 76.09,
-   "model_prob": 0.6136,
-   "implied_prob": 0.5021,
-   "edge": 0.1115,
-   "literal_prob": 0.4328,
-   "literal_agrees": false,
-   "tier": "B",
-   "flags": [
-    "calibration flips the literal lean",
-    "books differ: DK 90.5, FD 87.5"
-   ],
-   "tags": [],
-   "rooting_conflict": false,
-   "status": "active",
-   "correlation_group": "PHI@DAL: DAL ahead",
-   "correlation_role": "target_volume_under",
-   "reasoning": "A typical game is about 76 yards against 90.5: 33% of about 35 team targets (32% this season, 34% over his last 3) at 8.2 a target (his 8.3 blended with the 8.0 PHI allow). Their run rate was 45% over five games as 3.7-point favourites on average; as 8.5-point favourites it is set at 46%."
-  },
-  {
-   "id": "00-0040667|player_reception_yds|under",
-   "game": "GB@LA",
-   "game_id": "2026_12_GB_LA",
-   "kickoff_utc": "2026-11-26T01:00+00:00",
-   "player": "Matthew Golden",
-   "player_id": "00-0040667",
-   "position": "WR",
-   "team": "GB",
-   "opponent": "LA",
-   "market": "receiving yards",
-   "market_key": "player_reception_yds",
-   "side": "under",
-   "line": 74.5,
+   "line": 47.5,
    "book": "DK",
    "price": -110,
    "books": {
     "DK": {
-     "line": 74.5,
+     "line": 47.5,
      "over": -114.0,
      "under": -110.0
     },
     "FD": {
-     "line": 74.5,
+     "line": 47.5,
      "over": -113.0,
      "under": -113.0
     }
    },
-   "projection": 64.07,
-   "model_prob": 0.6043,
+   "projection": 38.13,
+   "model_prob": 0.6129,
    "implied_prob": 0.4958,
-   "edge": 0.1085,
-   "literal_prob": 0.3925,
+   "edge": 0.1171,
+   "literal_prob": 0.4667,
    "literal_agrees": false,
    "tier": "B",
    "flags": [
     "calibration flips the literal lean"
    ],
-   "tags": [
-    "rooting conflict"
-   ],
-   "rooting_conflict": true,
+   "tags": [],
+   "rooting_conflict": false,
    "status": "active",
-   "correlation_group": "GB@LA: GB ahead",
+   "correlation_group": "CHI@DET: CHI ahead",
    "correlation_role": "target_volume_under",
-   "reasoning": "A typical game is about 64 yards against 74.5: 30% of about 33 team targets (28% this season, 33% over his last 3) at 8.0 a target (his 8.4 blended with the 7.4 LA allow)."
+   "reasoning": "A typical game is about 38 yards against 47.5: 18% of about 30 team targets (18% this season, 19% over his last 3) at 8.8 a target (his 9.7 blended with the 7.5 DET allow). Their run rate was 48% over five games as 5.5-point favourites on average; as 1.5-point favourites it is set at 47%."
+  },
+  {
+   "id": "00-0033110|player_reception_yds|under",
+   "game": "GB@LA",
+   "game_id": "2026_12_GB_LA",
+   "kickoff_utc": "2026-11-26T01:00+00:00",
+   "player": "Tyler Higbee",
+   "player_id": "00-0033110",
+   "position": "TE",
+   "team": "LA",
+   "opponent": "GB",
+   "market": "receiving yards",
+   "market_key": "player_reception_yds",
+   "side": "under",
+   "line": 29.5,
+   "book": "FD",
+   "price": -113,
+   "books": {
+    "DK": {
+     "line": 29.5,
+     "over": -110.0,
+     "under": -114.0
+    },
+    "FD": {
+     "line": 29.5,
+     "over": -113.0,
+     "under": -113.0
+    }
+   },
+   "projection": 22.46,
+   "model_prob": 0.61,
+   "implied_prob": 0.5,
+   "edge": 0.11,
+   "literal_prob": 0.5239,
+   "literal_agrees": true,
+   "tier": "B",
+   "flags": [
+    "role change: Puka Nacua is out but played in 2 of the last 3 games"
+   ],
+   "tags": [],
+   "rooting_conflict": false,
+   "status": "active",
+   "correlation_group": "GB@LA: LA ahead",
+   "correlation_role": "target_volume_under",
+   "reasoning": "A typical game is about 22 yards against 29.5: 12% of about 31 team targets (12% this season, 13% over his last 3) at 6.9 a target (his 7.1 blended with the 6.5 GB allow). Their run rate was 52% over five games as 7.1-point favourites on average; as 2.5-point favourites it is set at 50%."
   },
   {
    "id": "00-0036997|player_rush_attempts|under",
@@ -1429,6 +1428,52 @@
    "reasoning": "Projects 3.1 catches against 3.5: 15% of about 30 team targets (16% this season, 12% over his last 3), at a 74% catch rate. Their run rate was 42% over five games as 4.0-point underdogs on average; as 8.5-point underdogs it is set at 41%."
   },
   {
+   "id": "00-0039067|player_receptions|under",
+   "game": "KC@BUF",
+   "game_id": "2026_12_KC_BUF",
+   "kickoff_utc": "2026-11-27T01:20+00:00",
+   "player": "Rashee Rice",
+   "player_id": "00-0039067",
+   "position": "WR",
+   "team": "KC",
+   "opponent": "BUF",
+   "market": "receptions",
+   "market_key": "player_receptions",
+   "side": "under",
+   "line": 4.5,
+   "book": "DK",
+   "price": -109,
+   "books": {
+    "DK": {
+     "line": 4.5,
+     "over": -117.0,
+     "under": -109.0
+    },
+    "FD": {
+     "line": 4.5,
+     "over": -114.0,
+     "under": -114.0
+    }
+   },
+   "projection": 4.21,
+   "model_prob": 0.5945,
+   "implied_prob": 0.4917,
+   "edge": 0.1028,
+   "literal_prob": 0.4654,
+   "literal_agrees": false,
+   "tier": "B",
+   "flags": [
+    "calibration flips the literal lean",
+    "role change: Kenneth Walker III is out but played in 1 of the last 3 games"
+   ],
+   "tags": [],
+   "rooting_conflict": false,
+   "status": "active",
+   "correlation_group": "KC@BUF: KC ahead",
+   "correlation_role": "target_volume_under",
+   "reasoning": "Projects 4.2 catches against 4.5: 18% of about 36 team targets (17% this season, 18% over his last 3), at a 75% catch rate. Their run rate was 43% over five games as 7.5-point favourites on average; as 2.75-point underdogs it is set at 40%."
+  },
+  {
    "id": "00-0036358|player_receptions|under",
    "game": "PHI@DAL",
    "game_id": "2026_12_PHI_DAL",
@@ -1496,9 +1541,9 @@
      "under": -188.0
     },
     "FD": {
-     "line": 2.5,
-     "over": 144.0,
-     "under": -194.0
+     "line": 1.5,
+     "over": -188.0,
+     "under": 140.0
     }
    },
    "projection": 2.69,
@@ -1509,6 +1554,7 @@
    "literal_agrees": true,
    "tier": "B",
    "flags": [
+    "books differ: DK 2.5, FD 1.5",
     "snap share moved 57% to 81%",
     "role change: Dalton Kincaid missed the last 1 and may return"
    ],
@@ -1565,6 +1611,51 @@
    "reasoning": "Projects 3.0 catches against 3.5: 14% of about 31 team targets (14% this season, 13% over his last 3), at a 76% catch rate. Their run rate was 52% over five games as 7.1-point favourites on average; as 2.5-point favourites it is set at 50%."
   },
   {
+   "id": "00-0037247|player_reception_yds|under",
+   "game": "PHI@DAL",
+   "game_id": "2026_12_PHI_DAL",
+   "kickoff_utc": "2026-11-26T21:30+00:00",
+   "player": "George Pickens",
+   "player_id": "00-0037247",
+   "position": "WR",
+   "team": "DAL",
+   "opponent": "PHI",
+   "market": "receiving yards",
+   "market_key": "player_reception_yds",
+   "side": "under",
+   "line": 69.5,
+   "book": "DK",
+   "price": -110,
+   "books": {
+    "DK": {
+     "line": 69.5,
+     "over": -114.0,
+     "under": -110.0
+    },
+    "FD": {
+     "line": 68.5,
+     "over": -114.0,
+     "under": -114.0
+    }
+   },
+   "projection": 59.42,
+   "model_prob": 0.593,
+   "implied_prob": 0.4958,
+   "edge": 0.0973,
+   "literal_prob": 0.3463,
+   "literal_agrees": false,
+   "tier": "B",
+   "flags": [
+    "calibration flips the literal lean"
+   ],
+   "tags": [],
+   "rooting_conflict": false,
+   "status": "active",
+   "correlation_group": "PHI@DAL: DAL ahead",
+   "correlation_role": "target_volume_under",
+   "reasoning": "A typical game is about 59 yards against 69.5: 26% of about 35 team targets (24% this season, 30% over his last 3) at 8.3 a target (his 8.5 blended with the 8.0 PHI allow). Their run rate was 45% over five games as 3.7-point favourites on average; as 8.5-point favourites it is set at 46%."
+  },
+  {
    "id": "00-0036997|player_rush_yds|under",
    "game": "PHI@DAL",
    "game_id": "2026_12_PHI_DAL",
@@ -1609,52 +1700,6 @@
    "correlation_group": "PHI@DAL: PHI ahead",
    "correlation_role": "rb_volume_under",
    "reasoning": "A typical game is about 67 yards against 76.5: 17.8 carries at 4.0 a carry (his 4.1 blended with the 4.0 PHI allow). Their run rate was 45% over five games as 3.7-point favourites on average; as 8.5-point favourites it is set at 46%."
-  },
-  {
-   "id": "00-0039067|player_receptions|under",
-   "game": "KC@BUF",
-   "game_id": "2026_12_KC_BUF",
-   "kickoff_utc": "2026-11-27T01:20+00:00",
-   "player": "Rashee Rice",
-   "player_id": "00-0039067",
-   "position": "WR",
-   "team": "KC",
-   "opponent": "BUF",
-   "market": "receptions",
-   "market_key": "player_receptions",
-   "side": "under",
-   "line": 4.5,
-   "book": "FD",
-   "price": -114,
-   "books": {
-    "DK": {
-     "line": 4.5,
-     "over": -112.0,
-     "under": -114.0
-    },
-    "FD": {
-     "line": 4.5,
-     "over": -114.0,
-     "under": -114.0
-    }
-   },
-   "projection": 4.21,
-   "model_prob": 0.5945,
-   "implied_prob": 0.5,
-   "edge": 0.0945,
-   "literal_prob": 0.4654,
-   "literal_agrees": false,
-   "tier": "B",
-   "flags": [
-    "calibration flips the literal lean",
-    "role change: Kenneth Walker III is out but played in 1 of the last 3 games"
-   ],
-   "tags": [],
-   "rooting_conflict": false,
-   "status": "active",
-   "correlation_group": "KC@BUF: KC ahead",
-   "correlation_role": "target_volume_under",
-   "reasoning": "Projects 4.2 catches against 4.5: 18% of about 36 team targets (17% this season, 18% over his last 3), at a 75% catch rate. Their run rate was 43% over five games as 7.5-point favourites on average; as 2.75-point underdogs it is set at 40%."
   },
   {
    "id": "00-0039410|player_receptions|under",
@@ -1748,38 +1793,84 @@
    "reasoning": "A typical game is about 51 yards against 58.5: 12.2 carries at 4.7 a carry (his 5.1 blended with the 4.1 GB allow). Their run rate was 52% over five games as 7.1-point favourites on average; as 2.5-point favourites it is set at 50%."
   },
   {
-   "id": "00-0036912|player_reception_yds|over",
+   "id": "00-0039901|player_reception_yds|over",
+   "game": "KC@BUF",
+   "game_id": "2026_12_KC_BUF",
+   "kickoff_utc": "2026-11-27T01:20+00:00",
+   "player": "Keon Coleman",
+   "player_id": "00-0039901",
+   "position": "WR",
+   "team": "BUF",
+   "opponent": "KC",
+   "market": "receiving yards",
+   "market_key": "player_reception_yds",
+   "side": "over",
+   "line": 22.5,
+   "book": "FD",
+   "price": -114,
+   "books": {
+    "DK": {
+     "line": 24.5,
+     "over": -109.0,
+     "under": -116.0
+    },
+    "FD": {
+     "line": 22.5,
+     "over": -114.0,
+     "under": -114.0
+    }
+   },
+   "projection": 28.12,
+   "model_prob": 0.5799,
+   "implied_prob": 0.5,
+   "edge": 0.0799,
+   "literal_prob": 0.6182,
+   "literal_agrees": true,
+   "tier": "B",
+   "flags": [
+    "snap share moved 57% to 81%",
+    "role change: Dalton Kincaid missed the last 1 and may return"
+   ],
+   "tags": [],
+   "rooting_conflict": false,
+   "status": "active",
+   "correlation_group": "KC@BUF: KC ahead",
+   "correlation_role": "target_volume",
+   "reasoning": "A typical game is about 28 yards against 22.5: 13% of about 34 team targets (14% this season, 12% over his last 3) at 7.6 a target (his 8.2 blended with the 6.6 KC allow). Their run rate was 48% over five games as 9.1-point favourites on average; as 2.75-point favourites it is set at 46%."
+  },
+  {
+   "id": "00-0040867|player_reception_yds|over",
    "game": "PHI@DAL",
    "game_id": "2026_12_PHI_DAL",
    "kickoff_utc": "2026-11-26T21:30+00:00",
-   "player": "DeVonta Smith",
-   "player_id": "00-0036912",
+   "player": "Makai Lemon",
+   "player_id": "00-0040867",
    "position": "WR",
    "team": "PHI",
    "opponent": "DAL",
    "market": "receiving yards",
    "market_key": "player_reception_yds",
    "side": "over",
-   "line": 63.5,
+   "line": 29.5,
    "book": "FD",
    "price": -114,
    "books": {
     "DK": {
-     "line": 63.5,
-     "over": -113.0,
-     "under": -111.0
+     "line": 30.5,
+     "over": -110.0,
+     "under": -114.0
     },
     "FD": {
-     "line": 63.5,
+     "line": 29.5,
      "over": -114.0,
      "under": -114.0
     }
    },
-   "projection": 72.19,
-   "model_prob": 0.5874,
+   "projection": 35.32,
+   "model_prob": 0.5736,
    "implied_prob": 0.5,
-   "edge": 0.0874,
-   "literal_prob": 0.7312,
+   "edge": 0.0736,
+   "literal_prob": 0.7181,
    "literal_agrees": true,
    "tier": "B",
    "flags": [
@@ -1790,97 +1881,7 @@
    "status": "active",
    "correlation_group": "PHI@DAL: DAL ahead",
    "correlation_role": "target_volume",
-   "reasoning": "A typical game is about 72 yards against 63.5: 38% of about 30 team targets (36% this season, 41% over his last 3) at 7.8 a target (his 7.1 blended with the 8.9 DAL allow). Their run rate was 42% over five games as 4.0-point underdogs on average; as 8.5-point underdogs it is set at 41%."
-  },
-  {
-   "id": "00-0037247|player_reception_yds|under",
-   "game": "PHI@DAL",
-   "game_id": "2026_12_PHI_DAL",
-   "kickoff_utc": "2026-11-26T21:30+00:00",
-   "player": "George Pickens",
-   "player_id": "00-0037247",
-   "position": "WR",
-   "team": "DAL",
-   "opponent": "PHI",
-   "market": "receiving yards",
-   "market_key": "player_reception_yds",
-   "side": "under",
-   "line": 69.5,
-   "book": "DK",
-   "price": -110,
-   "books": {
-    "DK": {
-     "line": 69.5,
-     "over": -114.0,
-     "under": -110.0
-    },
-    "FD": {
-     "line": 68.5,
-     "over": -114.0,
-     "under": -114.0
-    }
-   },
-   "projection": 61.91,
-   "model_prob": 0.5791,
-   "implied_prob": 0.4958,
-   "edge": 0.0833,
-   "literal_prob": 0.3463,
-   "literal_agrees": false,
-   "tier": "B",
-   "flags": [
-    "calibration flips the literal lean"
-   ],
-   "tags": [],
-   "rooting_conflict": false,
-   "status": "active",
-   "correlation_group": "PHI@DAL: DAL ahead",
-   "correlation_role": "target_volume_under",
-   "reasoning": "A typical game is about 62 yards against 69.5: 26% of about 35 team targets (24% this season, 30% over his last 3) at 8.3 a target (his 8.5 blended with the 8.0 PHI allow). Their run rate was 45% over five games as 3.7-point favourites on average; as 8.5-point favourites it is set at 46%."
-  },
-  {
-   "id": "00-0034351|player_reception_yds|under",
-   "game": "PHI@DAL",
-   "game_id": "2026_12_PHI_DAL",
-   "kickoff_utc": "2026-11-26T21:30+00:00",
-   "player": "Dallas Goedert",
-   "player_id": "00-0034351",
-   "position": "TE",
-   "team": "PHI",
-   "opponent": "DAL",
-   "market": "receiving yards",
-   "market_key": "player_reception_yds",
-   "side": "under",
-   "line": 31.5,
-   "book": "DK",
-   "price": -110,
-   "books": {
-    "DK": {
-     "line": 31.5,
-     "over": -114.0,
-     "under": -110.0
-    },
-    "FD": {
-     "line": 30.5,
-     "over": -114.0,
-     "under": -114.0
-    }
-   },
-   "projection": 27.14,
-   "model_prob": 0.5766,
-   "implied_prob": 0.4958,
-   "edge": 0.0808,
-   "literal_prob": 0.5797,
-   "literal_agrees": true,
-   "tier": "B",
-   "flags": [
-    "role change: Elijah Mitchell missed the last 1 and may return"
-   ],
-   "tags": [],
-   "rooting_conflict": false,
-   "status": "active",
-   "correlation_group": "PHI@DAL: PHI ahead",
-   "correlation_role": "target_volume_under",
-   "reasoning": "A typical game is about 27 yards against 31.5: 15% of about 30 team targets (16% this season, 12% over his last 3) at 7.6 a target (his 7.9 blended with the 7.1 DAL allow). Their run rate was 42% over five games as 4.0-point underdogs on average; as 8.5-point underdogs it is set at 41%."
+   "reasoning": "A typical game is about 35 yards against 29.5: 20% of about 30 team targets (19% this season, 22% over his last 3) at 7.3 a target (his 6.3 blended with the 8.9 DAL allow). Their run rate was 42% over five games as 4.0-point underdogs on average; as 8.5-point underdogs it is set at 41%."
   },
   {
    "id": "00-0039067|player_reception_yds|under",
@@ -1900,7 +1901,7 @@
    "price": -114,
    "books": {
     "DK": {
-     "line": 45.5,
+     "line": 46.5,
      "over": -114.0,
      "under": -110.0
     },
@@ -1910,10 +1911,10 @@
      "under": -114.0
     }
    },
-   "projection": 41.25,
-   "model_prob": 0.5807,
+   "projection": 41.4,
+   "model_prob": 0.5707,
    "implied_prob": 0.5,
-   "edge": 0.0807,
+   "edge": 0.0707,
    "literal_prob": 0.4314,
    "literal_agrees": false,
    "tier": "B",
@@ -1927,6 +1928,52 @@
    "correlation_group": "KC@BUF: KC ahead",
    "correlation_role": "target_volume_under",
    "reasoning": "A typical game is about 41 yards against 47.5: 18% of about 36 team targets (17% this season, 18% over his last 3) at 8.3 a target (his 9.1 blended with the 7.0 BUF allow). Their run rate was 43% over five games as 7.5-point favourites on average; as 2.75-point underdogs it is set at 40%."
+  },
+  {
+   "id": "00-0030506|player_receptions|under",
+   "game": "KC@BUF",
+   "game_id": "2026_12_KC_BUF",
+   "kickoff_utc": "2026-11-27T01:20+00:00",
+   "player": "Travis Kelce",
+   "player_id": "00-0030506",
+   "position": "TE",
+   "team": "KC",
+   "opponent": "BUF",
+   "market": "receptions",
+   "market_key": "player_receptions",
+   "side": "under",
+   "line": 4.5,
+   "book": "DK",
+   "price": -145,
+   "books": {
+    "DK": {
+     "line": 4.5,
+     "over": 114.0,
+     "under": -145.0
+    },
+    "FD": {
+     "line": 4.5,
+     "over": 124.0,
+     "under": -166.0
+    }
+   },
+   "projection": 4.01,
+   "model_prob": 0.6286,
+   "implied_prob": 0.5588,
+   "edge": 0.0698,
+   "literal_prob": 0.6293,
+   "literal_agrees": true,
+   "tier": "B",
+   "flags": [
+    "snap share moved 50% to 72%",
+    "role change: Kenneth Walker III is out but played in 1 of the last 3 games"
+   ],
+   "tags": [],
+   "rooting_conflict": false,
+   "status": "active",
+   "correlation_group": "KC@BUF: KC ahead",
+   "correlation_role": "target_volume_under",
+   "reasoning": "Projects 4.0 catches against 4.5: 17% of about 36 team targets (18% this season, 15% over his last 3), at a 72% catch rate. Their run rate was 43% over five games as 7.5-point favourites on average; as 2.75-point underdogs it is set at 40%."
   },
   {
    "id": "00-0039139|player_anytime_td|yes",
@@ -1956,8 +2003,8 @@
    },
    "projection": 1.27,
    "model_prob": 0.7201,
-   "implied_prob": 0.6506,
-   "edge": 0.0694,
+   "implied_prob": 0.6509,
+   "edge": 0.0692,
    "literal_prob": 0.8043,
    "literal_agrees": true,
    "tier": "B",
@@ -1970,50 +2017,51 @@
    "reasoning": "Model gives 72% to score: 50% of DET's red-zone chances and 46% of their touches, with DET priced for 3.3 touchdowns."
   },
   {
-   "id": "00-0034827|player_reception_yds|under",
+   "id": "00-0030506|player_reception_yds|under",
    "game": "KC@BUF",
    "game_id": "2026_12_KC_BUF",
    "kickoff_utc": "2026-11-27T01:20+00:00",
-   "player": "DJ Moore",
-   "player_id": "00-0034827",
-   "position": "WR",
-   "team": "BUF",
-   "opponent": "KC",
+   "player": "Travis Kelce",
+   "player_id": "00-0030506",
+   "position": "TE",
+   "team": "KC",
+   "opponent": "BUF",
    "market": "receiving yards",
    "market_key": "player_reception_yds",
    "side": "under",
-   "line": 50.5,
+   "line": 46.5,
    "book": "FD",
    "price": -114,
    "books": {
     "DK": {
-     "line": 48.5,
-     "over": -113.0,
-     "under": -111.0
+     "line": 43.5,
+     "over": -115.0,
+     "under": -109.0
     },
     "FD": {
-     "line": 50.5,
+     "line": 46.5,
      "over": -114.0,
      "under": -114.0
     }
    },
-   "projection": 44.68,
-   "model_prob": 0.5677,
+   "projection": 41.03,
+   "model_prob": 0.5638,
    "implied_prob": 0.5,
-   "edge": 0.0677,
-   "literal_prob": 0.3816,
-   "literal_agrees": false,
+   "edge": 0.0638,
+   "literal_prob": 0.5036,
+   "literal_agrees": true,
    "tier": "B",
    "flags": [
-    "calibration flips the literal lean",
-    "role change: Dalton Kincaid missed the last 1 and may return"
+    "books differ: DK 43.5, FD 46.5",
+    "snap share moved 50% to 72%",
+    "role change: Kenneth Walker III is out but played in 1 of the last 3 games"
    ],
    "tags": [],
    "rooting_conflict": false,
    "status": "active",
-   "correlation_group": "KC@BUF: BUF ahead",
+   "correlation_group": "KC@BUF: KC ahead",
    "correlation_role": "target_volume_under",
-   "reasoning": "A typical game is about 45 yards against 50.5: 21% of about 34 team targets (20% this season, 23% over his last 3) at 8.1 a target (his 9.1 blended with the 6.6 KC allow). Their run rate was 48% over five games as 9.1-point favourites on average; as 2.75-point favourites it is set at 46%."
+   "reasoning": "A typical game is about 41 yards against 46.5: 17% of about 36 team targets (18% this season, 15% over his last 3) at 8.3 a target (his 9.4 blended with the 6.7 BUF allow). Their run rate was 43% over five games as 7.5-point favourites on average; as 2.75-point underdogs it is set at 40%."
   },
   {
    "id": "00-0037248|player_rush_yds|over",
@@ -2059,179 +2107,42 @@
    "reasoning": "A typical game is about 88 yards against 82.5: 20.6 carries at 4.4 a carry (his 5.0 blended with the 3.6 KC allow). Their run rate was 48% over five games as 9.1-point favourites on average; as 2.75-point favourites it is set at 46%."
   },
   {
-   "id": "00-0034827|player_anytime_td|yes",
+   "id": "00-0038997|player_receptions|under",
    "game": "KC@BUF",
    "game_id": "2026_12_KC_BUF",
    "kickoff_utc": "2026-11-27T01:20+00:00",
-   "player": "DJ Moore",
-   "player_id": "00-0034827",
+   "player": "Josh Downs",
+   "player_id": "00-0038997",
    "position": "WR",
-   "team": "BUF",
-   "opponent": "KC",
-   "market": "anytime TD",
-   "market_key": "player_anytime_td",
-   "side": "yes",
-   "line": null,
-   "book": "DK",
-   "price": 245,
-   "books": {
-    "DK": {
-     "line": null,
-     "yes": 245.0
-    },
-    "FD": {
-     "line": null,
-     "yes": 250.0
-    }
-   },
-   "projection": 0.36,
-   "model_prob": 0.3033,
-   "implied_prob": 0.2401,
-   "edge": 0.0632,
-   "literal_prob": 0.4633,
-   "literal_agrees": true,
-   "tier": "B",
-   "flags": [
-    "role change: Dalton Kincaid missed the last 1 and may return"
-   ],
-   "tags": [],
-   "rooting_conflict": false,
-   "status": "active",
-   "correlation_group": "KC@BUF: BUF ahead",
-   "correlation_role": "primary_target_td",
-   "reasoning": "Model gives 30% to score: 22% of BUF's red-zone chances and 11% of their touches, with BUF priced for 2.8 touchdowns."
-  },
-  {
-   "id": "00-0030506|player_reception_yds|under",
-   "game": "KC@BUF",
-   "game_id": "2026_12_KC_BUF",
-   "kickoff_utc": "2026-11-27T01:20+00:00",
-   "player": "Travis Kelce",
-   "player_id": "00-0030506",
-   "position": "TE",
-   "team": "KC",
-   "opponent": "BUF",
-   "market": "receiving yards",
-   "market_key": "player_reception_yds",
-   "side": "under",
-   "line": 46.5,
-   "book": "FD",
-   "price": -114,
-   "books": {
-    "DK": {
-     "line": 43.5,
-     "over": -109.0,
-     "under": -115.0
-    },
-    "FD": {
-     "line": 46.5,
-     "over": -114.0,
-     "under": -114.0
-    }
-   },
-   "projection": 42.16,
-   "model_prob": 0.5629,
-   "implied_prob": 0.5,
-   "edge": 0.0629,
-   "literal_prob": 0.5036,
-   "literal_agrees": true,
-   "tier": "B",
-   "flags": [
-    "books differ: DK 43.5, FD 46.5",
-    "snap share moved 50% to 72%",
-    "role change: Kenneth Walker III is out but played in 1 of the last 3 games"
-   ],
-   "tags": [],
-   "rooting_conflict": false,
-   "status": "active",
-   "correlation_group": "KC@BUF: KC ahead",
-   "correlation_role": "target_volume_under",
-   "reasoning": "A typical game is about 42 yards against 46.5: 17% of about 36 team targets (18% this season, 15% over his last 3) at 8.3 a target (his 9.4 blended with the 6.7 BUF allow). Their run rate was 43% over five games as 7.5-point favourites on average; as 2.75-point underdogs it is set at 40%."
-  },
-  {
-   "id": "00-0038933|player_reception_yds|under",
-   "game": "KC@BUF",
-   "game_id": "2026_12_KC_BUF",
-   "kickoff_utc": "2026-11-27T01:20+00:00",
-   "player": "Dalton Kincaid",
-   "player_id": "00-0038933",
-   "position": "TE",
-   "team": "BUF",
-   "opponent": "KC",
-   "market": "receiving yards",
-   "market_key": "player_reception_yds",
-   "side": "under",
-   "line": 40.5,
-   "book": "FD",
-   "price": -114,
-   "books": {
-    "DK": {
-     "line": 39.5,
-     "over": -115.0,
-     "under": -109.0
-    },
-    "FD": {
-     "line": 40.5,
-     "over": -114.0,
-     "under": -114.0
-    }
-   },
-   "projection": 35.76,
-   "model_prob": 0.5615,
-   "implied_prob": 0.5,
-   "edge": 0.0615,
-   "literal_prob": 0.4946,
-   "literal_agrees": false,
-   "tier": "B",
-   "flags": [
-    "calibration flips the literal lean",
-    "questionable (Thumb; practice: limited Tue, limited Wed)",
-    "did not play in BUF's last 1 game"
-   ],
-   "tags": [],
-   "rooting_conflict": false,
-   "status": "questionable",
-   "correlation_group": "KC@BUF: BUF ahead",
-   "correlation_role": "target_volume_under",
-   "reasoning": "A typical game is about 36 yards against 40.5: 16% of about 34 team targets (17% this season, 14% over his last 3) at 8.7 a target (his 10.1 blended with the 6.6 KC allow). Their run rate was 48% over five games as 9.1-point favourites on average; as 2.75-point favourites it is set at 46%."
-  },
-  {
-   "id": "00-0030506|player_receptions|under",
-   "game": "KC@BUF",
-   "game_id": "2026_12_KC_BUF",
-   "kickoff_utc": "2026-11-27T01:20+00:00",
-   "player": "Travis Kelce",
-   "player_id": "00-0030506",
-   "position": "TE",
    "team": "KC",
    "opponent": "BUF",
    "market": "receptions",
    "market_key": "player_receptions",
    "side": "under",
-   "line": 4.5,
+   "line": 3.5,
    "book": "DK",
-   "price": -151,
+   "price": -143,
    "books": {
     "DK": {
-     "line": 4.5,
-     "over": 118.0,
-     "under": -151.0
+     "line": 3.5,
+     "over": 112.0,
+     "under": -143.0
     },
     "FD": {
-     "line": 4.5,
-     "over": 124.0,
-     "under": -166.0
+     "line": 3.5,
+     "over": 116.0,
+     "under": -154.0
     }
    },
-   "projection": 4.01,
-   "model_prob": 0.6286,
-   "implied_prob": 0.5674,
-   "edge": 0.0612,
-   "literal_prob": 0.6293,
+   "projection": 3.15,
+   "model_prob": 0.6182,
+   "implied_prob": 0.5551,
+   "edge": 0.0632,
+   "literal_prob": 0.5602,
    "literal_agrees": true,
    "tier": "B",
    "flags": [
-    "snap share moved 50% to 72%",
+    "only 2 games of history with KC",
     "role change: Kenneth Walker III is out but played in 1 of the last 3 games"
    ],
    "tags": [],
@@ -2239,50 +2150,7 @@
    "status": "active",
    "correlation_group": "KC@BUF: KC ahead",
    "correlation_role": "target_volume_under",
-   "reasoning": "Projects 4.0 catches against 4.5: 17% of about 36 team targets (18% this season, 15% over his last 3), at a 72% catch rate. Their run rate was 43% over five games as 7.5-point favourites on average; as 2.75-point underdogs it is set at 40%."
-  },
-  {
-   "id": "00-0036997|player_anytime_td|yes",
-   "game": "PHI@DAL",
-   "game_id": "2026_12_PHI_DAL",
-   "kickoff_utc": "2026-11-26T21:30+00:00",
-   "player": "Javonte Williams",
-   "player_id": "00-0036997",
-   "position": "RB",
-   "team": "DAL",
-   "opponent": "PHI",
-   "market": "anytime TD",
-   "market_key": "player_anytime_td",
-   "side": "yes",
-   "line": null,
-   "book": "FD",
-   "price": -180,
-   "books": {
-    "DK": {
-     "line": null,
-     "yes": -175.0
-    },
-    "FD": {
-     "line": null,
-     "yes": -180.0
-    }
-   },
-   "projection": 0.95,
-   "model_prob": 0.6144,
-   "implied_prob": 0.5549,
-   "edge": 0.0596,
-   "literal_prob": 0.6638,
-   "literal_agrees": true,
-   "tier": "B",
-   "flags": [
-    "role change: Tyler Goodson is out but played in 1 of the last 3 games"
-   ],
-   "tags": [],
-   "rooting_conflict": false,
-   "status": "active",
-   "correlation_group": "PHI@DAL: DAL ahead",
-   "correlation_role": "rb_td",
-   "reasoning": "Model gives 61% to score: 32% of DAL's red-zone chances and 33% of their touches, with DAL priced for 3.4 touchdowns."
+   "reasoning": "Projects 3.2 catches against 3.5: 14% of about 36 team targets (14% this season, 14% over his last 2), at a 67% catch rate. Their run rate was 43% over five games as 7.5-point favourites on average; as 2.75-point underdogs it is set at 40%."
   },
   {
    "id": "00-0039738|player_anytime_td|yes",
@@ -2299,11 +2167,11 @@
    "side": "yes",
    "line": null,
    "book": "DK",
-   "price": 135,
+   "price": 140,
    "books": {
     "DK": {
      "line": null,
-     "yes": 135.0
+     "yes": 140.0
     },
     "FD": {
      "line": null,
@@ -2312,8 +2180,8 @@
    },
    "projection": 0.52,
    "model_prob": 0.4083,
-   "implied_prob": 0.3533,
-   "edge": 0.055,
+   "implied_prob": 0.3488,
+   "edge": 0.0595,
    "literal_prob": 0.4962,
    "literal_agrees": true,
    "tier": "B",
@@ -2326,49 +2194,90 @@
    "reasoning": "Model gives 41% to score: 27% of LA's red-zone chances and 23% of their touches, with LA priced for 2.5 touchdowns."
   },
   {
-   "id": "00-0040867|player_reception_yds|over",
-   "game": "PHI@DAL",
-   "game_id": "2026_12_PHI_DAL",
-   "kickoff_utc": "2026-11-26T21:30+00:00",
-   "player": "Makai Lemon",
-   "player_id": "00-0040867",
+   "id": "00-0034827|player_anytime_td|yes",
+   "game": "KC@BUF",
+   "game_id": "2026_12_KC_BUF",
+   "kickoff_utc": "2026-11-27T01:20+00:00",
+   "player": "DJ Moore",
+   "player_id": "00-0034827",
    "position": "WR",
-   "team": "PHI",
-   "opponent": "DAL",
-   "market": "receiving yards",
-   "market_key": "player_reception_yds",
-   "side": "over",
-   "line": 29.5,
+   "team": "BUF",
+   "opponent": "KC",
+   "market": "anytime TD",
+   "market_key": "player_anytime_td",
+   "side": "yes",
+   "line": null,
    "book": "FD",
-   "price": -114,
+   "price": 250,
    "books": {
     "DK": {
-     "line": 30.5,
-     "over": -110.0,
-     "under": -114.0
+     "line": null,
+     "yes": 240.0
     },
     "FD": {
-     "line": 29.5,
-     "over": -114.0,
-     "under": -114.0
+     "line": null,
+     "yes": 250.0
     }
    },
-   "projection": 33.21,
-   "model_prob": 0.5548,
-   "implied_prob": 0.5,
-   "edge": 0.0548,
-   "literal_prob": 0.7181,
+   "projection": 0.36,
+   "model_prob": 0.3033,
+   "implied_prob": 0.2438,
+   "edge": 0.0595,
+   "literal_prob": 0.4633,
    "literal_agrees": true,
    "tier": "B",
    "flags": [
-    "role change: Elijah Mitchell missed the last 1 and may return"
+    "role change: Dalton Kincaid missed the last 1 and may return"
+   ],
+   "tags": [],
+   "rooting_conflict": false,
+   "status": "active",
+   "correlation_group": "KC@BUF: BUF ahead",
+   "correlation_role": "primary_target_td",
+   "reasoning": "Model gives 30% to score: 22% of BUF's red-zone chances and 11% of their touches, with BUF priced for 2.8 touchdowns."
+  },
+  {
+   "id": "00-0036997|player_anytime_td|yes",
+   "game": "PHI@DAL",
+   "game_id": "2026_12_PHI_DAL",
+   "kickoff_utc": "2026-11-26T21:30+00:00",
+   "player": "Javonte Williams",
+   "player_id": "00-0036997",
+   "position": "RB",
+   "team": "DAL",
+   "opponent": "PHI",
+   "market": "anytime TD",
+   "market_key": "player_anytime_td",
+   "side": "yes",
+   "line": null,
+   "book": "DK",
+   "price": -175,
+   "books": {
+    "DK": {
+     "line": null,
+     "yes": -175.0
+    },
+    "FD": {
+     "line": null,
+     "yes": -180.0
+    }
+   },
+   "projection": 0.95,
+   "model_prob": 0.6144,
+   "implied_prob": 0.5554,
+   "edge": 0.059,
+   "literal_prob": 0.6638,
+   "literal_agrees": true,
+   "tier": "B",
+   "flags": [
+    "role change: Tyler Goodson is out but played in 1 of the last 3 games"
    ],
    "tags": [],
    "rooting_conflict": false,
    "status": "active",
    "correlation_group": "PHI@DAL: DAL ahead",
-   "correlation_role": "target_volume",
-   "reasoning": "A typical game is about 33 yards against 29.5: 20% of about 30 team targets (19% this season, 22% over his last 3) at 7.3 a target (his 6.3 blended with the 8.9 DAL allow). Their run rate was 42% over five games as 4.0-point underdogs on average; as 8.5-point underdogs it is set at 41%."
+   "correlation_role": "rb_td",
+   "reasoning": "Model gives 61% to score: 32% of DAL's red-zone chances and 33% of their touches, with DAL priced for 3.4 touchdowns."
   },
   {
    "id": "00-0039894|player_anytime_td|yes",
@@ -2393,13 +2302,13 @@
     },
     "FD": {
      "line": null,
-     "yes": 470.0
+     "yes": 480.0
     }
    },
    "projection": 0.22,
    "model_prob": 0.1989,
-   "implied_prob": 0.144,
-   "edge": 0.0548,
+   "implied_prob": 0.1445,
+   "edge": 0.0544,
    "literal_prob": 0.2573,
    "literal_agrees": true,
    "tier": "B",
@@ -2457,49 +2366,94 @@
    "reasoning": "Projects 9.4 carries against 9.5: GB run about 23 times and he has taken 40% of them over his last 3 games."
   },
   {
-   "id": "00-0032464|player_reception_yds|under",
-   "game": "CHI@DET",
-   "game_id": "2026_12_CHI_DET",
-   "kickoff_utc": "2026-11-26T18:00+00:00",
-   "player": "Kalif Raymond",
-   "player_id": "00-0032464",
+   "id": "00-0040024|player_reception_yds|over",
+   "game": "PHI@DAL",
+   "game_id": "2026_12_PHI_DAL",
+   "kickoff_utc": "2026-11-26T21:30+00:00",
+   "player": "Darius Cooper",
+   "player_id": "00-0040024",
    "position": "WR",
-   "team": "CHI",
-   "opponent": "DET",
+   "team": "PHI",
+   "opponent": "DAL",
    "market": "receiving yards",
    "market_key": "player_reception_yds",
-   "side": "under",
+   "side": "over",
    "line": 26.5,
-   "book": "DK",
-   "price": -113,
+   "book": "FD",
+   "price": -114,
    "books": {
     "DK": {
-     "line": 26.5,
-     "over": -111.0,
-     "under": -113.0
+     "line": 27.5,
+     "over": -110.0,
+     "under": -114.0
     },
     "FD": {
-     "line": 25.5,
+     "line": 26.5,
      "over": -114.0,
      "under": -114.0
     }
    },
-   "projection": 22.96,
-   "model_prob": 0.5536,
-   "implied_prob": 0.5021,
-   "edge": 0.0515,
-   "literal_prob": 0.3591,
-   "literal_agrees": false,
+   "projection": 30.32,
+   "model_prob": 0.5524,
+   "implied_prob": 0.5,
+   "edge": 0.0524,
+   "literal_prob": 0.7796,
+   "literal_agrees": true,
    "tier": "B",
    "flags": [
-    "calibration flips the literal lean"
+    "role change: Elijah Mitchell missed the last 1 and may return"
    ],
    "tags": [],
    "rooting_conflict": false,
    "status": "active",
-   "correlation_group": "CHI@DET: CHI ahead",
+   "correlation_group": "PHI@DAL: DAL ahead",
+   "correlation_role": "target_volume",
+   "reasoning": "A typical game is about 30 yards against 26.5: 15% of about 30 team targets (12% this season, 23% over his last 3) at 8.0 a target (his 7.4 blended with the 8.9 DAL allow). Their run rate was 42% over five games as 4.0-point underdogs on average; as 8.5-point underdogs it is set at 41%."
+  },
+  {
+   "id": "00-0034351|player_reception_yds|under",
+   "game": "PHI@DAL",
+   "game_id": "2026_12_PHI_DAL",
+   "kickoff_utc": "2026-11-26T21:30+00:00",
+   "player": "Dallas Goedert",
+   "player_id": "00-0034351",
+   "position": "TE",
+   "team": "PHI",
+   "opponent": "DAL",
+   "market": "receiving yards",
+   "market_key": "player_reception_yds",
+   "side": "under",
+   "line": 31.5,
+   "book": "DK",
+   "price": -110,
+   "books": {
+    "DK": {
+     "line": 31.5,
+     "over": -114.0,
+     "under": -110.0
+    },
+    "FD": {
+     "line": 30.5,
+     "over": -114.0,
+     "under": -114.0
+    }
+   },
+   "projection": 28.19,
+   "model_prob": 0.5472,
+   "implied_prob": 0.4958,
+   "edge": 0.0514,
+   "literal_prob": 0.5797,
+   "literal_agrees": true,
+   "tier": "B",
+   "flags": [
+    "role change: Elijah Mitchell missed the last 1 and may return"
+   ],
+   "tags": [],
+   "rooting_conflict": false,
+   "status": "active",
+   "correlation_group": "PHI@DAL: PHI ahead",
    "correlation_role": "target_volume_under",
-   "reasoning": "A typical game is about 23 yards against 26.5: 15% of about 30 team targets (14% this season, 17% over his last 3) at 7.3 a target (his 7.2 blended with the 7.5 DET allow). Their run rate was 48% over five games as 5.5-point favourites on average; as 1.5-point favourites it is set at 47%."
+   "reasoning": "A typical game is about 28 yards against 31.5: 15% of about 30 team targets (16% this season, 12% over his last 3) at 7.6 a target (his 7.9 blended with the 7.1 DAL allow). Their run rate was 42% over five games as 4.0-point underdogs on average; as 8.5-point underdogs it is set at 41%."
   },
   {
    "id": "00-0040867|player_receptions|over",
@@ -2548,49 +2502,50 @@
    "reasoning": "Projects 3.5 catches against 2.5: 20% of about 30 team targets (19% this season, 22% over his last 3), at a 65% catch rate. Their run rate was 42% over five games as 4.0-point underdogs on average; as 8.5-point underdogs it is set at 41%."
   },
   {
-   "id": "00-0039410|player_reception_yds|under",
-   "game": "PHI@DAL",
-   "game_id": "2026_12_PHI_DAL",
-   "kickoff_utc": "2026-11-26T21:30+00:00",
-   "player": "Ryan Flournoy",
-   "player_id": "00-0039410",
-   "position": "WR",
-   "team": "DAL",
-   "opponent": "PHI",
-   "market": "receiving yards",
-   "market_key": "player_reception_yds",
-   "side": "under",
-   "line": 30.5,
-   "book": "DK",
-   "price": -110,
+   "id": "00-0038933|player_receptions|over",
+   "game": "KC@BUF",
+   "game_id": "2026_12_KC_BUF",
+   "kickoff_utc": "2026-11-27T01:20+00:00",
+   "player": "Dalton Kincaid",
+   "player_id": "00-0038933",
+   "position": "TE",
+   "team": "BUF",
+   "opponent": "KC",
+   "market": "receptions",
+   "market_key": "player_receptions",
+   "side": "over",
+   "line": 3.5,
+   "book": "FD",
+   "price": 116,
    "books": {
     "DK": {
-     "line": 30.5,
-     "over": -114.0,
-     "under": -110.0
+     "line": 3.5,
+     "over": 110.0,
+     "under": -140.0
     },
     "FD": {
-     "line": 29.5,
-     "over": -114.0,
-     "under": -114.0
+     "line": 3.5,
+     "over": 116.0,
+     "under": -154.0
     }
    },
-   "projection": 27.86,
-   "model_prob": 0.5468,
-   "implied_prob": 0.4958,
-   "edge": 0.051,
-   "literal_prob": 0.5923,
+   "projection": 3.68,
+   "model_prob": 0.4838,
+   "implied_prob": 0.433,
+   "edge": 0.0508,
+   "literal_prob": 0.4733,
    "literal_agrees": true,
    "tier": "B",
    "flags": [
-    "snap share moved 89% to 54%"
+    "questionable (Thumb; practice: limited Tue, limited Wed)",
+    "did not play in BUF's last 1 game"
    ],
    "tags": [],
    "rooting_conflict": false,
-   "status": "active",
-   "correlation_group": "PHI@DAL: DAL ahead",
-   "correlation_role": "target_volume_under",
-   "reasoning": "A typical game is about 28 yards against 30.5: 12% of about 35 team targets (13% this season, 8% over his last 3) at 8.3 a target (his 8.5 blended with the 8.0 PHI allow). Their run rate was 45% over five games as 3.7-point favourites on average; as 8.5-point favourites it is set at 46%."
+   "status": "questionable",
+   "correlation_group": "KC@BUF: KC ahead",
+   "correlation_role": "target_volume",
+   "reasoning": "Projects 3.7 catches against 3.5: 16% of about 34 team targets (17% this season, 14% over his last 3), at a 75% catch rate. Their run rate was 48% over five games as 9.1-point favourites on average; as 2.75-point favourites it is set at 46%."
   }
  ],
  "skips": [
@@ -2676,11 +2631,11 @@
    "side": "yes",
    "line": null,
    "book": "DK",
-   "price": 210,
+   "price": 205,
    "projection": 0.21,
    "model_prob": 0.1902,
-   "implied_prob": 0.2672,
-   "edge": -0.077,
+   "implied_prob": 0.2724,
+   "edge": -0.0822,
    "kind": "popular",
    "reason": "Model gives 19% to score, the price implies 27% after vig."
   },
@@ -2694,13 +2649,13 @@
    "side": "yes",
    "line": null,
    "book": "FD",
-   "price": -160,
+   "price": -155,
    "projection": 0.6,
    "model_prob": 0.4528,
-   "implied_prob": 0.5253,
-   "edge": -0.0725,
+   "implied_prob": 0.5187,
+   "edge": -0.0659,
    "kind": "popular",
-   "reason": "Model gives 45% to score, the price implies 53% after vig."
+   "reason": "Model gives 45% to score, the price implies 52% after vig."
   },
   {
    "id": "00-0039919|player_receptions|under",
@@ -2721,24 +2676,6 @@
    "reason": "Model gives the over 39%, the price implies 44% after vig: a typical game is about 3.2 against a line of 3.5."
   },
   {
-   "id": "00-0034827|player_receptions|under",
-   "game": "KC@BUF",
-   "player": "DJ Moore",
-   "team": "BUF",
-   "position": "WR",
-   "market": "receptions",
-   "side": "over",
-   "line": 3.5,
-   "book": "FD",
-   "price": -172,
-   "projection": 4.03,
-   "model_prob": 0.5462,
-   "implied_prob": 0.5905,
-   "edge": -0.0443,
-   "kind": "popular",
-   "reason": "Model gives the over 55%, the price implies 59% after vig: a typical game is about 4.0 against a line of 3.5."
-  },
-  {
    "id": "00-0040142|player_rush_yds|under",
    "game": "GB@LA",
    "player": "Kaleb Johnson",
@@ -2755,6 +2692,24 @@
    "edge": -0.0419,
    "kind": "popular",
    "reason": "Model gives the over 46%, the price implies 50% after vig: a typical game is about 28.6 against a line of 31.5."
+  },
+  {
+   "id": "00-0034827|player_reception_yds|under",
+   "game": "KC@BUF",
+   "player": "DJ Moore",
+   "team": "BUF",
+   "position": "WR",
+   "market": "receiving yards",
+   "side": "over",
+   "line": 48.5,
+   "book": "DK",
+   "price": -113,
+   "projection": 45.29,
+   "model_prob": 0.4646,
+   "implied_prob": 0.5021,
+   "edge": -0.0375,
+   "kind": "popular",
+   "reason": "Model gives the over 46%, the price implies 50% after vig: a typical game is about 45.3 against a line of 48.5."
   },
   {
    "id": "00-0037247|player_receptions|under",
@@ -2839,12 +2794,12 @@
    "line": 86.5,
    "book": "DK",
    "price": -110,
-   "projection": 54.49,
-   "model_prob": 0.7857,
+   "projection": 53.08,
+   "model_prob": 0.7994,
    "implied_prob": 0.4958,
-   "edge": 0.2899,
+   "edge": 0.3036,
    "kind": "not trusted",
-   "reason": "Model edge of 29% is too large to trust; the book probably knows something the model does not."
+   "reason": "Model edge of 30% is too large to trust; the book probably knows something the model does not."
   },
   {
    "id": "00-0040126|player_receptions|under",
@@ -2893,28 +2848,10 @@
    "line": 53.5,
    "book": "DK",
    "price": -112,
-   "projection": 31.8,
-   "model_prob": 0.7628,
+   "projection": 33.08,
+   "model_prob": 0.75,
    "implied_prob": 0.5,
-   "edge": 0.2628,
-   "kind": "not trusted",
-   "reason": "Model edge of 26% is too large to trust; the book probably knows something the model does not."
-  },
-  {
-   "id": "00-0037240|player_reception_yds|under",
-   "game": "CHI@DET",
-   "player": "Jameson Williams",
-   "team": "DET",
-   "position": "WR",
-   "market": "receiving yards",
-   "side": "under",
-   "line": 57.5,
-   "book": "FD",
-   "price": -114,
-   "projection": 38.25,
-   "model_prob": 0.7483,
-   "implied_prob": 0.5,
-   "edge": 0.2483,
+   "edge": 0.25,
    "kind": "not trusted",
    "reason": "Model edge of 25% is too large to trust; the book probably knows something the model does not."
   },
@@ -2937,22 +2874,22 @@
    "reason": "Model edge of 24% is too large to trust; the book probably knows something the model does not. snap share moved 59% to 82%; role change: Kenneth Walker III is out but played in 1 of the last 3 games."
   },
   {
-   "id": "00-0038996|player_reception_yds|under",
-   "game": "GB@LA",
-   "player": "Tucker Kraft",
-   "team": "GB",
-   "position": "TE",
+   "id": "00-0037240|player_reception_yds|under",
+   "game": "CHI@DET",
+   "player": "Jameson Williams",
+   "team": "DET",
+   "position": "WR",
    "market": "receiving yards",
    "side": "under",
-   "line": 39.5,
-   "book": "DK",
+   "line": 57.5,
+   "book": "FD",
    "price": -113,
-   "projection": 25.2,
-   "model_prob": 0.7221,
-   "implied_prob": 0.5021,
-   "edge": 0.22,
+   "projection": 37.56,
+   "model_prob": 0.7308,
+   "implied_prob": 0.5,
+   "edge": 0.2308,
    "kind": "not trusted",
-   "reason": "Model edge of 22% is too large to trust; the book probably knows something the model does not."
+   "reason": "Model edge of 23% is too large to trust; the book probably knows something the model does not."
   },
   {
    "id": "00-0034844|player_rush_attempts|under",
@@ -2971,6 +2908,24 @@
    "edge": 0.2175,
    "kind": "not trusted",
    "reason": "Model edge of 22% is too large to trust; the book probably knows something the model does not. role change: Elijah Mitchell missed the last 1 and may return."
+  },
+  {
+   "id": "00-0038996|player_receptions|under",
+   "game": "GB@LA",
+   "player": "Tucker Kraft",
+   "team": "GB",
+   "position": "TE",
+   "market": "receptions",
+   "side": "under",
+   "line": 3.5,
+   "book": "DK",
+   "price": 129,
+   "projection": 3.12,
+   "model_prob": 0.6247,
+   "implied_prob": 0.4122,
+   "edge": 0.2125,
+   "kind": "not trusted",
+   "reason": "Model edge of 21% is too large to trust; the book probably knows something the model does not."
   },
   {
    "id": "00-0037240|player_receptions|under",
@@ -3042,8 +2997,8 @@
       "team": "CHI",
       "bet": "under 61.5 receiving yards",
       "price": -112,
-      "model_prob": 0.6869,
-      "edge": 0.1869,
+      "model_prob": 0.6814,
+      "edge": 0.1814,
       "tier": "A",
       "flagged": false,
       "anchor": false,
@@ -3056,7 +3011,7 @@
       "bet": "anytime TD",
       "price": 165,
       "model_prob": 0.4888,
-      "edge": 0.1488,
+      "edge": 0.1487,
       "tier": "A",
       "flagged": false,
       "anchor": true,
@@ -3071,58 +3026,11 @@
     "anchor_player": "Kyle Monangai",
     "decimal": 5.016,
     "price": 402,
-    "model_prob": 0.3358,
+    "model_prob": 0.3331,
     "implied_prob": 0.17,
-    "value": 0.6842,
+    "value": 0.6707,
     "rooting_conflict": false,
     "flagged_legs": 0
-   },
-   {
-    "size": 2,
-    "group": "KC@BUF: KC ahead",
-    "game": "KC@BUF",
-    "book": "DK",
-    "legs": [
-     {
-      "id": "00-0035537|player_receptions|over",
-      "player": "Ty Johnson",
-      "team": "BUF",
-      "bet": "over 2.5 receptions",
-      "price": 136,
-      "model_prob": 0.5946,
-      "edge": 0.1944,
-      "tier": "B",
-      "flagged": true,
-      "anchor": false,
-      "moneyline": false
-     },
-     {
-      "id": "00-0039894|player_anytime_td|yes",
-      "player": "Xavier Worthy",
-      "team": "KC",
-      "bet": "anytime TD",
-      "price": 475,
-      "model_prob": 0.1989,
-      "edge": 0.0548,
-      "tier": "B",
-      "flagged": true,
-      "anchor": true,
-      "moneyline": false
-     }
-    ],
-    "leg_ids": [
-     "00-0035537|player_receptions|over",
-     "00-0039894|player_anytime_td|yes"
-    ],
-    "anchor": "00-0039894|player_anytime_td|yes",
-    "anchor_player": "Xavier Worthy",
-    "decimal": 13.57,
-    "price": 1257,
-    "model_prob": 0.1183,
-    "implied_prob": 0.0576,
-    "value": 0.6049,
-    "rooting_conflict": false,
-    "flagged_legs": 2
    },
    {
     "size": 2,
@@ -3136,8 +3044,8 @@
       "team": "CHI",
       "bet": "under 61.5 receiving yards",
       "price": -112,
-      "model_prob": 0.6869,
-      "edge": 0.1869,
+      "model_prob": 0.6814,
+      "edge": 0.1814,
       "tier": "A",
       "flagged": false,
       "anchor": false,
@@ -3165,11 +3073,58 @@
     "anchor_player": "Kyle Monangai",
     "decimal": 3.629,
     "price": 263,
-    "model_prob": 0.4354,
+    "model_prob": 0.4319,
     "implied_prob": 0.2459,
-    "value": 0.5801,
+    "value": 0.5674,
     "rooting_conflict": false,
     "flagged_legs": 0
+   },
+   {
+    "size": 2,
+    "group": "KC@BUF: KC ahead",
+    "game": "KC@BUF",
+    "book": "FD",
+    "legs": [
+     {
+      "id": "00-0035537|player_receptions|over",
+      "player": "Ty Johnson",
+      "team": "BUF",
+      "bet": "over 2.5 receptions",
+      "price": 120,
+      "model_prob": 0.5946,
+      "edge": 0.1698,
+      "tier": "B",
+      "flagged": true,
+      "anchor": false,
+      "moneyline": false
+     },
+     {
+      "id": "00-0039894|player_anytime_td|yes",
+      "player": "Xavier Worthy",
+      "team": "KC",
+      "bet": "anytime TD",
+      "price": 480,
+      "model_prob": 0.1989,
+      "edge": 0.0517,
+      "tier": "B",
+      "flagged": true,
+      "anchor": true,
+      "moneyline": false
+     }
+    ],
+    "leg_ids": [
+     "00-0035537|player_receptions|over",
+     "00-0039894|player_anytime_td|yes"
+    ],
+    "anchor": "00-0039894|player_anytime_td|yes",
+    "anchor_player": "Xavier Worthy",
+    "decimal": 12.76,
+    "price": 1176,
+    "model_prob": 0.1183,
+    "implied_prob": 0.0625,
+    "value": 0.5091,
+    "rooting_conflict": false,
+    "flagged_legs": 2
    },
    {
     "size": 2,
@@ -3184,7 +3139,7 @@
       "bet": "anytime TD",
       "price": -105,
       "model_prob": 0.5682,
-      "edge": 0.1309,
+      "edge": 0.1311,
       "tier": "A",
       "flagged": false,
       "anchor": true,
@@ -3232,8 +3187,8 @@
       "team": "CHI",
       "bet": "under 61.5 receiving yards",
       "price": -112,
-      "model_prob": 0.6869,
-      "edge": 0.1869,
+      "model_prob": 0.6814,
+      "edge": 0.1814,
       "tier": "A",
       "flagged": false,
       "anchor": false,
@@ -3246,7 +3201,7 @@
       "bet": "anytime TD",
       "price": 165,
       "model_prob": 0.4888,
-      "edge": 0.1488,
+      "edge": 0.1487,
       "tier": "A",
       "flagged": false,
       "anchor": false,
@@ -3259,7 +3214,7 @@
       "bet": "anytime TD",
       "price": -125,
       "model_prob": 0.6351,
-      "edge": 0.1346,
+      "edge": 0.1345,
       "tier": "B",
       "flagged": true,
       "anchor": true,
@@ -3275,133 +3230,11 @@
     "anchor_player": "D'Andre Swift",
     "decimal": 9.029,
     "price": 803,
-    "model_prob": 0.2132,
+    "model_prob": 0.2115,
     "implied_prob": 0.0851,
-    "value": 0.9253,
+    "value": 0.9099,
     "rooting_conflict": false,
     "flagged_legs": 1
-   },
-   {
-    "size": 3,
-    "group": "KC@BUF: KC ahead",
-    "game": "KC@BUF",
-    "book": "DK",
-    "legs": [
-     {
-      "id": "00-0035537|player_receptions|over",
-      "player": "Ty Johnson",
-      "team": "BUF",
-      "bet": "over 2.5 receptions",
-      "price": 136,
-      "model_prob": 0.5946,
-      "edge": 0.1944,
-      "tier": "B",
-      "flagged": true,
-      "anchor": false,
-      "moneyline": false
-     },
-     {
-      "id": "00-0039901|player_receptions|over",
-      "player": "Keon Coleman",
-      "team": "BUF",
-      "bet": "over 2.5 receptions",
-      "price": 147,
-      "model_prob": 0.4821,
-      "edge": 0.0993,
-      "tier": "B",
-      "flagged": true,
-      "anchor": false,
-      "moneyline": false
-     },
-     {
-      "id": "00-0039894|player_anytime_td|yes",
-      "player": "Xavier Worthy",
-      "team": "KC",
-      "bet": "anytime TD",
-      "price": 475,
-      "model_prob": 0.1989,
-      "edge": 0.0548,
-      "tier": "B",
-      "flagged": true,
-      "anchor": true,
-      "moneyline": false
-     }
-    ],
-    "leg_ids": [
-     "00-0035537|player_receptions|over",
-     "00-0039894|player_anytime_td|yes",
-     "00-0039901|player_receptions|over"
-    ],
-    "anchor": "00-0039894|player_anytime_td|yes",
-    "anchor_player": "Xavier Worthy",
-    "decimal": 33.518,
-    "price": 3252,
-    "model_prob": 0.057,
-    "implied_prob": 0.0221,
-    "value": 0.9111,
-    "rooting_conflict": false,
-    "flagged_legs": 3
-   },
-   {
-    "size": 3,
-    "group": "KC@BUF: KC ahead",
-    "game": "KC@BUF",
-    "book": "DK",
-    "legs": [
-     {
-      "id": "00-0035537|player_receptions|over",
-      "player": "Ty Johnson",
-      "team": "BUF",
-      "bet": "over 2.5 receptions",
-      "price": 136,
-      "model_prob": 0.5946,
-      "edge": 0.1944,
-      "tier": "B",
-      "flagged": true,
-      "anchor": false,
-      "moneyline": false
-     },
-     {
-      "id": "00-0038997|player_reception_yds|under",
-      "player": "Josh Downs",
-      "team": "KC",
-      "bet": "under 40.5 receiving yards",
-      "price": -109,
-      "model_prob": 0.6176,
-      "edge": 0.1239,
-      "tier": "B",
-      "flagged": true,
-      "anchor": false,
-      "moneyline": false
-     },
-     {
-      "id": "00-0039894|player_anytime_td|yes",
-      "player": "Xavier Worthy",
-      "team": "KC",
-      "bet": "anytime TD",
-      "price": 475,
-      "model_prob": 0.1989,
-      "edge": 0.0548,
-      "tier": "B",
-      "flagged": true,
-      "anchor": true,
-      "moneyline": false
-     }
-    ],
-    "leg_ids": [
-     "00-0035537|player_receptions|over",
-     "00-0038997|player_reception_yds|under",
-     "00-0039894|player_anytime_td|yes"
-    ],
-    "anchor": "00-0039894|player_anytime_td|yes",
-    "anchor_player": "Xavier Worthy",
-    "decimal": 26.02,
-    "price": 2502,
-    "model_prob": 0.073,
-    "implied_prob": 0.0285,
-    "value": 0.9005,
-    "rooting_conflict": false,
-    "flagged_legs": 3
    },
    {
     "size": 3,
@@ -3415,8 +3248,8 @@
       "team": "CHI",
       "bet": "under 61.5 receiving yards",
       "price": -112,
-      "model_prob": 0.6869,
-      "edge": 0.1869,
+      "model_prob": 0.6814,
+      "edge": 0.1814,
       "tier": "A",
       "flagged": false,
       "anchor": false,
@@ -3442,7 +3275,7 @@
       "bet": "anytime TD",
       "price": -125,
       "model_prob": 0.6351,
-      "edge": 0.1346,
+      "edge": 0.1345,
       "tier": "B",
       "flagged": true,
       "anchor": true,
@@ -3458,11 +3291,133 @@
     "anchor_player": "D'Andre Swift",
     "decimal": 6.533,
     "price": 553,
-    "model_prob": 0.2765,
-    "implied_prob": 0.123,
-    "value": 0.8063,
+    "model_prob": 0.2743,
+    "implied_prob": 0.1231,
+    "value": 0.7919,
     "rooting_conflict": false,
     "flagged_legs": 1
+   },
+   {
+    "size": 3,
+    "group": "KC@BUF: BUF ahead",
+    "game": "KC@BUF",
+    "book": "FD",
+    "legs": [
+     {
+      "id": "00-0037248|player_anytime_td|yes",
+      "player": "James Cook",
+      "team": "BUF",
+      "bet": "anytime TD",
+      "price": -105,
+      "model_prob": 0.5682,
+      "edge": 0.1311,
+      "tier": "A",
+      "flagged": false,
+      "anchor": true,
+      "moneyline": false
+     },
+     {
+      "id": "00-0039894|player_receptions|over",
+      "player": "Xavier Worthy",
+      "team": "KC",
+      "bet": "over 2.5 receptions",
+      "price": 120,
+      "model_prob": 0.6018,
+      "edge": 0.1769,
+      "tier": "B",
+      "flagged": true,
+      "anchor": false,
+      "moneyline": false
+     },
+     {
+      "id": "00-0036637|player_receptions|over",
+      "player": "Noah Gray",
+      "team": "KC",
+      "bet": "over 1.5 receptions",
+      "price": -102,
+      "model_prob": 0.6122,
+      "edge": 0.1403,
+      "tier": "B",
+      "flagged": true,
+      "anchor": false,
+      "moneyline": false
+     }
+    ],
+    "leg_ids": [
+     "00-0036637|player_receptions|over",
+     "00-0037248|player_anytime_td|yes",
+     "00-0039894|player_receptions|over"
+    ],
+    "anchor": "00-0037248|player_anytime_td|yes",
+    "anchor_player": "James Cook",
+    "decimal": 8.506,
+    "price": 751,
+    "model_prob": 0.2093,
+    "implied_prob": 0.0876,
+    "value": 0.7807,
+    "rooting_conflict": false,
+    "flagged_legs": 2
+   },
+   {
+    "size": 3,
+    "group": "KC@BUF: BUF ahead",
+    "game": "KC@BUF",
+    "book": "DK",
+    "legs": [
+     {
+      "id": "00-0037248|player_anytime_td|yes",
+      "player": "James Cook",
+      "team": "BUF",
+      "bet": "anytime TD",
+      "price": -105,
+      "model_prob": 0.5682,
+      "edge": 0.1426,
+      "tier": "A",
+      "flagged": false,
+      "anchor": true,
+      "moneyline": false
+     },
+     {
+      "id": "00-0039894|player_receptions|over",
+      "player": "Xavier Worthy",
+      "team": "KC",
+      "bet": "over 2.5 receptions",
+      "price": 118,
+      "model_prob": 0.6018,
+      "edge": 0.1692,
+      "tier": "B",
+      "flagged": true,
+      "anchor": false,
+      "moneyline": false
+     },
+     {
+      "id": "00-0036637|player_reception_yds|over",
+      "player": "Noah Gray",
+      "team": "KC",
+      "bet": "over 12.5 receiving yards",
+      "price": -111,
+      "model_prob": 0.6227,
+      "edge": 0.1248,
+      "tier": "B",
+      "flagged": true,
+      "anchor": false,
+      "moneyline": false
+     }
+    ],
+    "leg_ids": [
+     "00-0036637|player_reception_yds|over",
+     "00-0037248|player_anytime_td|yes",
+     "00-0039894|player_receptions|over"
+    ],
+    "anchor": "00-0037248|player_anytime_td|yes",
+    "anchor_player": "James Cook",
+    "decimal": 8.091,
+    "price": 709,
+    "model_prob": 0.2129,
+    "implied_prob": 0.0916,
+    "value": 0.7227,
+    "rooting_conflict": false,
+    "flagged_legs": 2
    }
   ]
  },
@@ -3486,8 +3441,8 @@
       "team": "DET",
       "bet": "under 44.5 receiving yards",
       "price": -111,
-      "model_prob": 0.6858,
-      "edge": 0.1879,
+      "model_prob": 0.659,
+      "edge": 0.1611,
       "tier": "A",
       "flagged": false,
       "anchor": false,
@@ -3500,7 +3455,7 @@
       "bet": "anytime TD",
       "price": -260,
       "model_prob": 0.7201,
-      "edge": 0.0694,
+      "edge": 0.0692,
       "tier": "B",
       "flagged": false,
       "anchor": true,
@@ -3515,13 +3470,13 @@
     "anchor_player": "Jahmyr Gibbs",
     "decimal": 2.632,
     "price": 163,
-    "model_prob": 0.4938,
-    "implied_prob": 0.3239,
-    "value": 0.2998,
+    "model_prob": 0.4745,
+    "implied_prob": 0.3241,
+    "value": 0.249,
     "rooting_conflict": false,
     "flagged_legs": 0,
     "boosted_price": 245,
-    "boosted_value": 0.7026
+    "boosted_value": 0.6361
    },
    "alternative": null,
    "note": null
@@ -3570,8 +3525,8 @@
       "player": "LA",
       "team": "LA",
       "bet": "moneyline",
-      "price": -143,
-      "model_prob": 0.5653,
+      "price": -141,
+      "model_prob": 0.5628,
       "edge": 0.0,
       "tier": null,
       "flagged": false,
@@ -3586,15 +3541,15 @@
     ],
     "anchor": "GB@LA|moneyline|LA",
     "anchor_player": "LA",
-    "decimal": 4.911,
-    "price": 391,
-    "model_prob": 0.2657,
-    "implied_prob": 0.174,
-    "value": 0.3047,
+    "decimal": 4.94,
+    "price": 394,
+    "model_prob": 0.2645,
+    "implied_prob": 0.1733,
+    "value": 0.3065,
     "rooting_conflict": true,
     "flagged_legs": 2,
-    "boosted_price": 782,
-    "boosted_value": 1.344
+    "boosted_price": 788,
+    "boosted_value": 1.3488
    },
    "alternative": {
     "size": 3,
@@ -3616,13 +3571,13 @@
       "moneyline": false
      },
      {
-      "id": "00-0036912|player_reception_yds|over",
-      "player": "DeVonta Smith",
+      "id": "00-0040867|player_reception_yds|over",
+      "player": "Makai Lemon",
       "team": "PHI",
-      "bet": "over 63.5 receiving yards",
-      "price": -113,
-      "model_prob": 0.5874,
-      "edge": 0.0853,
+      "bet": "over 30.5 receiving yards",
+      "price": -110,
+      "model_prob": 0.5611,
+      "edge": 0.0653,
       "tier": "B",
       "flagged": true,
       "anchor": false,
@@ -3644,20 +3599,20 @@
     ],
     "leg_ids": [
      "00-0034844|player_rush_yds|under",
-     "00-0036912|player_reception_yds|over",
+     "00-0040867|player_reception_yds|over",
      "PHI@DAL|moneyline|DAL"
     ],
     "anchor": "PHI@DAL|moneyline|DAL",
     "anchor_player": "DAL",
-    "decimal": 4.337,
-    "price": 334,
-    "model_prob": 0.2994,
-    "implied_prob": 0.1985,
-    "value": 0.2983,
+    "decimal": 4.392,
+    "price": 339,
+    "model_prob": 0.2859,
+    "implied_prob": 0.196,
+    "value": 0.256,
     "rooting_conflict": false,
     "flagged_legs": 2,
-    "boosted_price": 667,
-    "boosted_value": 1.2976
+    "boosted_price": 678,
+    "boosted_value": 1.2254
    },
    "note": null
   }
@@ -3665,20 +3620,20 @@
  "anchor_rule": true,
  "credits": {
   "this_run": 23,
-  "used": 96,
-  "remaining": 19904
+  "used": 119,
+  "remaining": 19881
  },
  "sources": {
-  "odds_pulled_utc": "2026-11-25T17:46:58+00:00",
-  "status_generated_utc": "2026-11-25T17:47:01+00:00",
+  "odds_pulled_utc": "2026-11-25T18:20:24+00:00",
+  "status_generated_utc": "2026-11-25T18:20:27+00:00",
   "status_source": "espn",
-  "nflverse_fetched_utc": "2026-11-25T17:46:58+00:00",
+  "nflverse_fetched_utc": "2026-11-25T18:20:23+00:00",
   "last_completed_week": 11
  },
  "notes": [
   "8 quarterback anytime TD props were not priced: the touch-share method does not describe how a quarterback scores",
-  "85 posted props were not priced because the player's role is too small to trust (under 6 carries or 3 targets a game, or under 35% of snaps for a touchdown)",
-  "15 legs on this board carry the flag \"calibration flips the literal lean\": the calibrated model and the rules as written point opposite ways, so they sit in B tier and are left out of every ticket."
+  "94 posted props were not priced because the player's role is too small to trust (under 6 carries or 3 targets a game, or under 35% of snaps for a touchdown)",
+  "12 legs on this board carry the flag \"calibration flips the literal lean\": the calibrated model and the rules as written point opposite ways, so they sit in B tier and are left out of every ticket."
  ],
  "next_runs": [
   {

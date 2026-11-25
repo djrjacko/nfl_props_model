@@ -15,6 +15,15 @@ Credit rules (the-odds-api.com/liveapi/guides/v4, read 2026-11-24):
     /events/{id}/odds    markets returned  x bookmaker groups  -> up to 5 per game, 7 with alt lines
 Up to 10 bookmakers count as one group; only DraftKings and FanDuel are requested.
 
+What real responses look like (first pull, GB@LA, 2026-11-24):
+    * Over/Under markets carry both sides for each player: name is "Over" or
+      "Under", description is the player's name, point is the line, price is
+      American odds.
+    * player_anytime_td has "Yes" prices only (no "No" side and no point), and
+      its list includes team defenses ("Green Bay Packers D/ST", "... Defense").
+    * FanDuel returned no player_rush_attempts market; DraftKings did.
+    * The two books often post different lines for the same player.
+
 The key comes from the ODDS_API_KEY environment variable (the GitHub Actions
 secret) or from .env in the project folder. It is never printed, logged or
 cached. Raw responses are cached in data/odds/, which is gitignored because the

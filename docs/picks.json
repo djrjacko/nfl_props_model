@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-11-25T04:41:00+00:00",
- "generated_arizona": "Tue Nov 24 9:41 PM MST",
+ "generated_utc": "2026-11-25T04:42:17+00:00",
+ "generated_arizona": "Tue Nov 24 9:42 PM MST",
  "repo": "djrjacko/nfl_props_model",
  "window_hours": 36.0,
  "season": 2026,
@@ -171,48 +171,6 @@
    "reasoning": "A typical game is about 61 yards against 76.5: 30% of about 33 team targets (28% this season, 33% over his last 3) at 8.0 a target (his 8.4 blended with the 7.4 LA allow)."
   },
   {
-   "id": "00-0037840|player_rush_yds|under",
-   "game": "GB@LA",
-   "game_id": "2026_12_GB_LA",
-   "kickoff_utc": "2026-11-26T01:00+00:00",
-   "player": "Kyren Williams",
-   "player_id": "00-0037840",
-   "position": "RB",
-   "team": "LA",
-   "opponent": "GB",
-   "market": "rush yards",
-   "market_key": "player_rush_yds",
-   "side": "under",
-   "line": 55.5,
-   "book": "DK",
-   "price": -109,
-   "books": {
-    "DK": {
-     "line": 55.5,
-     "over": -115.0,
-     "under": -109.0
-    },
-    "FD": {
-     "line": 53.5,
-     "over": -113.0,
-     "under": -113.0
-    }
-   },
-   "projection": 45.29,
-   "model_prob": 0.6261,
-   "implied_prob": 0.4937,
-   "edge": 0.1324,
-   "literal_prob": 0.5254,
-   "tier": "A",
-   "flags": [],
-   "tags": [],
-   "rooting_conflict": false,
-   "status": "active",
-   "correlation_group": "GB@LA: GB ahead",
-   "correlation_role": "rb_volume_under",
-   "reasoning": "A typical game is about 45 yards against 55.5: 12.0 carries at 4.3 a carry (his 4.4 blended with the 4.1 GB allow). Their run rate was 52% over five games as 7.1-point favourites on average; as 2.5-point favourites it is set at 50%."
-  },
-  {
    "id": "00-0037840|player_rush_attempts|under",
    "game": "GB@LA",
    "game_id": "2026_12_GB_LA",
@@ -225,21 +183,21 @@
    "market": "rush attempts",
    "market_key": "player_rush_attempts",
    "side": "under",
-   "line": 12.5,
+   "line": 13.5,
    "book": "DK",
-   "price": 104,
+   "price": -134,
    "books": {
     "DK": {
-     "line": 12.5,
-     "over": -132.0,
-     "under": 104.0
+     "line": 13.5,
+     "over": 105.0,
+     "under": -134.0
     }
    },
    "projection": 12.01,
-   "model_prob": 0.5835,
-   "implied_prob": 0.4628,
-   "edge": 0.1207,
-   "literal_prob": 0.5157,
+   "model_prob": 0.6499,
+   "implied_prob": 0.54,
+   "edge": 0.1099,
+   "literal_prob": 0.6247,
    "tier": "A",
    "flags": [],
    "tags": [],
@@ -247,7 +205,7 @@
    "status": "active",
    "correlation_group": "GB@LA: GB ahead",
    "correlation_role": "rb_volume_under",
-   "reasoning": "Projects 12.0 carries against 12.5: LA run about 34 times and he has taken 37% of them over his last 3 games. Their run rate was 52% over five games as 7.1-point favourites on average; as 2.5-point favourites it is set at 50%."
+   "reasoning": "Projects 12.0 carries against 13.5: LA run about 34 times and he has taken 37% of them over his last 3 games. Their run rate was 52% over five games as 7.1-point favourites on average; as 2.5-point favourites it is set at 50%."
   },
   {
    "id": "00-0039738|player_rush_yds|under",
@@ -472,6 +430,50 @@
    "reasoning": "Projects 4.3 catches against 4.5: 22% of about 33 team targets (22% this season, 23% over his last 3), at a 65% catch rate."
   },
   {
+   "id": "00-0037840|player_rush_yds|under",
+   "game": "GB@LA",
+   "game_id": "2026_12_GB_LA",
+   "kickoff_utc": "2026-11-26T01:00+00:00",
+   "player": "Kyren Williams",
+   "player_id": "00-0037840",
+   "position": "RB",
+   "team": "LA",
+   "opponent": "GB",
+   "market": "rush yards",
+   "market_key": "player_rush_yds",
+   "side": "under",
+   "line": 56.5,
+   "book": "DK",
+   "price": -115,
+   "books": {
+    "DK": {
+     "line": 56.5,
+     "over": -109.0,
+     "under": -115.0
+    },
+    "FD": {
+     "line": 53.5,
+     "over": -113.0,
+     "under": -113.0
+    }
+   },
+   "projection": 45.29,
+   "model_prob": 0.6379,
+   "implied_prob": 0.5063,
+   "edge": 0.1316,
+   "literal_prob": 0.5377,
+   "tier": "B",
+   "flags": [
+    "books differ: DK 56.5, FD 53.5"
+   ],
+   "tags": [],
+   "rooting_conflict": false,
+   "status": "active",
+   "correlation_group": "GB@LA: GB ahead",
+   "correlation_role": "rb_volume_under",
+   "reasoning": "A typical game is about 45 yards against 56.5: 12.0 carries at 4.3 a carry (his 4.4 blended with the 4.1 GB allow). Their run rate was 52% over five games as 7.1-point favourites on average; as 2.5-point favourites it is set at 50%."
+  },
+  {
    "id": "00-0037840|player_receptions|under",
    "game": "GB@LA",
    "game_id": "2026_12_GB_LA",
@@ -530,18 +532,18 @@
    "side": "under",
    "line": 10.5,
    "book": "DK",
-   "price": -136,
+   "price": -139,
    "books": {
     "DK": {
      "line": 10.5,
-     "over": 107.0,
-     "under": -136.0
+     "over": 109.0,
+     "under": -139.0
     }
    },
    "projection": 9.39,
    "model_prob": 0.6401,
-   "implied_prob": 0.544,
-   "edge": 0.0961,
+   "implied_prob": 0.5486,
+   "edge": 0.0915,
    "literal_prob": 0.664,
    "tier": "B",
    "flags": [
@@ -585,8 +587,8 @@
    },
    "projection": 0.53,
    "model_prob": 0.4137,
-   "implied_prob": 0.3383,
-   "edge": 0.0753,
+   "implied_prob": 0.3401,
+   "edge": 0.0735,
    "literal_prob": 0.5021,
    "tier": "B",
    "flags": [],
@@ -608,8 +610,8 @@
    "market": "anytime TD",
    "side": "yes",
    "line": null,
-   "book": "FD",
-   "price": 170,
+   "book": "DK",
+   "price": 165,
    "projection": 0.2,
    "model_prob": 0.1828,
    "implied_prob": 0.3144,
@@ -808,9 +810,9 @@
       "player": "Kaleb Johnson",
       "team": "GB",
       "bet": "under 10.5 rush attempts",
-      "price": -136,
+      "price": -139,
       "model_prob": 0.6401,
-      "edge": 0.0961,
+      "edge": 0.0915,
       "tier": "B",
       "flagged": true
      }
@@ -821,11 +823,11 @@
     ],
     "anchor": "00-0033110|player_receptions|under",
     "anchor_player": "Tyler Higbee",
-    "decimal": 3.091,
-    "price": 209,
+    "decimal": 3.063,
+    "price": 206,
     "model_prob": 0.4662,
-    "implied_prob": 0.2877,
-    "value": 0.4412,
+    "implied_prob": 0.2902,
+    "value": 0.428,
     "rooting_conflict": true,
     "flagged_legs": 2
    }
@@ -974,9 +976,9 @@
       "player": "Kaleb Johnson",
       "team": "GB",
       "bet": "under 10.5 rush attempts",
-      "price": -136,
+      "price": -139,
       "model_prob": 0.6401,
-      "edge": 0.0961,
+      "edge": 0.0915,
       "tier": "B",
       "flagged": true
      }
@@ -988,11 +990,11 @@
     ],
     "anchor": "00-0033110|player_receptions|under",
     "anchor_player": "Tyler Higbee",
-    "decimal": 5.469,
-    "price": 447,
+    "decimal": 5.419,
+    "price": 442,
     "model_prob": 0.3008,
-    "implied_prob": 0.1534,
-    "value": 0.6451,
+    "implied_prob": 0.1547,
+    "value": 0.6301,
     "rooting_conflict": true,
     "flagged_legs": 3
    },
@@ -1031,7 +1033,7 @@
       "bet": "anytime TD",
       "price": 145,
       "model_prob": 0.4137,
-      "edge": 0.0753,
+      "edge": 0.0735,
       "tier": "B",
       "flagged": false
      }
@@ -1046,7 +1048,7 @@
     "decimal": 7.721,
     "price": 672,
     "model_prob": 0.1944,
-    "implied_prob": 0.0954,
+    "implied_prob": 0.0959,
     "value": 0.5012,
     "rooting_conflict": false,
     "flagged_legs": 2
@@ -1068,13 +1070,13 @@
     "book": "DK",
     "legs": [
      {
-      "id": "00-0040667|player_reception_yds|under",
-      "player": "Matthew Golden",
-      "team": "GB",
-      "bet": "under 76.5 receiving yards",
-      "price": -113,
-      "model_prob": 0.6352,
-      "edge": 0.1331,
+      "id": "00-0037840|player_rush_attempts|under",
+      "player": "Kyren Williams",
+      "team": "LA",
+      "bet": "under 13.5 rush attempts",
+      "price": -134,
+      "model_prob": 0.6499,
+      "edge": 0.1099,
       "tier": "A",
       "flagged": false
      },
@@ -1091,20 +1093,20 @@
      }
     ],
     "leg_ids": [
-     "00-0038996|player_receptions|under",
-     "00-0040667|player_reception_yds|under"
+     "00-0037840|player_rush_attempts|under",
+     "00-0038996|player_receptions|under"
     ],
     "anchor": "00-0038996|player_receptions|under",
     "anchor_player": "Tucker Kraft",
-    "decimal": 3.041,
-    "price": 204,
-    "model_prob": 0.4934,
-    "implied_prob": 0.294,
-    "value": 0.5007,
+    "decimal": 2.818,
+    "price": 182,
+    "model_prob": 0.5048,
+    "implied_prob": 0.3162,
+    "value": 0.4224,
     "rooting_conflict": true,
     "flagged_legs": 1,
-    "boosted_price": 306,
-    "boosted_value": 1.0039
+    "boosted_price": 273,
+    "boosted_value": 0.8814
    },
    "alternative": {
     "size": 2,
@@ -1162,19 +1164,19 @@
    "pick": "best",
    "ticket": null,
    "alternative": null,
-   "note": "No 3-leg same-script ticket is priced +300 to +400 on this slate. The nearest is +447 at DK: Tyler Higbee under 3.5 receptions + Kyren Williams under 3.5 receptions + Kaleb Johnson under 10.5 rush attempts."
+   "note": "No 3-leg same-script ticket is priced +300 to +400 on this slate. The nearest is +431 at DK: Matthew Golden under 76.5 receiving yards + Kyren Williams under 13.5 rush attempts + Tucker Kraft under 4.5 receptions."
   }
  ],
  "credits": {
   "this_run": 7,
-  "used": 7,
-  "remaining": 19993
+  "used": 14,
+  "remaining": 19986
  },
  "sources": {
-  "odds_pulled_utc": "2026-11-25T02:59:11+00:00",
-  "status_generated_utc": "2026-11-25T04:40:56+00:00",
+  "odds_pulled_utc": "2026-11-25T04:42:14+00:00",
+  "status_generated_utc": "2026-11-25T04:42:15+00:00",
   "status_source": "espn",
-  "nflverse_fetched_utc": "2026-11-25T04:40:55+00:00",
+  "nflverse_fetched_utc": "2026-11-25T04:42:14+00:00",
   "last_completed_week": 11
  },
  "notes": [

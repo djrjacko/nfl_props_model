@@ -1,5 +1,5 @@
 NFL PROP BOARD
-Updated Tue Nov 24 9:41 PM MST | Odds API credits: 7 this run, 7 used, 19,993 left
+Updated Tue Nov 24 9:42 PM MST | Odds API credits: 7 this run, 14 used, 19,986 left
 Window: games kicking off in the next 36 hours | calibration on
 
   GB@LA    Wed Nov 25 6:00 PM MST   LA -2.5, total 44
@@ -9,19 +9,19 @@ WARNING: 92% of this board is unders. The calibration may be shrinking too hard 
 
 BOOSTS
   50% boost ($50 max, 2 legs, +150 to +250, safest)
-    DK about +204: model 49% against 29% implied [GB@LA: GB ahead]  [rooting conflict]
-      - Matthew Golden under 76.5 receiving yards (-113)
+    DK about +182: model 50% against 32% implied [GB@LA: GB ahead]  [rooting conflict]
+      - Kyren Williams under 13.5 rush attempts (-134)
       - Tucker Kraft under 4.5 receptions (-163)  (flagged)
-      with the boost about +306
+      with the boost about +273
     if you skip that one for the rooting conflict:
     DK about +215: model 47% against 28% implied [GB@LA: LA ahead]
       - Tyler Higbee under 3.5 receptions (-128)  (flagged)
       - Kyren Williams under 3.5 receptions (-130)  (flagged)
       with the boost about +323
   100% boost ($25 max, 3 legs, +300 to +400, best)
-    No 3-leg same-script ticket is priced +300 to +400 on this slate. The nearest is +447 at DK:
-    Tyler Higbee under 3.5 receptions + Kyren Williams under 3.5 receptions + Kaleb Johnson
-    under 10.5 rush attempts.
+    No 3-leg same-script ticket is priced +300 to +400 on this slate. The nearest is +431 at DK:
+    Matthew Golden under 76.5 receiving yards + Kyren Williams under 13.5 rush attempts + Tucker
+    Kraft under 4.5 receptions.
   Ticket prices are the legs multiplied together. A book prices a same-game parlay shorter than
   that when the legs move together, so check the real price is still in range before boosting.
 
@@ -35,9 +35,9 @@ SAME GAME PARLAYS, 2 LEGS
   DK about +215: model 47% against 28% implied [GB@LA: LA ahead]
     - Tyler Higbee under 3.5 receptions (-128)  (flagged)
     - Kyren Williams under 3.5 receptions (-130)  (flagged)
-  DK about +209: model 47% against 29% implied [GB@LA: LA ahead]  [rooting conflict]
+  DK about +206: model 47% against 29% implied [GB@LA: LA ahead]  [rooting conflict]
     - Tyler Higbee under 3.5 receptions (-128)  (flagged)
-    - Kaleb Johnson under 10.5 rush attempts (-136)  (flagged)
+    - Kaleb Johnson under 10.5 rush attempts (-139)  (flagged)
 
 SAME GAME PARLAYS, 3 LEGS
   DK about +728: model 24% against 10% implied [GB@LA: GB ahead]  [rooting conflict]
@@ -48,16 +48,16 @@ SAME GAME PARLAYS, 3 LEGS
     - Matthew Golden under 5.5 receptions (-106)
     - Tucker Kraft under 3.5 receptions (+118)  (flagged)
     - Christian Watson under 4.5 receptions (+110)  (flagged)
-  DK about +447: model 30% against 15% implied [GB@LA: LA ahead]  [rooting conflict]
+  DK about +442: model 30% against 15% implied [GB@LA: LA ahead]  [rooting conflict]
     - Tyler Higbee under 3.5 receptions (-128)  (flagged)
     - Kyren Williams under 3.5 receptions (-130)  (flagged)
-    - Kaleb Johnson under 10.5 rush attempts (-136)  (flagged)
+    - Kaleb Johnson under 10.5 rush attempts (-139)  (flagged)
   DK about +672: model 19% against 10% implied [GB@LA: LA ahead]
     - Tyler Higbee under 3.5 receptions (-128)  (flagged)
     - Kyren Williams under 3.5 receptions (-130)  (flagged)
     - Blake Corum anytime TD (+145)
 
-A TIER (edge 8% or more, no flags): 6
+A TIER (edge 8% or more, no flags): 5
   1. Tucker Kraft (GB TE, GB@LA) under 39.5 receiving yards  DK -114  [rooting conflict]
      model 68.3% | book 50.4% | edge +17.9% | rules as written 65.9%
      A typical game is about 27 yards against 39.5: 15% of about 33 team targets (16% this
@@ -70,23 +70,18 @@ A TIER (edge 8% or more, no flags): 6
      model 63.5% | book 50.2% | edge +13.3% | rules as written 40.8%
      A typical game is about 61 yards against 76.5: 30% of about 33 team targets (28% this
      season, 33% over his last 3) at 8.0 a target (his 8.4 blended with the 7.4 LA allow).
-  4. Kyren Williams (LA RB, GB@LA) under 55.5 rush yards  DK -109
-     model 62.6% | book 49.4% | edge +13.2% | rules as written 52.5%
-     A typical game is about 45 yards against 55.5: 12.0 carries at 4.3 a carry (his 4.4 blended
-     with the 4.1 GB allow). Their run rate was 52% over five games as 7.1-point favourites on
-     average; as 2.5-point favourites it is set at 50%.
-  5. Kyren Williams (LA RB, GB@LA) under 12.5 rush attempts  DK +104
-     model 58.4% | book 46.3% | edge +12.1% | rules as written 51.6%
-     Projects 12.0 carries against 12.5: LA run about 34 times and he has taken 37% of them over
+  4. Kyren Williams (LA RB, GB@LA) under 13.5 rush attempts  DK -134
+     model 65.0% | book 54.0% | edge +11.0% | rules as written 62.5%
+     Projects 12.0 carries against 13.5: LA run about 34 times and he has taken 37% of them over
      his last 3 games. Their run rate was 52% over five games as 7.1-point favourites on
      average; as 2.5-point favourites it is set at 50%.
-  6. Blake Corum (LA RB, GB@LA) under 57.5 rush yards  FD -113
+  5. Blake Corum (LA RB, GB@LA) under 57.5 rush yards  FD -113
      model 59.0% | book 50.0% | edge +9.0% | rules as written 47.3%
      A typical game is about 50 yards against 57.5: 12.2 carries at 4.7 a carry (his 5.1 blended
      with the 4.1 GB allow). Their run rate was 52% over five games as 7.1-point favourites on
      average; as 2.5-point favourites it is set at 50%.
 
-B TIER (edge 5% to 8%, or any flag): 7
+B TIER (edge 5% to 8%, or any flag): 8
   1. Tyler Higbee (LA TE, GB@LA) under 3.5 receptions  DK -128
      model 72.8% | book 52.9% | edge +20.0% | rules as written 66.8%
      Projects 2.6 catches against 3.5: 12% of about 31 team targets (12% this season, 13% over
@@ -110,25 +105,31 @@ B TIER (edge 5% to 8%, or any flag): 7
      Projects 4.3 catches against 4.5: 22% of about 33 team targets (22% this season, 23% over
      his last 3), at a 65% catch rate.
      flag: snap share moved 63% to 85%
-  5. Kyren Williams (LA RB, GB@LA) under 3.5 receptions  DK -130
+  5. Kyren Williams (LA RB, GB@LA) under 56.5 rush yards  DK -115
+     model 63.8% | book 50.6% | edge +13.2% | rules as written 53.8%
+     A typical game is about 45 yards against 56.5: 12.0 carries at 4.3 a carry (his 4.4 blended
+     with the 4.1 GB allow). Their run rate was 52% over five games as 7.1-point favourites on
+     average; as 2.5-point favourites it is set at 50%.
+     flag: books differ: DK 56.5, FD 53.5
+  6. Kyren Williams (LA RB, GB@LA) under 3.5 receptions  DK -130
      model 64.5% | book 53.3% | edge +11.2% | rules as written 63.3%
      Projects 3.0 catches against 3.5: 14% of about 31 team targets (14% this season, 13% over
      his last 3), at a 76% catch rate. Their run rate was 52% over five games as 7.1-point
      favourites on average; as 2.5-point favourites it is set at 50%.
      flag: role change: Puka Nacua is out but played in 2 of the last 3 games
-  6. Kaleb Johnson (GB RB, GB@LA) under 10.5 rush attempts  DK -136  [rooting conflict]
-     model 64.0% | book 54.4% | edge +9.6% | rules as written 66.4%
+  7. Kaleb Johnson (GB RB, GB@LA) under 10.5 rush attempts  DK -139  [rooting conflict]
+     model 64.0% | book 54.9% | edge +9.2% | rules as written 66.4%
      Projects 9.4 carries against 10.5: GB run about 23 times and he has taken 40% of them over
      his last 3 games.
      flag: role change: Pierre Strong missed the last 1 and may return
      flag: role change: Josh Jacobs missed the last 1 and may return
-  7. Blake Corum (LA RB, GB@LA) anytime TD  DK +145
-     model 41.4% | book 33.8% | edge +7.5% | rules as written 50.2%
+  8. Blake Corum (LA RB, GB@LA) anytime TD  DK +145
+     model 41.4% | book 34.0% | edge +7.3% | rules as written 50.2%
      Model gives 41% to score: 27% of LA's red-zone chances and 23% of their touches, with LA
      priced for 2.6 touchdowns.
 
 SKIPS: 3
-  [popular] Christian Watson anytime TD (FD +170): Model gives 18% to score, the price implies
+  [popular] Christian Watson anytime TD (DK +165): Model gives 18% to score, the price implies
   31% after vig.
   [popular] Blake Corum over 11.5 rush attempts (DK -135): Model gives the over 51%, the price
   implies 54% after vig: a typical game is about 12.2 against a line of 11.5.
@@ -137,7 +138,11 @@ SKIPS: 3
   85%.
 
 WHAT CHANGED
-  First run: there is no earlier board to compare with.
+  2 line moved, 1 tier changed since Tue Nov 24 9:41 PM MST.
+  Line moved: Kyren Williams rush attempts 12.5 to 13.5 (DK); still under, edge 11.0%.
+  Line moved: Kyren Williams rush yards 55.5 to 56.5 (DK); still under, edge 13.2%.
+  Tier changed: Kyren Williams under 56.5 rush yards went from A to B (new flag: books differ:
+  DK 56.5, FD 53.5).
 
 NOTES
   - 30 posted props were not priced because the player's role is too small to trust (under 6

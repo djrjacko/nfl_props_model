@@ -1,102 +1,24 @@
 {
- "generated_utc": "2026-11-25T18:53:42+00:00",
- "generated_arizona": "Wed Nov 25 11:53 AM MST",
- "previous_utc": "2026-11-25T18:20:31+00:00",
- "previous_arizona": "Wed Nov 25 11:20 AM MST",
- "headline": "18 added, 1 line moved, 1 price moved, 1 status changed since Wed Nov 25 11:20 AM MST.",
- "added": [
-  {
-   "id": "00-0041496|player_rush_attempts|under",
-   "text": "Added: Jonah Coleman under 19.5 rush attempts (DK -116), A tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0041496|player_rush_yds|under",
-   "text": "Added: Jonah Coleman under 75.5 rush yards (FD -114), A tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0034348|player_receptions|under",
-   "text": "Added: Courtland Sutton under 2.5 receptions (DK +117), A tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0033881|player_reception_yds|over",
-   "text": "Added: Evan Engram over 20.5 receiving yards (DK -112), A tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0040134|player_receptions|under",
-   "text": "Added: Pat Bryant under 2.5 receptions (DK -122), A tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0041496|player_receptions|under",
-   "text": "Added: Jonah Coleman under 3.5 receptions (FD -136), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0036613|player_reception_yds|under",
-   "text": "Added: Jaylen Waddle under 44.5 receiving yards (DK -115), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0041489|player_reception_yds|over",
-   "text": "Added: Germie Bernard over 22.5 receiving yards (DK -109), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0036139|player_rush_yds|under",
-   "text": "Added: Rico Dowdle under 32.5 rush yards (FD -114), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0036139|player_rush_attempts|under",
-   "text": "Added: Rico Dowdle under 7.5 rush attempts (DK +113), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0036139|player_receptions|over",
-   "text": "Added: Rico Dowdle over 1.5 receptions (FD -148), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0035640|player_reception_yds|over",
-   "text": "Added: DK Metcalf over 27.5 receiving yards (DK -112), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0041489|player_receptions|over",
-   "text": "Added: Germie Bernard over 2.5 receptions (FD -158), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0038558|player_reception_yds|over",
-   "text": "Added: Darnell Washington over 17.5 receiving yards (DK -110), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0036894|player_receptions|over",
-   "text": "Added: Pat Freiermuth over 2.5 receptions (FD +116), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0036894|player_reception_yds|over",
-   "text": "Added: Pat Freiermuth over 20.5 receiving yards (FD -114), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0038558|player_receptions|over",
-   "text": "Added: Darnell Washington over 1.5 receptions (FD -148), B tier, because its game is now inside the window."
-  },
-  {
-   "id": "00-0035640|player_receptions|over",
-   "text": "Added: DK Metcalf over 2.5 receptions (FD -130), B tier, because its game is now inside the window."
-  }
- ],
+ "generated_utc": "2026-11-25T19:13:53+00:00",
+ "generated_arizona": "Wed Nov 25 12:13 PM MST",
+ "previous_utc": "2026-11-25T18:53:42+00:00",
+ "previous_arizona": "Wed Nov 25 11:53 AM MST",
+ "headline": "1 line moved, 1 price moved since Wed Nov 25 11:53 AM MST.",
+ "added": [],
  "removed": [],
  "line_moved": [
   {
    "id": "00-0039738|player_rush_yds|under",
-   "text": "Line moved: Blake Corum rush yards 58.5 to 57.5 (DK); still under, edge 8.8%."
+   "text": "Line moved: Blake Corum rush yards 57.5 to 58.5 (DK); still under, edge 9.2%."
   }
  ],
  "price_moved": [
   {
-   "id": "00-0038997|player_receptions|under",
-   "text": "Price moved: Josh Downs under 3.5 receptions was DK -143, now FD -154; edge 5.1%."
+   "id": "00-0034827|player_anytime_td|yes",
+   "text": "Price moved: DJ Moore anytime TD was FD +250, now DK +245; edge 6.2%."
   }
  ],
- "status_changed": [
-  {
-   "id": null,
-   "text": "Ruled out: Michael Pittman is out. Legs that depend on it are off the board."
-  }
- ],
+ "status_changed": [],
  "tier_changed": [],
  "kicked_off": 0
 }

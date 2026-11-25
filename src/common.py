@@ -1,6 +1,8 @@
 """Small things every script shares: the project folder, Arizona time, team names."""
 from __future__ import annotations
 
+import re
+import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -8,9 +10,19 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[1]
 ARIZONA = ZoneInfo("America/Phoenix")  # UTC-7 all year, no daylight saving
 
+_NAME_SUFFIXES = {"jr", "sr", "ii", "iii", "iv", "v"}
+
 
 def utc_now() -> datetime:
     return datetime.now(timezone.utc)
+
+
+def norm_name(name: str | None) -> str:
+    """A name reduced for matching across sources: 'Kenneth Walker III' -> 'kenneth walker',
+    'D.J. Moore' -> 'dj moore', 'Amon-Ra St. Brown' -> 'amon ra st brown'."""
+    text = unicodedata.normalize("NFKD", name or "").encode("ascii", "ignore").decode().lower()
+    words = re.sub(r"[^a-z ]", "", text.replace("-", " ")).split()
+    return " ".join(word for word in words if word not in _NAME_SUFFIXES)
 
 
 def az(moment: datetime) -> str:

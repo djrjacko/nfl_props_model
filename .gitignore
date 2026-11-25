@@ -12,6 +12,9 @@ data/nflverse/
 # raw Odds API responses: the API's terms do not allow republishing them as files
 data/odds/
 
+# player status built from ESPN on every run
+data/status/
+
 # editor and OS noise
 .vscode/
 .idea/

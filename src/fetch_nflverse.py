@@ -271,6 +271,12 @@ def run_info() -> dict:
     return run
 
 
+def last_modified(key: str) -> str | None:
+    """The HTTP Last-Modified date of a dataset's newest file, i.e. when nflverse last rebuilt it."""
+    names = run_info()["files"][key]
+    return _read_manifest().get(names[-1], {}).get("last_modified") if names else None
+
+
 def load(key: str, columns: list[str] | None = None) -> pd.DataFrame:
     """Read one dataset from data/nflverse/ (all seasons the last fetch kept for it)."""
     names = run_info()["files"][key]

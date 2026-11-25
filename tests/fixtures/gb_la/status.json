@@ -1,0 +1,752 @@
+{
+ "generated_utc": "2026-11-25T03:25:40+00:00",
+ "source": "espn",
+ "window_hours": 36.0,
+ "official_report": "nflverse official report: newest week on file is 11; nothing yet for upcoming week(s) [12]",
+ "practice_log_rows": 38,
+ "practice_log_added": 0,
+ "games": [
+  {
+   "game_id": "2026_12_GB_LA",
+   "espn_id": "401873079",
+   "away": "GB",
+   "home": "LA",
+   "kickoff_utc": "2026-11-26T01:00+00:00",
+   "state": "pre",
+   "espn_team_ids": {
+    "LA": "14",
+    "GB": "9"
+   },
+   "gameday_roster": {}
+  }
+ ],
+ "teams": {
+  "GB": {
+   "starting_qb": {
+    "name": "Jordan Love",
+    "gsis_id": "00-0036264",
+    "espn_id": "4036378",
+    "source": "espn depth chart",
+    "last_game_passer": "Jordan Love",
+    "same_as_last_game": true,
+    "status": "active",
+    "practice_none_this_week": null
+   },
+   "status_source": "espn roster"
+  },
+  "LA": {
+   "starting_qb": {
+    "name": "Matthew Stafford",
+    "gsis_id": "00-0026498",
+    "espn_id": "12483",
+    "source": "espn depth chart",
+    "last_game_passer": "Matthew Stafford",
+    "same_as_last_game": true,
+    "status": "active",
+    "practice_none_this_week": null
+   },
+   "status_source": "espn roster"
+  }
+ },
+ "players": [
+  {
+   "player_key": "00-0038589",
+   "gsis_id": "00-0038589",
+   "espn_id": "4360086",
+   "name": "Josh Whyle",
+   "team": "GB",
+   "position": "TE",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-11-14T22:35+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0039144",
+   "gsis_id": "00-0039144",
+   "espn_id": "4428085",
+   "name": "Luke Musgrave",
+   "team": "GB",
+   "position": "TE",
+   "status": "out",
+   "designation": "Out",
+   "injury": "Neck",
+   "note_utc": "2026-11-22T14:06+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0039936",
+   "gsis_id": "00-0039936",
+   "espn_id": "4361027",
+   "name": "Thomas Yassmin",
+   "team": "GB",
+   "position": "TE",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-08-31T23:12+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0039146",
+   "gsis_id": "00-0039146",
+   "espn_id": "4362249",
+   "name": "Jayden Reed",
+   "team": "GB",
+   "position": "WR",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-09-30T15:55+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0035700",
+   "gsis_id": "00-0035700",
+   "espn_id": "4047365",
+   "name": "Josh Jacobs",
+   "team": "GB",
+   "position": "RB",
+   "status": "questionable",
+   "designation": "Questionable",
+   "injury": "Finger",
+   "note_utc": "2026-11-24T18:19+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0037091",
+   "gsis_id": "00-0037091",
+   "espn_id": "4259305",
+   "name": "Bo Melton",
+   "team": "GB",
+   "position": "WR",
+   "status": "questionable",
+   "designation": "Questionable",
+   "injury": "Thigh",
+   "note_utc": "2026-11-24T20:40+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0038090",
+   "gsis_id": "00-0038090",
+   "espn_id": "4430191",
+   "name": "Skyy Moore",
+   "team": "GB",
+   "position": "WR",
+   "status": "questionable",
+   "designation": "Questionable",
+   "injury": "Ankle",
+   "note_utc": "2026-11-24T20:48+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0037094",
+   "gsis_id": "00-0037094",
+   "espn_id": "4259762",
+   "name": "Jonathan Ford",
+   "team": "GB",
+   "position": "DT",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-10-18T02:56+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0040016",
+   "gsis_id": "00-0040016",
+   "espn_id": "4429136",
+   "name": "Warren Brinson",
+   "team": "GB",
+   "position": "DT",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-11-13T01:07+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0039817",
+   "gsis_id": "00-0039817",
+   "espn_id": "4428037",
+   "name": "Jacob Monk",
+   "team": "GB",
+   "position": "G",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-10-26T21:52+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0037817",
+   "gsis_id": "00-0037817",
+   "espn_id": "4240435",
+   "name": "Zach Bako-Bewele",
+   "team": "GB",
+   "position": "G",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-09-29T00:26+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0040012",
+   "gsis_id": "00-0040012",
+   "espn_id": "4683059",
+   "name": "Collin Oliver",
+   "team": "GB",
+   "position": "LB",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-09-01T23:27+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0039850",
+   "gsis_id": "00-0039850",
+   "espn_id": "4430438",
+   "name": "Edgerrin Cooper",
+   "team": "GB",
+   "position": "LB",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-10-06T23:22+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0033109",
+   "gsis_id": "00-0033109",
+   "espn_id": "2983055",
+   "name": "Javon Hargrave",
+   "team": "GB",
+   "position": "NT",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-10-18T01:58+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0040033",
+   "gsis_id": "00-0040033",
+   "espn_id": "4709980",
+   "name": "Johnathan Baldwin II",
+   "team": "GB",
+   "position": "SAF",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-08-19T12:07+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0037076",
+   "gsis_id": "00-0037076",
+   "espn_id": "4426411",
+   "name": "Sean Rhyan",
+   "team": "GB",
+   "position": "C",
+   "status": "questionable",
+   "designation": "Questionable",
+   "injury": "Ankle",
+   "note_utc": "2026-11-25T01:18+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0029592",
+   "gsis_id": "00-0029592",
+   "espn_id": "14931",
+   "name": "Kevin Zeitler",
+   "team": "GB",
+   "position": "G",
+   "status": "questionable",
+   "designation": "Questionable",
+   "injury": "Triceps",
+   "note_utc": "2026-11-25T01:25+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0036932",
+   "gsis_id": "00-0036932",
+   "espn_id": "4361423",
+   "name": "Micah Parsons",
+   "team": "GB",
+   "position": "LB",
+   "status": "questionable",
+   "designation": "Questionable",
+   "injury": "Knee - ACL",
+   "note_utc": "2026-11-24T19:34+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0034431",
+   "gsis_id": "00-0034431",
+   "espn_id": "3124005",
+   "name": "Zaire Franklin",
+   "team": "GB",
+   "position": "OLB",
+   "status": "questionable",
+   "designation": "Questionable",
+   "injury": "Shin",
+   "note_utc": "2026-11-24T20:28+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0039819",
+   "gsis_id": "00-0039819",
+   "espn_id": "4361904",
+   "name": "Travis Glover",
+   "team": "GB",
+   "position": "OT",
+   "status": "questionable",
+   "designation": "Questionable",
+   "injury": "Shoulder",
+   "note_utc": "2026-11-25T01:13+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0041414",
+   "gsis_id": "00-0041414",
+   "espn_id": "4877717",
+   "name": "Matthew Caldwell",
+   "team": "LA",
+   "position": "QB",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-08-29T22:20+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0041415",
+   "gsis_id": "00-0041415",
+   "espn_id": "5082269",
+   "name": "Dean Connors",
+   "team": "LA",
+   "position": "RB",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-11-04T01:20+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0040737",
+   "gsis_id": "00-0040737",
+   "espn_id": "4570037",
+   "name": "Terrance Ferguson",
+   "team": "LA",
+   "position": "TE",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": "Ankle",
+   "note_utc": "2026-11-23T19:35+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0031381",
+   "gsis_id": "00-0031381",
+   "espn_id": "16800",
+   "name": "Davante Adams",
+   "team": "LA",
+   "position": "WR",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": "Hamstring",
+   "note_utc": "2026-11-22T14:32+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0039751",
+   "gsis_id": "00-0039751",
+   "espn_id": "4569382",
+   "name": "Jordan Whittington",
+   "team": "LA",
+   "position": "WR",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-11-11T00:38+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0039075",
+   "gsis_id": "00-0039075",
+   "espn_id": "4426515",
+   "name": "Puka Nacua",
+   "team": "LA",
+   "position": "WR",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": "Knee - MCL",
+   "note_utc": "2026-11-22T01:25+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0034114",
+   "gsis_id": "00-0034114",
+   "espn_id": "3052180",
+   "name": "Coleman Shelton",
+   "team": "LA",
+   "position": "C",
+   "status": "out",
+   "designation": "Out",
+   "injury": "Hamstring",
+   "note_utc": "2026-11-23T22:25+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0039830",
+   "gsis_id": "00-0039830",
+   "espn_id": "4430155",
+   "name": "Dylan McMahon",
+   "team": "LA",
+   "position": "C",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": "Knee",
+   "note_utc": "2026-11-17T00:48+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0037195",
+   "gsis_id": "00-0037195",
+   "espn_id": "4697639",
+   "name": "Jaylen Watson",
+   "team": "LA",
+   "position": "CB",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-11-07T20:38+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0039138",
+   "gsis_id": "00-0039138",
+   "espn_id": "4250621",
+   "name": "Kobie Turner",
+   "team": "LA",
+   "position": "DE",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": "Groin",
+   "note_utc": "2026-11-24T00:28+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [
+     {
+      "date": "2026-11-23",
+      "level": "full",
+      "source": "espn_note"
+     }
+    ],
+    "latest": "full",
+    "none_this_week": false
+   }
+  },
+  {
+   "player_key": "00-0034234",
+   "gsis_id": "00-0034234",
+   "espn_id": "3125114",
+   "name": "Poona Ford",
+   "team": "LA",
+   "position": "DT",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-10-20T23:46+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0039058",
+   "gsis_id": "00-0039058",
+   "espn_id": "4362474",
+   "name": "Steve Avila",
+   "team": "LA",
+   "position": "G",
+   "status": "out",
+   "designation": "Out",
+   "injury": "Hamstring",
+   "note_utc": "2026-11-22T01:01+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0038905",
+   "gsis_id": "00-0038905",
+   "espn_id": "4259619",
+   "name": "Blake Grupe",
+   "team": "LA",
+   "position": "K",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-10-19T22:01+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0041587",
+   "gsis_id": "00-0041587",
+   "espn_id": "4695022",
+   "name": "Daniel Rickert",
+   "team": "LA",
+   "position": "LB",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-08-26T00:54+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0041429",
+   "gsis_id": "00-0041429",
+   "espn_id": "4877357",
+   "name": "Eddie Walls III",
+   "team": "LA",
+   "position": "LB",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": null,
+   "note_utc": "2026-06-05T01:44+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0039784",
+   "gsis_id": "00-0039784",
+   "espn_id": "4360859",
+   "name": "Justin Dedich",
+   "team": "LA",
+   "position": "OL",
+   "status": "out",
+   "designation": "Injured Reserve",
+   "injury": "Hand",
+   "note_utc": "2026-11-24T01:02+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [
+     {
+      "date": "2026-11-23",
+      "level": "full",
+      "source": "espn_note"
+     }
+    ],
+    "latest": "full",
+    "none_this_week": false
+   }
+  },
+  {
+   "player_key": "espn:4045161",
+   "gsis_id": null,
+   "espn_id": "4045161",
+   "name": "Zech McPhearson",
+   "team": "LA",
+   "position": "CB",
+   "status": "questionable",
+   "designation": "Questionable",
+   "injury": null,
+   "note_utc": "2026-09-05T21:56+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  },
+  {
+   "player_key": "00-0037057",
+   "gsis_id": "00-0037057",
+   "espn_id": "4038843",
+   "name": "Keir Thomas II",
+   "team": "LA",
+   "position": "LB",
+   "status": "questionable",
+   "designation": "Questionable",
+   "injury": null,
+   "note_utc": "2026-10-23T01:11+00:00",
+   "source": "espn",
+   "practice": {
+    "seen": [],
+    "latest": null,
+    "none_this_week": null
+   }
+  }
+ ],
+ "problems": [
+  "1 listed players have no nflverse id, so the model can only match them by name; none at a skill position"
+ ]
+}

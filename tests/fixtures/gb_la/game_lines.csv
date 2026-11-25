@@ -1,0 +1,3 @@
+event_id,commence_time,away,home,book,home_spread,home_spread_price,away_spread_price,total,over_price,under_price
+5b612899d6dcdf998107f2c6c6e49a58,2026-11-26T01:00:00Z,GB,LA,draftkings,-2.5,-109,-110,43.5,-121,101
+5b612899d6dcdf998107f2c6c6e49a58,2026-11-26T01:00:00Z,GB,LA,fanduel,-2.5,-112,-108,44.5,100,-120

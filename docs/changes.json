@@ -1,98 +1,110 @@
 {
- "generated_utc": "2026-11-26T16:45:48+00:00",
- "generated_arizona": "Thu Nov 26 9:45 AM MST",
- "previous_utc": "2026-11-26T13:37:41+00:00",
- "previous_arizona": "Thu Nov 26 6:37 AM MST",
- "headline": "3 added, 4 removed, 5 line moved, 8 price moved since Thu Nov 26 6:37 AM MST.",
+ "generated_utc": "2026-11-26T20:15:47+00:00",
+ "generated_arizona": "Thu Nov 26 1:15 PM MST",
+ "previous_utc": "2026-11-26T16:45:48+00:00",
+ "previous_arizona": "Thu Nov 26 9:45 AM MST",
+ "headline": "5 added, 2 removed, 6 line moved, 10 price moved since Thu Nov 26 9:45 AM MST. 10 earlier legs dropped off because the game kicked off.",
  "added": [
   {
-   "id": "00-0039139|player_rush_yds|under",
-   "text": "Added: Jahmyr Gibbs under 96.5 rush yards (DK -114), B tier, because the edge is now 6.2%."
+   "id": "00-0036252|player_receptions|over",
+   "text": "Added: Michael Pittman over 1.5 receptions (DK +117), B tier, because the edge is now 18.1%."
   },
   {
-   "id": "00-0034351|player_reception_yds|under",
-   "text": "Added: Dallas Goedert under 31.5 receiving yards (DK -109), B tier, because the edge is now 5.4%."
+   "id": "00-0037261|player_reception_yds|over",
+   "text": "Added: Khalil Shakir over 36.5 receiving yards (FD -113), B tier, because the edge is now 5.5%."
   },
   {
-   "id": "00-0039067|player_reception_yds|under",
-   "text": "Added: Rashee Rice under 45.5 receiving yards (DK -110), B tier, because the edge is now 5.1%."
+   "id": "00-0040134|player_reception_yds|under",
+   "text": "Added: Pat Bryant under 28.5 receiving yards (DK -112), B tier, because the edge is now 5.4%."
+  },
+  {
+   "id": "00-0037261|player_receptions|over",
+   "text": "Added: Khalil Shakir over 3.5 receptions (FD +104), B tier, because the edge is now 5.2%."
+  },
+  {
+   "id": "00-0030506|player_receptions|under",
+   "text": "Added: Travis Kelce under 4.5 receptions (DK -157), B tier, because the edge is now 5.1%."
   }
  ],
  "removed": [
   {
-   "id": "00-0039065|player_reception_yds|under",
-   "text": "Removed: Sam LaPorta under 45.5 receiving yards (DK -112), the model's edge grew to 21%, which is too large to trust."
+   "id": "00-0039067|player_reception_yds|under",
+   "text": "Removed: Rashee Rice under 45.5 receiving yards (DK -110), line moved 45.5 to 44.5 and the edge is now 3.5%."
   },
   {
-   "id": "00-0036275|player_rush_attempts|over",
-   "text": "Removed: D'Andre Swift over 12.5 rush attempts (DK -117), the edge fell from 5.8% to 4.7%."
-  },
-  {
-   "id": "00-0039919|player_receptions|under",
-   "text": "Removed: Rome Odunze under 3.5 receptions (DK -143), the edge fell from 5.6% to 5.0%."
-  },
-  {
-   "id": "00-0037247|player_receptions|under",
-   "text": "Removed: George Pickens under 5.5 receptions (DK -139), the edge fell from 5.3% to 3.5%."
+   "id": "00-0038997|player_receptions|under",
+   "text": "Removed: Josh Downs under 3.5 receptions (FD -154), the edge fell from 5.1% to 3.5%."
   }
  ],
  "line_moved": [
   {
+   "id": "00-0034351|player_reception_yds|under",
+   "text": "Line moved: Dallas Goedert receiving yards 31.5 to 32.5 (DK); still under, edge 5.9%."
+  },
+  {
+   "id": "00-0036613|player_reception_yds|under",
+   "text": "Line moved: Jaylen Waddle receiving yards 45.5 to 46.5 (DK); still under, edge 16.2%."
+  },
+  {
+   "id": "00-0041496|player_rush_yds|under",
+   "text": "Line moved: Jonah Coleman rush yards 75.5 to 76.5 (DK); still under, edge 14.6%."
+  },
+  {
+   "id": "00-0037247|player_reception_yds|under",
+   "text": "Line moved: George Pickens receiving yards 70.5 to 71.5 (DK); still under, edge 10.7%."
+  },
+  {
    "id": "00-0038558|player_reception_yds|over",
-   "text": "Line moved: Darnell Washington receiving yards 17.5 to 16.5 (DK); still over, edge 9.9%."
-  },
-  {
-   "id": "00-0040735|player_reception_yds|under",
-   "text": "Line moved: Luther Burden III receiving yards 62.5 to 63.5 (DK); still under, edge 19.7%."
-  },
-  {
-   "id": "00-0034844|player_rush_yds|under",
-   "text": "Line moved: Saquon Barkley rush yards 66.5 to 64.5 (DK); still under, edge 13.1%."
-  },
-  {
-   "id": "00-0040236|player_rush_yds|over",
-   "text": "Line moved: Kyle Monangai rush yards 32.5 to 33.5 (FD); still over, edge 8.6%."
+   "text": "Line moved: Darnell Washington receiving yards 16.5 to 15.5 (DK); still over, edge 10.2%."
   },
   {
    "id": "00-0036997|player_rush_yds|under",
-   "text": "Line moved: Javonte Williams rush yards 76.5 to 77.5 (DK); still under, edge 10.4%."
+   "text": "Line moved: Javonte Williams rush yards 77.5 to 76.5 (DK); still under, edge 9.4%."
   }
  ],
  "price_moved": [
   {
-   "id": "00-0041489|player_reception_yds|over",
-   "text": "Price moved: Germie Bernard over 22.5 receiving yards was DK -110, now FD -114; edge 12.7%."
+   "id": "00-0037248|player_anytime_td|yes",
+   "text": "Price moved: James Cook anytime TD was DK -105, now DK +105; edge 14.3%."
+  },
+  {
+   "id": "00-0039901|player_receptions|over",
+   "text": "Price moved: Keon Coleman over 1.5 receptions was FD -188, now DK -171; edge 11.3%."
   },
   {
    "id": "00-0040024|player_receptions|under",
-   "text": "Price moved: Darius Cooper under 2.5 receptions was FD -122, now DK -119; edge 9.0%."
+   "text": "Price moved: Darius Cooper under 2.5 receptions was DK -119, now FD -122; edge 8.9%."
   },
   {
    "id": "00-0034348|player_receptions|under",
-   "text": "Price moved: Courtland Sutton under 2.5 receptions was DK +120, now FD +104; edge 9.6%."
+   "text": "Price moved: Courtland Sutton under 2.5 receptions was FD +104, now DK +109; edge 10.3%."
   },
   {
-   "id": "00-0036997|player_anytime_td|yes",
-   "text": "Price moved: Javonte Williams anytime TD was DK -175, now FD -180; edge 6.2%."
+   "id": "00-0035640|player_reception_yds|over",
+   "text": "Price moved: DK Metcalf over 27.5 receiving yards was FD -114, now DK -110; edge 10.5%."
   },
   {
-   "id": "00-0036275|player_anytime_td|yes",
-   "text": "Price moved: D'Andre Swift anytime TD was DK -130, now FD -140; edge 10.2%."
+   "id": "00-0039894|player_anytime_td|yes",
+   "text": "Price moved: Xavier Worthy anytime TD was DK +500, now DK +550; edge 5.9%."
+  },
+  {
+   "id": "00-0034351|player_receptions|under",
+   "text": "Price moved: Dallas Goedert under 3.5 receptions was FD -130, now DK -117; edge 12.0%."
+  },
+  {
+   "id": "00-0035537|player_receptions|over",
+   "text": "Price moved: Ty Johnson over 2.5 receptions was FD +116, now DK +121; edge 16.7%."
+  },
+  {
+   "id": "00-0041489|player_reception_yds|over",
+   "text": "Price moved: Germie Bernard over 22.5 receiving yards was FD -114, now DK -110; edge 13.1%."
   },
   {
    "id": "00-0039894|player_reception_yds|over",
-   "text": "Price moved: Xavier Worthy over 19.5 receiving yards was DK -110, now FD -113; edge 15.1%."
-  },
-  {
-   "id": "00-0040867|player_reception_yds|over",
-   "text": "Price moved: Makai Lemon over 30.5 receiving yards was FD -113, now DK -112; edge 6.1%."
-  },
-  {
-   "id": "00-0039139|player_anytime_td|yes",
-   "text": "Price moved: Jahmyr Gibbs anytime TD was DK -270, now FD -270; edge 5.2%."
+   "text": "Price moved: Xavier Worthy over 19.5 receiving yards was FD -113, now DK -115; edge 14.4%."
   }
  ],
  "status_changed": [],
  "tier_changed": [],
- "kicked_off": 0
+ "kicked_off": 10
 }

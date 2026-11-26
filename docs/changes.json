@@ -1,79 +1,130 @@
 {
- "generated_utc": "2026-11-25T23:45:56+00:00",
- "generated_arizona": "Wed Nov 25 4:45 PM MST",
- "previous_utc": "2026-11-25T22:37:40+00:00",
- "previous_arizona": "Wed Nov 25 3:37 PM MST",
- "headline": "1 added, 2 removed, 4 line moved, 5 price moved, 3 tier changed since Wed Nov 25 3:37 PM MST.",
+ "generated_utc": "2026-11-26T04:07:33+00:00",
+ "generated_arizona": "Wed Nov 25 9:07 PM MST",
+ "previous_utc": "2026-11-25T23:45:56+00:00",
+ "previous_arizona": "Wed Nov 25 4:45 PM MST",
+ "headline": "2 added, 19 removed, 3 line moved, 4 price moved since Wed Nov 25 4:45 PM MST. 14 earlier legs dropped off because the game kicked off.",
  "added": [
   {
-   "id": "00-0039738|player_rush_attempts|under",
-   "text": "Added: Blake Corum under 12.5 rush attempts (DK -118), B tier, because the edge is now 5.7%."
+   "id": "00-0036275|player_rush_attempts|over",
+   "text": "Added: D'Andre Swift over 12.5 rush attempts (DK -117), B tier, because the edge is now 5.8%."
+  },
+  {
+   "id": "00-0034351|player_reception_yds|under",
+   "text": "Added: Dallas Goedert under 32.5 receiving yards (DK -115), B tier, because the edge is now 5.5%."
   }
  ],
  "removed": [
   {
-   "id": "00-0036275|player_rush_attempts|over",
-   "text": "Removed: D'Andre Swift over 12.5 rush attempts (DK -113), line moved 12.5 to 13.5 and the edge is now 3.0%."
+   "id": "00-0041496|player_rush_attempts|under",
+   "text": "Removed: Jonah Coleman under 19.5 rush attempts (DK -116), its game is outside this run's window."
   },
   {
-   "id": "00-0036275|player_rush_yds|over",
-   "text": "Removed: D'Andre Swift over 46.5 rush yards (DK -109), the edge fell from 5.1% to 4.4%."
+   "id": "00-0041496|player_rush_yds|under",
+   "text": "Removed: Jonah Coleman under 75.5 rush yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0034348|player_receptions|under",
+   "text": "Removed: Courtland Sutton under 2.5 receptions (DK +117), its game is outside this run's window."
+  },
+  {
+   "id": "00-0033881|player_reception_yds|over",
+   "text": "Removed: Evan Engram over 20.5 receiving yards (DK -112), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040134|player_receptions|under",
+   "text": "Removed: Pat Bryant under 2.5 receptions (DK -122), its game is outside this run's window."
+  },
+  {
+   "id": "00-0041496|player_receptions|under",
+   "text": "Removed: Jonah Coleman under 3.5 receptions (FD -136), its game is outside this run's window."
+  },
+  {
+   "id": "00-0036613|player_reception_yds|under",
+   "text": "Removed: Jaylen Waddle under 44.5 receiving yards (DK -115), its game is outside this run's window."
+  },
+  {
+   "id": "00-0041489|player_reception_yds|over",
+   "text": "Removed: Germie Bernard over 22.5 receiving yards (DK -109), its game is outside this run's window."
+  },
+  {
+   "id": "00-0036139|player_rush_yds|under",
+   "text": "Removed: Rico Dowdle under 32.5 rush yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0036139|player_rush_attempts|under",
+   "text": "Removed: Rico Dowdle under 8.5 rush attempts (DK -127), its game is outside this run's window."
+  },
+  {
+   "id": "00-0036139|player_receptions|over",
+   "text": "Removed: Rico Dowdle over 1.5 receptions (FD -148), its game is outside this run's window."
+  },
+  {
+   "id": "00-0035640|player_reception_yds|over",
+   "text": "Removed: DK Metcalf over 27.5 receiving yards (DK -112), its game is outside this run's window."
+  },
+  {
+   "id": "00-0041489|player_receptions|over",
+   "text": "Removed: Germie Bernard over 2.5 receptions (FD -158), its game is outside this run's window."
+  },
+  {
+   "id": "00-0038558|player_reception_yds|over",
+   "text": "Removed: Darnell Washington over 17.5 receiving yards (DK -110), its game is outside this run's window."
+  },
+  {
+   "id": "00-0036894|player_receptions|over",
+   "text": "Removed: Pat Freiermuth over 2.5 receptions (FD +116), its game is outside this run's window."
+  },
+  {
+   "id": "00-0036894|player_reception_yds|over",
+   "text": "Removed: Pat Freiermuth over 20.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0038558|player_receptions|over",
+   "text": "Removed: Darnell Washington over 1.5 receptions (FD -148), its game is outside this run's window."
+  },
+  {
+   "id": "00-0035640|player_receptions|over",
+   "text": "Removed: DK Metcalf over 2.5 receptions (FD -130), its game is outside this run's window."
+  },
+  {
+   "id": "00-0036422|player_anytime_td|yes",
+   "text": "Removed: Adam Trautman anytime TD (DK +1900), its game is outside this run's window."
   }
  ],
  "line_moved": [
   {
-   "id": "00-0037840|player_rush_yds|under",
-   "text": "Line moved: Kyren Williams rush yards 53.5 to 50.5 (DK); still under, edge 5.5%."
+   "id": "00-0037247|player_reception_yds|under",
+   "text": "Line moved: George Pickens receiving yards 69.5 to 70.5 (DK); still under, edge 10.2%."
   },
   {
-   "id": "00-0040735|player_reception_yds|under",
-   "text": "Line moved: Luther Burden III receiving yards 61.5 to 60.5 (DK); still under, edge 17.3%."
+   "id": "00-0039894|player_reception_yds|over",
+   "text": "Line moved: Xavier Worthy receiving yards 19.5 to 20.5 (DK); still over, edge 14.6%."
   },
   {
-   "id": "00-0039738|player_rush_yds|under",
-   "text": "Line moved: Blake Corum rush yards 58.5 to 60.5 (FD); still under, edge 11.8%."
-  },
-  {
-   "id": "00-0040236|player_rush_yds|over",
-   "text": "Line moved: Kyle Monangai rush yards 34.5 to 33.5 (DK); still over, edge 8.8%."
+   "id": "00-0036358|player_reception_yds|under",
+   "text": "Line moved: CeeDee Lamb receiving yards 91.5 to 90.5 (DK); still under, edge 13.6%."
   }
  ],
  "price_moved": [
   {
-   "id": "00-0038124|player_receptions|under",
-   "text": "Price moved: Christian Watson under 4.5 receptions was DK +113, now FD +108; edge 12.9%."
+   "id": "00-0039919|player_reception_yds|under",
+   "text": "Price moved: Rome Odunze under 47.5 receiving yards was FD -113, now DK -112; edge 11.3%."
   },
   {
-   "id": "00-0033110|player_reception_yds|under",
-   "text": "Price moved: Tyler Higbee under 29.5 receiving yards was DK -111, now FD -113; edge 11.0%."
+   "id": "00-0036997|player_anytime_td|yes",
+   "text": "Price moved: Javonte Williams anytime TD was DK -170, now FD -180; edge 5.5%."
   },
   {
-   "id": "00-0033110|player_receptions|under",
-   "text": "Price moved: Tyler Higbee under 3.5 receptions was FD -148, now DK -140; edge 17.8%."
+   "id": "00-0040024|player_receptions|under",
+   "text": "Price moved: Darius Cooper under 2.5 receptions was FD -122, now DK -119; edge 9.0%."
   },
   {
-   "id": "00-0037840|player_rush_attempts|under",
-   "text": "Price moved: Kyren Williams under 12.5 rush attempts was DK +106, now DK -123; edge 6.4%."
-  },
-  {
-   "id": "00-0038124|player_reception_yds|under",
-   "text": "Price moved: Christian Watson under 73.5 receiving yards was DK -111, now FD -113; edge 18.0%."
+   "id": "00-0036637|player_reception_yds|over",
+   "text": "Price moved: Noah Gray over 12.5 receiving yards was FD -114, now DK -111; edge 12.5%."
   }
  ],
  "status_changed": [],
- "tier_changed": [
-  {
-   "id": "00-0037840|player_rush_yds|under",
-   "text": "Tier changed: Kyren Williams under 50.5 rush yards went from A to B (new flag: calibration flips the literal lean)."
-  },
-  {
-   "id": "00-0037840|player_rush_attempts|under",
-   "text": "Tier changed: Kyren Williams under 12.5 rush attempts went from A to B (edge 12.6% to 6.4%)."
-  },
-  {
-   "id": "00-0040236|player_rush_yds|over",
-   "text": "Tier changed: Kyle Monangai over 33.5 rush yards went from B to A (edge 7.3% to 8.8%)."
-  }
- ],
- "kicked_off": 0
+ "tier_changed": [],
+ "kicked_off": 14
 }

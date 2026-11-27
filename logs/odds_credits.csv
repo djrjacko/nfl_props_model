@@ -81,3 +81,5 @@ time_utc,time_arizona,call,event_id,matchup,markets_asked,markets_returned,cost,
 2026-11-27T00:00:52+00:00,Thu Nov 26 5:00 PM MST,game_lines,,,3,3,3,357,19643
 2026-11-27T00:00:52+00:00,Thu Nov 26 5:00 PM MST,props,f36f518585aec40e8cb40e071c0844aa,KC@BUF,5,5,5,362,19638
 2026-11-27T00:00:53+00:00,Thu Nov 26 5:00 PM MST,props,44a3bcf5bd002583ddef2207a92dd977,DEN@PIT,5,5,5,367,19633
+2026-11-27T04:07:26+00:00,Thu Nov 26 9:07 PM MST,game_lines,,,3,3,3,370,19630
+2026-11-27T04:07:26+00:00,Thu Nov 26 9:07 PM MST,props,44a3bcf5bd002583ddef2207a92dd977,DEN@PIT,5,5,5,375,19625

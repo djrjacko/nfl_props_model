@@ -1,70 +1,49 @@
 {
- "generated_utc": "2026-11-27T00:00:56+00:00",
- "generated_arizona": "Thu Nov 26 5:00 PM MST",
- "previous_utc": "2026-11-26T22:37:36+00:00",
- "previous_arizona": "Thu Nov 26 3:37 PM MST",
- "headline": "1 added, 6 removed, 1 line moved, 5 price moved since Thu Nov 26 3:37 PM MST.",
- "added": [
-  {
-   "id": "00-0038997|player_reception_yds|under",
-   "text": "Added: Josh Downs under 38.5 receiving yards (DK -115), B tier, because the edge is now 5.3%."
-  }
- ],
- "removed": [
-  {
-   "id": "00-0036637|player_receptions|over",
-   "text": "Removed: Noah Gray over 1.5 receptions (DK +104), the books no longer offer it."
-  },
-  {
-   "id": "00-0036637|player_reception_yds|over",
-   "text": "Removed: Noah Gray over 13.5 receiving yards (DK -115), the books no longer offer it."
-  },
-  {
-   "id": "00-0039067|player_reception_yds|under",
-   "text": "Removed: Rashee Rice under 45.5 receiving yards (DK -110), the edge fell from 5.1% to 4.7%."
-  },
-  {
-   "id": "00-0030506|player_receptions|under",
-   "text": "Removed: Travis Kelce under 4.5 receptions (DK -157), the edge fell from 5.1% to 4.9%."
-  },
-  {
-   "id": "00-0039894|player_anytime_td|yes",
-   "text": "Removed: Xavier Worthy anytime TD (DK +500), the edge fell from 5.1% to 4.4%."
-  },
-  {
-   "id": "00-0040134|player_reception_yds|under",
-   "text": "Removed: Pat Bryant under 28.5 receiving yards (DK -114), line moved 28.5 to 27.5 and the edge is now 4.2%."
-  }
- ],
+ "generated_utc": "2026-11-27T04:07:28+00:00",
+ "generated_arizona": "Thu Nov 26 9:07 PM MST",
+ "previous_utc": "2026-11-27T00:00:56+00:00",
+ "previous_arizona": "Thu Nov 26 5:00 PM MST",
+ "headline": "3 line moved, 4 price moved, 1 tier changed since Thu Nov 26 5:00 PM MST. 11 earlier legs dropped off because the game kicked off.",
+ "added": [],
+ "removed": [],
  "line_moved": [
   {
-   "id": "00-0039894|player_reception_yds|over",
-   "text": "Line moved: Xavier Worthy receiving yards 20.5 to 21.5 (DK); still over, edge 13.1%."
+   "id": "00-0038558|player_reception_yds|over",
+   "text": "Line moved: Darnell Washington receiving yards 16.5 to 15.5 (DK); still over, edge 9.6%."
+  },
+  {
+   "id": "00-0041496|player_rush_yds|under",
+   "text": "Line moved: Jonah Coleman rush yards 75.5 to 73.5 (FD); still under, edge 12.3%."
+  },
+  {
+   "id": "00-0036613|player_reception_yds|under",
+   "text": "Line moved: Jaylen Waddle receiving yards 45.5 to 44.5 (DK); still under, edge 14.6%."
   }
  ],
  "price_moved": [
   {
-   "id": "00-0038933|player_receptions|over",
-   "text": "Price moved: Dalton Kincaid over 3.5 receptions was DK +137, now FD +134; edge 8.4%."
+   "id": "00-0041489|player_receptions|over",
+   "text": "Price moved: Germie Bernard over 2.5 receptions was FD -158, now DK -148; edge 9.3%."
   },
   {
-   "id": "00-0034827|player_anytime_td|yes",
-   "text": "Price moved: DJ Moore anytime TD was DK +255, now DK +275; edge 6.3%."
+   "id": "00-0036139|player_receptions|over",
+   "text": "Price moved: Rico Dowdle over 1.5 receptions was FD -148, now DK -145; edge 10.7%."
   },
   {
-   "id": "00-0035537|player_receptions|over",
-   "text": "Price moved: Ty Johnson over 2.5 receptions was DK +121, now FD +116; edge 16.1%."
+   "id": "00-0036422|player_anytime_td|yes",
+   "text": "Price moved: Adam Trautman anytime TD was DK +1700, now DK +1800; edge 5.4%."
   },
   {
-   "id": "00-0039894|player_receptions|over",
-   "text": "Price moved: Xavier Worthy over 2.5 receptions was FD +116, now DK +120; edge 17.3%."
-  },
-  {
-   "id": "00-0041496|player_rush_attempts|under",
-   "text": "Price moved: Jonah Coleman under 19.5 rush attempts was DK -111, now DK -126; edge 16.5%."
+   "id": "00-0035640|player_reception_yds|over",
+   "text": "Price moved: DK Metcalf over 27.5 receiving yards was FD -113, now DK -111; edge 10.3%."
   }
  ],
  "status_changed": [],
- "tier_changed": [],
- "kicked_off": 0
+ "tier_changed": [
+  {
+   "id": "00-0033881|player_reception_yds|over",
+   "text": "Tier changed: Evan Engram over 22.5 receiving yards went from A to B (edge 8.5% to 7.9%)."
+  }
+ ],
+ "kicked_off": 11
 }

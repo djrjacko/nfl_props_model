@@ -1,324 +1,218 @@
 NFL PROP BOARD
-Updated Thu Nov 26 5:00 PM MST | Odds API credits: 13 this run, 367 used, 19,633 left
-Window: games kicking off in the next 60 hours | calibration on
+Updated Thu Nov 26 9:07 PM MST | Odds API credits: 8 this run, 375 used, 19,625 left
+Window: games kicking off in the next 36 hours | calibration on
 
-  KC@BUF   Thu Nov 26 6:20 PM MST   BUF -3, total 45.5
   DEN@PIT  Fri Nov 27 1:00 PM MST   PIT +4.5, total 36.5
 
-31 legs: 18 overs, 10 unders, 3 TDs
+20 legs: 11 overs, 8 unders, 1 TD
 
 BOOSTS
   Anchor rule on: every ticket starts from an RB rush attempts or rush yards over, an anytime TD
   or a team moneyline, then adds legs on the same game script.
   50% boost ($50 max, 2 legs, +150 to +250, safest)
-    FD about +205: model 37% against 30% implied [KC@BUF: BUF ahead]
-      - Xavier Worthy over 21.5 receiving yards (-113)  (flagged)
-      - BUF moneyline (-162)  [anchor: the book's own odds, no model edge]
-      with the boost about +307
+    Every 2-leg ticket in the +150 to +250 range shares its anchor leg with the other boost's
+    ticket, so none is offered.
   100% boost ($25 max, 3 legs, +300 to +400, best)
-    DK about +392: model 28% against 18% implied [DEN@PIT: DEN ahead]
-      - Jaylen Waddle under 45.5 receiving yards (-113)  (flagged)
+    DK about +400: model 28% against 17% implied [DEN@PIT: DEN ahead]
+      - Jaylen Waddle under 44.5 receiving yards (-111)  (flagged)
       - Germie Bernard over 22.5 receiving yards (-114)  (flagged)
-      - DEN moneyline (-257)  [anchor: the book's own odds, no model edge]
-      with the boost about +783
+      - DEN moneyline (-249)  [anchor: the book's own odds, no model edge]
+      with the boost about +800
   Ticket prices are the legs multiplied together. A book prices a same-game parlay shorter than
   that when the legs move together, so check the real price is still in range before boosting.
 
 SAME GAME PARLAYS, 2 LEGS
-  DK about +3824: model 6% against 2% implied [DEN@PIT: DEN ahead]
-    - Michael Pittman over 1.5 receptions (+118)  (flagged)
-    - Adam Trautman anytime TD (+1700)  [anchor]
-  DK about +3293: model 6% against 2% implied [DEN@PIT: DEN ahead]
-    - Jaylen Waddle under 45.5 receiving yards (-113)  (flagged)
-    - Adam Trautman anytime TD (+1700)  [anchor]
-  DK about +725: model 18% against 10% implied [KC@BUF: BUF ahead]
-    - Xavier Worthy over 2.5 receptions (+120)  (flagged)
-    - DJ Moore anytime TD (+275)  [anchor]  (flagged)
-  DK about +330: model 34% against 19% implied [KC@BUF: BUF ahead]
-    - James Cook anytime TD (-105)  [anchor]
-    - Xavier Worthy over 2.5 receptions (+120)  (flagged)
+  DK about +4175: model 6% against 2% implied [DEN@PIT: DEN ahead]
+    - Michael Pittman over 1.5 receptions (+125)  (flagged)
+    - Adam Trautman anytime TD (+1800)  [anchor]
+  DK about +3512: model 6% against 2% implied [DEN@PIT: DEN ahead]
+    - Jaylen Waddle under 44.5 receiving yards (-111)  (flagged)
+    - Adam Trautman anytime TD (+1800)  [anchor]
+  DK about +474: model 22% against 16% implied [DEN@PIT: PIT ahead]
+    - Jonah Coleman under 19.5 rush attempts (-114)
+    - PIT moneyline (+206)  [anchor: the book's own odds, no model edge]
+  FD about +454: model 20% against 16% implied [DEN@PIT: PIT ahead]
+    - Jonah Coleman under 73.5 rush yards (-113)
+    - PIT moneyline (+194)  [anchor: the book's own odds, no model edge]
 
 SAME GAME PARLAYS, 3 LEGS
-  DK about +7297: model 4% against 1% implied [DEN@PIT: DEN ahead]
-    - Michael Pittman over 1.5 receptions (+118)  (flagged)
-    - Jaylen Waddle under 45.5 receiving yards (-113)  (flagged)
-    - Adam Trautman anytime TD (+1700)  [anchor]
-  DK about +8258: model 3% against 1% implied [DEN@PIT: DEN ahead]
+  DK about +8026: model 4% against 1% implied [DEN@PIT: DEN ahead]
+    - Michael Pittman over 1.5 receptions (+125)  (flagged)
+    - Jaylen Waddle under 44.5 receiving yards (-111)  (flagged)
+    - Adam Trautman anytime TD (+1800)  [anchor]
+  DK about +9006: model 3% against 1% implied [DEN@PIT: DEN ahead]
     - Courtland Sutton under 2.5 receptions (+113)
-    - Michael Pittman over 1.5 receptions (+118)  (flagged)
-    - Adam Trautman anytime TD (+1700)  [anchor]
-  DK about +1511: model 10% against 5% implied [KC@BUF: BUF ahead]
-    - James Cook anytime TD (-105)  [anchor]
-    - Xavier Worthy over 2.5 receptions (+120)  (flagged)
-    - DJ Moore anytime TD (+275)  (flagged)
-  FD about +1460: model 10% against 5% implied [KC@BUF: BUF ahead]
-    - James Cook anytime TD (-105)  [anchor]
-    - Xavier Worthy over 2.5 receptions (+116)  (flagged)
-    - DJ Moore anytime TD (+270)  (flagged)
+    - Michael Pittman over 1.5 receptions (+125)  (flagged)
+    - Adam Trautman anytime TD (+1800)  [anchor]
+  DK about +987: model 13% against 8% implied [DEN@PIT: PIT ahead]
+    - Jonah Coleman under 19.5 rush attempts (-114)
+    - Evan Engram over 22.5 receiving yards (-112)
+    - PIT moneyline (+206)  [anchor: the book's own odds, no model edge]
+  DK about +987: model 11% against 8% implied [DEN@PIT: PIT ahead]
+    - Jonah Coleman under 73.5 rush yards (-114)
+    - Evan Engram over 22.5 receiving yards (-112)
+    - PIT moneyline (+206)  [anchor: the book's own odds, no model edge]
 
-A TIER (edge 8% or more, no flags): 6
-  1. Jonah Coleman (DEN RB, DEN@PIT) under 19.5 rush attempts  DK -126
-     model 69.1% | book 52.6% | edge +16.5% | rules as written 61.6%
+A TIER (edge 8% or more, no flags): 4
+  1. Jonah Coleman (DEN RB, DEN@PIT) under 19.5 rush attempts  DK -114
+     model 69.1% | book 50.2% | edge +18.9% | rules as written 61.6%
      Projects 16.8 carries against 19.5: DEN run about 28 times and he has taken 65% of them
      over his last 3 games.
-  2. Jonah Coleman (DEN RB, DEN@PIT) under 75.5 rush yards  DK -111
-     model 64.1% | book 49.8% | edge +14.3% | rules as written 52.3%
-     A typical game is about 61 yards against 75.5: 16.8 carries at 4.0 a carry (his 4.2 blended
+  2. Jonah Coleman (DEN RB, DEN@PIT) under 73.5 rush yards  FD -113
+     model 62.4% | book 50.0% | edge +12.3% | rules as written 50.1%
+     A typical game is about 61 yards against 73.5: 16.8 carries at 4.0 a carry (his 4.2 blended
      with the 3.6 PIT allow).
   3. Courtland Sutton (DEN WR, DEN@PIT) under 2.5 receptions  DK +113
      model 55.4% | book 44.2% | edge +11.2% | rules as written 57.4%
      Projects 2.5 catches against 2.5: 16% of about 31 team targets (16% this season, 14% over
      his last 3), at a 55% catch rate.
-  4. James Cook (BUF RB, KC@BUF) anytime TD  DK -105
-     model 56.0% | book 45.1% | edge +10.9% | rules as written 52.1%
-     Model gives 56% to score: 27% of BUF's red-zone chances and 38% of their touches, with BUF
-     priced for 2.8 touchdowns.
-  5. Pat Bryant (DEN WR, DEN@PIT) under 2.5 receptions  DK -120
-     model 61.2% | book 51.5% | edge +9.7% | rules as written 53.4%
+  4. Pat Bryant (DEN WR, DEN@PIT) under 2.5 receptions  DK -126
+     model 61.2% | book 52.6% | edge +8.6% | rules as written 53.4%
      Projects 2.3 catches against 2.5: 11% of about 31 team targets (11% this season, 12% over
      his last 3), at a 68% catch rate.
-  6. Evan Engram (DEN TE, DEN@PIT) over 22.5 receiving yards  DK -109
-     model 57.9% | book 49.4% | edge +8.5% | rules as written 74.2%
-     A typical game is about 28 yards against 22.5: 15% of about 31 team targets (13% this
-     season, 19% over his last 3) at 7.5 a target (his 6.7 blended with the 8.6 PIT allow).
 
-B TIER (edge 5% to 8%, or any flag): 25
-  1. Michael Pittman (PIT WR, DEN@PIT) over 1.5 receptions  DK +118
-     model 61.6% | book 43.3% | edge +18.3% | rules as written 67.8%
+B TIER (edge 5% to 8%, or any flag): 16
+  1. Michael Pittman (PIT WR, DEN@PIT) over 1.5 receptions  DK +125
+     model 61.6% | book 41.9% | edge +19.7% | rules as written 67.8%
      Projects 2.2 catches against 1.5: 11% of about 34 team targets (11% this season, 11% over
      his last 3), at a 61% catch rate. Their run rate was 39% over five games as 1.2-point
      favourites on average; as 4.5-point underdogs it is set at 37%.
      flag: QB change: Mason Rudolph is listed first, Aaron Rodgers played last game
      flag: did not play in PIT's last 6 games
-  2. Xavier Worthy (KC WR, KC@BUF) over 2.5 receptions  DK +120
-     model 60.2% | book 42.9% | edge +17.3% | rules as written 52.0%
-     Projects 3.3 catches against 2.5: 16% of about 36 team targets (17% this season, 12% over
-     his last 3), at a 64% catch rate. Their run rate was 43% over five games as 7.5-point
-     favourites on average; as 3-point underdogs it is set at 40%.
-     flag: role change: Kenneth Walker III is out but played in 1 of the last 3 games
-  3. Ty Johnson (BUF RB, KC@BUF) over 2.5 receptions  FD +116
-     model 59.4% | book 43.3% | edge +16.1% | rules as written 76.8%
-     Projects 3.2 catches against 2.5: 12% of about 34 team targets (11% this season, 14% over
-     his last 3), at a 87% catch rate. Their run rate was 48% over five games as 9.1-point
-     favourites on average; as 3-point favourites it is set at 46%.
-     flag: part-time role (28% of snaps)
-     flag: role change: Dalton Kincaid missed the last 1 and may return
-  4. Jonah Coleman (DEN RB, DEN@PIT) under 3.5 receptions  DK -125
-     model 68.2% | book 52.4% | edge +15.8% | rules as written 48.8%
+  2. Jonah Coleman (DEN RB, DEN@PIT) under 3.5 receptions  DK -121
+     model 68.2% | book 51.7% | edge +16.5% | rules as written 48.8%
      Projects 2.8 catches against 3.5: 12% of about 31 team targets (11% this season, 15% over
      his last 3), at a 83% catch rate.
      flag: calibration flips the literal lean
-  5. Jaylen Waddle (DEN WR, DEN@PIT) under 45.5 receiving yards  DK -113
-     model 65.6% | book 50.2% | edge +15.4% | rules as written 69.1%
-     A typical game is about 33 yards against 45.5: 18% of about 31 team targets (20% this
+  3. Jaylen Waddle (DEN WR, DEN@PIT) under 44.5 receiving yards  DK -111
+     model 64.4% | book 49.8% | edge +14.6% | rules as written 67.8%
+     A typical game is about 33 yards against 44.5: 18% of about 31 team targets (20% this
      season, 14% over his last 3) at 7.4 a target (his 7.2 blended with the 7.6 PIT allow).
-     flag: books differ: DK 45.5, FD 41.5
+     flag: books differ: DK 44.5, FD 41.5
      flag: snap share moved 32% to 53%
-  6. Xavier Worthy (KC WR, KC@BUF) over 21.5 receiving yards  DK -109
-     model 62.5% | book 49.4% | edge +13.1% | rules as written 61.2%
-     A typical game is about 31 yards against 21.5: 16% of about 36 team targets (17% this
-     season, 12% over his last 3) at 6.7 a target (his 6.6 blended with the 7.0 BUF allow).
-     Their run rate was 43% over five games as 7.5-point favourites on average; as 3-point
-     underdogs it is set at 40%.
-     flag: role change: Kenneth Walker III is out but played in 1 of the last 3 games
-  7. Germie Bernard (PIT WR, DEN@PIT) over 22.5 receiving yards  FD -113
+  4. Germie Bernard (PIT WR, DEN@PIT) over 22.5 receiving yards  FD -113
      model 62.7% | book 50.0% | edge +12.7% | rules as written 75.6%
      A typical game is about 32 yards against 22.5: 17% of about 34 team targets (16% this
      season, 20% over his last 3) at 6.7 a target (his 6.6 blended with the 6.9 DEN allow).
      Their run rate was 39% over five games as 1.2-point favourites on average; as 4.5-point
      underdogs it is set at 37%.
      flag: QB change: Mason Rudolph is listed first, Aaron Rodgers played last game
-  8. Rico Dowdle (PIT RB, DEN@PIT) under 32.5 rush yards  FD -113
+  5. Rico Dowdle (PIT RB, DEN@PIT) under 32.5 rush yards  FD -113
      model 62.6% | book 50.0% | edge +12.6% | rules as written 54.0%
      A typical game is about 25 yards against 32.5: 7.5 carries at 4.2 a carry (his 4.0 blended
      with the 4.5 DEN allow). Their run rate was 39% over five games as 1.2-point favourites on
      average; as 4.5-point underdogs it is set at 37%.
      flag: QB change: Mason Rudolph is listed first, Aaron Rodgers played last game
-  9. Keon Coleman (BUF WR, KC@BUF) over 1.5 receptions  DK -172
-     model 70.8% | book 59.7% | edge +11.1% | rules as written 72.8%
-     Projects 2.7 catches against 1.5: 13% of about 34 team targets (14% this season, 12% over
-     his last 3), at a 64% catch rate. Their run rate was 48% over five games as 9.1-point
-     favourites on average; as 3-point favourites it is set at 46%.
-     flag: snap share moved 57% to 81%
-     flag: role change: Dalton Kincaid missed the last 1 and may return
-  10. Rico Dowdle (PIT RB, DEN@PIT) over 1.5 receptions  FD -148
-     model 66.4% | book 55.9% | edge +10.6% | rules as written 69.1%
+  6. Rico Dowdle (PIT RB, DEN@PIT) over 1.5 receptions  DK -145
+     model 66.4% | book 55.8% | edge +10.7% | rules as written 69.1%
      Projects 2.5 catches against 1.5: 10% of about 34 team targets (10% this season, 9% over
      his last 3), at a 79% catch rate. Their run rate was 39% over five games as 1.2-point
      favourites on average; as 4.5-point underdogs it is set at 37%.
      flag: QB change: Mason Rudolph is listed first, Aaron Rodgers played last game
-  11. Rico Dowdle (PIT RB, DEN@PIT) under 8.5 rush attempts  DK -133
-     model 64.4% | book 53.9% | edge +10.5% | rules as written 71.9%
-     Projects 7.5 carries against 8.5: PIT run about 24 times and he has taken 30% of them over
-     his last 3 games. Their run rate was 39% over five games as 1.2-point favourites on
-     average; as 4.5-point underdogs it is set at 37%.
-     flag: QB change: Mason Rudolph is listed first, Aaron Rodgers played last game
-  12. DK Metcalf (PIT WR, DEN@PIT) over 27.5 receiving yards  FD -113
-     model 60.1% | book 50.0% | edge +10.1% | rules as written 57.2%
+  7. DK Metcalf (PIT WR, DEN@PIT) over 27.5 receiving yards  DK -111
+     model 60.1% | book 49.8% | edge +10.3% | rules as written 57.2%
      A typical game is about 36 yards against 27.5: 20% of about 34 team targets (22% this
      season, 14% over his last 3) at 6.6 a target (his 6.4 blended with the 6.9 DEN allow).
      Their run rate was 39% over five games as 1.2-point favourites on average; as 4.5-point
      underdogs it is set at 37%.
      flag: QB change: Mason Rudolph is listed first, Aaron Rodgers played last game
      flag: snap share moved 87% to 62%
-  13. Darnell Washington (PIT TE, DEN@PIT) over 16.5 receiving yards  DK -108
-     model 59.1% | book 49.2% | edge +9.9% | rules as written 64.5%
-     A typical game is about 22 yards against 16.5: 10% of about 34 team targets (10% this
+  8. Rico Dowdle (PIT RB, DEN@PIT) under 8.5 rush attempts  DK -135
+     model 64.4% | book 54.2% | edge +10.2% | rules as written 71.9%
+     Projects 7.5 carries against 8.5: PIT run about 24 times and he has taken 30% of them over
+     his last 3 games. Their run rate was 39% over five games as 1.2-point favourites on
+     average; as 4.5-point underdogs it is set at 37%.
+     flag: QB change: Mason Rudolph is listed first, Aaron Rodgers played last game
+  9. Darnell Washington (PIT TE, DEN@PIT) over 15.5 receiving yards  DK -117
+     model 60.6% | book 51.0% | edge +9.6% | rules as written 66.0%
+     A typical game is about 22 yards against 15.5: 10% of about 34 team targets (10% this
      season, 10% over his last 3) at 7.7 a target (his 7.8 blended with the 7.5 DEN allow).
      Their run rate was 39% over five games as 1.2-point favourites on average; as 4.5-point
      underdogs it is set at 37%.
      flag: QB change: Mason Rudolph is listed first, Aaron Rodgers played last game
-  14. Keon Coleman (BUF WR, KC@BUF) over 21.5 receiving yards  FD -113
-     model 59.3% | book 50.0% | edge +9.3% | rules as written 63.2%
-     A typical game is about 28 yards against 21.5: 13% of about 34 team targets (14% this
-     season, 12% over his last 3) at 7.6 a target (his 8.2 blended with the 6.6 KC allow). Their
-     run rate was 48% over five games as 9.1-point favourites on average; as 3-point favourites
-     it is set at 46%.
-     flag: snap share moved 57% to 81%
-     flag: role change: Dalton Kincaid missed the last 1 and may return
-  15. Germie Bernard (PIT WR, DEN@PIT) over 2.5 receptions  FD -158
-     model 65.6% | book 57.2% | edge +8.5% | rules as written 83.1%
+  10. Germie Bernard (PIT WR, DEN@PIT) over 2.5 receptions  DK -148
+     model 65.6% | book 56.3% | edge +9.3% | rules as written 83.1%
      Projects 3.6 catches against 2.5: 17% of about 34 team targets (16% this season, 20% over
      his last 3), at a 67% catch rate. Their run rate was 39% over five games as 1.2-point
      favourites on average; as 4.5-point underdogs it is set at 37%.
      flag: QB change: Mason Rudolph is listed first, Aaron Rodgers played last game
-  16. Dalton Kincaid (BUF TE, KC@BUF) over 3.5 receptions  FD +134
-     model 48.3% | book 39.9% | edge +8.4% | rules as written 47.2% | QUESTIONABLE
-     Projects 3.7 catches against 3.5: 16% of about 34 team targets (17% this season, 14% over
-     his last 3), at a 75% catch rate. Their run rate was 48% over five games as 9.1-point
-     favourites on average; as 3-point favourites it is set at 46%.
-     flag: questionable (Thumb; practice: limited Tue, limited Wed, limited Thu)
-     flag: did not play in BUF's last 1 game
-  17. Pat Freiermuth (PIT TE, DEN@PIT) over 2.5 receptions  FD +116
+  11. Evan Engram (DEN TE, DEN@PIT) over 22.5 receiving yards  DK -112
+     model 57.9% | book 50.0% | edge +7.9% | rules as written 74.2%
+     A typical game is about 28 yards against 22.5: 15% of about 31 team targets (13% this
+     season, 19% over his last 3) at 7.5 a target (his 6.7 blended with the 8.6 PIT allow).
+  12. Pat Freiermuth (PIT TE, DEN@PIT) over 2.5 receptions  FD +116
      model 51.2% | book 43.3% | edge +7.9% | rules as written 51.6%
      Projects 2.8 catches against 2.5: 12% of about 34 team targets (13% this season, 11% over
      his last 3), at a 73% catch rate. Their run rate was 39% over five games as 1.2-point
      favourites on average; as 4.5-point underdogs it is set at 37%.
      flag: QB change: Mason Rudolph is listed first, Aaron Rodgers played last game
-  18. Pat Freiermuth (PIT TE, DEN@PIT) over 20.5 receiving yards  FD -113
+  13. Pat Freiermuth (PIT TE, DEN@PIT) over 20.5 receiving yards  FD -113
      model 57.3% | book 50.0% | edge +7.3% | rules as written 60.7%
      A typical game is about 25 yards against 20.5: 12% of about 34 team targets (13% this
      season, 11% over his last 3) at 7.3 a target (his 7.2 blended with the 7.5 DEN allow).
      Their run rate was 39% over five games as 1.2-point favourites on average; as 4.5-point
      underdogs it is set at 37%.
      flag: QB change: Mason Rudolph is listed first, Aaron Rodgers played last game
-     flag: books differ: DK 23.5, FD 20.5
-  19. DK Metcalf (PIT WR, DEN@PIT) over 2.5 receptions  DK -124
-     model 58.5% | book 52.2% | edge +6.3% | rules as written 47.1%
+  14. DK Metcalf (PIT WR, DEN@PIT) over 2.5 receptions  DK -119
+     model 58.5% | book 51.2% | edge +7.2% | rules as written 47.1%
      Projects 3.2 catches against 2.5: 20% of about 34 team targets (22% this season, 14% over
      his last 3), at a 52% catch rate. Their run rate was 39% over five games as 1.2-point
      favourites on average; as 4.5-point underdogs it is set at 37%.
      flag: QB change: Mason Rudolph is listed first, Aaron Rodgers played last game
      flag: calibration flips the literal lean
      flag: snap share moved 87% to 62%
-  20. DJ Moore (BUF WR, KC@BUF) anytime TD  DK +275
-     model 29.7% | book 23.5% | edge +6.3% | rules as written 45.6%
-     Model gives 30% to score: 22% of BUF's red-zone chances and 11% of their touches, with BUF
-     priced for 2.8 touchdowns.
-     flag: role change: Dalton Kincaid missed the last 1 and may return
-  21. Darnell Washington (PIT TE, DEN@PIT) over 1.5 receptions  FD -148
+  15. Darnell Washington (PIT TE, DEN@PIT) over 1.5 receptions  FD -148
      model 62.0% | book 55.9% | edge +6.2% | rules as written 67.3%
      Projects 2.3 catches against 1.5: 10% of about 34 team targets (10% this season, 10% over
      his last 3), at a 69% catch rate. Their run rate was 39% over five games as 1.2-point
      favourites on average; as 4.5-point underdogs it is set at 37%.
      flag: QB change: Mason Rudolph is listed first, Aaron Rodgers played last game
-  22. Rashee Rice (KC WR, KC@BUF) under 4.5 receptions  DK -130
-     model 59.4% | book 53.3% | edge +6.1% | rules as written 46.4%
-     Projects 4.2 catches against 4.5: 18% of about 36 team targets (17% this season, 18% over
-     his last 3), at a 75% catch rate. Their run rate was 43% over five games as 7.5-point
-     favourites on average; as 3-point underdogs it is set at 40%.
-     flag: calibration flips the literal lean
-     flag: role change: Kenneth Walker III is out but played in 1 of the last 3 games
-  23. Khalil Shakir (BUF WR, KC@BUF) over 36.5 receiving yards  FD -113
-     model 55.5% | book 50.0% | edge +5.5% | rules as written 65.5%
-     A typical game is about 41 yards against 36.5: 19% of about 34 team targets (19% this
-     season, 18% over his last 3) at 8.3 a target (his 9.4 blended with the 6.6 KC allow). Their
-     run rate was 48% over five games as 9.1-point favourites on average; as 3-point favourites
-     it is set at 46%.
-     flag: snap share moved 57% to 81%
-     flag: role change: Dalton Kincaid missed the last 1 and may return
-  24. Josh Downs (KC WR, KC@BUF) under 38.5 receiving yards  DK -115
-     model 56.0% | book 50.6% | edge +5.3% | rules as written 46.3%
-     A typical game is about 34 yards against 38.5: 14% of about 36 team targets (14% this
-     season, 14% over his last 2) at 8.2 a target (his 9.0 blended with the 7.0 BUF allow).
-     Their run rate was 43% over five games as 7.5-point favourites on average; as 3-point
-     underdogs it is set at 40%.
-     flag: calibration flips the literal lean
-     flag: only 2 games of history with KC
-     flag: role change: Kenneth Walker III is out but played in 1 of the last 3 games
-  25. Adam Trautman (DEN TE, DEN@PIT) anytime TD  DK +1700
-     model 9.6% | book 4.6% | edge +5.1% | rules as written 18.5%
+  16. Adam Trautman (DEN TE, DEN@PIT) anytime TD  DK +1800
+     model 9.6% | book 4.2% | edge +5.4% | rules as written 18.5%
      Model gives 10% to score: 10% of DEN's red-zone chances and 2% of their touches, with DEN
      priced for 2.1 touchdowns.
 
-SKIPS: 17
-  [popular] Emmett Johnson anytime TD (FD -170): Model gives 44% to score, the price implies 56%
+SKIPS: 8
+  [popular] Jaylen Warren anytime TD (FD +185): Model gives 23% to score, the price implies 29%
   after vig.
-  [popular] Jaylen Warren anytime TD (FD +185): Model gives 23% to score, the price implies 30%
+  [popular] Jaylen Waddle anytime TD (DK +280): Model gives 17% to score, the price implies 21%
   after vig.
-  [popular] Travis Kelce anytime TD (DK +235): Model gives 20% to score, the price implies 26%
-  after vig.
-  [popular] Travis Kelce over 4.5 receptions (DK +124): Model gives the over 37%, the price
-  implies 42% after vig: a typical game is about 4.0 against a line of 4.5.
-  [popular] Jaylen Waddle anytime TD (FD +300): Model gives 17% to score, the price implies 21%
-  after vig.
-  [popular] DJ Moore over 49.5 receiving yards (FD -113): Model gives the over 45%, the price
-  implies 50% after vig: a typical game is about 45.2 against a line of 49.5.
-  [popular] Rashee Rice over 45.5 receiving yards (DK -112): Model gives the over 45%, the price
-  implies 50% after vig: a typical game is about 41.5 against a line of 45.5.
-  [popular] Travis Kelce over 44.5 receiving yards (DK -114): Model gives the over 46%, the
-  price implies 50% after vig: a typical game is about 41.1 against a line of 44.5.
-  [not trusted] Jaylen Warren under 14.5 rush attempts (DK -109): Model edge of 33% is too large
+  [not trusted] Jaylen Warren under 14.5 rush attempts (DK -115): Model edge of 32% is too large
   to trust; the book probably knows something the model does not. QB change: Mason Rudolph is
   listed first, Aaron Rodgers played last game; snap share moved 48% to 68%.
-  [not trusted] Emmett Johnson under 19.5 rush attempts (DK +100): Model edge of 29% is too
-  large to trust; the book probably knows something the model does not. snap share moved 59% to
-  82%; role change: Kenneth Walker III is out but played in 1 of the last 3 games.
   [not trusted] Jaylen Warren under 64.5 rush yards (FD -113): Model edge of 25% is too large to
   trust; the book probably knows something the model does not. QB change: Mason Rudolph is
   listed first, Aaron Rodgers played last game; snap share moved 48% to 68%.
-  [not trusted] Emmett Johnson under 3.5 receptions (FD +100): Model edge of 24% is too large to
-  trust; the book probably knows something the model does not. snap share moved 59% to 82%; role
-  change: Kenneth Walker III is out but played in 1 of the last 3 games.
-  [not trusted] Jaylen Waddle under 3.5 receptions (DK +120): Model edge of 22% is too large to
-  trust; the book probably knows something the model does not. snap share moved 32% to 53%.
   [not trusted] Roman Wilson over 1.5 receptions (FD +104): Model edge of 22% is too large to
   trust; the book probably knows something the model does not. QB change: Mason Rudolph is
   listed first, Aaron Rodgers played last game; snap share moved 32% to 69%.
   [not trusted] Roman Wilson over 12.5 receiving yards (DK -112): Model edge of 21% is too large
   to trust; the book probably knows something the model does not. QB change: Mason Rudolph is
   listed first, Aaron Rodgers played last game; snap share moved 32% to 69%.
-  [not trusted] Emmett Johnson under 81.5 rush yards (DK -113): Model edge of 20% is too large
-  to trust; the book probably knows something the model does not. snap share moved 59% to 82%;
-  role change: Kenneth Walker III is out but played in 1 of the last 3 games.
-  [not trusted] Michael Pittman over 10.5 receiving yards (DK -111): Model edge of 20% is too
+  [not trusted] Jaylen Waddle under 3.5 receptions (DK +116): Model edge of 21% is too large to
+  trust; the book probably knows something the model does not. snap share moved 32% to 53%.
+  [not trusted] Michael Pittman over 9.5 receiving yards (DK -118): Model edge of 20% is too
   large to trust; the book probably knows something the model does not. QB change: Mason Rudolph
   is listed first, Aaron Rodgers played last game; did not play in PIT's last 6 games.
 
 WHAT CHANGED
-  1 added, 6 removed, 1 line moved, 5 price moved since Thu Nov 26 3:37 PM MST.
-  Removed: Noah Gray over 1.5 receptions (DK +104), the books no longer offer it.
-  Removed: Noah Gray over 13.5 receiving yards (DK -115), the books no longer offer it.
-  Removed: Rashee Rice under 45.5 receiving yards (DK -110), the edge fell from 5.1% to 4.7%.
-  Removed: Travis Kelce under 4.5 receptions (DK -157), the edge fell from 5.1% to 4.9%.
-  Removed: Xavier Worthy anytime TD (DK +500), the edge fell from 5.1% to 4.4%.
-  Removed: Pat Bryant under 28.5 receiving yards (DK -114), line moved 28.5 to 27.5 and the edge
-  is now 4.2%.
-  Added: Josh Downs under 38.5 receiving yards (DK -115), B tier, because the edge is now 5.3%.
-  Line moved: Xavier Worthy receiving yards 20.5 to 21.5 (DK); still over, edge 13.1%.
-  Price moved: Dalton Kincaid over 3.5 receptions was DK +137, now FD +134; edge 8.4%.
-  Price moved: DJ Moore anytime TD was DK +255, now DK +275; edge 6.3%.
-  Price moved: Ty Johnson over 2.5 receptions was DK +121, now FD +116; edge 16.1%.
-  Price moved: Xavier Worthy over 2.5 receptions was FD +116, now DK +120; edge 17.3%.
-  Price moved: Jonah Coleman under 19.5 rush attempts was DK -111, now DK -126; edge 16.5%.
+  3 line moved, 4 price moved, 1 tier changed since Thu Nov 26 5:00 PM MST. 11 earlier legs dropped off because the game kicked off.
+  Line moved: Darnell Washington receiving yards 16.5 to 15.5 (DK); still over, edge 9.6%.
+  Line moved: Jonah Coleman rush yards 75.5 to 73.5 (FD); still under, edge 12.3%.
+  Line moved: Jaylen Waddle receiving yards 45.5 to 44.5 (DK); still under, edge 14.6%.
+  Price moved: Germie Bernard over 2.5 receptions was FD -158, now DK -148; edge 9.3%.
+  Price moved: Rico Dowdle over 1.5 receptions was FD -148, now DK -145; edge 10.7%.
+  Price moved: Adam Trautman anytime TD was DK +1700, now DK +1800; edge 5.4%.
+  Price moved: DK Metcalf over 27.5 receiving yards was FD -113, now DK -111; edge 10.3%.
+  Tier changed: Evan Engram over 22.5 receiving yards went from A to B (edge 8.5% to 7.9%).
 
 NOTES
-  - 35 posted props were not priced because the player's role is too small to trust (under 6
+  - 19 posted props were not priced because the player's role is too small to trust (under 6
   carries or 3 targets a game, or under 35% of snaps for a touchdown)
-  - 4 quarterback anytime TD props were not priced: the touch-share method does not describe how
+  - 2 quarterback anytime TD props were not priced: the touch-share method does not describe how
   a quarterback scores
   - DEN@PIT: Adam Prentice has no games with DEN this season, so he is not priced
   - DEN@PIT: Riley Nowakowski has no games with PIT this season, so he is not priced
-  - 4 legs on this board carry the flag "calibration flips the literal lean": the calibrated
+  - 2 legs on this board carry the flag "calibration flips the literal lean": the calibrated
   model and the rules as written point opposite ways, so they sit in B tier and are left out of
   every ticket.

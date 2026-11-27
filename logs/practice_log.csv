@@ -29,6 +29,7 @@ season,week,team,player_key,player,note_date,level,source,logged_utc
 2026,12,BAL,00-0032764,Derrick Henry,2026-11-26,full,espn_note,2026-11-26T22:37:33+00:00
 2026,12,BAL,00-0032764,Derrick Henry,2026-11-26,limited,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,BAL,00-0036302,Jaylinn Hawkins,2026-11-25,dnp,espn_note,2026-11-26T04:07:31+00:00
+2026,12,BAL,00-0036302,Jaylinn Hawkins,2026-11-26,limited,espn_note,2026-11-27T00:00:54+00:00
 2026,12,BAL,00-0036302,Jaylinn Hawkins,2026-11-26,dnp,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,BAL,00-0036369,John Simpson,2026-11-26,limited,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,BAL,00-0033281,Marlon Humphrey,2026-11-25,full,espn_note,2026-11-26T04:07:31+00:00
@@ -99,6 +100,7 @@ season,week,team,player_key,player,note_date,level,source,logged_utc
 2026,12,CLE,00-0038710,Blake Whiteheart,2026-11-25,limited,espn_note,2026-11-26T04:07:31+00:00
 2026,12,CLE,00-0038710,Blake Whiteheart,2026-11-26,limited,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,CLE,00-0041037,Denzel Boston,2026-11-24,dnp,espn_note,2026-11-25T03:20:54+00:00
+2026,12,CLE,00-0041037,Denzel Boston,2026-11-26,dnp,espn_note,2026-11-27T00:00:54+00:00
 2026,12,CLE,00-0041037,Denzel Boston,2026-11-26,dnp,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,CLE,00-0033876,Derek Barnett,2026-11-26,dnp,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,CLE,00-0035526,Elgton Jenkins,2026-11-26,limited,nfl_report,2026-11-26T13:37:39+00:00
@@ -222,6 +224,7 @@ season,week,team,player_key,player,note_date,level,source,logged_utc
 2026,12,IND,00-0034573,Charvarius Ward,2026-11-26,dnp,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,IND,00-0041132,Deion Burks,2026-11-26,dnp,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,IND,00-0037292,Drew Ogletree,2026-11-25,dnp,espn_note,2026-11-26T04:07:31+00:00
+2026,12,IND,00-0037292,Drew Ogletree,2026-11-26,full,espn_note,2026-11-27T00:00:54+00:00
 2026,12,IND,00-0040163,Jalen Travis,2026-11-26,dnp,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,IND,00-0035674,Jerry Tillery,2026-11-26,dnp,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,IND,00-0037190,Sauce Gardner,2026-11-25,full,espn_note,2026-11-26T04:07:31+00:00
@@ -346,6 +349,7 @@ season,week,team,player_key,player,note_date,level,source,logged_utc
 2026,12,MIA,00-0037686,Tucker Addington,2026-11-26,full,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,MIN,00-0036616,Christian Darrisaw,2026-11-26,dnp,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,MIN,00-0029606,Harrison Smith,2026-11-25,dnp,espn_note,2026-11-26T04:07:31+00:00
+2026,12,MIN,00-0029606,Harrison Smith,2026-11-26,limited,espn_note,2026-11-27T00:00:54+00:00
 2026,12,MIN,00-0029606,Harrison Smith,2026-11-26,dnp,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,MIN,00-0036222,Isaiah Rodgers,2026-11-25,dnp,espn_note,2026-11-26T04:07:31+00:00
 2026,12,MIN,00-0036222,Isaiah Rodgers,2026-11-26,dnp,nfl_report,2026-11-26T13:37:39+00:00
@@ -356,6 +360,7 @@ season,week,team,player_key,player,note_date,level,source,logged_utc
 2026,12,MIN,00-0035228,Kyler Murray,2026-11-25,limited,espn_note,2026-11-25T23:45:53+00:00
 2026,12,MIN,00-0035228,Kyler Murray,2026-11-26,limited,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,MIN,00-0040506,Myles Price,2026-11-25,limited,espn_note,2026-11-25T23:45:53+00:00
+2026,12,MIN,00-0040506,Myles Price,2026-11-26,limited,espn_note,2026-11-27T00:00:54+00:00
 2026,12,MIN,00-0040506,Myles Price,2026-11-26,limited,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,MIN,00-0040154,Tai Felton,2026-11-25,limited,espn_note,2026-11-25T23:45:53+00:00
 2026,12,MIN,00-0040154,Tai Felton,2026-11-26,full,espn_note,2026-11-26T20:15:45+00:00
@@ -371,6 +376,7 @@ season,week,team,player_key,player,note_date,level,source,logged_utc
 2026,12,NE,00-0039851,Drake Maye,2026-11-26,dnp,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,NE,00-0036187,Reggie Gilliam,2026-11-26,limited,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,NE,00-0037816,Romeo Doubs,2026-11-25,limited,espn_note,2026-11-26T04:07:31+00:00
+2026,12,NE,00-0037816,Romeo Doubs,2026-11-26,limited,espn_note,2026-11-27T00:00:54+00:00
 2026,12,NE,00-0037816,Romeo Doubs,2026-11-26,limited,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,NE,00-0039828,Walter Rouse,2026-11-25,dnp,espn_note,2026-11-26T04:07:31+00:00
 2026,12,NE,00-0039828,Walter Rouse,2026-11-26,dnp,nfl_report,2026-11-26T13:37:39+00:00
@@ -385,6 +391,7 @@ season,week,team,player_key,player,note_date,level,source,logged_utc
 2026,12,NO,00-0036927,Pete Werner,2026-11-26,limited,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,NO,00-0039339,Taliese Fuaga,2026-11-26,limited,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,NYG,00-0040677,Abdul Carter,2026-11-25,dnp,espn_note,2026-11-26T04:07:31+00:00
+2026,12,NYG,00-0040677,Abdul Carter,2026-11-26,dnp,espn_note,2026-11-27T00:00:54+00:00
 2026,12,NYG,00-0040677,Abdul Carter,2026-11-26,dnp,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,NYG,00-0039821,Andru Phillips,2026-11-26,dnp,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,NYG,00-0041509,Arvell Reese,2026-11-25,limited,espn_note,2026-11-26T04:07:31+00:00
@@ -466,6 +473,7 @@ season,week,team,player_key,player,note_date,level,source,logged_utc
 2026,12,SEA,00-0039020,Anthony Bradford,2026-11-26,limited,nfl_report,2026-11-26T20:15:45+00:00
 2026,12,SEA,00-0037821,Charles Cross,2026-11-26,limited,nfl_report,2026-11-26T20:15:45+00:00
 2026,12,SEA,00-0031411,DeMarcus Lawrence,2026-11-26,dnp,nfl_report,2026-11-26T20:15:45+00:00
+2026,12,SEA,00-0035704,Drew Lock,2026-11-26,limited,espn_note,2026-11-27T00:00:54+00:00
 2026,12,SEA,00-0035704,Drew Lock,2026-11-26,limited,nfl_report,2026-11-26T20:15:45+00:00
 2026,12,SEA,00-0036994,Ernest Jones,2026-11-26,limited,nfl_report,2026-11-26T20:15:45+00:00
 2026,12,SEA,00-0036994,Ernest Jones IV,2026-11-25,limited,espn_note,2026-11-26T04:07:31+00:00
@@ -501,12 +509,14 @@ season,week,team,player_key,player,note_date,level,source,logged_utc
 2026,12,SF,00-0034391,Siran Neal,2026-11-26,dnp,nfl_report,2026-11-26T20:15:45+00:00
 2026,12,SF,00-0027857,Trent Williams,2026-11-26,dnp,nfl_report,2026-11-26T20:15:45+00:00
 2026,12,SF,00-0040152,Upton Stout,2026-11-26,limited,nfl_report,2026-11-26T20:15:45+00:00
+2026,12,TB,00-0039855,Jalen McMillan,2026-11-26,full,espn_note,2026-11-27T00:00:54+00:00
 2026,12,TEN,00-0041438,Carnell Tate,2026-11-26,full,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,TEN,00-0037758,Cor'Dale Flott,2026-11-25,dnp,espn_note,2026-11-26T04:07:31+00:00
 2026,12,TEN,00-0037758,Cordale Flott,2026-11-26,dnp,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,TEN,00-0036869,Dan Moore Jr.,2026-11-26,dnp,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,TEN,00-0040881,Fernando Carmona,2026-11-26,full,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,TEN,00-0034805,John Franklin-Myers,2026-11-25,limited,espn_note,2026-11-26T04:07:31+00:00
+2026,12,TEN,00-0034805,John Franklin-Myers,2026-11-26,full,espn_note,2026-11-27T00:00:54+00:00
 2026,12,TEN,00-0034805,John Franklin-Myers,2026-11-26,limited,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,TEN,00-0040141,Kevin Winston Jr.,2026-11-26,full,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,TEN,00-0036876,Kylen Granson,2026-11-26,full,nfl_report,2026-11-26T13:37:39+00:00

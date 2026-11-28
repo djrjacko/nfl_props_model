@@ -1,212 +1,467 @@
 {
- "generated_utc": "2026-11-27T22:37:52+00:00",
- "generated_arizona": "Fri Nov 27 3:37 PM MST",
- "previous_utc": "2026-11-27T18:46:10+00:00",
- "previous_arizona": "Fri Nov 27 11:46 AM MST",
- "headline": "2 added, 8 removed, 9 line moved, 12 price moved, 10 status changed, 7 tier changed since Fri Nov 27 11:46 AM MST. 20 earlier legs dropped off because the game kicked off.",
- "added": [
-  {
-   "id": "00-0041029|player_receptions|under",
-   "text": "Added: Jordyn Tyson under 4.5 receptions (FD -140), B tier, because the edge is now 5.1%."
-  },
-  {
-   "id": "00-0040154|player_reception_yds|over",
-   "text": "Added: Tai Felton over 21.5 receiving yards (DK -111), B tier, because the edge is now 5.1%."
-  }
- ],
+ "generated_utc": "2026-11-28T04:07:33+00:00",
+ "generated_arizona": "Fri Nov 27 9:07 PM MST",
+ "previous_utc": "2026-11-27T22:37:52+00:00",
+ "previous_arizona": "Fri Nov 27 3:37 PM MST",
+ "headline": "113 removed since Fri Nov 27 3:37 PM MST.",
+ "added": [],
  "removed": [
   {
-   "id": "00-0038542|player_rush_attempts|under",
-   "text": "Removed: Bijan Robinson under 18.5 rush attempts (DK -108), the model's edge grew to 21%, which is too large to trust."
-  },
-  {
-   "id": "00-0037291|player_receptions|over",
-   "text": "Removed: Jalen Nailor over 1.5 receptions (DK +157), the books no longer offer it."
-  },
-  {
-   "id": "00-0039066|player_receptions|over",
-   "text": "Removed: Michael Mayer over 2.5 receptions (FD +118), the books no longer offer it."
-  },
-  {
-   "id": "00-0039165|player_rush_attempts|under",
-   "text": "Removed: Zach Charbonnet under 15.5 rush attempts (DK -126), the books no longer offer it."
-  },
-  {
-   "id": "00-0039165|player_rush_yds|under",
-   "text": "Removed: Zach Charbonnet under 58.5 rush yards (DK -111), line moved 58.5 to 55.5 and the edge is now 1.7%."
-  },
-  {
-   "id": "00-0033090|player_receptions|under",
-   "text": "Removed: Hunter Henry under 2.5 receptions (DK +104), the edge fell from 5.3% to 4.1%."
-  },
-  {
-   "id": "00-0033526|player_rush_yds|under",
-   "text": "Removed: Samaje Perine under 27.5 rush yards (DK -110), the edge fell from 5.3% to 5.0%."
-  },
-  {
-   "id": "00-0040563|player_anytime_td|yes",
-   "text": "Removed: Efton Chism III anytime TD (DK +850), the edge fell from 5.1% to 4.4%."
-  }
- ],
- "line_moved": [
-  {
-   "id": "00-0041029|player_reception_yds|under",
-   "text": "Line moved: Jordyn Tyson receiving yards 43.5 to 44.5 (FD); still under, edge 6.3%."
-  },
-  {
-   "id": "00-0038977|player_reception_yds|over",
-   "text": "Line moved: Tank Dell receiving yards 27.5 to 28.5 (FD); still over, edge 8.1%."
-  },
-  {
-   "id": "00-0033555|player_reception_yds|over",
-   "text": "Line moved: Mack Hollins receiving yards 22.5 to 26.5 (FD); still over, edge 11.3%."
-  },
-  {
-   "id": "00-0038563|player_reception_yds|over",
-   "text": "Line moved: Tre Tucker receiving yards 27.5 to 29.5 (DK); still over, edge 11.3%."
+   "id": "00-0040122|player_rush_attempts|under",
+   "text": "Removed: Ashton Jeanty under 11.5 rush attempts (DK -101), its game is outside this run's window."
   },
   {
    "id": "00-0040784|player_rush_yds|under",
-   "text": "Line moved: Quinshon Judkins rush yards 59.5 to 60.5 (DK); still under, edge 19.2%."
+   "text": "Removed: Quinshon Judkins under 60.5 rush yards (DK -110), its game is outside this run's window."
   },
   {
-   "id": "00-0040128|player_reception_yds|under",
-   "text": "Line moved: Tyler Warren receiving yards 30.5 to 31.5 (DK); still under, edge 8.5%."
+   "id": "00-0040242|player_rush_yds|under",
+   "text": "Removed: Jacory Croskey-Merritt under 54.5 rush yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040242|player_rush_attempts|under",
+   "text": "Removed: Jacory Croskey-Merritt under 13.5 rush attempts (DK -110), its game is outside this run's window."
+  },
+  {
+   "id": "00-0032764|player_rush_yds|under",
+   "text": "Removed: Derrick Henry under 55.5 rush yards (DK -112), its game is outside this run's window."
+  },
+  {
+   "id": "00-0037525|player_rush_yds|under",
+   "text": "Removed: Jordan Mason under 57.5 rush yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040715|player_rush_yds|under",
+   "text": "Removed: Cam Skattebo under 75.5 rush yards (FD -114), its game is outside this run's window."
   },
   {
    "id": "00-0040715|player_rush_attempts|under",
-   "text": "Line moved: Cam Skattebo rush attempts 16.5 to 17.5 (DK); still under, edge 14.6%."
+   "text": "Removed: Cam Skattebo under 17.5 rush attempts (DK -120), its game is outside this run's window."
   },
   {
-   "id": "00-0037291|player_reception_yds|over",
-   "text": "Line moved: Jalen Nailor receiving yards 9.5 to 10.5 (FD); still over, edge 15.5%."
+   "id": "00-0040122|player_rush_yds|under",
+   "text": "Removed: Ashton Jeanty under 44.5 rush yards (DK -115), its game is outside this run's window."
   },
   {
-   "id": "00-0037252|player_reception_yds|over",
-   "text": "Line moved: Greg Dulcich receiving yards 24.5 to 23.5 (DK); still over, edge 5.7%."
-  }
- ],
- "price_moved": [
-  {
-   "id": "00-0033293|player_anytime_td|yes",
-   "text": "Price moved: Aaron Jones anytime TD was DK +150, now FD +160; edge 7.6%."
+   "id": "00-0038120|player_anytime_td|yes",
+   "text": "Removed: Breece Hall anytime TD (DK +125), its game is outside this run's window."
   },
   {
-   "id": "00-0039849|player_receptions|under",
-   "text": "Price moved: Marvin Harrison Jr. under 2.5 receptions was FD -154, now DK -156; edge 9.1%."
+   "id": "00-0039064|player_receptions|under",
+   "text": "Removed: Zay Flowers under 6.5 receptions (FD -140), its game is outside this run's window."
   },
   {
-   "id": "00-0035685|player_anytime_td|yes",
-   "text": "Price moved: David Montgomery anytime TD was FD +100, now DK +100; edge 9.0%."
+   "id": "00-0039424|player_reception_yds|over",
+   "text": "Removed: Devaughn Vele over 25.5 receiving yards (FD -114), its game is outside this run's window."
   },
   {
-   "id": "00-0036410|player_receptions|under",
-   "text": "Price moved: Tee Higgins under 4.5 receptions was FD +110, now DK -106; edge 11.0%."
-  },
-  {
-   "id": "00-0040784|player_anytime_td|yes",
-   "text": "Price moved: Quinshon Judkins anytime TD was DK +120, now FD +115; edge 7.2%."
-  },
-  {
-   "id": "00-0037525|player_anytime_td|yes",
-   "text": "Price moved: Jordan Mason anytime TD was DK +210, now FD +220; edge 10.1%."
+   "id": "00-0037838|player_receptions|under",
+   "text": "Removed: Isaiah Likely under 4.5 receptions (DK +117), its game is outside this run's window."
   },
   {
    "id": "00-0031588|player_receptions|under",
-   "text": "Price moved: Stefon Diggs under 4.5 receptions was FD -154, now DK -143; edge 11.5%."
+   "text": "Removed: Stefon Diggs under 4.5 receptions (DK -143), its game is outside this run's window."
   },
   {
-   "id": "00-0039793|player_anytime_td|yes",
-   "text": "Price moved: AJ Barner anytime TD was DK +330, now FD +300; edge 5.6%."
-  },
-  {
-   "id": "00-0039338|player_reception_yds|under",
-   "text": "Price moved: Brock Bowers under 58.5 receiving yards was DK -111, now FD -114; edge 9.8%."
-  },
-  {
-   "id": "00-0035229|player_receptions|under",
-   "text": "Price moved: T.J. Hockenson under 4.5 receptions was DK -102, now DK +101; edge 10.3%."
-  },
-  {
-   "id": "00-0038563|player_receptions|over",
-   "text": "Price moved: Tre Tucker over 2.5 receptions was FD +140, now FD +124; edge 15.1%."
-  },
-  {
-   "id": "00-0040663|player_reception_yds|under",
-   "text": "Price moved: Harold Fannin Jr. under 50.5 receiving yards was DK -112, now FD -114; edge 10.8%."
-  }
- ],
- "status_changed": [
-  {
-   "id": "00-0034383|player_receptions|under",
-   "text": "Status changed: Dalton Schultz was questionable, now active."
-  },
-  {
-   "id": "00-0032764|player_rush_yds|under",
-   "text": "Status changed: Derrick Henry was questionable, now active."
-  },
-  {
-   "id": "00-0037838|player_receptions|under",
-   "text": "Status changed: Isaiah Likely was questionable, now active."
-  },
-  {
-   "id": "00-0038543|player_receptions|under",
-   "text": "Status changed: Jaxon Smith-Njigba was questionable, now active."
-  },
-  {
-   "id": "00-0036410|player_receptions|under",
-   "text": "Status changed: Tee Higgins was active, now questionable."
-  },
-  {
-   "id": "00-0038543|player_reception_yds|under",
-   "text": "Status changed: Jaxon Smith-Njigba was questionable, now active."
-  },
-  {
-   "id": "00-0036410|player_reception_yds|under",
-   "text": "Status changed: Tee Higgins was active, now questionable."
-  },
-  {
-   "id": "00-0037838|player_reception_yds|under",
-   "text": "Status changed: Isaiah Likely was questionable, now active."
-  },
-  {
-   "id": null,
-   "text": "Ruled out: starting QB Brock Purdy is out. Legs that depend on it are off the board."
-  },
-  {
-   "id": null,
-   "text": "Ruled out: starting QB Justin Herbert is out. Legs that depend on it are off the board."
-  }
- ],
- "tier_changed": [
-  {
-   "id": "00-0034383|player_receptions|under",
-   "text": "Tier changed: Dalton Schultz under 2.5 receptions went from B to A (edge 9.4% to 9.4%)."
-  },
-  {
-   "id": "00-0032764|player_rush_yds|under",
-   "text": "Tier changed: Derrick Henry under 55.5 rush yards went from B to A (edge 16.6% to 16.6%)."
-  },
-  {
-   "id": "00-0037838|player_receptions|under",
-   "text": "Tier changed: Isaiah Likely under 4.5 receptions went from B to A (edge 11.8% to 11.8%)."
-  },
-  {
-   "id": "00-0035261|player_rush_yds|over",
-   "text": "Tier changed: Tony Pollard over 52.5 rush yards went from B to A (edge 10.5% to 10.5%)."
+   "id": "00-0041525|player_reception_yds|over",
+   "text": "Removed: Chris Bell over 14.5 receiving yards (FD -114), its game is outside this run's window."
   },
   {
    "id": "00-0039424|player_receptions|over",
-   "text": "Tier changed: Devaughn Vele over 3.5 receptions went from B to A (edge 10.5% to 10.5%)."
+   "text": "Removed: Devaughn Vele over 3.5 receptions (FD +158), its game is outside this run's window."
+  },
+  {
+   "id": "00-0035261|player_rush_yds|over",
+   "text": "Removed: Tony Pollard over 52.5 rush yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0039880|player_reception_yds|over",
+   "text": "Removed: Malik Washington over 26.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040162|player_receptions|over",
+   "text": "Removed: Dylan Sampson over 2.5 receptions (DK -129), its game is outside this run's window."
+  },
+  {
+   "id": "00-0034753|player_reception_yds|over",
+   "text": "Removed: Mark Andrews over 22.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040878|player_rush_attempts|under",
+   "text": "Removed: Mike Washington Jr. under 9.5 rush attempts (DK -123), its game is outside this run's window."
   },
   {
    "id": "00-0037838|player_reception_yds|under",
-   "text": "Tier changed: Isaiah Likely under 51.5 receiving yards went from B to A (edge 9.7% to 9.7%)."
+   "text": "Removed: Isaiah Likely under 51.5 receiving yards (DK -114), its game is outside this run's window."
   },
   {
-   "id": "00-0040715|player_rush_attempts|under",
-   "text": "Tier changed: Cam Skattebo under 17.5 rush attempts went from B to A (edge 13.2% to 14.6%)."
+   "id": "00-0033526|player_anytime_td|yes",
+   "text": "Removed: Samaje Perine anytime TD (DK +170), its game is outside this run's window."
+  },
+  {
+   "id": "00-0041547|player_reception_yds|under",
+   "text": "Removed: KC Concepcion under 52.5 receiving yards (DK -111), its game is outside this run's window."
+  },
+  {
+   "id": "00-0038597|player_anytime_td|yes",
+   "text": "Removed: Chase Brown anytime TD (DK -115), its game is outside this run's window."
+  },
+  {
+   "id": "00-0034383|player_receptions|under",
+   "text": "Removed: Dalton Schultz under 2.5 receptions (DK +124), its game is outside this run's window."
+  },
+  {
+   "id": "00-0039794|player_anytime_td|yes",
+   "text": "Removed: Braelon Allen anytime TD (FD +185), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040242|player_anytime_td|yes",
+   "text": "Removed: Jacory Croskey-Merritt anytime TD (DK +135), its game is outside this run's window."
+  },
+  {
+   "id": "00-0036309|player_reception_yds|over",
+   "text": "Removed: Darnell Mooney over 17.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0033293|player_rush_attempts|under",
+   "text": "Removed: Aaron Jones under 9.5 rush attempts (DK -118), its game is outside this run's window."
+  },
+  {
+   "id": "00-0034975|player_anytime_td|yes",
+   "text": "Removed: Justice Hill anytime TD (FD +350), its game is outside this run's window."
+  },
+  {
+   "id": "00-0033699|player_rush_yds|over",
+   "text": "Removed: Austin Ekeler over 21.5 rush yards (DK -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0038977|player_reception_yds|over",
+   "text": "Removed: Tank Dell over 28.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0036900|player_reception_yds|under",
+   "text": "Removed: Ja'Marr Chase under 91.5 receiving yards (DK -110), its game is outside this run's window."
+  },
+  {
+   "id": "00-0038543|player_reception_yds|under",
+   "text": "Removed: Jaxon Smith-Njigba under 97.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040705|player_receptions|under",
+   "text": "Removed: Chimere Dike under 3.5 receptions (DK -171), its game is outside this run's window."
+  },
+  {
+   "id": "00-0036410|player_reception_yds|under",
+   "text": "Removed: Tee Higgins under 67.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0037291|player_reception_yds|over",
+   "text": "Removed: Jalen Nailor over 10.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040584|player_receptions|under",
+   "text": "Removed: Gunnar Helm under 3.5 receptions (DK -154), its game is outside this run's window."
+  },
+  {
+   "id": "00-0038563|player_receptions|over",
+   "text": "Removed: Tre Tucker over 2.5 receptions (FD +124), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040128|player_receptions|under",
+   "text": "Removed: Tyler Warren under 3.5 receptions (DK +128), its game is outside this run's window."
+  },
+  {
+   "id": "00-0041040|player_receptions|under",
+   "text": "Removed: Antonio Williams under 4.5 receptions (DK -162), its game is outside this run's window."
+  },
+  {
+   "id": "00-0033699|player_anytime_td|yes",
+   "text": "Removed: Austin Ekeler anytime TD (FD +370), its game is outside this run's window."
+  },
+  {
+   "id": "00-0038621|player_reception_yds|over",
+   "text": "Removed: DeMario Douglas over 23.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0039793|player_receptions|under",
+   "text": "Removed: AJ Barner under 3.5 receptions (FD -194), its game is outside this run's window."
+  },
+  {
+   "id": "00-0037809|player_receptions|under",
+   "text": "Removed: Chig Okonkwo under 3.5 receptions (FD +128), its game is outside this run's window."
+  },
+  {
+   "id": "00-0039338|player_receptions|under",
+   "text": "Removed: Brock Bowers under 4.5 receptions (FD +140), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040663|player_receptions|under",
+   "text": "Removed: Harold Fannin Jr. under 4.5 receptions (FD +104), its game is outside this run's window."
+  },
+  {
+   "id": "00-0038543|player_receptions|under",
+   "text": "Removed: Jaxon Smith-Njigba under 7.5 receptions (FD -136), its game is outside this run's window."
+  },
+  {
+   "id": "00-0035261|player_receptions|under",
+   "text": "Removed: Tony Pollard under 2.5 receptions (DK +121), its game is outside this run's window."
+  },
+  {
+   "id": "00-0038563|player_reception_yds|over",
+   "text": "Removed: Tre Tucker over 29.5 receiving yards (DK -113), its game is outside this run's window."
+  },
+  {
+   "id": "00-0033908|player_receptions|under",
+   "text": "Removed: Cooper Kupp under 2.5 receptions (FD -160), its game is outside this run's window."
+  },
+  {
+   "id": "00-0033555|player_reception_yds|over",
+   "text": "Removed: Mack Hollins over 26.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0036410|player_receptions|under",
+   "text": "Removed: Tee Higgins under 4.5 receptions (DK -106), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040154|player_receptions|under",
+   "text": "Removed: Tai Felton under 2.5 receptions (FD -130), its game is outside this run's window."
+  },
+  {
+   "id": "00-0037256|player_anytime_td|yes",
+   "text": "Removed: Rachaad White anytime TD (DK +380), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040663|player_reception_yds|under",
+   "text": "Removed: Harold Fannin Jr. under 50.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0035229|player_receptions|under",
+   "text": "Removed: T.J. Hockenson under 4.5 receptions (DK +101), its game is outside this run's window."
+  },
+  {
+   "id": "00-0038120|player_receptions|under",
+   "text": "Removed: Breece Hall under 2.5 receptions (DK +119), its game is outside this run's window."
+  },
+  {
+   "id": "00-0037525|player_anytime_td|yes",
+   "text": "Removed: Jordan Mason anytime TD (FD +220), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040162|player_anytime_td|yes",
+   "text": "Removed: Dylan Sampson anytime TD (FD +450), its game is outside this run's window."
+  },
+  {
+   "id": "00-0039338|player_reception_yds|under",
+   "text": "Removed: Brock Bowers under 58.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0039064|player_reception_yds|under",
+   "text": "Removed: Zay Flowers under 74.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0035229|player_reception_yds|under",
+   "text": "Removed: T.J. Hockenson under 44.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0039849|player_receptions|under",
+   "text": "Removed: Marvin Harrison Jr. under 2.5 receptions (DK -156), its game is outside this run's window."
+  },
+  {
+   "id": "00-0037740|player_receptions|under",
+   "text": "Removed: Garrett Wilson under 4.5 receptions (DK +121), its game is outside this run's window."
+  },
+  {
+   "id": "00-0037238|player_receptions|under",
+   "text": "Removed: Drake London under 5.5 receptions (FD -130), its game is outside this run's window."
+  },
+  {
+   "id": "00-0035685|player_anytime_td|yes",
+   "text": "Removed: David Montgomery anytime TD (DK +100), its game is outside this run's window."
+  },
+  {
+   "id": "00-0036554|player_reception_yds|under",
+   "text": "Removed: Nico Collins under 62.5 receiving yards (DK -113), its game is outside this run's window."
+  },
+  {
+   "id": "00-0038618|player_receptions|under",
+   "text": "Removed: Xavier Hutchinson under 3.5 receptions (DK -175), its game is outside this run's window."
+  },
+  {
+   "id": "00-0034975|player_receptions|under",
+   "text": "Removed: Justice Hill under 3.5 receptions (DK -138), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040128|player_reception_yds|under",
+   "text": "Removed: Tyler Warren under 31.5 receiving yards (DK -113), its game is outside this run's window."
+  },
+  {
+   "id": "00-0038542|player_receptions|over",
+   "text": "Removed: Bijan Robinson over 2.5 receptions (DK -154), its game is outside this run's window."
+  },
+  {
+   "id": "00-0037238|player_reception_yds|under",
+   "text": "Removed: Drake London under 71.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0036970|player_receptions|under",
+   "text": "Removed: Kyle Pitts under 3.5 receptions (DK -133), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040198|player_rush_yds|under",
+   "text": "Removed: Ollie Gordon II under 68.5 rush yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040198|player_rush_attempts|under",
+   "text": "Removed: Ollie Gordon II under 15.5 rush attempts (DK -109), its game is outside this run's window."
+  },
+  {
+   "id": "00-0033293|player_rush_yds|under",
+   "text": "Removed: Aaron Jones under 37.5 rush yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040170|player_reception_yds|over",
+   "text": "Removed: Elic Ayomanor over 25.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040215|player_anytime_td|yes",
+   "text": "Removed: Gavin Bartholomew anytime TD (DK +1100), its game is outside this run's window."
+  },
+  {
+   "id": "00-0041512|player_rush_yds|over",
+   "text": "Removed: Jadarian Price over 24.5 rush yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0039849|player_reception_yds|under",
+   "text": "Removed: Marvin Harrison Jr. under 28.5 receiving yards (DK -109), its game is outside this run's window."
+  },
+  {
+   "id": "00-0032385|player_anytime_td|yes",
+   "text": "Removed: Sterling Shepard anytime TD (DK +650), its game is outside this run's window."
+  },
+  {
+   "id": "00-0035685|player_rush_attempts|over",
+   "text": "Removed: David Montgomery over 13.5 rush attempts (DK +105), its game is outside this run's window."
+  },
+  {
+   "id": "00-0033293|player_anytime_td|yes",
+   "text": "Removed: Aaron Jones anytime TD (FD +160), its game is outside this run's window."
+  },
+  {
+   "id": "00-0036554|player_receptions|under",
+   "text": "Removed: Nico Collins under 4.5 receptions (DK -101), its game is outside this run's window."
+  },
+  {
+   "id": "00-0036973|player_rush_attempts|under",
+   "text": "Removed: Travis Etienne under 11.5 rush attempts (DK -102), its game is outside this run's window."
+  },
+  {
+   "id": "00-0038618|player_reception_yds|over",
+   "text": "Removed: Xavier Hutchinson over 28.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040784|player_anytime_td|yes",
+   "text": "Removed: Quinshon Judkins anytime TD (FD +115), its game is outside this run's window."
+  },
+  {
+   "id": "00-0037545|player_reception_yds|over",
+   "text": "Removed: Rashid Shaheed over 17.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0038542|player_rush_yds|under",
+   "text": "Removed: Bijan Robinson under 75.5 rush yards (DK -111), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040870|player_receptions|under",
+   "text": "Removed: Ja'Kobi Lane under 2.5 receptions (DK -178), its game is outside this run's window."
+  },
+  {
+   "id": "00-0034753|player_receptions|over",
+   "text": "Removed: Mark Andrews over 2.5 receptions (DK -163), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040715|player_receptions|under",
+   "text": "Removed: Cam Skattebo under 2.5 receptions (FD -144), its game is outside this run's window."
+  },
+  {
+   "id": "00-0036973|player_rush_yds|under",
+   "text": "Removed: Travis Etienne under 48.5 rush yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0037809|player_reception_yds|under",
+   "text": "Removed: Chig Okonkwo under 38.5 receiving yards (DK -112), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040705|player_reception_yds|under",
+   "text": "Removed: Chimere Dike under 29.5 receiving yards (DK -115), its game is outside this run's window."
+  },
+  {
+   "id": "00-0033090|player_reception_yds|over",
+   "text": "Removed: Hunter Henry over 22.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040876|player_anytime_td|yes",
+   "text": "Removed: Elijah Sarratt anytime TD (FD +4500), its game is outside this run's window."
+  },
+  {
+   "id": "00-0041029|player_reception_yds|under",
+   "text": "Removed: Jordyn Tyson under 44.5 receiving yards (FD -114), its game is outside this run's window."
+  },
+  {
+   "id": "00-0039337|player_receptions|under",
+   "text": "Removed: Malik Nabers under 5.5 receptions (DK -110), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040878|player_rush_yds|under",
+   "text": "Removed: Mike Washington Jr. under 33.5 rush yards (DK -111), its game is outside this run's window."
+  },
+  {
+   "id": "00-0039337|player_reception_yds|under",
+   "text": "Removed: Malik Nabers under 65.5 receiving yards (DK -111), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040736|player_receptions|under",
+   "text": "Removed: Mason Taylor under 2.5 receptions (DK -157), its game is outside this run's window."
+  },
+  {
+   "id": "00-0037252|player_reception_yds|over",
+   "text": "Removed: Greg Dulcich over 23.5 receiving yards (DK -113), its game is outside this run's window."
+  },
+  {
+   "id": "00-0039793|player_anytime_td|yes",
+   "text": "Removed: AJ Barner anytime TD (FD +300), its game is outside this run's window."
+  },
+  {
+   "id": "00-0038618|player_anytime_td|yes",
+   "text": "Removed: Xavier Hutchinson anytime TD (FD +240), its game is outside this run's window."
+  },
+  {
+   "id": "00-0041032|player_receptions|under",
+   "text": "Removed: Kenyon Sadiq under 2.5 receptions (DK -175), its game is outside this run's window."
+  },
+  {
+   "id": "00-0033555|player_receptions|over",
+   "text": "Removed: Mack Hollins over 2.5 receptions (FD -122), its game is outside this run's window."
+  },
+  {
+   "id": "00-0033376|player_anytime_td|yes",
+   "text": "Removed: Patrick Ricard anytime TD (DK +2800), its game is outside this run's window."
+  },
+  {
+   "id": "00-0041029|player_receptions|under",
+   "text": "Removed: Jordyn Tyson under 4.5 receptions (FD -140), its game is outside this run's window."
+  },
+  {
+   "id": "00-0040154|player_reception_yds|over",
+   "text": "Removed: Tai Felton over 21.5 receiving yards (DK -111), its game is outside this run's window."
+  },
+  {
+   "id": "00-0041438|player_receptions|under",
+   "text": "Removed: Carnell Tate under 4.5 receptions (FD -108), its game is outside this run's window."
   }
  ],
- "kicked_off": 20
+ "line_moved": [],
+ "price_moved": [],
+ "status_changed": [],
+ "tier_changed": [],
+ "kicked_off": 0
 }

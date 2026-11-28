@@ -109,10 +109,12 @@ season,week,team,player_key,player,note_date,level,source,logged_utc
 2026,12,BUF,00-0035537,Ty Johnson,2026-11-25,full,nfl_report,2026-11-25T15:05:02+00:00
 2026,12,BUF,00-0035537,Ty Johnson,2026-11-26,full,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,CAR,00-0035687,Bobby Okereke,2026-11-26,dnp,espn_note,2026-11-27T04:07:26+00:00
+2026,12,CAR,00-0035687,Bobby Okereke,2026-11-27,dnp,espn_note,2026-11-28T04:07:33+00:00
 2026,12,CAR,00-0035687,Bobby Okereke,2026-11-27,dnp,nfl_report,2026-11-27T13:37:41+00:00
 2026,12,CAR,00-0039150,Bryce Young,2026-11-27,full,nfl_report,2026-11-27T13:37:41+00:00
 2026,12,CAR,00-0031610,Darren Waller,2026-11-27,limited,espn_note,2026-11-27T22:37:43+00:00
 2026,12,CAR,00-0031610,Darren Waller,2026-11-27,limited,nfl_report,2026-11-27T13:37:41+00:00
+2026,12,CAR,00-0036825,Feleipe Franks,2026-11-27,limited,espn_note,2026-11-28T04:07:33+00:00
 2026,12,CAR,00-0036825,Feleipe Franks,2026-11-27,limited,nfl_report,2026-11-27T13:37:41+00:00
 2026,12,CAR,00-0041119,Jackson Kuwatch,2026-11-27,dnp,nfl_report,2026-11-27T13:37:41+00:00
 2026,12,CAR,00-0036934,Jaelan Phillips,2026-11-27,limited,nfl_report,2026-11-27T13:37:41+00:00
@@ -742,20 +744,25 @@ season,week,team,player_key,player,note_date,level,source,logged_utc
 2026,12,SF,00-0040152,Upton Stout,2026-11-26,limited,nfl_report,2026-11-26T20:15:45+00:00
 2026,12,SF,00-0040152,Upton Stout,2026-11-27,limited,nfl_report,2026-11-27T13:37:41+00:00
 2026,12,TB,00-0036411,Antoine Winfield Jr.,2026-11-26,dnp,espn_note,2026-11-27T04:07:26+00:00
+2026,12,TB,00-0036411,Antoine Winfield Jr.,2026-11-27,dnp,espn_note,2026-11-28T04:07:33+00:00
 2026,12,TB,00-0036411,Antoine Winfield Jr.,2026-11-27,dnp,nfl_report,2026-11-27T13:37:41+00:00
 2026,12,TB,00-0034855,Baker Mayfield,2026-11-27,full,nfl_report,2026-11-27T13:37:41+00:00
+2026,12,TB,00-0040747,Benjamin Morrison,2026-11-27,dnp,espn_note,2026-11-28T04:07:33+00:00
 2026,12,TB,00-0040747,Benjamin Morrison,2026-11-27,dnp,nfl_report,2026-11-27T13:37:41+00:00
 2026,12,TB,00-0038129,Cade Otton,2026-11-27,full,nfl_report,2026-11-27T13:37:41+00:00
 2026,12,TB,00-0035942,Christian Rozeboom,2026-11-27,full,nfl_report,2026-11-27T13:37:41+00:00
 2026,12,TB,00-0040384,Elijah Simmons,2026-11-27,limited,nfl_report,2026-11-27T13:37:41+00:00
 2026,12,TB,00-0040143,Jacob Parrish,2026-11-26,limited,espn_note,2026-11-27T04:07:26+00:00
+2026,12,TB,00-0040143,Jacob Parrish,2026-11-27,full,espn_note,2026-11-28T04:07:33+00:00
 2026,12,TB,00-0040143,Jacob Parrish,2026-11-27,limited,nfl_report,2026-11-27T13:37:41+00:00
 2026,12,TB,00-0039855,Jalen McMillan,2026-11-26,full,espn_note,2026-11-27T00:00:54+00:00
 2026,12,TB,00-0039855,Jalen McMillan,2026-11-27,limited,espn_note,2026-11-27T22:37:43+00:00
 2026,12,TB,00-0039855,Jalen McMillan,2026-11-27,full,nfl_report,2026-11-27T13:37:41+00:00
 2026,12,TB,00-0039051,Josh Hayes,2026-11-27,full,nfl_report,2026-11-27T13:37:41+00:00
 2026,12,TB,00-0041502,Josiah Trotter,2026-11-26,limited,espn_note,2026-11-27T04:07:26+00:00
+2026,12,TB,00-0041502,Josiah Trotter,2026-11-27,full,espn_note,2026-11-28T04:07:33+00:00
 2026,12,TB,00-0041502,Josiah Trotter,2026-11-27,limited,nfl_report,2026-11-27T13:37:41+00:00
+2026,12,TB,00-0040237,Tez Johnson,2026-11-27,dnp,espn_note,2026-11-28T04:07:33+00:00
 2026,12,TEN,00-0041438,Carnell Tate,2026-11-26,full,nfl_report,2026-11-26T13:37:39+00:00
 2026,12,TEN,00-0041438,Carnell Tate,2026-11-27,full,nfl_report,2026-11-27T13:37:41+00:00
 2026,12,TEN,00-0037758,Cor'Dale Flott,2026-11-25,dnp,espn_note,2026-11-26T04:07:31+00:00

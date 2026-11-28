@@ -1,199 +1,1251 @@
 NFL PROP BOARD
-Updated Fri Nov 27 9:07 PM MST | Odds API credits: 0 this run, 549 used, 19,451 left
-Window: games kicking off in the next 36 hours | calibration on
+Updated Sat Nov 28 6:37 AM MST | Odds API credits: 60 this run, 609 used, 19,391 left
+Window: games kicking off in the next 60 hours | calibration on
 
+  ATL@MIN  Sun Nov 29 11:00 AM MST  MIN -7, total 41.5
+  BAL@HOU  Sun Nov 29 11:00 AM MST  HOU -6.5, total 47.5
+  NO@CIN   Sun Nov 29 11:00 AM MST  CIN -9.5, total 48.5
+  NYG@IND  Sun Nov 29 11:00 AM MST  IND +5.5, total 42
+  TEN@JAX  Sun Nov 29 11:00 AM MST  JAX -14.25, total 48.5  BLOWOUT RULE ON
+  NYJ@MIA  Sun Nov 29 11:00 AM MST  MIA +5.5, total 40
+  NE@LAC   Sun Nov 29 2:05 PM MST   LAC +3, total 35
+  WAS@ARI  Sun Nov 29 2:25 PM MST   ARI +6.75, total 41.5
+  SEA@SF   Sun Nov 29 2:25 PM MST   SF +1.5, total 42.5
+  LV@CLE   Sun Nov 29 6:20 PM MST   CLE -4.5, total 39
+  CAR@TB   Mon Nov 30 6:15 PM MST   TB -3, total 43.5
 
-0 legs: 0 overs, 0 unders, 0 TDs
+130 legs: 32 overs, 76 unders, 22 TDs
 
 BOOSTS
   Anchor rule on: every ticket starts from an RB rush attempts or rush yards over, an anytime TD
   or a team moneyline, then adds legs on the same game script.
   50% boost ($50 max, 2 legs, +150 to +250, safest)
-    No 2-leg anchored same-script ticket can be built from this board's legs. A ticket has to
-    start from an RB rush attempts or rush yards over, an anytime TD or a team moneyline.
+    FD about +151: model 47% against 36% implied [BAL@HOU: HOU ahead]
+      - Derrick Henry under 54.5 rush yards (-114)
+      - HOU moneyline (-295)  [anchor: the book's own odds, no model edge]
+      with the boost about +227
   100% boost ($25 max, 3 legs, +300 to +400, best)
-    No 3-leg anchored same-script ticket can be built from this board's legs. A ticket has to
-    start from an RB rush attempts or rush yards over, an anytime TD or a team moneyline.
+    DK about +395: model 28% against 17% implied [LV@CLE: CLE ahead]
+      - KC Concepcion under 4.5 receptions (-111)
+      - Mike Washington Jr. under 9.5 rush attempts (-119)
+      - CLE moneyline (-241)  [anchor: the book's own odds, no model edge]
+      with the boost about +790
   Ticket prices are the legs multiplied together. A book prices a same-game parlay shorter than
   that when the legs move together, so check the real price is still in range before boosting.
 
 SAME GAME PARLAYS, 2 LEGS
-  none: no anchor leg shares a game script with enough other legs at the same book
+  FD about +2528: model 9% against 3% implied [ATL@MIN: MIN ahead]
+    - T.J. Hockenson under 44.5 receiving yards (-114)  (flagged)
+    - Gavin Bartholomew anytime TD (+1300)  [anchor]  (flagged)
+  FD about +2621: model 9% against 3% implied [ATL@MIN: MIN ahead]
+    - T.J. Hockenson under 4.5 receptions (-106)  (flagged)
+    - Gavin Bartholomew anytime TD (+1300)  [anchor]  (flagged)
+  DK about +714: model 21% against 9% implied [CAR@TB: TB ahead]
+    - Chris Godwin Jr. under 2.5 receptions (+106)
+    - Kenny Gainwell anytime TD (+295)  [anchor]
+  DK about +648: model 23% against 10% implied [CAR@TB: TB ahead]
+    - Emeka Egbuka under 3.5 receptions (-112)
+    - Kenny Gainwell anytime TD (+295)  [anchor]
 
 SAME GAME PARLAYS, 3 LEGS
-  none: no anchor leg shares a game script with enough other legs at the same book
+  FD about +6733: model 4% against 1% implied [ATL@MIN: MIN ahead]
+    - T.J. Hockenson under 44.5 receiving yards (-114)  (flagged)
+    - Gavin Bartholomew anytime TD (+1300)  (flagged)
+    - Aaron Jones anytime TD (+160)  [anchor]
+  FD about +6974: model 4% against 1% implied [ATL@MIN: MIN ahead]
+    - T.J. Hockenson under 4.5 receptions (-106)  (flagged)
+    - Gavin Bartholomew anytime TD (+1300)  (flagged)
+    - Aaron Jones anytime TD (+160)  [anchor]
+  DK about +1440: model 14% against 5% implied [CAR@TB: TB ahead]
+    - Emeka Egbuka under 3.5 receptions (-112)
+    - Chris Godwin Jr. under 2.5 receptions (+106)
+    - Kenny Gainwell anytime TD (+295)  [anchor]
+  DK about +1434: model 14% against 5% implied [CAR@TB: TB ahead]
+    - Chris Godwin Jr. under 2.5 receptions (+106)
+    - Cade Otton under 28.5 receiving yards (-113)
+    - Kenny Gainwell anytime TD (+295)  [anchor]
 
-A TIER (edge 8% or more, no flags): 0
+A TIER (edge 8% or more, no flags): 39
+  1. Ashton Jeanty (LV RB, LV@CLE) under 11.5 rush attempts  DK -101
+     model 67.2% | book 47.4% | edge +19.8% | rules as written 70.2%
+     Projects 9.9 carries against 11.5: LV run about 24 times and he has taken 42% of them over
+     his last 3 games.
+  2. KC Concepcion (CLE WR, LV@CLE) under 4.5 receptions  FD -104
+     model 67.2% | book 47.6% | edge +19.7% | rules as written 65.7%
+     Projects 3.8 catches against 4.5: 19% of about 34 team targets (20% this season, 18% over
+     his last 3), at a 63% catch rate. Their run rate was 38% over five games as 3.4-point
+     underdogs on average; as 4.5-point favourites it is set at 41%.
+  3. Chuba Hubbard (CAR RB, CAR@TB) over 15.5 rush attempts  DK -126
+     model 72.2% | book 52.6% | edge +19.6% | rules as written 93.1%
+     Projects 20.0 carries against 15.5: CAR run about 28 times and he has taken 80% of them
+     over his last 3 games.
+  4. Emeka Egbuka (TB WR, CAR@TB) under 3.5 receptions  DK -112
+     model 69.2% | book 49.9% | edge +19.3% | rules as written 68.9%
+     Projects 2.8 catches against 3.5: 23% of about 22 team targets (24% this season, 22% over
+     his last 3), at a 58% catch rate. Their run rate was 57% over five games as 3.0-point
+     underdogs on average; as 3-point favourites it is set at 59%.
+  5. Jacory Croskey-Merritt (WAS RB, WAS@ARI) under 13.5 rush attempts  DK -105
+     model 67.0% | book 48.3% | edge +18.7% | rules as written 66.4%
+     Projects 11.7 carries against 13.5: WAS run about 28 times and he has taken 44% of them
+     over his last 3 games. Their run rate was 41% over five games as 3.0-point underdogs on
+     average; as 6.75-point favourites it is set at 44%.
+  6. Quinshon Judkins (CLE RB, LV@CLE) under 60.5 rush yards  DK -113
+     model 68.8% | book 50.2% | edge +18.6% | rules as written 59.1%
+     A typical game is about 46 yards against 60.5: 12.3 carries at 4.1 a carry (his 3.5 blended
+     with the 5.1 LV allow). Their run rate was 38% over five games as 3.4-point underdogs on
+     average; as 4.5-point favourites it is set at 41%.
+  7. Jacory Croskey-Merritt (WAS RB, WAS@ARI) under 54.5 rush yards  DK -111
+     model 68.1% | book 49.9% | edge +18.2% | rules as written 58.7%
+     A typical game is about 41 yards against 54.5: 11.7 carries at 3.9 a carry (his 3.8 blended
+     with the 4.1 ARI allow). Their run rate was 41% over five games as 3.0-point underdogs on
+     average; as 6.75-point favourites it is set at 44%.
+  8. Chris Godwin Jr. (TB WR, CAR@TB) under 2.5 receptions  DK +106
+     model 63.8% | book 45.8% | edge +18.0% | rules as written 77.0%
+     Projects 2.2 catches against 2.5: 14% of about 22 team targets (16% this season, 10% over
+     his last 3), at a 72% catch rate. Their run rate was 57% over five games as 3.0-point
+     underdogs on average; as 3-point favourites it is set at 59%.
+  9. Cam Skattebo (NYG RB, NYG@IND) under 17.5 rush attempts  DK -107
+     model 66.0% | book 48.8% | edge +17.3% | rules as written 58.3%
+     Projects 15.5 carries against 17.5: NYG run about 29 times and he has taken 58% of them
+     over his last 3 games. Their run rate was 42% over five games as 2.4-point underdogs on
+     average; as 5.5-point favourites it is set at 45%.
+  10. Bucky Irving (TB RB, CAR@TB) anytime TD  DK -125
+     model 61.8% | book 44.6% | edge +17.1% | rules as written 72.2%
+     Model gives 62% to score: 49% of TB's red-zone chances and 43% of their touches, with TB
+     priced for 2.6 touchdowns.
+  11. Cade Otton (TB TE, CAR@TB) under 28.5 receiving yards  FD -114
+     model 66.7% | book 50.0% | edge +16.7% | rules as written 63.0%
+     A typical game is about 18 yards against 28.5: 16% of about 22 team targets (16% this
+     season, 16% over his last 3) at 6.0 a target (his 6.1 blended with the 6.0 CAR allow).
+     Their run rate was 57% over five games as 3.0-point underdogs on average; as 3-point
+     favourites it is set at 59%.
+  12. Derrick Henry (BAL RB, BAL@HOU) under 55.5 rush yards  DK -112
+     model 66.6% | book 50.0% | edge +16.6% | rules as written 56.8%
+     A typical game is about 43 yards against 55.5: 12.0 carries at 4.0 a carry (his 4.0 blended
+     with the 4.0 HOU allow). Their run rate was 38% over five games as 1.9-point underdogs on
+     average; as 6.5-point underdogs it is set at 36%.
+  13. Jordan Mason (MIN RB, ATL@MIN) under 57.5 rush yards  FD -114
+     model 66.5% | book 50.0% | edge +16.5% | rules as written 56.5%
+     A typical game is about 45 yards against 57.5: 11.8 carries at 4.3 a carry (his 4.0 blended
+     with the 4.6 ATL allow). Their run rate was 38% over five games as 2.7-point underdogs on
+     average; as 7-point favourites it is set at 40%.
+  14. Cam Skattebo (NYG RB, NYG@IND) under 75.5 rush yards  FD -114
+     model 65.0% | book 50.0% | edge +15.0% | rules as written 53.5%
+     A typical game is about 61 yards against 75.5: 15.5 carries at 4.3 a carry (his 4.1 blended
+     with the 4.6 IND allow). Their run rate was 42% over five games as 2.4-point underdogs on
+     average; as 5.5-point favourites it is set at 45%.
+  15. Breece Hall (NYJ RB, NYJ@MIA) anytime TD  DK +125
+     model 49.6% | book 35.5% | edge +14.1% | rules as written 50.8%
+     Model gives 50% to score: 28% of NYJ's red-zone chances and 34% of their touches, with NYJ
+     priced for 2.5 touchdowns.
+  16. Devaughn Vele (NO WR, NO@CIN) over 24.5 receiving yards  DK -114
+     model 63.6% | book 50.4% | edge +13.2% | rules as written 67.5%
+     A typical game is about 35 yards against 24.5: 16% of about 36 team targets (17% this
+     season, 14% over his last 3) at 7.7 a target (his 7.6 blended with the 7.7 CIN allow).
+     Their run rate was 37% over five games as 2.8-point underdogs on average; as 9.5-point
+     underdogs it is set at 35%.
+  17. Chuba Hubbard (CAR RB, CAR@TB) under 2.5 receptions  DK +114
+     model 56.7% | book 44.0% | edge +12.7% | rules as written 63.9%
+     Projects 2.5 catches against 2.5: 10% of about 32 team targets (11% this season, 8% over
+     his last 3), at a 83% catch rate.
+  18. Kenny Gainwell (TB RB, CAR@TB) anytime TD  FD +300
+     model 32.8% | book 20.3% | edge +12.5% | rules as written 20.7%
+     Model gives 33% to score: 9% of TB's red-zone chances and 20% of their touches, with TB
+     priced for 2.6 touchdowns.
+  19. Chuba Hubbard (CAR RB, CAR@TB) anytime TD  DK +100
+     model 51.9% | book 40.2% | edge +11.8% | rules as written 58.8%
+     Model gives 52% to score: 43% of CAR's red-zone chances and 42% of their touches, with CAR
+     priced for 2.1 touchdowns.
+  20. Braelon Allen (NYJ RB, NYJ@MIA) anytime TD  DK +205
+     model 37.5% | book 26.2% | edge +11.3% | rules as written 30.3%
+     Model gives 38% to score: 14% of NYJ's red-zone chances and 24% of their touches, with NYJ
+     priced for 2.5 touchdowns.
+  21. Isaiah Likely (NYG TE, NYG@IND) under 4.5 receptions  DK +113
+     model 55.2% | book 44.3% | edge +10.9% | rules as written 66.5%
+     Projects 4.5 catches against 4.5: 23% of about 32 team targets (25% this season, 17% over
+     his last 3), at a 68% catch rate. Their run rate was 42% over five games as 2.4-point
+     underdogs on average; as 5.5-point favourites it is set at 45%.
+  22. Chris Bell (MIA WR, NYJ@MIA) over 14.5 receiving yards  FD -114
+     model 60.5% | book 50.0% | edge +10.5% | rules as written 64.0%
+     A typical game is about 21 yards against 14.5: 12% of about 29 team targets (12% this
+     season, 11% over his last 3) at 7.0 a target (his 6.6 blended with the 7.7 NYJ allow).
+     Their run rate was 41% over five games as 9.2-point underdogs on average; as 5.5-point
+     underdogs it is set at 42%.
+  23. Devaughn Vele (NO WR, NO@CIN) over 3.5 receptions  FD +158
+     model 46.7% | book 36.2% | edge +10.5% | rules as written 45.0%
+     Projects 3.6 catches against 3.5: 16% of about 36 team targets (17% this season, 14% over
+     his last 3), at a 69% catch rate. Their run rate was 37% over five games as 2.8-point
+     underdogs on average; as 9.5-point underdogs it is set at 35%.
+  24. Tony Pollard (TEN RB, TEN@JAX) over 52.5 rush yards  FD -114
+     model 60.5% | book 50.0% | edge +10.5% | rules as written 69.1%
+     A typical game is about 60 yards against 52.5: 15.6 carries at 4.1 a carry (his 4.5 blended
+     with the 3.6 JAX allow). Their run rate was 41% over five games as 8.6-point underdogs on
+     average; as 14.25-point underdogs it is set at 39%.
+  25. Mike Washington Jr. (LV RB, LV@CLE) under 9.5 rush attempts  DK -119
+     model 61.7% | book 51.2% | edge +10.4% | rules as written 64.3%
+     Projects 8.8 carries against 9.5: LV run about 24 times and he has taken 36% of them over
+     his last 3 games.
+  26. Samaje Perine (CIN RB, NO@CIN) anytime TD  DK +180
+     model 40.9% | book 30.5% | edge +10.4% | rules as written 38.4%
+     Model gives 41% to score: 13% of CIN's red-zone chances and 17% of their touches, with CIN
+     priced for 3.6 touchdowns.
+  27. Malik Washington (MIA WR, NYJ@MIA) over 26.5 receiving yards  FD -114
+     model 60.4% | book 50.0% | edge +10.4% | rules as written 58.7%
+     A typical game is about 35 yards against 26.5: 20% of about 29 team targets (22% this
+     season, 15% over his last 3) at 7.7 a target (his 7.7 blended with the 7.7 NYJ allow).
+     Their run rate was 41% over five games as 9.2-point underdogs on average; as 5.5-point
+     underdogs it is set at 42%.
+  28. Stefon Diggs (WAS WR, WAS@ARI) under 4.5 receptions  FD -154
+     model 67.0% | book 56.7% | edge +10.3% | rules as written 62.3%
+     Projects 3.8 catches against 4.5: 22% of about 31 team targets (22% this season, 21% over
+     his last 3), at a 62% catch rate. Their run rate was 41% over five games as 3.0-point
+     underdogs on average; as 6.75-point favourites it is set at 44%.
+  29. Chase Brown (CIN RB, NO@CIN) anytime TD  DK -110
+     model 54.6% | book 44.7% | edge +9.9% | rules as written 56.3%
+     Model gives 55% to score: 23% of CIN's red-zone chances and 26% of their touches, with CIN
+     priced for 3.6 touchdowns.
+  30. Mark Andrews (BAL TE, BAL@HOU) over 22.5 receiving yards  FD -114
+     model 59.9% | book 50.0% | edge +9.8% | rules as written 59.2%
+     A typical game is about 30 yards against 22.5: 15% of about 34 team targets (17% this
+     season, 12% over his last 3) at 6.9 a target (his 6.5 blended with the 7.4 HOU allow).
+     Their run rate was 38% over five games as 1.9-point underdogs on average; as 6.5-point
+     underdogs it is set at 36%.
+  31. Justice Hill (BAL RB, BAL@HOU) anytime TD  DK +370
+     model 27.4% | book 18.1% | edge +9.3% | rules as written 26.6%
+     Model gives 27% to score: 15% of BAL's red-zone chances and 18% of their touches, with BAL
+     priced for 2.1 touchdowns.
+  32. Isaiah Likely (NYG TE, NYG@IND) under 50.5 receiving yards  DK -112
+     model 59.0% | book 50.0% | edge +9.0% | rules as written 62.0%
+     A typical game is about 43 yards against 50.5: 23% of about 32 team targets (25% this
+     season, 17% over his last 3) at 7.3 a target (his 7.3 blended with the 7.4 IND allow).
+     Their run rate was 42% over five games as 2.4-point underdogs on average; as 5.5-point
+     favourites it is set at 45%.
+  33. Darnell Mooney (NYG WR, NYG@IND) over 17.5 receiving yards  DK -112
+     model 58.9% | book 50.0% | edge +8.9% | rules as written 70.5%
+     A typical game is about 23 yards against 17.5: 12% of about 32 team targets (11% this
+     season, 14% over his last 3) at 7.3 a target (his 6.2 blended with the 8.9 IND allow).
+     Their run rate was 42% over five games as 2.4-point underdogs on average; as 5.5-point
+     favourites it is set at 45%.
+  34. KC Concepcion (CLE WR, LV@CLE) under 52.5 receiving yards  DK -114
+     model 59.3% | book 50.4% | edge +8.9% | rules as written 50.8%
+     A typical game is about 44 yards against 52.5: 19% of about 34 team targets (20% this
+     season, 18% over his last 3) at 8.5 a target (his 7.5 blended with the 9.9 LV allow). Their
+     run rate was 38% over five games as 3.4-point underdogs on average; as 4.5-point favourites
+     it is set at 41%.
+  35. Jacory Croskey-Merritt (WAS RB, WAS@ARI) anytime TD  FD +130
+     model 43.4% | book 34.6% | edge +8.8% | rules as written 48.1%
+     Model gives 43% to score: 24% of WAS's red-zone chances and 24% of their touches, with WAS
+     priced for 2.7 touchdowns.
+  36. Aaron Jones (MIN RB, ATL@MIN) under 9.5 rush attempts  DK -118
+     model 59.7% | book 51.0% | edge +8.7% | rules as written 60.5%
+     Projects 9.0 carries against 9.5: MIN run about 24 times and he has taken 37% of them over
+     his last 3 games. Their run rate was 38% over five games as 2.7-point underdogs on average;
+     as 7-point favourites it is set at 40%.
+  37. Bucky Irving (TB RB, CAR@TB) over 81.5 rush yards  FD -114
+     model 58.5% | book 50.0% | edge +8.5% | rules as written 72.7%
+     A typical game is about 91 yards against 81.5: 20.3 carries at 4.7 a carry (his 4.7 blended
+     with the 4.7 CAR allow). Their run rate was 57% over five games as 3.0-point underdogs on
+     average; as 3-point favourites it is set at 59%.
+  38. Dylan Sampson (CLE RB, LV@CLE) over 2.5 receptions  DK -137
+     model 63.0% | book 54.6% | edge +8.4% | rules as written 81.4%
+     Projects 3.4 catches against 2.5: 15% of about 34 team targets (14% this season, 17% over
+     his last 3), at a 74% catch rate. Their run rate was 38% over five games as 3.4-point
+     underdogs on average; as 4.5-point favourites it is set at 41%.
+  39. Dalton Schultz (HOU TE, BAL@HOU) under 2.5 receptions  FD +116
+     model 51.5% | book 43.3% | edge +8.2% | rules as written 83.0%
+     Projects 2.7 catches against 2.5: 12% of about 32 team targets (15% this season, 6% over
+     his last 3), at a 73% catch rate.
 
-B TIER (edge 5% to 8%, or any flag): 0
+B TIER (edge 5% to 8%, or any flag): 91
+  1. Chuba Hubbard (CAR RB, CAR@TB) over 63.5 rush yards  DK -112
+     model 68.9% | book 50.0% | edge +18.9% | rules as written 76.0%
+     A typical game is about 79 yards against 63.5: 20.0 carries at 4.1 a carry (his 4.4 blended
+     with the 3.7 TB allow).
+     flag: books differ: DK 63.5, FD 66.5
+  2. Chimere Dike (TEN WR, TEN@JAX) under 3.5 receptions  DK -164
+     model 76.6% | book 58.6% | edge +18.0% | rules as written 42.0%
+     Projects 2.4 catches against 3.5: 10% of about 33 team targets (8% this season, 17% over
+     his last 3), at a 72% catch rate. Their run rate was 41% over five games as 8.6-point
+     underdogs on average; as 14.25-point underdogs it is set at 39%.
+     flag: calibration flips the literal lean
+     flag: books differ: DK 3.5, FD 2.5
+     flag: role change: Wan'Dale Robinson is out but played in 2 of the last 3 games
+  3. Ja'Marr Chase (CIN WR, NO@CIN) under 91.5 receiving yards  FD -114
+     model 67.9% | book 50.0% | edge +17.9% | rules as written 45.8%
+     A typical game is about 69 yards against 91.5: 27% of about 38 team targets (26% this
+     season, 29% over his last 3) at 8.9 a target (his 9.2 blended with the 8.5 NO allow). Their
+     run rate was 31% over five games as 5.8-point favourites on average; as 9.5-point
+     favourites it is set at 32%.
+     flag: calibration flips the literal lean
+  4. Jaxon Smith-Njigba (SEA WR, SEA@SF) under 97.5 receiving yards  FD -114
+     model 67.7% | book 50.0% | edge +17.7% | rules as written 43.4%
+     A typical game is about 75 yards against 97.5: 39% of about 27 team targets (37% this
+     season, 43% over his last 3) at 9.1 a target (his 10.5 blended with the 7.1 SF allow).
+     Their run rate was 52% over five games as 5.6-point favourites on average; as 1.5-point
+     favourites it is set at 51%.
+     flag: QB change: Sam Darnold is listed first, Drew Lock played last game
+     flag: calibration flips the literal lean
+  5. Ashton Jeanty (LV RB, LV@CLE) under 46.5 rush yards  DK -112
+     model 67.3% | book 50.0% | edge +17.3% | rules as written 58.3%
+     A typical game is about 33 yards against 46.5: 9.9 carries at 4.0 a carry (his 3.6 blended
+     with the 4.8 CLE allow).
+     flag: books differ: DK 46.5, FD 42.5
+  6. Jalen Nailor (LV WR, LV@CLE) over 10.5 receiving yards  FD -114
+     model 65.5% | book 50.0% | edge +15.5% | rules as written 74.0%
+     A typical game is about 20 yards against 10.5: 12% of about 32 team targets (11% this
+     season, 14% over his last 3) at 6.3 a target (his 5.5 blended with the 7.4 CLE allow).
+     flag: role change: Brock Bowers missed the last 1 and may return
+  7. Antonio Williams (WAS WR, WAS@ARI) under 3.5 receptions  FD +128
+     model 55.5% | book 40.9% | edge +14.6% | rules as written 31.8%
+     Projects 3.5 catches against 3.5: 18% of about 31 team targets (17% this season, 22% over
+     his last 3), at a 68% catch rate. Their run rate was 41% over five games as 3.0-point
+     underdogs on average; as 6.75-point favourites it is set at 44%.
+     flag: calibration flips the literal lean
+  8. Tre Tucker (LV WR, LV@CLE) over 2.5 receptions  DK +121
+     model 56.8% | book 42.7% | edge +14.1% | rules as written 73.4%
+     Projects 3.1 catches against 2.5: 19% of about 32 team targets (18% this season, 22% over
+     his last 3), at a 55% catch rate.
+     flag: role change: Brock Bowers missed the last 1 and may return
+  9. Gunnar Helm (TEN TE, TEN@JAX) under 3.5 receptions  DK -164
+     model 72.4% | book 58.6% | edge +13.8% | rules as written 60.0%
+     Projects 2.6 catches against 3.5: 12% of about 33 team targets (11% this season, 14% over
+     his last 3), at a 70% catch rate. Their run rate was 41% over five games as 8.6-point
+     underdogs on average; as 14.25-point underdogs it is set at 39%.
+     flag: books differ: DK 3.5, FD 2.5
+     flag: role change: Wan'Dale Robinson is out but played in 2 of the last 3 games
+  10. AJ Barner (SEA TE, SEA@SF) under 2.5 receptions  DK +120
+     model 56.5% | book 42.9% | edge +13.6% | rules as written 46.3%
+     Projects 2.5 catches against 2.5: 14% of about 27 team targets (14% this season, 16% over
+     his last 3), at a 66% catch rate. Their run rate was 52% over five games as 5.6-point
+     favourites on average; as 1.5-point favourites it is set at 51%.
+     flag: QB change: Sam Darnold is listed first, Drew Lock played last game
+     flag: calibration flips the literal lean
+     flag: books differ: DK 2.5, FD 3.5
+  11. Emeka Egbuka (TB WR, CAR@TB) under 37.5 receiving yards  DK -110
+     model 63.1% | book 49.6% | edge +13.6% | rules as written 57.5%
+     A typical game is about 28 yards against 37.5: 23% of about 22 team targets (24% this
+     season, 22% over his last 3) at 6.6 a target (his 5.9 blended with the 7.6 CAR allow).
+     Their run rate was 57% over five games as 3.0-point underdogs on average; as 3-point
+     favourites it is set at 59%.
+     flag: books differ: DK 37.5, FD 34.5
+  12. Austin Ekeler (WAS RB, WAS@ARI) anytime TD  DK +370
+     model 30.5% | book 17.0% | edge +13.5% | rules as written 12.5%
+     Model gives 31% to score: 5% of WAS's red-zone chances and 18% of their touches, with WAS
+     priced for 2.7 touchdowns.
+     flag: calibration flips the literal lean
+  13. DeMario Douglas (NE WR, NE@LAC) over 23.5 receiving yards  FD -114
+     model 63.2% | book 50.0% | edge +13.2% | rules as written 72.5%
+     A typical game is about 34 yards against 23.5: 17% of about 28 team targets (17% this
+     season, 17% over his last 3) at 8.8 a target (his 8.6 blended with the 9.0 LAC allow).
+     flag: role change: A.J. Brown is out but played in 3 of the last 3 games
+  14. Chig Okonkwo (WAS TE, WAS@ARI) under 3.5 receptions  FD +128
+     model 53.8% | book 40.9% | edge +12.8% | rules as written 40.1%
+     Projects 3.6 catches against 3.5: 18% of about 31 team targets (18% this season, 19% over
+     his last 3), at a 71% catch rate. Their run rate was 41% over five games as 3.0-point
+     underdogs on average; as 6.75-point favourites it is set at 44%.
+     flag: calibration flips the literal lean
+  15. Jaxon Smith-Njigba (SEA WR, SEA@SF) under 7.5 receptions  FD -136
+     model 66.4% | book 53.8% | edge +12.6% | rules as written 41.6%
+     Projects 6.5 catches against 7.5: 39% of about 27 team targets (37% this season, 43% over
+     his last 3), at a 70% catch rate. Their run rate was 52% over five games as 5.6-point
+     favourites on average; as 1.5-point favourites it is set at 51%.
+     flag: QB change: Sam Darnold is listed first, Drew Lock played last game
+     flag: calibration flips the literal lean
+  16. Tyler Warren (IND TE, NYG@IND) under 3.5 receptions  DK +115
+     model 56.4% | book 43.9% | edge +12.5% | rules as written 57.4%
+     Projects 3.4 catches against 3.5: 21% of about 26 team targets (22% this season, 19% over
+     his last 3), at a 68% catch rate.
+     flag: QB change: Anthony Richardson Sr. is listed first, Daniel Jones played last game
+  17. Tony Pollard (TEN RB, TEN@JAX) under 2.5 receptions  DK +125
+     model 54.2% | book 41.9% | edge +12.2% | rules as written 39.0%
+     Projects 2.6 catches against 2.5: 11% of about 33 team targets (10% this season, 13% over
+     his last 3), at a 74% catch rate. Their run rate was 41% over five games as 8.6-point
+     underdogs on average; as 14.25-point underdogs it is set at 39%.
+     flag: calibration flips the literal lean
+     flag: role change: Wan'Dale Robinson is out but played in 2 of the last 3 games
+  18. Harold Fannin Jr. (CLE TE, LV@CLE) under 4.5 receptions  FD +104
+     model 57.9% | book 45.8% | edge +12.1% | rules as written 45.1%
+     Projects 4.3 catches against 4.5: 20% of about 34 team targets (20% this season, 20% over
+     his last 3), at a 71% catch rate. Their run rate was 38% over five games as 3.4-point
+     underdogs on average; as 4.5-point favourites it is set at 41%.
+     flag: calibration flips the literal lean
+  19. Zay Flowers (BAL WR, BAL@HOU) under 6.5 receptions  FD -148
+     model 67.8% | book 55.9% | edge +11.9% | rules as written 64.3%
+     Projects 5.5 catches against 6.5: 27% of about 34 team targets (28% this season, 25% over
+     his last 3), at a 68% catch rate. Their run rate was 38% over five games as 1.9-point
+     underdogs on average; as 6.5-point underdogs it is set at 36%.
+     flag: books differ: DK 5.5, FD 6.5
+  20. Cooper Kupp (SEA WR, SEA@SF) under 2.5 receptions  FD -160
+     model 69.2% | book 57.5% | edge +11.7% | rules as written 75.9%
+     Projects 1.9 catches against 2.5: 11% of about 27 team targets (12% this season, 10% over
+     his last 3), at a 64% catch rate. Their run rate was 52% over five games as 5.6-point
+     favourites on average; as 1.5-point favourites it is set at 51%.
+     flag: QB change: Sam Darnold is listed first, Drew Lock played last game
+     flag: snap share moved 82% to 61%
+  21. Rachaad White (WAS RB, WAS@ARI) anytime TD  DK +400
+     model 27.5% | book 16.0% | edge +11.6% | rules as written 34.0%
+     Model gives 28% to score: 15% of WAS's red-zone chances and 12% of their touches, with WAS
+     priced for 2.7 touchdowns.
+     flag: snap share moved 54% to 22%
+  22. Jordan Mason (MIN RB, ATL@MIN) anytime TD  DK +230
+     model 37.3% | book 25.8% | edge +11.5% | rules as written 10.9%
+     Model gives 37% to score: 4% of MIN's red-zone chances and 24% of their touches, with MIN
+     priced for 2.8 touchdowns.
+     flag: calibration flips the literal lean
+  23. Mack Hollins (NE WR, NE@LAC) over 26.5 receiving yards  FD -114
+     model 61.2% | book 50.0% | edge +11.2% | rules as written 70.8%
+     A typical game is about 35 yards against 26.5: 18% of about 28 team targets (18% this
+     season, 18% over his last 3) at 8.8 a target (his 8.7 blended with the 9.0 LAC allow).
+     flag: snap share moved 55% to 92%
+     flag: role change: A.J. Brown is out but played in 3 of the last 3 games
+  24. Tai Felton (MIN WR, ATL@MIN) under 2.5 receptions  FD -130
+     model 63.7% | book 52.8% | edge +10.9% | rules as written 28.7%
+     Projects 2.2 catches against 2.5: 13% of about 32 team targets (9% this season, 21% over
+     his last 3), at a 56% catch rate. Their run rate was 38% over five games as 2.7-point
+     underdogs on average; as 7-point favourites it is set at 40%.
+     flag: calibration flips the literal lean
+     flag: snap share moved 49% to 72%
+     flag: role change: Jordan Addison is out but played in 1 of the last 3 games
+  25. Harold Fannin Jr. (CLE TE, LV@CLE) under 50.5 receiving yards  FD -114
+     model 60.8% | book 50.0% | edge +10.8% | rules as written 47.1%
+     A typical game is about 41 yards against 50.5: 20% of about 34 team targets (20% this
+     season, 20% over his last 3) at 7.6 a target (his 8.3 blended with the 6.6 LV allow). Their
+     run rate was 38% over five games as 3.4-point underdogs on average; as 4.5-point favourites
+     it is set at 41%.
+     flag: calibration flips the literal lean
+  26. Dylan Sampson (CLE RB, LV@CLE) anytime TD  DK +475
+     model 24.4% | book 14.0% | edge +10.4% | rules as written 6.5%
+     Model gives 24% to score: 3% of CLE's red-zone chances and 17% of their touches, with CLE
+     priced for 2.3 touchdowns.
+     flag: calibration flips the literal lean
+  27. Tre Tucker (LV WR, LV@CLE) over 30.5 receiving yards  FD -114
+     model 60.4% | book 50.0% | edge +10.4% | rules as written 75.0%
+     A typical game is about 39 yards against 30.5: 19% of about 32 team targets (18% this
+     season, 22% over his last 3) at 8.1 a target (his 8.5 blended with the 7.4 CLE allow).
+     flag: role change: Brock Bowers missed the last 1 and may return
+  28. T.J. Hockenson (MIN TE, ATL@MIN) under 4.5 receptions  DK +101
+     model 57.2% | book 46.9% | edge +10.3% | rules as written 52.4%
+     Projects 4.3 catches against 4.5: 20% of about 32 team targets (20% this season, 18% over
+     his last 3), at a 77% catch rate. Their run rate was 38% over five games as 2.7-point
+     underdogs on average; as 7-point favourites it is set at 40%.
+     flag: snap share moved 82% to 51%
+     flag: role change: Jordan Addison is out but played in 1 of the last 3 games
+  29. Ollie Gordon II (MIA RB, NYJ@MIA) under 15.5 rush attempts  DK +100
+     model 57.4% | book 47.2% | edge +10.2% | rules as written 44.8%
+     Projects 15.0 carries against 15.5: MIA run about 24 times and he has taken 67% of them
+     over his last 3 games. Their run rate was 41% over five games as 9.2-point underdogs on
+     average; as 5.5-point underdogs it is set at 42%.
+     flag: calibration flips the literal lean
+  30. Drake London (ATL WR, ATL@MIN) under 5.5 receptions  DK -124
+     model 61.9% | book 52.3% | edge +9.6% | rules as written 55.5%
+     Projects 5.0 catches against 5.5: 27% of about 33 team targets (28% this season, 26% over
+     his last 3), at a 63% catch rate. Their run rate was 40% over five games as 2.7-point
+     underdogs on average; as 7-point underdogs it is set at 38%.
+     flag: role change: Jahan Dotson is out but played in 3 of the last 3 games
+  31. Zay Flowers (BAL WR, BAL@HOU) under 74.5 receiving yards  FD -114
+     model 59.5% | book 50.0% | edge +9.4% | rules as written 48.8%
+     A typical game is about 64 yards against 74.5: 27% of about 34 team targets (28% this
+     season, 25% over his last 3) at 8.9 a target (his 9.2 blended with the 8.4 HOU allow).
+     Their run rate was 38% over five games as 1.9-point underdogs on average; as 6.5-point
+     underdogs it is set at 36%.
+     flag: calibration flips the literal lean
+  32. T.J. Hockenson (MIN TE, ATL@MIN) under 44.5 receiving yards  FD -114
+     model 59.4% | book 50.0% | edge +9.3% | rules as written 51.9%
+     A typical game is about 37 yards against 44.5: 20% of about 32 team targets (20% this
+     season, 18% over his last 3) at 7.3 a target (his 7.4 blended with the 7.2 ATL allow).
+     Their run rate was 38% over five games as 2.7-point underdogs on average; as 7-point
+     favourites it is set at 40%.
+     flag: snap share moved 82% to 51%
+     flag: role change: Jordan Addison is out but played in 1 of the last 3 games
+  33. Breece Hall (NYJ RB, NYJ@MIA) under 2.5 receptions  FD +112
+     model 53.3% | book 44.1% | edge +9.2% | rules as written 42.9%
+     Projects 2.6 catches against 2.5: 12% of about 28 team targets (11% this season, 12% over
+     his last 3), at a 86% catch rate. Their run rate was 46% over five games as 4.7-point
+     underdogs on average; as 5.5-point favourites it is set at 49%.
+     flag: calibration flips the literal lean
+     flag: role change: Omar Cooper Jr. is out but played in 2 of the last 3 games
+  34. AJ Barner (SEA TE, SEA@SF) anytime TD  DK +320
+     model 29.0% | book 20.1% | edge +8.9% | rules as written 61.0%
+     Model gives 29% to score: 40% of SEA's red-zone chances and 8% of their touches, with SEA
+     priced for 2.4 touchdowns.
+     flag: QB change: Sam Darnold is listed first, Drew Lock played last game
+  35. Gavin Bartholomew (MIN TE, ATL@MIN) anytime TD  FD +1300
+     model 15.1% | book 6.3% | edge +8.8% | rules as written 25.8%
+     Model gives 15% to score: 11% of MIN's red-zone chances and 4% of their touches, with MIN
+     priced for 2.8 touchdowns.
+     flag: role change: Jordan Addison is out but played in 1 of the last 3 games
+  36. Drake London (ATL WR, ATL@MIN) under 71.5 receiving yards  DK -110
+     model 58.3% | book 49.6% | edge +8.7% | rules as written 46.1%
+     A typical game is about 62 yards against 71.5: 27% of about 33 team targets (28% this
+     season, 26% over his last 3) at 8.9 a target (his 9.6 blended with the 7.9 MIN allow).
+     Their run rate was 40% over five games as 2.7-point underdogs on average; as 7-point
+     underdogs it is set at 38%.
+     flag: calibration flips the literal lean
+     flag: role change: Jahan Dotson is out but played in 3 of the last 3 games
+  37. Nico Collins (HOU WR, BAL@HOU) under 62.5 receiving yards  DK -113
+     model 58.9% | book 50.2% | edge +8.7% | rules as written 40.6%
+     A typical game is about 53 yards against 62.5: 24% of about 32 team targets (24% this
+     season, 26% over his last 3) at 8.9 a target (his 8.7 blended with the 9.2 BAL allow).
+     flag: calibration flips the literal lean
+     flag: books differ: DK 62.5, FD 57.5
+  38. Xavier Hutchinson (HOU WR, BAL@HOU) under 3.5 receptions  DK -175
+     model 68.7% | book 60.1% | edge +8.6% | rules as written 66.3%
+     Projects 2.8 catches against 3.5: 17% of about 32 team targets (17% this season, 17% over
+     his last 3), at a 55% catch rate.
+     flag: books differ: DK 3.5, FD 2.5
+  39. Justice Hill (BAL RB, BAL@HOU) under 3.5 receptions  DK -138
+     model 63.2% | book 54.7% | edge +8.6% | rules as written 48.2%
+     Projects 3.1 catches against 3.5: 13% of about 34 team targets (12% this season, 15% over
+     his last 3), at a 75% catch rate. Their run rate was 38% over five games as 1.9-point
+     underdogs on average; as 6.5-point underdogs it is set at 36%.
+     flag: calibration flips the literal lean
+  40. David Montgomery (HOU RB, BAL@HOU) anytime TD  FD +100
+     model 51.3% | book 42.8% | edge +8.5% | rules as written 39.9%
+     Model gives 51% to score: 16% of HOU's red-zone chances and 29% of their touches, with HOU
+     priced for 3.3 touchdowns.
+     flag: calibration flips the literal lean
+     flag: snap share moved 35% to 73%
+     flag: role change: Woody Marks missed the last 1 and may return
+  41. Garrett Wilson (NYJ WR, NYJ@MIA) under 4.5 receptions  FD +116
+     model 51.7% | book 43.3% | edge +8.4% | rules as written 32.4%
+     Projects 4.7 catches against 4.5: 30% of about 28 team targets (28% this season, 32% over
+     his last 3), at a 64% catch rate. Their run rate was 46% over five games as 4.7-point
+     underdogs on average; as 5.5-point favourites it is set at 49%.
+     flag: calibration flips the literal lean
+     flag: role change: Omar Cooper Jr. is out but played in 2 of the last 3 games
+  42. Marvin Harrison Jr. (HOU WR, BAL@HOU) under 2.5 receptions  FD -166
+     model 66.7% | book 58.3% | edge +8.4% | rules as written 68.1%
+     Projects 2.0 catches against 2.5: 11% of about 32 team targets (11% this season, 11% over
+     his last 3), at a 59% catch rate.
+     flag: did not play in HOU's last 2 games
+     flag: snap share moved 20% to 46%
+  43. Ollie Gordon II (MIA RB, NYJ@MIA) under 68.5 rush yards  FD -114
+     model 58.3% | book 50.0% | edge +8.3% | rules as written 45.9%
+     A typical game is about 61 yards against 68.5: 15.0 carries at 4.5 a carry (his 4.4 blended
+     with the 4.6 NYJ allow). Their run rate was 41% over five games as 9.2-point underdogs on
+     average; as 5.5-point underdogs it is set at 42%.
+     flag: calibration flips the literal lean
+  44. Jalen Coker (CAR WR, CAR@TB) under 44.5 receiving yards  FD -114
+     model 58.3% | book 50.0% | edge +8.3% | rules as written 50.0%
+     A typical game is about 38 yards against 44.5: 19% of about 32 team targets (20% this
+     season, 18% over his last 3) at 7.6 a target (his 7.6 blended with the 7.6 TB allow).
+     flag: calibration flips the literal lean
+  45. Jadarian Price (SEA RB, SEA@SF) over 24.5 rush yards  FD -114
+     model 58.2% | book 50.0% | edge +8.2% | rules as written 63.0%
+     A typical game is about 29 yards against 24.5: 9.2 carries at 3.7 a carry (his 3.9 blended
+     with the 3.5 SF allow). Their run rate was 52% over five games as 5.6-point favourites on
+     average; as 1.5-point favourites it is set at 51%.
+     flag: QB change: Sam Darnold is listed first, Drew Lock played last game
+     flag: part-time role (34% of snaps)
+     flag: role change: Emanuel Wilson missed the last 3 and may return
+  46. Aaron Jones (MIN RB, ATL@MIN) under 37.5 rush yards  FD -114
+     model 58.1% | book 50.0% | edge +8.1% | rules as written 48.8%
+     A typical game is about 32 yards against 37.5: 9.0 carries at 4.3 a carry (his 4.1 blended
+     with the 4.6 ATL allow). Their run rate was 38% over five games as 2.7-point underdogs on
+     average; as 7-point favourites it is set at 40%.
+     flag: calibration flips the literal lean
+  47. Elic Ayomanor (TEN WR, TEN@JAX) over 25.5 receiving yards  FD -114
+     model 58.1% | book 50.0% | edge +8.1% | rules as written 72.8%
+     A typical game is about 32 yards against 25.5: 14% of about 33 team targets (13% this
+     season, 17% over his last 3) at 8.2 a target (his 8.1 blended with the 8.3 JAX allow).
+     Their run rate was 41% over five games as 8.6-point underdogs on average; as 14.25-point
+     underdogs it is set at 39%.
+     flag: snap share moved 80% to 54%
+     flag: role change: Wan'Dale Robinson is out but played in 2 of the last 3 games
+  48. Travis Etienne (NO RB, NO@CIN) under 11.5 rush attempts  DK +101
+     model 54.9% | book 46.9% | edge +8.0% | rules as written 47.1%
+     Projects 11.5 carries against 11.5: NO run about 23 times and he has taken 51% of them over
+     his last 3 games. Their run rate was 37% over five games as 2.8-point underdogs on average;
+     as 9.5-point underdogs it is set at 35%.
+     flag: calibration flips the literal lean
+     flag: role change: Audric Estime missed the last 1 and may return
+  49. Kyle Pitts (ATL TE, ATL@MIN) under 3.5 receptions  FD -138
+     model 62.1% | book 54.2% | edge +7.9% | rules as written 55.5%
+     Projects 3.1 catches against 3.5: 15% of about 33 team targets (15% this season, 15% over
+     his last 3), at a 70% catch rate. Their run rate was 40% over five games as 2.7-point
+     underdogs on average; as 7-point underdogs it is set at 38%.
+     flag: role change: Jahan Dotson is out but played in 3 of the last 3 games
+  50. Jalen Coker (CAR WR, CAR@TB) under 3.5 receptions  DK -111
+     model 57.5% | book 49.6% | edge +7.9% | rules as written 53.8%
+     Projects 3.4 catches against 3.5: 19% of about 32 team targets (20% this season, 18% over
+     his last 3), at a 59% catch rate.
+  51. Tyler Warren (IND TE, NYG@IND) under 30.5 receiving yards  DK -110
+     model 57.3% | book 49.6% | edge +7.7% | rules as written 55.3%
+     A typical game is about 26 yards against 30.5: 21% of about 26 team targets (22% this
+     season, 19% over his last 3) at 5.6 a target (his 5.6 blended with the 5.6 NYG allow).
+     flag: QB change: Anthony Richardson Sr. is listed first, Daniel Jones played last game
+  52. Aaron Jones (MIN RB, ATL@MIN) anytime TD  DK +155
+     model 41.1% | book 33.4% | edge +7.7% | rules as written 54.9%
+     Model gives 41% to score: 29% of MIN's red-zone chances and 20% of their touches, with MIN
+     priced for 2.8 touchdowns.
+  53. Samaje Perine (CIN RB, NO@CIN) under 29.5 rush yards  DK -113
+     model 57.9% | book 50.2% | edge +7.7% | rules as written 47.6%
+     A typical game is about 24 yards against 29.5: 8.0 carries at 4.1 a carry (his 3.9 blended
+     with the 4.4 NO allow). Their run rate was 31% over five games as 5.8-point favourites on
+     average; as 9.5-point favourites it is set at 32%.
+     flag: calibration flips the literal lean
+  54. David Montgomery (HOU RB, BAL@HOU) over 13.5 rush attempts  DK +105
+     model 53.6% | book 46.0% | edge +7.6% | rules as written 70.9%
+     Projects 14.7 carries against 13.5: HOU run about 29 times and he has taken 54% of them
+     over his last 3 games.
+     flag: snap share moved 35% to 73%
+     flag: role change: Woody Marks missed the last 1 and may return
+  55. Sterling Shepard (NYJ WR, NYJ@MIA) anytime TD  DK +650
+     model 18.2% | book 10.6% | edge +7.6% | rules as written 45.3%
+     Model gives 18% to score: 24% of NYJ's red-zone chances and 3% of their touches, with NYJ
+     priced for 2.5 touchdowns.
+     flag: role change: Omar Cooper Jr. is out but played in 2 of the last 3 games
+  56. Kenny Gainwell (TB RB, CAR@TB) over 21.5 rush yards  DK -114
+     model 57.8% | book 50.4% | edge +7.3% | rules as written 76.9%
+     A typical game is about 28 yards against 21.5: 9.5 carries at 4.6 a carry (his 4.6 blended
+     with the 4.7 CAR allow). Their run rate was 57% over five games as 3.0-point underdogs on
+     average; as 3-point favourites it is set at 59%.
+  57. Chimere Dike (TEN WR, TEN@JAX) under 29.5 receiving yards  DK -111
+     model 57.0% | book 49.8% | edge +7.2% | rules as written 29.4%
+     A typical game is about 25 yards against 29.5: 10% of about 33 team targets (8% this
+     season, 17% over his last 3) at 8.5 a target (his 8.6 blended with the 8.3 JAX allow).
+     Their run rate was 41% over five games as 8.6-point underdogs on average; as 14.25-point
+     underdogs it is set at 39%.
+     flag: calibration flips the literal lean
+     flag: role change: Wan'Dale Robinson is out but played in 2 of the last 3 games
+  58. Xavier Hutchinson (HOU WR, BAL@HOU) over 28.5 receiving yards  FD -114
+     model 57.2% | book 50.0% | edge +7.2% | rules as written 65.6%
+     A typical game is about 34 yards against 28.5: 17% of about 32 team targets (17% this
+     season, 17% over his last 3) at 7.8 a target (his 6.8 blended with the 9.2 BAL allow).
+     flag: books differ: DK 32.5, FD 28.5
+  59. Quinshon Judkins (CLE RB, LV@CLE) anytime TD  FD +115
+     model 44.9% | book 37.7% | edge +7.2% | rules as written 61.8%
+     Model gives 45% to score: 41% of CLE's red-zone chances and 26% of their touches, with CLE
+     priced for 2.3 touchdowns.
+  60. Chig Okonkwo (WAS TE, WAS@ARI) under 38.5 receiving yards  DK -110
+     model 56.6% | book 49.6% | edge +7.0% | rules as written 43.6%
+     A typical game is about 33 yards against 38.5: 18% of about 31 team targets (18% this
+     season, 19% over his last 3) at 7.4 a target (his 7.4 blended with the 7.5 ARI allow).
+     Their run rate was 41% over five games as 3.0-point underdogs on average; as 6.75-point
+     favourites it is set at 44%.
+     flag: calibration flips the literal lean
+  61. Ja'Kobi Lane (BAL WR, BAL@HOU) under 2.5 receptions  DK -178
+     model 67.3% | book 60.5% | edge +6.9% | rules as written 74.3%
+     Projects 2.0 catches against 2.5: 11% of about 34 team targets (12% this season, 9% over
+     his last 3), at a 55% catch rate. Their run rate was 38% over five games as 1.9-point
+     underdogs on average; as 6.5-point underdogs it is set at 36%.
+  62. Bijan Robinson (ATL RB, ATL@MIN) under 75.5 rush yards  DK -111
+     model 56.6% | book 49.8% | edge +6.8% | rules as written 44.2%
+     A typical game is about 70 yards against 75.5: 16.0 carries at 4.7 a carry (his 5.0 blended
+     with the 4.2 MIN allow). Their run rate was 40% over five games as 2.7-point underdogs on
+     average; as 7-point underdogs it is set at 38%.
+     flag: calibration flips the literal lean
+  63. Mark Andrews (BAL TE, BAL@HOU) over 2.5 receptions  DK -163
+     model 65.2% | book 58.5% | edge +6.8% | rules as written 59.9%
+     Projects 3.6 catches against 2.5: 15% of about 34 team targets (17% this season, 12% over
+     his last 3), at a 74% catch rate. Their run rate was 38% over five games as 1.9-point
+     underdogs on average; as 6.5-point underdogs it is set at 36%.
+  64. Tank Dell (HOU WR, BAL@HOU) over 29.5 receiving yards  FD -114
+     model 56.8% | book 50.0% | edge +6.8% | rules as written 69.7%
+     A typical game is about 35 yards against 29.5: 15% of about 32 team targets (14% this
+     season, 16% over his last 3) at 9.2 a target (his 9.3 blended with the 9.2 BAL allow).
+  65. Brock Bowers (LV TE, LV@CLE) under 4.5 receptions  FD +108
+     model 51.7% | book 44.9% | edge +6.8% | rules as written 57.2% | QUESTIONABLE
+     Projects 4.7 catches against 4.5: 24% of about 32 team targets (25% this season, 19% over
+     his last 3), at a 71% catch rate.
+     flag: questionable (Ankle; practice: limited Wed, limited Thu, limited Thu, limited Fri,
+     dnp Sat)
+     flag: did not play in LV's last 1 game
+     flag: snap share moved 93% to 19%
+  66. Bijan Robinson (ATL RB, ATL@MIN) over 2.5 receptions  DK -166
+     model 65.7% | book 58.9% | edge +6.7% | rules as written 70.7%
+     Projects 3.6 catches against 2.5: 15% of about 33 team targets (16% this season, 14% over
+     his last 3), at a 78% catch rate. Their run rate was 40% over five games as 2.7-point
+     underdogs on average; as 7-point underdogs it is set at 38%.
+     flag: role change: Jahan Dotson is out but played in 3 of the last 3 games
+  67. Austin Ekeler (WAS RB, WAS@ARI) over 22.5 rush yards  FD -114
+     model 56.7% | book 50.0% | edge +6.7% | rules as written 63.7%
+     A typical game is about 26 yards against 22.5: 8.4 carries at 4.0 a carry (his 3.9 blended
+     with the 4.1 ARI allow). Their run rate was 41% over five games as 3.0-point underdogs on
+     average; as 6.75-point favourites it is set at 44%.
+  68. Brock Bowers (LV TE, LV@CLE) under 55.5 receiving yards  FD -114
+     model 56.7% | book 50.0% | edge +6.7% | rules as written 55.1% | QUESTIONABLE
+     A typical game is about 49 yards against 55.5: 24% of about 32 team targets (25% this
+     season, 19% over his last 3) at 8.4 a target (his 8.9 blended with the 7.6 CLE allow).
+     flag: questionable (Ankle; practice: limited Wed, limited Thu, limited Thu, limited Fri,
+     dnp Sat)
+     flag: did not play in LV's last 1 game
+     flag: snap share moved 93% to 19%
+  69. Marvin Harrison Jr. (HOU WR, BAL@HOU) under 28.5 receiving yards  DK -114
+     model 57.1% | book 50.4% | edge +6.7% | rules as written 52.7%
+     A typical game is about 24 yards against 28.5: 11% of about 32 team targets (11% this
+     season, 11% over his last 3) at 8.0 a target (his 7.3 blended with the 9.2 BAL allow).
+     flag: books differ: DK 28.5, FD 25.5
+     flag: did not play in HOU's last 2 games
+     flag: snap share moved 20% to 46%
+  70. Cam Skattebo (NYG RB, NYG@IND) under 2.5 receptions  FD -144
+     model 61.8% | book 55.1% | edge +6.7% | rules as written 34.0%
+     Projects 2.3 catches against 2.5: 10% of about 32 team targets (8% this season, 14% over
+     his last 3), at a 74% catch rate. Their run rate was 42% over five games as 2.4-point
+     underdogs on average; as 5.5-point favourites it is set at 45%.
+     flag: calibration flips the literal lean
+  71. Travis Etienne (NO RB, NO@CIN) under 48.5 rush yards  FD -114
+     model 56.7% | book 50.0% | edge +6.7% | rules as written 46.4%
+     A typical game is about 44 yards against 48.5: 11.5 carries at 4.3 a carry (his 4.2 blended
+     with the 4.5 CIN allow). Their run rate was 37% over five games as 2.8-point underdogs on
+     average; as 9.5-point underdogs it is set at 35%.
+     flag: calibration flips the literal lean
+     flag: role change: Audric Estime missed the last 1 and may return
+  72. Rashid Shaheed (SEA WR, SEA@SF) over 17.5 receiving yards  FD -114
+     model 56.6% | book 50.0% | edge +6.6% | rules as written 61.9%
+     A typical game is about 22 yards against 17.5: 14% of about 27 team targets (14% this
+     season, 14% over his last 3) at 6.7 a target (his 6.5 blended with the 7.1 SF allow). Their
+     run rate was 52% over five games as 5.6-point favourites on average; as 1.5-point
+     favourites it is set at 51%.
+     flag: QB change: Sam Darnold is listed first, Drew Lock played last game
+  73. Nico Collins (HOU WR, BAL@HOU) under 4.5 receptions  DK -105
+     model 54.9% | book 48.3% | edge +6.6% | rules as written 37.8%
+     Projects 4.5 catches against 4.5: 24% of about 32 team targets (24% this season, 26% over
+     his last 3), at a 65% catch rate.
+     flag: calibration flips the literal lean
+  74. Elijah Sarratt (BAL WR, BAL@HOU) anytime TD  FD +5000
+     model 8.2% | book 1.7% | edge +6.5% | rules as written 0.0%
+     Model gives 8% to score: 0% of BAL's red-zone chances and 4% of their touches, with BAL
+     priced for 2.1 touchdowns.
+     flag: calibration flips the literal lean
+     flag: only 1 game of history with BAL
+     flag: did not play in BAL's last 7 games
+  75. Corey Kiner (NE RB, NE@LAC) over 26.5 rush yards  DK -116
+     model 57.2% | book 50.8% | edge +6.4% | rules as written 66.1%
+     A typical game is about 31 yards against 26.5: 9.2 carries at 4.3 a carry (his 4.4 blended
+     with the 4.1 LAC allow).
+     flag: snap share moved 18% to 42%
+     flag: part-time role (30% of snaps)
+  76. Jordyn Tyson (NO WR, NO@CIN) under 44.5 receiving yards  FD -114
+     model 56.3% | book 50.0% | edge +6.3% | rules as written 50.7%
+     A typical game is about 39 yards against 44.5: 18% of about 36 team targets (19% this
+     season, 16% over his last 3) at 7.3 a target (his 7.1 blended with the 7.7 CIN allow).
+     Their run rate was 37% over five games as 2.8-point underdogs on average; as 9.5-point
+     underdogs it is set at 35%.
+  77. Malik Nabers (NYG WR, NYG@IND) under 5.5 receptions  DK -110
+     model 55.7% | book 49.4% | edge +6.3% | rules as written 45.4%
+     Projects 5.4 catches against 5.5: 29% of about 32 team targets (29% this season, 28% over
+     his last 3), at a 66% catch rate. Their run rate was 42% over five games as 2.4-point
+     underdogs on average; as 5.5-point favourites it is set at 45%.
+     flag: calibration flips the literal lean
+  78. Hunter Henry (NE TE, NE@LAC) over 22.5 receiving yards  FD -114
+     model 56.2% | book 50.0% | edge +6.2% | rules as written 57.2%
+     A typical game is about 27 yards against 22.5: 13% of about 28 team targets (14% this
+     season, 11% over his last 3) at 9.0 a target (his 8.7 blended with the 9.4 LAC allow).
+     flag: snap share moved 31% to 56%
+     flag: role change: A.J. Brown is out but played in 3 of the last 3 games
+  79. Xavier Hutchinson (HOU WR, BAL@HOU) anytime TD  FD +250
+     model 30.7% | book 24.4% | edge +6.2% | rules as written 51.2%
+     Model gives 31% to score: 22% of HOU's red-zone chances and 9% of their touches, with HOU
+     priced for 3.3 touchdowns.
+  80. Mack Hollins (NE WR, NE@LAC) over 2.5 receptions  DK -115
+     model 56.6% | book 50.4% | edge +6.2% | rules as written 65.8%
+     Projects 3.1 catches against 2.5: 18% of about 28 team targets (18% this season, 18% over
+     his last 3), at a 67% catch rate.
+     flag: snap share moved 55% to 92%
+     flag: role change: A.J. Brown is out but played in 3 of the last 3 games
+  81. Mike Washington Jr. (LV RB, LV@CLE) under 33.5 rush yards  DK -111
+     model 55.8% | book 49.8% | edge +6.0% | rules as written 45.6%
+     A typical game is about 30 yards against 33.5: 8.8 carries at 4.3 a carry (his 3.9 blended
+     with the 4.8 CLE allow).
+     flag: calibration flips the literal lean
+  82. Bucky Irving (TB RB, CAR@TB) over 18.5 rush attempts  DK -117
+     model 56.8% | book 50.8% | edge +5.9% | rules as written 80.7%
+     Projects 20.3 carries against 18.5: TB run about 37 times and he has taken 61% of them over
+     his last 3 games. Their run rate was 57% over five games as 3.0-point underdogs on average;
+     as 3-point favourites it is set at 59%.
+  83. Zach Charbonnet (SEA RB, SEA@SF) under 15.5 rush attempts  DK -134
+     model 59.8% | book 54.0% | edge +5.7% | rules as written 49.1%
+     Projects 14.7 carries against 15.5: SEA run about 31 times and he has taken 51% of them
+     over his last 3 games. Their run rate was 52% over five games as 5.6-point favourites on
+     average; as 1.5-point favourites it is set at 51%.
+     flag: QB change: Sam Darnold is listed first, Drew Lock played last game
+     flag: calibration flips the literal lean
+     flag: snap share moved 47% to 72%
+     flag: role change: Emanuel Wilson missed the last 3 and may return
+  84. Carnell Tate (TEN WR, TEN@JAX) under 4.5 receptions  DK -103
+     model 53.6% | book 47.9% | edge +5.7% | rules as written 50.7%
+     Projects 4.6 catches against 4.5: 24% of about 33 team targets (25% this season, 22% over
+     his last 3), at a 63% catch rate. Their run rate was 41% over five games as 8.6-point
+     underdogs on average; as 14.25-point underdogs it is set at 39%.
+     flag: role change: Wan'Dale Robinson is out but played in 2 of the last 3 games
+  85. Greg Dulcich (MIA TE, NYJ@MIA) over 23.5 receiving yards  DK -113
+     model 55.9% | book 50.2% | edge +5.7% | rules as written 64.8%
+     A typical game is about 28 yards against 23.5: 16% of about 29 team targets (15% this
+     season, 16% over his last 3) at 7.4 a target (his 7.0 blended with the 8.1 NYJ allow).
+     Their run rate was 41% over five games as 9.2-point underdogs on average; as 5.5-point
+     underdogs it is set at 42%.
+  86. Malik Nabers (NYG WR, NYG@IND) under 65.5 receiving yards  FD -114
+     model 55.6% | book 50.0% | edge +5.6% | rules as written 42.3%
+     A typical game is about 59 yards against 65.5: 29% of about 32 team targets (29% this
+     season, 28% over his last 3) at 8.2 a target (his 7.8 blended with the 8.9 IND allow).
+     Their run rate was 42% over five games as 2.4-point underdogs on average; as 5.5-point
+     favourites it is set at 45%.
+     flag: calibration flips the literal lean
+  87. Antonio Williams (WAS WR, WAS@ARI) under 44.5 receiving yards  DK -114
+     model 55.7% | book 50.4% | edge +5.3% | rules as written 34.2%
+     A typical game is about 40 yards against 44.5: 18% of about 31 team targets (17% this
+     season, 22% over his last 3) at 8.9 a target (his 8.4 blended with the 9.5 ARI allow).
+     Their run rate was 41% over five games as 3.0-point underdogs on average; as 6.75-point
+     favourites it is set at 44%.
+     flag: calibration flips the literal lean
+  88. Jadarian Price (SEA RB, SEA@SF) over 7.5 rush attempts  DK -131
+     model 58.8% | book 53.5% | edge +5.3% | rules as written 68.3%
+     Projects 9.2 carries against 7.5: SEA run about 31 times and he has taken 29% of them over
+     his last 3 games. Their run rate was 52% over five games as 5.6-point favourites on
+     average; as 1.5-point favourites it is set at 51%.
+     flag: QB change: Sam Darnold is listed first, Drew Lock played last game
+     flag: part-time role (34% of snaps)
+     flag: role change: Emanuel Wilson missed the last 3 and may return
+  89. Jordyn Tyson (NO WR, NO@CIN) under 4.5 receptions  FD -140
+     model 59.8% | book 54.6% | edge +5.2% | rules as written 59.3%
+     Projects 4.2 catches against 4.5: 18% of about 36 team targets (19% this season, 16% over
+     his last 3), at a 70% catch rate. Their run rate was 37% over five games as 2.8-point
+     underdogs on average; as 9.5-point underdogs it is set at 35%.
+  90. Patrick Ricard (NYG RB, NYG@IND) anytime TD  FD +2700
+     model 8.1% | book 3.1% | edge +5.1% | rules as written 0.0%
+     Model gives 8% to score: 0% of NYG's red-zone chances and 3% of their touches, with NYG
+     priced for 2.7 touchdowns.
+     flag: calibration flips the literal lean
+     flag: only 2 games of history with NYG
+     flag: did not play in NYG's last 6 games
+  91. Mason Taylor (NYJ TE, NYJ@MIA) under 2.5 receptions  FD -166
+     model 63.4% | book 58.3% | edge +5.1% | rules as written 69.8%
+     Projects 2.2 catches against 2.5: 11% of about 28 team targets (12% this season, 9% over
+     his last 3), at a 75% catch rate. Their run rate was 46% over five games as 4.7-point
+     underdogs on average; as 5.5-point favourites it is set at 49%.
+     flag: role change: Omar Cooper Jr. is out but played in 2 of the last 3 games
 
-SKIPS: 0
+SKIPS: 69
+  [popular] Rhamondre Stevenson anytime TD (FD +115): Model gives 27% to score, the price
+  implies 39% after vig.
+  [popular] Bijan Robinson anytime TD (FD -125): Model gives 38% to score, the price implies 49%
+  after vig.
+  [popular] Derrick Henry anytime TD (DK -170): Model gives 43% to score, the price implies 54%
+  after vig.
+  [popular] Harold Fannin Jr. anytime TD (DK +165): Model gives 21% to score, the price implies
+  30% after vig.
+  [popular] Jaxon Smith-Njigba anytime TD (FD +125): Model gives 29% to score, the price implies
+  38% after vig.
+  [popular] Emeka Egbuka anytime TD (FD +165): Model gives 22% to score, the price implies 31%
+  after vig.
+  [popular] Ja'Marr Chase anytime TD (DK -135): Model gives 41% to score, the price implies 49%
+  after vig.
+  [popular] Nico Collins anytime TD (FD +125): Model gives 30% to score, the price implies 38%
+  after vig.
+  [popular] Justin Jefferson anytime TD (FD -105): Model gives 40% to score, the price implies
+  45% after vig.
+  [popular] Jonathan Taylor anytime TD (FD -110): Model gives 40% to score, the price implies
+  45% after vig.
+  [popular] Kyle Pitts over 30.5 receiving yards (DK -114): Model gives the over 46%, the price
+  implies 50% after vig: a typical game is about 27.5 against a line of 30.5.
+  [popular] Breece Hall over 59.5 rush yards (DK -113): Model gives the over 45%, the price
+  implies 50% after vig: a typical game is about 55.9 against a line of 59.5.
+  [popular] Chris Godwin Jr. over 22.5 receiving yards (DK -114): Model gives the over 46%, the
+  price implies 50% after vig: a typical game is about 19.9 against a line of 22.5.
+  [popular] Tank Dell over 2.5 receptions (FD -130): Model gives the over 48%, the price implies
+  53% after vig: a typical game is about 2.7 against a line of 2.5.
+  [popular] Tetairoa McMillan over 55.5 receiving yards (FD -114): Model gives the over 46%, the
+  price implies 50% after vig: a typical game is about 51.3 against a line of 55.5.
+  [popular] Chris Olave over 70.5 receiving yards (FD -114): Model gives the over 46%, the price
+  implies 50% after vig: a typical game is about 65.9 against a line of 70.5.
+  [popular] Malik Nabers anytime TD (FD +145): Model gives 31% to score, the price implies 35%
+  after vig.
+  [popular] Adonai Mitchell over 2.5 receptions (FD -138): Model gives the over 50%, the price
+  implies 54% after vig: a typical game is about 2.8 against a line of 2.5.
+  [popular] Ollie Gordon II anytime TD (DK +115): Model gives 34% to score, the price implies
+  37% after vig.
+  [injury] Tee Higgins anytime TD (FD +110): Injury gate: Tee Higgins is questionable and has
+  not practised this week.
+  [injury] Christian McCaffrey anytime TD (DK -140): Injury gate: starting QB Brock Purdy is
+  out.
+  [injury] Omarion Hampton anytime TD (DK +145): Injury gate: starting QB Justin Herbert is out.
+  [injury] Tyler Allgeier anytime TD (FD +210): Injury gate: starting QB Carson Beck is out.
+  [injury] Mike Evans under 4.5 receptions (DK -150): Injury gate: starting QB Brock Purdy is
+  out.
+  [injury] Tyler Allgeier under 27.5 rush yards (FD -114): Injury gate: starting QB Carson Beck
+  is out.
+  [injury] Tyler Allgeier under 9.5 rush attempts (DK -136): Injury gate: starting QB Carson
+  Beck is out.
+  [injury] George Kittle under 4.5 receptions (FD -154): Injury gate: starting QB Brock Purdy is
+  out.
+  [injury] Tre Harris over 2.5 receptions (DK +124): Injury gate: starting QB Justin Herbert is
+  out.
+  [injury] Harrison Wallace III under 25.5 receiving yards (FD -114): Injury gate: starting QB
+  Carson Beck is out.
+  [injury] Ladd McConkey under 36.5 receiving yards (FD -114): Injury gate: starting QB Justin
+  Herbert is out.
+  [injury] Trey McBride under 58.5 receiving yards (DK -113): Injury gate: starting QB Carson
+  Beck is out.
+  [injury] George Kittle under 44.5 receiving yards (FD -114): Injury gate: starting QB Brock
+  Purdy is out.
+  [injury] Trey McBride under 6.5 receptions (FD -122): Injury gate: starting QB Carson Beck is
+  out.
+  [injury] Mike Evans under 55.5 receiving yards (DK -109): Injury gate: starting QB Brock Purdy
+  is out.
+  [injury] Tre Harris over 23.5 receiving yards (DK -111): Injury gate: starting QB Justin
+  Herbert is out.
+  [injury] Omarion Hampton under 64.5 rush yards (DK -112): Injury gate: starting QB Justin
+  Herbert is out.
+  [injury] Tee Higgins under 4.5 receptions (DK -105): Injury gate: Tee Higgins is questionable
+  and has not practised this week.
+  [injury] Omarion Hampton under 16.5 rush attempts (DK -123): Injury gate: starting QB Justin
+  Herbert is out.
+  [injury] Tee Higgins under 68.5 receiving yards (DK -113): Injury gate: Tee Higgins is
+  questionable and has not practised this week.
+  [injury] Christian McCaffrey under 14.5 rush attempts (DK -120): Injury gate: starting QB
+  Brock Purdy is out.
+  [injury] Christian McCaffrey under 57.5 rush yards (FD -114): Injury gate: starting QB Brock
+  Purdy is out.
+  [injury] Harrison Wallace III under 2.5 receptions (DK -105): Injury gate: starting QB Carson
+  Beck is out.
+  [injury] Ladd McConkey under 3.5 receptions (FD -130): Injury gate: starting QB Justin Herbert
+  is out.
+  [not trusted] Emanuel Wilson anytime TD (FD +2000): Model edge of 41% is too large to trust;
+  the book probably knows something the model does not. QB change: Sam Darnold is listed first,
+  Drew Lock played last game; did not play in SEA's last 3 games.
+  [not trusted] Woody Marks over 27.5 rush yards (FD -114): Model edge of 37% is too large to
+  trust; the book probably knows something the model does not. did not play in HOU's last 1
+  game; snap share moved 78% to 45%.
+  [not trusted] Woody Marks over 8.5 rush attempts (DK -134): Model edge of 36% is too large to
+  trust; the book probably knows something the model does not. did not play in HOU's last 1
+  game; snap share moved 78% to 45%.
+  [not trusted] Josh Cameron under 3.5 receptions (DK -124): Model edge of 33% is too large to
+  trust; the book probably knows something the model does not. role change: Parker Washington is
+  out but played in 3 of the last 3 games.
+  [not trusted] Rhamondre Stevenson under 12.5 rush attempts (DK -104): Model edge of 31% is too
+  large to trust; the book probably knows something the model does not. snap share moved 68% to
+  44%.
+  [not trusted] Quinshon Judkins under 16.5 rush attempts (DK -117): Model edge of 29% is too
+  large to trust; the book probably knows something the model does not.
+  [not trusted] Jakobi Meyers under 4.5 receptions (FD +118): Model edge of 28% is too large to
+  trust; the book probably knows something the model does not. role change: Parker Washington is
+  out but played in 3 of the last 3 games.
+  [not trusted] Quinshon Judkins over 1.5 receptions (DK +133): Model edge of 28% is too large
+  to trust; the book probably knows something the model does not.
+  [not trusted] Derrick Henry under 15.5 rush attempts (DK -107): Model edge of 27% is too large
+  to trust; the book probably knows something the model does not.
+  [not trusted] Woody Marks anytime TD (FD +210): Model edge of 27% is too large to trust; the
+  book probably knows something the model does not. did not play in HOU's last 1 game; snap
+  share moved 78% to 45%.
+  [not trusted] Josh Cameron under 43.5 receiving yards (FD -114): Model edge of 27% is too
+  large to trust; the book probably knows something the model does not. role change: Parker
+  Washington is out but played in 3 of the last 3 games.
+  [not trusted] Kenny Gainwell over 5.5 rush attempts (DK -122): Model edge of 27% is too large
+  to trust; the book probably knows something the model does not.
+  [not trusted] Rhamondre Stevenson under 49.5 rush yards (DK -112): Model edge of 27% is too
+  large to trust; the book probably knows something the model does not. snap share moved 68% to
+  44%.
+  [not trusted] Jonathan Taylor under 16.5 rush attempts (DK -106): Model edge of 26% is too
+  large to trust; the book probably knows something the model does not. QB change: Anthony
+  Richardson Sr. is listed first, Daniel Jones played last game; role change: Seth McGowan is
+  out but played in 3 of the last 3 games.
+  [not trusted] Jakobi Meyers under 71.5 receiving yards (DK -114): Model edge of 26% is too
+  large to trust; the book probably knows something the model does not. books differ: DK 71.5,
+  FD 68.5; role change: Parker Washington is out but played in 3 of the last 3 games.
+  [not trusted] Jonathan Taylor under 71.5 rush yards (DK -114): Model edge of 25% is too large
+  to trust; the book probably knows something the model does not. QB change: Anthony Richardson
+  Sr. is listed first, Daniel Jones played last game; role change: Seth McGowan is out but
+  played in 3 of the last 3 games.
+  [not trusted] Chase Brown under 11.5 rush attempts (DK -116): Model edge of 25% is too large
+  to trust; the book probably knows something the model does not.
+  [not trusted] Justin Jefferson under 6.5 receptions (FD -102): Model edge of 24% is too large
+  to trust; the book probably knows something the model does not. role change: Jordan Addison is
+  out but played in 1 of the last 3 games.
+  [not trusted] Justin Jefferson under 85.5 receiving yards (FD -114): Model edge of 24% is too
+  large to trust; the book probably knows something the model does not. role change: Jordan
+  Addison is out but played in 1 of the last 3 games.
+  [not trusted] Cade Otton under 2.5 receptions (FD +128): Model edge of 24% is too large to
+  trust; the book probably knows something the model does not. books differ: DK 3.5, FD 2.5.
+  [not trusted] Brenton Strange under 3.5 receptions (FD +116): Model edge of 23% is too large
+  to trust; the book probably knows something the model does not. role change: Parker Washington
+  is out but played in 3 of the last 3 games.
+  [not trusted] Ja'Marr Chase under 7.5 receptions (FD -110): Model edge of 22% is too large to
+  trust; the book probably knows something the model does not.
+  [not trusted] Chase Brown under 43.5 rush yards (FD -114): Model edge of 21% is too large to
+  trust; the book probably knows something the model does not. books differ: DK 40.5, FD 43.5.
+  [not trusted] Bijan Robinson under 18.5 rush attempts (DK -103): Model edge of 21% is too
+  large to trust; the book probably knows something the model does not.
+  [not trusted] Jordan Mason under 13.5 rush attempts (DK +105): Model edge of 20% is too large
+  to trust; the book probably knows something the model does not.
+  [not trusted] Brenton Strange under 39.5 receiving yards (DK -111): Model edge of 20% is too
+  large to trust; the book probably knows something the model does not. role change: Parker
+  Washington is out but played in 3 of the last 3 games.
 
 WHAT CHANGED
-  113 removed since Fri Nov 27 3:37 PM MST.
-  Removed: Ashton Jeanty under 11.5 rush attempts (DK -101), its game is outside this run's
+  130 added, 5 status changed since Fri Nov 27 9:07 PM MST.
+  Ruled out: Tee Higgins is questionable and has not practised this week. Legs that depend on it
+  are off the board.
+  Ruled out: Tez Johnson is questionable and has not practised this week. Legs that depend on it
+  are off the board.
+  Ruled out: starting QB Brock Purdy is out. Legs that depend on it are off the board.
+  Ruled out: starting QB Carson Beck is out. Legs that depend on it are off the board.
+  Ruled out: starting QB Justin Herbert is out. Legs that depend on it are off the board.
+  Added: Ashton Jeanty under 11.5 rush attempts (DK -101), A tier, because its game is now
+  inside the window.
+  Added: KC Concepcion under 4.5 receptions (FD -104), A tier, because its game is now inside
+  the window.
+  Added: Chuba Hubbard over 15.5 rush attempts (DK -126), A tier, because its game is now inside
+  the window.
+  Added: Emeka Egbuka under 3.5 receptions (DK -112), A tier, because its game is now inside the
   window.
-  Removed: Quinshon Judkins under 60.5 rush yards (DK -110), its game is outside this run's
+  Added: Jacory Croskey-Merritt under 13.5 rush attempts (DK -105), A tier, because its game is
+  now inside the window.
+  Added: Quinshon Judkins under 60.5 rush yards (DK -113), A tier, because its game is now
+  inside the window.
+  Added: Jacory Croskey-Merritt under 54.5 rush yards (DK -111), A tier, because its game is now
+  inside the window.
+  Added: Chris Godwin Jr. under 2.5 receptions (DK +106), A tier, because its game is now inside
+  the window.
+  Added: Cam Skattebo under 17.5 rush attempts (DK -107), A tier, because its game is now inside
+  the window.
+  Added: Bucky Irving anytime TD (DK -125), A tier, because its game is now inside the window.
+  Added: Cade Otton under 28.5 receiving yards (FD -114), A tier, because its game is now inside
+  the window.
+  Added: Derrick Henry under 55.5 rush yards (DK -112), A tier, because its game is now inside
+  the window.
+  Added: Jordan Mason under 57.5 rush yards (FD -114), A tier, because its game is now inside
+  the window.
+  Added: Cam Skattebo under 75.5 rush yards (FD -114), A tier, because its game is now inside
+  the window.
+  Added: Breece Hall anytime TD (DK +125), A tier, because its game is now inside the window.
+  Added: Devaughn Vele over 24.5 receiving yards (DK -114), A tier, because its game is now
+  inside the window.
+  Added: Chuba Hubbard under 2.5 receptions (DK +114), A tier, because its game is now inside
+  the window.
+  Added: Kenny Gainwell anytime TD (FD +300), A tier, because its game is now inside the window.
+  Added: Chuba Hubbard anytime TD (DK +100), A tier, because its game is now inside the window.
+  Added: Braelon Allen anytime TD (DK +205), A tier, because its game is now inside the window.
+  Added: Isaiah Likely under 4.5 receptions (DK +113), A tier, because its game is now inside
+  the window.
+  Added: Chris Bell over 14.5 receiving yards (FD -114), A tier, because its game is now inside
+  the window.
+  Added: Devaughn Vele over 3.5 receptions (FD +158), A tier, because its game is now inside the
   window.
-  Removed: Jacory Croskey-Merritt under 54.5 rush yards (FD -114), its game is outside this
-  run's window.
-  Removed: Jacory Croskey-Merritt under 13.5 rush attempts (DK -110), its game is outside this
-  run's window.
-  Removed: Derrick Henry under 55.5 rush yards (DK -112), its game is outside this run's window.
-  Removed: Jordan Mason under 57.5 rush yards (FD -114), its game is outside this run's window.
-  Removed: Cam Skattebo under 75.5 rush yards (FD -114), its game is outside this run's window.
-  Removed: Cam Skattebo under 17.5 rush attempts (DK -120), its game is outside this run's
+  Added: Tony Pollard over 52.5 rush yards (FD -114), A tier, because its game is now inside the
   window.
-  Removed: Ashton Jeanty under 44.5 rush yards (DK -115), its game is outside this run's window.
-  Removed: Breece Hall anytime TD (DK +125), its game is outside this run's window.
-  Removed: Zay Flowers under 6.5 receptions (FD -140), its game is outside this run's window.
-  Removed: Devaughn Vele over 25.5 receiving yards (FD -114), its game is outside this run's
+  Added: Mike Washington Jr. under 9.5 rush attempts (DK -119), A tier, because its game is now
+  inside the window.
+  Added: Samaje Perine anytime TD (DK +180), A tier, because its game is now inside the window.
+  Added: Malik Washington over 26.5 receiving yards (FD -114), A tier, because its game is now
+  inside the window.
+  Added: Stefon Diggs under 4.5 receptions (FD -154), A tier, because its game is now inside the
   window.
-  Removed: Isaiah Likely under 4.5 receptions (DK +117), its game is outside this run's window.
-  Removed: Stefon Diggs under 4.5 receptions (DK -143), its game is outside this run's window.
-  Removed: Chris Bell over 14.5 receiving yards (FD -114), its game is outside this run's
+  Added: Chase Brown anytime TD (DK -110), A tier, because its game is now inside the window.
+  Added: Mark Andrews over 22.5 receiving yards (FD -114), A tier, because its game is now
+  inside the window.
+  Added: Justice Hill anytime TD (DK +370), A tier, because its game is now inside the window.
+  Added: Isaiah Likely under 50.5 receiving yards (DK -112), A tier, because its game is now
+  inside the window.
+  Added: Darnell Mooney over 17.5 receiving yards (DK -112), A tier, because its game is now
+  inside the window.
+  Added: KC Concepcion under 52.5 receiving yards (DK -114), A tier, because its game is now
+  inside the window.
+  Added: Jacory Croskey-Merritt anytime TD (FD +130), A tier, because its game is now inside the
   window.
-  Removed: Devaughn Vele over 3.5 receptions (FD +158), its game is outside this run's window.
-  Removed: Tony Pollard over 52.5 rush yards (FD -114), its game is outside this run's window.
-  Removed: Malik Washington over 26.5 receiving yards (FD -114), its game is outside this run's
+  Added: Aaron Jones under 9.5 rush attempts (DK -118), A tier, because its game is now inside
+  the window.
+  Added: Bucky Irving over 81.5 rush yards (FD -114), A tier, because its game is now inside the
   window.
-  Removed: Dylan Sampson over 2.5 receptions (DK -129), its game is outside this run's window.
-  Removed: Mark Andrews over 22.5 receiving yards (FD -114), its game is outside this run's
+  Added: Dylan Sampson over 2.5 receptions (DK -137), A tier, because its game is now inside the
   window.
-  Removed: Mike Washington Jr. under 9.5 rush attempts (DK -123), its game is outside this run's
+  Added: Dalton Schultz under 2.5 receptions (FD +116), A tier, because its game is now inside
+  the window.
+  Added: Chuba Hubbard over 63.5 rush yards (DK -112), B tier, because its game is now inside
+  the window.
+  Added: Chimere Dike under 3.5 receptions (DK -164), B tier, because its game is now inside the
   window.
-  Removed: Isaiah Likely under 51.5 receiving yards (DK -114), its game is outside this run's
+  Added: Ja'Marr Chase under 91.5 receiving yards (FD -114), B tier, because its game is now
+  inside the window.
+  Added: Jaxon Smith-Njigba under 97.5 receiving yards (FD -114), B tier, because its game is
+  now inside the window.
+  Added: Ashton Jeanty under 46.5 rush yards (DK -112), B tier, because its game is now inside
+  the window.
+  Added: Jalen Nailor over 10.5 receiving yards (FD -114), B tier, because its game is now
+  inside the window.
+  Added: Antonio Williams under 3.5 receptions (FD +128), B tier, because its game is now inside
+  the window.
+  Added: Tre Tucker over 2.5 receptions (DK +121), B tier, because its game is now inside the
   window.
-  Removed: Samaje Perine anytime TD (DK +170), its game is outside this run's window.
-  Removed: KC Concepcion under 52.5 receiving yards (DK -111), its game is outside this run's
+  Added: Gunnar Helm under 3.5 receptions (DK -164), B tier, because its game is now inside the
   window.
-  Removed: Chase Brown anytime TD (DK -115), its game is outside this run's window.
-  Removed: Dalton Schultz under 2.5 receptions (DK +124), its game is outside this run's window.
-  Removed: Braelon Allen anytime TD (FD +185), its game is outside this run's window.
-  Removed: Jacory Croskey-Merritt anytime TD (DK +135), its game is outside this run's window.
-  Removed: Darnell Mooney over 17.5 receiving yards (FD -114), its game is outside this run's
+  Added: AJ Barner under 2.5 receptions (DK +120), B tier, because its game is now inside the
   window.
-  Removed: Aaron Jones under 9.5 rush attempts (DK -118), its game is outside this run's window.
-  Removed: Justice Hill anytime TD (FD +350), its game is outside this run's window.
-  Removed: Austin Ekeler over 21.5 rush yards (DK -114), its game is outside this run's window.
-  Removed: Tank Dell over 28.5 receiving yards (FD -114), its game is outside this run's window.
-  Removed: Ja'Marr Chase under 91.5 receiving yards (DK -110), its game is outside this run's
+  Added: Emeka Egbuka under 37.5 receiving yards (DK -110), B tier, because its game is now
+  inside the window.
+  Added: Austin Ekeler anytime TD (DK +370), B tier, because its game is now inside the window.
+  Added: DeMario Douglas over 23.5 receiving yards (FD -114), B tier, because its game is now
+  inside the window.
+  Added: Chig Okonkwo under 3.5 receptions (FD +128), B tier, because its game is now inside the
   window.
-  Removed: Jaxon Smith-Njigba under 97.5 receiving yards (FD -114), its game is outside this
-  run's window.
-  Removed: Chimere Dike under 3.5 receptions (DK -171), its game is outside this run's window.
-  Removed: Tee Higgins under 67.5 receiving yards (FD -114), its game is outside this run's
+  Added: Jaxon Smith-Njigba under 7.5 receptions (FD -136), B tier, because its game is now
+  inside the window.
+  Added: Tyler Warren under 3.5 receptions (DK +115), B tier, because its game is now inside the
   window.
-  Removed: Jalen Nailor over 10.5 receiving yards (FD -114), its game is outside this run's
+  Added: Tony Pollard under 2.5 receptions (DK +125), B tier, because its game is now inside the
   window.
-  Removed: Gunnar Helm under 3.5 receptions (DK -154), its game is outside this run's window.
-  Removed: Tre Tucker over 2.5 receptions (FD +124), its game is outside this run's window.
-  Removed: Tyler Warren under 3.5 receptions (DK +128), its game is outside this run's window.
-  Removed: Antonio Williams under 4.5 receptions (DK -162), its game is outside this run's
+  Added: Harold Fannin Jr. under 4.5 receptions (FD +104), B tier, because its game is now
+  inside the window.
+  Added: Zay Flowers under 6.5 receptions (FD -148), B tier, because its game is now inside the
   window.
-  Removed: Austin Ekeler anytime TD (FD +370), its game is outside this run's window.
-  Removed: DeMario Douglas over 23.5 receiving yards (FD -114), its game is outside this run's
+  Added: Cooper Kupp under 2.5 receptions (FD -160), B tier, because its game is now inside the
   window.
-  Removed: AJ Barner under 3.5 receptions (FD -194), its game is outside this run's window.
-  Removed: Chig Okonkwo under 3.5 receptions (FD +128), its game is outside this run's window.
-  Removed: Brock Bowers under 4.5 receptions (FD +140), its game is outside this run's window.
-  Removed: Harold Fannin Jr. under 4.5 receptions (FD +104), its game is outside this run's
+  Added: Rachaad White anytime TD (DK +400), B tier, because its game is now inside the window.
+  Added: Jordan Mason anytime TD (DK +230), B tier, because its game is now inside the window.
+  Added: Mack Hollins over 26.5 receiving yards (FD -114), B tier, because its game is now
+  inside the window.
+  Added: Tai Felton under 2.5 receptions (FD -130), B tier, because its game is now inside the
   window.
-  Removed: Jaxon Smith-Njigba under 7.5 receptions (FD -136), its game is outside this run's
+  Added: Harold Fannin Jr. under 50.5 receiving yards (FD -114), B tier, because its game is now
+  inside the window.
+  Added: Dylan Sampson anytime TD (DK +475), B tier, because its game is now inside the window.
+  Added: Tre Tucker over 30.5 receiving yards (FD -114), B tier, because its game is now inside
+  the window.
+  Added: T.J. Hockenson under 4.5 receptions (DK +101), B tier, because its game is now inside
+  the window.
+  Added: Ollie Gordon II under 15.5 rush attempts (DK +100), B tier, because its game is now
+  inside the window.
+  Added: Drake London under 5.5 receptions (DK -124), B tier, because its game is now inside the
   window.
-  Removed: Tony Pollard under 2.5 receptions (DK +121), its game is outside this run's window.
-  Removed: Tre Tucker over 29.5 receiving yards (DK -113), its game is outside this run's
+  Added: Zay Flowers under 74.5 receiving yards (FD -114), B tier, because its game is now
+  inside the window.
+  Added: T.J. Hockenson under 44.5 receiving yards (FD -114), B tier, because its game is now
+  inside the window.
+  Added: Breece Hall under 2.5 receptions (FD +112), B tier, because its game is now inside the
   window.
-  Removed: Cooper Kupp under 2.5 receptions (FD -160), its game is outside this run's window.
-  Removed: Mack Hollins over 26.5 receiving yards (FD -114), its game is outside this run's
+  Added: AJ Barner anytime TD (DK +320), B tier, because its game is now inside the window.
+  Added: Gavin Bartholomew anytime TD (FD +1300), B tier, because its game is now inside the
   window.
-  Removed: Tee Higgins under 4.5 receptions (DK -106), its game is outside this run's window.
-  Removed: Tai Felton under 2.5 receptions (FD -130), its game is outside this run's window.
-  Removed: Rachaad White anytime TD (DK +380), its game is outside this run's window.
-  Removed: Harold Fannin Jr. under 50.5 receiving yards (FD -114), its game is outside this
-  run's window.
-  Removed: T.J. Hockenson under 4.5 receptions (DK +101), its game is outside this run's window.
-  Removed: Breece Hall under 2.5 receptions (DK +119), its game is outside this run's window.
-  Removed: Jordan Mason anytime TD (FD +220), its game is outside this run's window.
-  Removed: Dylan Sampson anytime TD (FD +450), its game is outside this run's window.
-  Removed: Brock Bowers under 58.5 receiving yards (FD -114), its game is outside this run's
+  Added: Drake London under 71.5 receiving yards (DK -110), B tier, because its game is now
+  inside the window.
+  Added: Nico Collins under 62.5 receiving yards (DK -113), B tier, because its game is now
+  inside the window.
+  Added: Xavier Hutchinson under 3.5 receptions (DK -175), B tier, because its game is now
+  inside the window.
+  Added: Justice Hill under 3.5 receptions (DK -138), B tier, because its game is now inside the
   window.
-  Removed: Zay Flowers under 74.5 receiving yards (FD -114), its game is outside this run's
+  Added: David Montgomery anytime TD (FD +100), B tier, because its game is now inside the
   window.
-  Removed: T.J. Hockenson under 44.5 receiving yards (FD -114), its game is outside this run's
+  Added: Garrett Wilson under 4.5 receptions (FD +116), B tier, because its game is now inside
+  the window.
+  Added: Marvin Harrison Jr. under 2.5 receptions (FD -166), B tier, because its game is now
+  inside the window.
+  Added: Ollie Gordon II under 68.5 rush yards (FD -114), B tier, because its game is now inside
+  the window.
+  Added: Jalen Coker under 44.5 receiving yards (FD -114), B tier, because its game is now
+  inside the window.
+  Added: Jadarian Price over 24.5 rush yards (FD -114), B tier, because its game is now inside
+  the window.
+  Added: Aaron Jones under 37.5 rush yards (FD -114), B tier, because its game is now inside the
   window.
-  Removed: Marvin Harrison Jr. under 2.5 receptions (DK -156), its game is outside this run's
+  Added: Elic Ayomanor over 25.5 receiving yards (FD -114), B tier, because its game is now
+  inside the window.
+  Added: Travis Etienne under 11.5 rush attempts (DK +101), B tier, because its game is now
+  inside the window.
+  Added: Kyle Pitts under 3.5 receptions (FD -138), B tier, because its game is now inside the
   window.
-  Removed: Garrett Wilson under 4.5 receptions (DK +121), its game is outside this run's window.
-  Removed: Drake London under 5.5 receptions (FD -130), its game is outside this run's window.
-  Removed: David Montgomery anytime TD (DK +100), its game is outside this run's window.
-  Removed: Nico Collins under 62.5 receiving yards (DK -113), its game is outside this run's
+  Added: Jalen Coker under 3.5 receptions (DK -111), B tier, because its game is now inside the
   window.
-  Removed: Xavier Hutchinson under 3.5 receptions (DK -175), its game is outside this run's
+  Added: Tyler Warren under 30.5 receiving yards (DK -110), B tier, because its game is now
+  inside the window.
+  Added: Aaron Jones anytime TD (DK +155), B tier, because its game is now inside the window.
+  Added: Samaje Perine under 29.5 rush yards (DK -113), B tier, because its game is now inside
+  the window.
+  Added: David Montgomery over 13.5 rush attempts (DK +105), B tier, because its game is now
+  inside the window.
+  Added: Sterling Shepard anytime TD (DK +650), B tier, because its game is now inside the
   window.
-  Removed: Justice Hill under 3.5 receptions (DK -138), its game is outside this run's window.
-  Removed: Tyler Warren under 31.5 receiving yards (DK -113), its game is outside this run's
+  Added: Kenny Gainwell over 21.5 rush yards (DK -114), B tier, because its game is now inside
+  the window.
+  Added: Chimere Dike under 29.5 receiving yards (DK -111), B tier, because its game is now
+  inside the window.
+  Added: Xavier Hutchinson over 28.5 receiving yards (FD -114), B tier, because its game is now
+  inside the window.
+  Added: Quinshon Judkins anytime TD (FD +115), B tier, because its game is now inside the
   window.
-  Removed: Bijan Robinson over 2.5 receptions (DK -154), its game is outside this run's window.
-  Removed: Drake London under 71.5 receiving yards (FD -114), its game is outside this run's
+  Added: Chig Okonkwo under 38.5 receiving yards (DK -110), B tier, because its game is now
+  inside the window.
+  Added: Ja'Kobi Lane under 2.5 receptions (DK -178), B tier, because its game is now inside the
   window.
-  Removed: Kyle Pitts under 3.5 receptions (DK -133), its game is outside this run's window.
-  Removed: Ollie Gordon II under 68.5 rush yards (FD -114), its game is outside this run's
+  Added: Bijan Robinson under 75.5 rush yards (DK -111), B tier, because its game is now inside
+  the window.
+  Added: Mark Andrews over 2.5 receptions (DK -163), B tier, because its game is now inside the
   window.
-  Removed: Ollie Gordon II under 15.5 rush attempts (DK -109), its game is outside this run's
+  Added: Tank Dell over 29.5 receiving yards (FD -114), B tier, because its game is now inside
+  the window.
+  Added: Brock Bowers under 4.5 receptions (FD +108), B tier, because its game is now inside the
   window.
-  Removed: Aaron Jones under 37.5 rush yards (FD -114), its game is outside this run's window.
-  Removed: Elic Ayomanor over 25.5 receiving yards (FD -114), its game is outside this run's
+  Added: Bijan Robinson over 2.5 receptions (DK -166), B tier, because its game is now inside
+  the window.
+  Added: Austin Ekeler over 22.5 rush yards (FD -114), B tier, because its game is now inside
+  the window.
+  Added: Brock Bowers under 55.5 receiving yards (FD -114), B tier, because its game is now
+  inside the window.
+  Added: Marvin Harrison Jr. under 28.5 receiving yards (DK -114), B tier, because its game is
+  now inside the window.
+  Added: Cam Skattebo under 2.5 receptions (FD -144), B tier, because its game is now inside the
   window.
-  Removed: Gavin Bartholomew anytime TD (DK +1100), its game is outside this run's window.
-  Removed: Jadarian Price over 24.5 rush yards (FD -114), its game is outside this run's window.
-  Removed: Marvin Harrison Jr. under 28.5 receiving yards (DK -109), its game is outside this
-  run's window.
-  Removed: Sterling Shepard anytime TD (DK +650), its game is outside this run's window.
-  Removed: David Montgomery over 13.5 rush attempts (DK +105), its game is outside this run's
+  Added: Travis Etienne under 48.5 rush yards (FD -114), B tier, because its game is now inside
+  the window.
+  Added: Rashid Shaheed over 17.5 receiving yards (FD -114), B tier, because its game is now
+  inside the window.
+  Added: Nico Collins under 4.5 receptions (DK -105), B tier, because its game is now inside the
   window.
-  Removed: Aaron Jones anytime TD (FD +160), its game is outside this run's window.
-  Removed: Nico Collins under 4.5 receptions (DK -101), its game is outside this run's window.
-  Removed: Travis Etienne under 11.5 rush attempts (DK -102), its game is outside this run's
+  Added: Elijah Sarratt anytime TD (FD +5000), B tier, because its game is now inside the
   window.
-  Removed: Xavier Hutchinson over 28.5 receiving yards (FD -114), its game is outside this run's
+  Added: Corey Kiner over 26.5 rush yards (DK -116), B tier, because its game is now inside the
   window.
-  Removed: Quinshon Judkins anytime TD (FD +115), its game is outside this run's window.
-  Removed: Rashid Shaheed over 17.5 receiving yards (FD -114), its game is outside this run's
+  Added: Jordyn Tyson under 44.5 receiving yards (FD -114), B tier, because its game is now
+  inside the window.
+  Added: Malik Nabers under 5.5 receptions (DK -110), B tier, because its game is now inside the
   window.
-  Removed: Bijan Robinson under 75.5 rush yards (DK -111), its game is outside this run's
+  Added: Hunter Henry over 22.5 receiving yards (FD -114), B tier, because its game is now
+  inside the window.
+  Added: Xavier Hutchinson anytime TD (FD +250), B tier, because its game is now inside the
   window.
-  Removed: Ja'Kobi Lane under 2.5 receptions (DK -178), its game is outside this run's window.
-  Removed: Mark Andrews over 2.5 receptions (DK -163), its game is outside this run's window.
-  Removed: Cam Skattebo under 2.5 receptions (FD -144), its game is outside this run's window.
-  Removed: Travis Etienne under 48.5 rush yards (FD -114), its game is outside this run's
+  Added: Mack Hollins over 2.5 receptions (DK -115), B tier, because its game is now inside the
   window.
-  Removed: Chig Okonkwo under 38.5 receiving yards (DK -112), its game is outside this run's
+  Added: Mike Washington Jr. under 33.5 rush yards (DK -111), B tier, because its game is now
+  inside the window.
+  Added: Bucky Irving over 18.5 rush attempts (DK -117), B tier, because its game is now inside
+  the window.
+  Added: Zach Charbonnet under 15.5 rush attempts (DK -134), B tier, because its game is now
+  inside the window.
+  Added: Carnell Tate under 4.5 receptions (DK -103), B tier, because its game is now inside the
   window.
-  Removed: Chimere Dike under 29.5 receiving yards (DK -115), its game is outside this run's
+  Added: Greg Dulcich over 23.5 receiving yards (DK -113), B tier, because its game is now
+  inside the window.
+  Added: Malik Nabers under 65.5 receiving yards (FD -114), B tier, because its game is now
+  inside the window.
+  Added: Antonio Williams under 44.5 receiving yards (DK -114), B tier, because its game is now
+  inside the window.
+  Added: Jadarian Price over 7.5 rush attempts (DK -131), B tier, because its game is now inside
+  the window.
+  Added: Jordyn Tyson under 4.5 receptions (FD -140), B tier, because its game is now inside the
   window.
-  Removed: Hunter Henry over 22.5 receiving yards (FD -114), its game is outside this run's
+  Added: Patrick Ricard anytime TD (FD +2700), B tier, because its game is now inside the
   window.
-  Removed: Elijah Sarratt anytime TD (FD +4500), its game is outside this run's window.
-  Removed: Jordyn Tyson under 44.5 receiving yards (FD -114), its game is outside this run's
+  Added: Mason Taylor under 2.5 receptions (FD -166), B tier, because its game is now inside the
   window.
-  Removed: Malik Nabers under 5.5 receptions (DK -110), its game is outside this run's window.
-  Removed: Mike Washington Jr. under 33.5 rush yards (DK -111), its game is outside this run's
-  window.
-  Removed: Malik Nabers under 65.5 receiving yards (DK -111), its game is outside this run's
-  window.
-  Removed: Mason Taylor under 2.5 receptions (DK -157), its game is outside this run's window.
-  Removed: Greg Dulcich over 23.5 receiving yards (DK -113), its game is outside this run's
-  window.
-  Removed: AJ Barner anytime TD (FD +300), its game is outside this run's window.
-  Removed: Xavier Hutchinson anytime TD (FD +240), its game is outside this run's window.
-  Removed: Kenyon Sadiq under 2.5 receptions (DK -175), its game is outside this run's window.
-  Removed: Mack Hollins over 2.5 receptions (FD -122), its game is outside this run's window.
-  Removed: Patrick Ricard anytime TD (DK +2800), its game is outside this run's window.
-  Removed: Jordyn Tyson under 4.5 receptions (FD -140), its game is outside this run's window.
-  Removed: Tai Felton over 21.5 receiving yards (DK -111), its game is outside this run's
-  window.
-  Removed: Carnell Tate under 4.5 receptions (FD -108), its game is outside this run's window.
 
 NOTES
-  - No games with posted odds kick off in the next 36 hours.
+  - 187 posted props were not priced because the player's role is too small to trust (under 6
+  carries or 3 targets a game, or under 35% of snaps for a touchdown)
+  - 23 quarterback anytime TD props were not priced: the touch-share method does not describe
+  how a quarterback scores
+  - CAR@TB: Ja'Tavion Sanders has no games with CAR this season, so he is not priced
+  - LV@CLE: Connor Heyward has no games with LV this season, so he is not priced
+  - LV@CLE: Dont'e Thornton Jr. has no games with LV this season, so he is not priced
+  - NE@LAC: Theo Wease Jr. matches no player on either team
+  - NYG@IND: Drew Ogletree matches no player on either team
+  - NYG@IND: Greg Desrosiers Jr. matches no player on either team
+  - NYJ@MIA: Andrew Beck has no games with NYJ this season, so he is not priced
+  - NYJ@MIA: Justin Joly has no games with MIA this season, so he is not priced
+  - SEA@SF: Irv Charles matches no player on either team
+  - SEA@SF: James Jordan matches no player on either team
+  - SEA@SF: Kyle Juszczyk has no games with SF this season, so he is not priced
+  - TEN@JAX: Travis Hunter has no games with JAX this season, so he is not priced
+  - WAS@ARI: Zonovan Knight matches no player on either team
+  - 40 legs on this board carry the flag "calibration flips the literal lean": the calibrated
+  model and the rules as written point opposite ways, so they sit in B tier and are left out of
+  every ticket.

@@ -1,467 +1,556 @@
 {
- "generated_utc": "2026-11-28T04:07:33+00:00",
- "generated_arizona": "Fri Nov 27 9:07 PM MST",
- "previous_utc": "2026-11-27T22:37:52+00:00",
- "previous_arizona": "Fri Nov 27 3:37 PM MST",
- "headline": "113 removed since Fri Nov 27 3:37 PM MST.",
- "added": [],
- "removed": [
+ "generated_utc": "2026-11-28T13:37:45+00:00",
+ "generated_arizona": "Sat Nov 28 6:37 AM MST",
+ "previous_utc": "2026-11-28T04:07:33+00:00",
+ "previous_arizona": "Fri Nov 27 9:07 PM MST",
+ "headline": "130 added, 5 status changed since Fri Nov 27 9:07 PM MST.",
+ "added": [
   {
    "id": "00-0040122|player_rush_attempts|under",
-   "text": "Removed: Ashton Jeanty under 11.5 rush attempts (DK -101), its game is outside this run's window."
+   "text": "Added: Ashton Jeanty under 11.5 rush attempts (DK -101), A tier, because its game is now inside the window."
   },
   {
-   "id": "00-0040784|player_rush_yds|under",
-   "text": "Removed: Quinshon Judkins under 60.5 rush yards (DK -110), its game is outside this run's window."
+   "id": "00-0041547|player_receptions|under",
+   "text": "Added: KC Concepcion under 4.5 receptions (FD -104), A tier, because its game is now inside the window."
   },
   {
-   "id": "00-0040242|player_rush_yds|under",
-   "text": "Removed: Jacory Croskey-Merritt under 54.5 rush yards (FD -114), its game is outside this run's window."
+   "id": "00-0036555|player_rush_attempts|over",
+   "text": "Added: Chuba Hubbard over 15.5 rush attempts (DK -126), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040129|player_receptions|under",
+   "text": "Added: Emeka Egbuka under 3.5 receptions (DK -112), A tier, because its game is now inside the window."
   },
   {
    "id": "00-0040242|player_rush_attempts|under",
-   "text": "Removed: Jacory Croskey-Merritt under 13.5 rush attempts (DK -110), its game is outside this run's window."
+   "text": "Added: Jacory Croskey-Merritt under 13.5 rush attempts (DK -105), A tier, because its game is now inside the window."
   },
   {
-   "id": "00-0032764|player_rush_yds|under",
-   "text": "Removed: Derrick Henry under 55.5 rush yards (DK -112), its game is outside this run's window."
+   "id": "00-0040784|player_rush_yds|under",
+   "text": "Added: Quinshon Judkins under 60.5 rush yards (DK -113), A tier, because its game is now inside the window."
   },
   {
-   "id": "00-0037525|player_rush_yds|under",
-   "text": "Removed: Jordan Mason under 57.5 rush yards (FD -114), its game is outside this run's window."
+   "id": "00-0040242|player_rush_yds|under",
+   "text": "Added: Jacory Croskey-Merritt under 54.5 rush yards (DK -111), A tier, because its game is now inside the window."
   },
   {
-   "id": "00-0040715|player_rush_yds|under",
-   "text": "Removed: Cam Skattebo under 75.5 rush yards (FD -114), its game is outside this run's window."
+   "id": "00-0033921|player_receptions|under",
+   "text": "Added: Chris Godwin Jr. under 2.5 receptions (DK +106), A tier, because its game is now inside the window."
   },
   {
    "id": "00-0040715|player_rush_attempts|under",
-   "text": "Removed: Cam Skattebo under 17.5 rush attempts (DK -120), its game is outside this run's window."
+   "text": "Added: Cam Skattebo under 17.5 rush attempts (DK -107), A tier, because its game is now inside the window."
   },
   {
-   "id": "00-0040122|player_rush_yds|under",
-   "text": "Removed: Ashton Jeanty under 44.5 rush yards (DK -115), its game is outside this run's window."
+   "id": "00-0039361|player_anytime_td|yes",
+   "text": "Added: Bucky Irving anytime TD (DK -125), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0038129|player_reception_yds|under",
+   "text": "Added: Cade Otton under 28.5 receiving yards (FD -114), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0032764|player_rush_yds|under",
+   "text": "Added: Derrick Henry under 55.5 rush yards (DK -112), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0037525|player_rush_yds|under",
+   "text": "Added: Jordan Mason under 57.5 rush yards (FD -114), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040715|player_rush_yds|under",
+   "text": "Added: Cam Skattebo under 75.5 rush yards (FD -114), A tier, because its game is now inside the window."
   },
   {
    "id": "00-0038120|player_anytime_td|yes",
-   "text": "Removed: Breece Hall anytime TD (DK +125), its game is outside this run's window."
-  },
-  {
-   "id": "00-0039064|player_receptions|under",
-   "text": "Removed: Zay Flowers under 6.5 receptions (FD -140), its game is outside this run's window."
+   "text": "Added: Breece Hall anytime TD (DK +125), A tier, because its game is now inside the window."
   },
   {
    "id": "00-0039424|player_reception_yds|over",
-   "text": "Removed: Devaughn Vele over 25.5 receiving yards (FD -114), its game is outside this run's window."
+   "text": "Added: Devaughn Vele over 24.5 receiving yards (DK -114), A tier, because its game is now inside the window."
   },
   {
-   "id": "00-0037838|player_receptions|under",
-   "text": "Removed: Isaiah Likely under 4.5 receptions (DK +117), its game is outside this run's window."
+   "id": "00-0036555|player_receptions|under",
+   "text": "Added: Chuba Hubbard under 2.5 receptions (DK +114), A tier, because its game is now inside the window."
   },
   {
-   "id": "00-0031588|player_receptions|under",
-   "text": "Removed: Stefon Diggs under 4.5 receptions (DK -143), its game is outside this run's window."
+   "id": "00-0036919|player_anytime_td|yes",
+   "text": "Added: Kenny Gainwell anytime TD (FD +300), A tier, because its game is now inside the window."
   },
   {
-   "id": "00-0041525|player_reception_yds|over",
-   "text": "Removed: Chris Bell over 14.5 receiving yards (FD -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0039424|player_receptions|over",
-   "text": "Removed: Devaughn Vele over 3.5 receptions (FD +158), its game is outside this run's window."
-  },
-  {
-   "id": "00-0035261|player_rush_yds|over",
-   "text": "Removed: Tony Pollard over 52.5 rush yards (FD -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0039880|player_reception_yds|over",
-   "text": "Removed: Malik Washington over 26.5 receiving yards (FD -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0040162|player_receptions|over",
-   "text": "Removed: Dylan Sampson over 2.5 receptions (DK -129), its game is outside this run's window."
-  },
-  {
-   "id": "00-0034753|player_reception_yds|over",
-   "text": "Removed: Mark Andrews over 22.5 receiving yards (FD -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0040878|player_rush_attempts|under",
-   "text": "Removed: Mike Washington Jr. under 9.5 rush attempts (DK -123), its game is outside this run's window."
-  },
-  {
-   "id": "00-0037838|player_reception_yds|under",
-   "text": "Removed: Isaiah Likely under 51.5 receiving yards (DK -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0033526|player_anytime_td|yes",
-   "text": "Removed: Samaje Perine anytime TD (DK +170), its game is outside this run's window."
-  },
-  {
-   "id": "00-0041547|player_reception_yds|under",
-   "text": "Removed: KC Concepcion under 52.5 receiving yards (DK -111), its game is outside this run's window."
-  },
-  {
-   "id": "00-0038597|player_anytime_td|yes",
-   "text": "Removed: Chase Brown anytime TD (DK -115), its game is outside this run's window."
-  },
-  {
-   "id": "00-0034383|player_receptions|under",
-   "text": "Removed: Dalton Schultz under 2.5 receptions (DK +124), its game is outside this run's window."
+   "id": "00-0036555|player_anytime_td|yes",
+   "text": "Added: Chuba Hubbard anytime TD (DK +100), A tier, because its game is now inside the window."
   },
   {
    "id": "00-0039794|player_anytime_td|yes",
-   "text": "Removed: Braelon Allen anytime TD (FD +185), its game is outside this run's window."
+   "text": "Added: Braelon Allen anytime TD (DK +205), A tier, because its game is now inside the window."
   },
   {
-   "id": "00-0040242|player_anytime_td|yes",
-   "text": "Removed: Jacory Croskey-Merritt anytime TD (DK +135), its game is outside this run's window."
+   "id": "00-0037838|player_receptions|under",
+   "text": "Added: Isaiah Likely under 4.5 receptions (DK +113), A tier, because its game is now inside the window."
   },
   {
-   "id": "00-0036309|player_reception_yds|over",
-   "text": "Removed: Darnell Mooney over 17.5 receiving yards (FD -114), its game is outside this run's window."
+   "id": "00-0041525|player_reception_yds|over",
+   "text": "Added: Chris Bell over 14.5 receiving yards (FD -114), A tier, because its game is now inside the window."
   },
   {
-   "id": "00-0033293|player_rush_attempts|under",
-   "text": "Removed: Aaron Jones under 9.5 rush attempts (DK -118), its game is outside this run's window."
+   "id": "00-0039424|player_receptions|over",
+   "text": "Added: Devaughn Vele over 3.5 receptions (FD +158), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0035261|player_rush_yds|over",
+   "text": "Added: Tony Pollard over 52.5 rush yards (FD -114), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040878|player_rush_attempts|under",
+   "text": "Added: Mike Washington Jr. under 9.5 rush attempts (DK -119), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0033526|player_anytime_td|yes",
+   "text": "Added: Samaje Perine anytime TD (DK +180), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0039880|player_reception_yds|over",
+   "text": "Added: Malik Washington over 26.5 receiving yards (FD -114), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0031588|player_receptions|under",
+   "text": "Added: Stefon Diggs under 4.5 receptions (FD -154), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0038597|player_anytime_td|yes",
+   "text": "Added: Chase Brown anytime TD (DK -110), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0034753|player_reception_yds|over",
+   "text": "Added: Mark Andrews over 22.5 receiving yards (FD -114), A tier, because its game is now inside the window."
   },
   {
    "id": "00-0034975|player_anytime_td|yes",
-   "text": "Removed: Justice Hill anytime TD (FD +350), its game is outside this run's window."
+   "text": "Added: Justice Hill anytime TD (DK +370), A tier, because its game is now inside the window."
   },
   {
-   "id": "00-0033699|player_rush_yds|over",
-   "text": "Removed: Austin Ekeler over 21.5 rush yards (DK -114), its game is outside this run's window."
+   "id": "00-0037838|player_reception_yds|under",
+   "text": "Added: Isaiah Likely under 50.5 receiving yards (DK -112), A tier, because its game is now inside the window."
   },
   {
-   "id": "00-0038977|player_reception_yds|over",
-   "text": "Removed: Tank Dell over 28.5 receiving yards (FD -114), its game is outside this run's window."
+   "id": "00-0036309|player_reception_yds|over",
+   "text": "Added: Darnell Mooney over 17.5 receiving yards (DK -112), A tier, because its game is now inside the window."
   },
   {
-   "id": "00-0036900|player_reception_yds|under",
-   "text": "Removed: Ja'Marr Chase under 91.5 receiving yards (DK -110), its game is outside this run's window."
+   "id": "00-0041547|player_reception_yds|under",
+   "text": "Added: KC Concepcion under 52.5 receiving yards (DK -114), A tier, because its game is now inside the window."
   },
   {
-   "id": "00-0038543|player_reception_yds|under",
-   "text": "Removed: Jaxon Smith-Njigba under 97.5 receiving yards (FD -114), its game is outside this run's window."
+   "id": "00-0040242|player_anytime_td|yes",
+   "text": "Added: Jacory Croskey-Merritt anytime TD (FD +130), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0033293|player_rush_attempts|under",
+   "text": "Added: Aaron Jones under 9.5 rush attempts (DK -118), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0039361|player_rush_yds|over",
+   "text": "Added: Bucky Irving over 81.5 rush yards (FD -114), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040162|player_receptions|over",
+   "text": "Added: Dylan Sampson over 2.5 receptions (DK -137), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0034383|player_receptions|under",
+   "text": "Added: Dalton Schultz under 2.5 receptions (FD +116), A tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0036555|player_rush_yds|over",
+   "text": "Added: Chuba Hubbard over 63.5 rush yards (DK -112), B tier, because its game is now inside the window."
   },
   {
    "id": "00-0040705|player_receptions|under",
-   "text": "Removed: Chimere Dike under 3.5 receptions (DK -171), its game is outside this run's window."
+   "text": "Added: Chimere Dike under 3.5 receptions (DK -164), B tier, because its game is now inside the window."
   },
   {
-   "id": "00-0036410|player_reception_yds|under",
-   "text": "Removed: Tee Higgins under 67.5 receiving yards (FD -114), its game is outside this run's window."
+   "id": "00-0036900|player_reception_yds|under",
+   "text": "Added: Ja'Marr Chase under 91.5 receiving yards (FD -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0038543|player_reception_yds|under",
+   "text": "Added: Jaxon Smith-Njigba under 97.5 receiving yards (FD -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040122|player_rush_yds|under",
+   "text": "Added: Ashton Jeanty under 46.5 rush yards (DK -112), B tier, because its game is now inside the window."
   },
   {
    "id": "00-0037291|player_reception_yds|over",
-   "text": "Removed: Jalen Nailor over 10.5 receiving yards (FD -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0040584|player_receptions|under",
-   "text": "Removed: Gunnar Helm under 3.5 receptions (DK -154), its game is outside this run's window."
-  },
-  {
-   "id": "00-0038563|player_receptions|over",
-   "text": "Removed: Tre Tucker over 2.5 receptions (FD +124), its game is outside this run's window."
-  },
-  {
-   "id": "00-0040128|player_receptions|under",
-   "text": "Removed: Tyler Warren under 3.5 receptions (DK +128), its game is outside this run's window."
+   "text": "Added: Jalen Nailor over 10.5 receiving yards (FD -114), B tier, because its game is now inside the window."
   },
   {
    "id": "00-0041040|player_receptions|under",
-   "text": "Removed: Antonio Williams under 4.5 receptions (DK -162), its game is outside this run's window."
+   "text": "Added: Antonio Williams under 3.5 receptions (FD +128), B tier, because its game is now inside the window."
   },
   {
-   "id": "00-0033699|player_anytime_td|yes",
-   "text": "Removed: Austin Ekeler anytime TD (FD +370), its game is outside this run's window."
+   "id": "00-0038563|player_receptions|over",
+   "text": "Added: Tre Tucker over 2.5 receptions (DK +121), B tier, because its game is now inside the window."
   },
   {
-   "id": "00-0038621|player_reception_yds|over",
-   "text": "Removed: DeMario Douglas over 23.5 receiving yards (FD -114), its game is outside this run's window."
+   "id": "00-0040584|player_receptions|under",
+   "text": "Added: Gunnar Helm under 3.5 receptions (DK -164), B tier, because its game is now inside the window."
   },
   {
    "id": "00-0039793|player_receptions|under",
-   "text": "Removed: AJ Barner under 3.5 receptions (FD -194), its game is outside this run's window."
+   "text": "Added: AJ Barner under 2.5 receptions (DK +120), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040129|player_reception_yds|under",
+   "text": "Added: Emeka Egbuka under 37.5 receiving yards (DK -110), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0033699|player_anytime_td|yes",
+   "text": "Added: Austin Ekeler anytime TD (DK +370), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0038621|player_reception_yds|over",
+   "text": "Added: DeMario Douglas over 23.5 receiving yards (FD -114), B tier, because its game is now inside the window."
   },
   {
    "id": "00-0037809|player_receptions|under",
-   "text": "Removed: Chig Okonkwo under 3.5 receptions (FD +128), its game is outside this run's window."
-  },
-  {
-   "id": "00-0039338|player_receptions|under",
-   "text": "Removed: Brock Bowers under 4.5 receptions (FD +140), its game is outside this run's window."
-  },
-  {
-   "id": "00-0040663|player_receptions|under",
-   "text": "Removed: Harold Fannin Jr. under 4.5 receptions (FD +104), its game is outside this run's window."
+   "text": "Added: Chig Okonkwo under 3.5 receptions (FD +128), B tier, because its game is now inside the window."
   },
   {
    "id": "00-0038543|player_receptions|under",
-   "text": "Removed: Jaxon Smith-Njigba under 7.5 receptions (FD -136), its game is outside this run's window."
+   "text": "Added: Jaxon Smith-Njigba under 7.5 receptions (FD -136), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040128|player_receptions|under",
+   "text": "Added: Tyler Warren under 3.5 receptions (DK +115), B tier, because its game is now inside the window."
   },
   {
    "id": "00-0035261|player_receptions|under",
-   "text": "Removed: Tony Pollard under 2.5 receptions (DK +121), its game is outside this run's window."
+   "text": "Added: Tony Pollard under 2.5 receptions (DK +125), B tier, because its game is now inside the window."
   },
   {
-   "id": "00-0038563|player_reception_yds|over",
-   "text": "Removed: Tre Tucker over 29.5 receiving yards (DK -113), its game is outside this run's window."
+   "id": "00-0040663|player_receptions|under",
+   "text": "Added: Harold Fannin Jr. under 4.5 receptions (FD +104), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0039064|player_receptions|under",
+   "text": "Added: Zay Flowers under 6.5 receptions (FD -148), B tier, because its game is now inside the window."
   },
   {
    "id": "00-0033908|player_receptions|under",
-   "text": "Removed: Cooper Kupp under 2.5 receptions (FD -160), its game is outside this run's window."
-  },
-  {
-   "id": "00-0033555|player_reception_yds|over",
-   "text": "Removed: Mack Hollins over 26.5 receiving yards (FD -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0036410|player_receptions|under",
-   "text": "Removed: Tee Higgins under 4.5 receptions (DK -106), its game is outside this run's window."
-  },
-  {
-   "id": "00-0040154|player_receptions|under",
-   "text": "Removed: Tai Felton under 2.5 receptions (FD -130), its game is outside this run's window."
+   "text": "Added: Cooper Kupp under 2.5 receptions (FD -160), B tier, because its game is now inside the window."
   },
   {
    "id": "00-0037256|player_anytime_td|yes",
-   "text": "Removed: Rachaad White anytime TD (DK +380), its game is outside this run's window."
-  },
-  {
-   "id": "00-0040663|player_reception_yds|under",
-   "text": "Removed: Harold Fannin Jr. under 50.5 receiving yards (FD -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0035229|player_receptions|under",
-   "text": "Removed: T.J. Hockenson under 4.5 receptions (DK +101), its game is outside this run's window."
-  },
-  {
-   "id": "00-0038120|player_receptions|under",
-   "text": "Removed: Breece Hall under 2.5 receptions (DK +119), its game is outside this run's window."
+   "text": "Added: Rachaad White anytime TD (DK +400), B tier, because its game is now inside the window."
   },
   {
    "id": "00-0037525|player_anytime_td|yes",
-   "text": "Removed: Jordan Mason anytime TD (FD +220), its game is outside this run's window."
+   "text": "Added: Jordan Mason anytime TD (DK +230), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0033555|player_reception_yds|over",
+   "text": "Added: Mack Hollins over 26.5 receiving yards (FD -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040154|player_receptions|under",
+   "text": "Added: Tai Felton under 2.5 receptions (FD -130), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040663|player_reception_yds|under",
+   "text": "Added: Harold Fannin Jr. under 50.5 receiving yards (FD -114), B tier, because its game is now inside the window."
   },
   {
    "id": "00-0040162|player_anytime_td|yes",
-   "text": "Removed: Dylan Sampson anytime TD (FD +450), its game is outside this run's window."
+   "text": "Added: Dylan Sampson anytime TD (DK +475), B tier, because its game is now inside the window."
   },
   {
-   "id": "00-0039338|player_reception_yds|under",
-   "text": "Removed: Brock Bowers under 58.5 receiving yards (FD -114), its game is outside this run's window."
+   "id": "00-0038563|player_reception_yds|over",
+   "text": "Added: Tre Tucker over 30.5 receiving yards (FD -114), B tier, because its game is now inside the window."
   },
   {
-   "id": "00-0039064|player_reception_yds|under",
-   "text": "Removed: Zay Flowers under 74.5 receiving yards (FD -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0035229|player_reception_yds|under",
-   "text": "Removed: T.J. Hockenson under 44.5 receiving yards (FD -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0039849|player_receptions|under",
-   "text": "Removed: Marvin Harrison Jr. under 2.5 receptions (DK -156), its game is outside this run's window."
-  },
-  {
-   "id": "00-0037740|player_receptions|under",
-   "text": "Removed: Garrett Wilson under 4.5 receptions (DK +121), its game is outside this run's window."
-  },
-  {
-   "id": "00-0037238|player_receptions|under",
-   "text": "Removed: Drake London under 5.5 receptions (FD -130), its game is outside this run's window."
-  },
-  {
-   "id": "00-0035685|player_anytime_td|yes",
-   "text": "Removed: David Montgomery anytime TD (DK +100), its game is outside this run's window."
-  },
-  {
-   "id": "00-0036554|player_reception_yds|under",
-   "text": "Removed: Nico Collins under 62.5 receiving yards (DK -113), its game is outside this run's window."
-  },
-  {
-   "id": "00-0038618|player_receptions|under",
-   "text": "Removed: Xavier Hutchinson under 3.5 receptions (DK -175), its game is outside this run's window."
-  },
-  {
-   "id": "00-0034975|player_receptions|under",
-   "text": "Removed: Justice Hill under 3.5 receptions (DK -138), its game is outside this run's window."
-  },
-  {
-   "id": "00-0040128|player_reception_yds|under",
-   "text": "Removed: Tyler Warren under 31.5 receiving yards (DK -113), its game is outside this run's window."
-  },
-  {
-   "id": "00-0038542|player_receptions|over",
-   "text": "Removed: Bijan Robinson over 2.5 receptions (DK -154), its game is outside this run's window."
-  },
-  {
-   "id": "00-0037238|player_reception_yds|under",
-   "text": "Removed: Drake London under 71.5 receiving yards (FD -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0036970|player_receptions|under",
-   "text": "Removed: Kyle Pitts under 3.5 receptions (DK -133), its game is outside this run's window."
-  },
-  {
-   "id": "00-0040198|player_rush_yds|under",
-   "text": "Removed: Ollie Gordon II under 68.5 rush yards (FD -114), its game is outside this run's window."
+   "id": "00-0035229|player_receptions|under",
+   "text": "Added: T.J. Hockenson under 4.5 receptions (DK +101), B tier, because its game is now inside the window."
   },
   {
    "id": "00-0040198|player_rush_attempts|under",
-   "text": "Removed: Ollie Gordon II under 15.5 rush attempts (DK -109), its game is outside this run's window."
+   "text": "Added: Ollie Gordon II under 15.5 rush attempts (DK +100), B tier, because its game is now inside the window."
   },
   {
-   "id": "00-0033293|player_rush_yds|under",
-   "text": "Removed: Aaron Jones under 37.5 rush yards (FD -114), its game is outside this run's window."
+   "id": "00-0037238|player_receptions|under",
+   "text": "Added: Drake London under 5.5 receptions (DK -124), B tier, because its game is now inside the window."
   },
   {
-   "id": "00-0040170|player_reception_yds|over",
-   "text": "Removed: Elic Ayomanor over 25.5 receiving yards (FD -114), its game is outside this run's window."
+   "id": "00-0039064|player_reception_yds|under",
+   "text": "Added: Zay Flowers under 74.5 receiving yards (FD -114), B tier, because its game is now inside the window."
   },
   {
-   "id": "00-0040215|player_anytime_td|yes",
-   "text": "Removed: Gavin Bartholomew anytime TD (DK +1100), its game is outside this run's window."
+   "id": "00-0035229|player_reception_yds|under",
+   "text": "Added: T.J. Hockenson under 44.5 receiving yards (FD -114), B tier, because its game is now inside the window."
   },
   {
-   "id": "00-0041512|player_rush_yds|over",
-   "text": "Removed: Jadarian Price over 24.5 rush yards (FD -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0039849|player_reception_yds|under",
-   "text": "Removed: Marvin Harrison Jr. under 28.5 receiving yards (DK -109), its game is outside this run's window."
-  },
-  {
-   "id": "00-0032385|player_anytime_td|yes",
-   "text": "Removed: Sterling Shepard anytime TD (DK +650), its game is outside this run's window."
-  },
-  {
-   "id": "00-0035685|player_rush_attempts|over",
-   "text": "Removed: David Montgomery over 13.5 rush attempts (DK +105), its game is outside this run's window."
-  },
-  {
-   "id": "00-0033293|player_anytime_td|yes",
-   "text": "Removed: Aaron Jones anytime TD (FD +160), its game is outside this run's window."
-  },
-  {
-   "id": "00-0036554|player_receptions|under",
-   "text": "Removed: Nico Collins under 4.5 receptions (DK -101), its game is outside this run's window."
-  },
-  {
-   "id": "00-0036973|player_rush_attempts|under",
-   "text": "Removed: Travis Etienne under 11.5 rush attempts (DK -102), its game is outside this run's window."
-  },
-  {
-   "id": "00-0038618|player_reception_yds|over",
-   "text": "Removed: Xavier Hutchinson over 28.5 receiving yards (FD -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0040784|player_anytime_td|yes",
-   "text": "Removed: Quinshon Judkins anytime TD (FD +115), its game is outside this run's window."
-  },
-  {
-   "id": "00-0037545|player_reception_yds|over",
-   "text": "Removed: Rashid Shaheed over 17.5 receiving yards (FD -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0038542|player_rush_yds|under",
-   "text": "Removed: Bijan Robinson under 75.5 rush yards (DK -111), its game is outside this run's window."
-  },
-  {
-   "id": "00-0040870|player_receptions|under",
-   "text": "Removed: Ja'Kobi Lane under 2.5 receptions (DK -178), its game is outside this run's window."
-  },
-  {
-   "id": "00-0034753|player_receptions|over",
-   "text": "Removed: Mark Andrews over 2.5 receptions (DK -163), its game is outside this run's window."
-  },
-  {
-   "id": "00-0040715|player_receptions|under",
-   "text": "Removed: Cam Skattebo under 2.5 receptions (FD -144), its game is outside this run's window."
-  },
-  {
-   "id": "00-0036973|player_rush_yds|under",
-   "text": "Removed: Travis Etienne under 48.5 rush yards (FD -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0037809|player_reception_yds|under",
-   "text": "Removed: Chig Okonkwo under 38.5 receiving yards (DK -112), its game is outside this run's window."
-  },
-  {
-   "id": "00-0040705|player_reception_yds|under",
-   "text": "Removed: Chimere Dike under 29.5 receiving yards (DK -115), its game is outside this run's window."
-  },
-  {
-   "id": "00-0033090|player_reception_yds|over",
-   "text": "Removed: Hunter Henry over 22.5 receiving yards (FD -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0040876|player_anytime_td|yes",
-   "text": "Removed: Elijah Sarratt anytime TD (FD +4500), its game is outside this run's window."
-  },
-  {
-   "id": "00-0041029|player_reception_yds|under",
-   "text": "Removed: Jordyn Tyson under 44.5 receiving yards (FD -114), its game is outside this run's window."
-  },
-  {
-   "id": "00-0039337|player_receptions|under",
-   "text": "Removed: Malik Nabers under 5.5 receptions (DK -110), its game is outside this run's window."
-  },
-  {
-   "id": "00-0040878|player_rush_yds|under",
-   "text": "Removed: Mike Washington Jr. under 33.5 rush yards (DK -111), its game is outside this run's window."
-  },
-  {
-   "id": "00-0039337|player_reception_yds|under",
-   "text": "Removed: Malik Nabers under 65.5 receiving yards (DK -111), its game is outside this run's window."
-  },
-  {
-   "id": "00-0040736|player_receptions|under",
-   "text": "Removed: Mason Taylor under 2.5 receptions (DK -157), its game is outside this run's window."
-  },
-  {
-   "id": "00-0037252|player_reception_yds|over",
-   "text": "Removed: Greg Dulcich over 23.5 receiving yards (DK -113), its game is outside this run's window."
+   "id": "00-0038120|player_receptions|under",
+   "text": "Added: Breece Hall under 2.5 receptions (FD +112), B tier, because its game is now inside the window."
   },
   {
    "id": "00-0039793|player_anytime_td|yes",
-   "text": "Removed: AJ Barner anytime TD (FD +300), its game is outside this run's window."
+   "text": "Added: AJ Barner anytime TD (DK +320), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040215|player_anytime_td|yes",
+   "text": "Added: Gavin Bartholomew anytime TD (FD +1300), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0037238|player_reception_yds|under",
+   "text": "Added: Drake London under 71.5 receiving yards (DK -110), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0036554|player_reception_yds|under",
+   "text": "Added: Nico Collins under 62.5 receiving yards (DK -113), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0038618|player_receptions|under",
+   "text": "Added: Xavier Hutchinson under 3.5 receptions (DK -175), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0034975|player_receptions|under",
+   "text": "Added: Justice Hill under 3.5 receptions (DK -138), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0035685|player_anytime_td|yes",
+   "text": "Added: David Montgomery anytime TD (FD +100), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0037740|player_receptions|under",
+   "text": "Added: Garrett Wilson under 4.5 receptions (FD +116), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0039849|player_receptions|under",
+   "text": "Added: Marvin Harrison Jr. under 2.5 receptions (FD -166), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040198|player_rush_yds|under",
+   "text": "Added: Ollie Gordon II under 68.5 rush yards (FD -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0039491|player_reception_yds|under",
+   "text": "Added: Jalen Coker under 44.5 receiving yards (FD -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0041512|player_rush_yds|over",
+   "text": "Added: Jadarian Price over 24.5 rush yards (FD -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0033293|player_rush_yds|under",
+   "text": "Added: Aaron Jones under 37.5 rush yards (FD -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040170|player_reception_yds|over",
+   "text": "Added: Elic Ayomanor over 25.5 receiving yards (FD -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0036973|player_rush_attempts|under",
+   "text": "Added: Travis Etienne under 11.5 rush attempts (DK +101), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0036970|player_receptions|under",
+   "text": "Added: Kyle Pitts under 3.5 receptions (FD -138), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0039491|player_receptions|under",
+   "text": "Added: Jalen Coker under 3.5 receptions (DK -111), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040128|player_reception_yds|under",
+   "text": "Added: Tyler Warren under 30.5 receiving yards (DK -110), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0033293|player_anytime_td|yes",
+   "text": "Added: Aaron Jones anytime TD (DK +155), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0033526|player_rush_yds|under",
+   "text": "Added: Samaje Perine under 29.5 rush yards (DK -113), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0035685|player_rush_attempts|over",
+   "text": "Added: David Montgomery over 13.5 rush attempts (DK +105), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0032385|player_anytime_td|yes",
+   "text": "Added: Sterling Shepard anytime TD (DK +650), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0036919|player_rush_yds|over",
+   "text": "Added: Kenny Gainwell over 21.5 rush yards (DK -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040705|player_reception_yds|under",
+   "text": "Added: Chimere Dike under 29.5 receiving yards (DK -111), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0038618|player_reception_yds|over",
+   "text": "Added: Xavier Hutchinson over 28.5 receiving yards (FD -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040784|player_anytime_td|yes",
+   "text": "Added: Quinshon Judkins anytime TD (FD +115), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0037809|player_reception_yds|under",
+   "text": "Added: Chig Okonkwo under 38.5 receiving yards (DK -110), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040870|player_receptions|under",
+   "text": "Added: Ja'Kobi Lane under 2.5 receptions (DK -178), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0038542|player_rush_yds|under",
+   "text": "Added: Bijan Robinson under 75.5 rush yards (DK -111), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0034753|player_receptions|over",
+   "text": "Added: Mark Andrews over 2.5 receptions (DK -163), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0038977|player_reception_yds|over",
+   "text": "Added: Tank Dell over 29.5 receiving yards (FD -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0039338|player_receptions|under",
+   "text": "Added: Brock Bowers under 4.5 receptions (FD +108), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0038542|player_receptions|over",
+   "text": "Added: Bijan Robinson over 2.5 receptions (DK -166), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0033699|player_rush_yds|over",
+   "text": "Added: Austin Ekeler over 22.5 rush yards (FD -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0039338|player_reception_yds|under",
+   "text": "Added: Brock Bowers under 55.5 receiving yards (FD -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0039849|player_reception_yds|under",
+   "text": "Added: Marvin Harrison Jr. under 28.5 receiving yards (DK -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040715|player_receptions|under",
+   "text": "Added: Cam Skattebo under 2.5 receptions (FD -144), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0036973|player_rush_yds|under",
+   "text": "Added: Travis Etienne under 48.5 rush yards (FD -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0037545|player_reception_yds|over",
+   "text": "Added: Rashid Shaheed over 17.5 receiving yards (FD -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0036554|player_receptions|under",
+   "text": "Added: Nico Collins under 4.5 receptions (DK -105), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040876|player_anytime_td|yes",
+   "text": "Added: Elijah Sarratt anytime TD (FD +5000), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040556|player_rush_yds|over",
+   "text": "Added: Corey Kiner over 26.5 rush yards (DK -116), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0041029|player_reception_yds|under",
+   "text": "Added: Jordyn Tyson under 44.5 receiving yards (FD -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0039337|player_receptions|under",
+   "text": "Added: Malik Nabers under 5.5 receptions (DK -110), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0033090|player_reception_yds|over",
+   "text": "Added: Hunter Henry over 22.5 receiving yards (FD -114), B tier, because its game is now inside the window."
   },
   {
    "id": "00-0038618|player_anytime_td|yes",
-   "text": "Removed: Xavier Hutchinson anytime TD (FD +240), its game is outside this run's window."
-  },
-  {
-   "id": "00-0041032|player_receptions|under",
-   "text": "Removed: Kenyon Sadiq under 2.5 receptions (DK -175), its game is outside this run's window."
+   "text": "Added: Xavier Hutchinson anytime TD (FD +250), B tier, because its game is now inside the window."
   },
   {
    "id": "00-0033555|player_receptions|over",
-   "text": "Removed: Mack Hollins over 2.5 receptions (FD -122), its game is outside this run's window."
+   "text": "Added: Mack Hollins over 2.5 receptions (DK -115), B tier, because its game is now inside the window."
   },
   {
-   "id": "00-0033376|player_anytime_td|yes",
-   "text": "Removed: Patrick Ricard anytime TD (DK +2800), its game is outside this run's window."
+   "id": "00-0040878|player_rush_yds|under",
+   "text": "Added: Mike Washington Jr. under 33.5 rush yards (DK -111), B tier, because its game is now inside the window."
   },
   {
-   "id": "00-0041029|player_receptions|under",
-   "text": "Removed: Jordyn Tyson under 4.5 receptions (FD -140), its game is outside this run's window."
+   "id": "00-0039361|player_rush_attempts|over",
+   "text": "Added: Bucky Irving over 18.5 rush attempts (DK -117), B tier, because its game is now inside the window."
   },
   {
-   "id": "00-0040154|player_reception_yds|over",
-   "text": "Removed: Tai Felton over 21.5 receiving yards (DK -111), its game is outside this run's window."
+   "id": "00-0039165|player_rush_attempts|under",
+   "text": "Added: Zach Charbonnet under 15.5 rush attempts (DK -134), B tier, because its game is now inside the window."
   },
   {
    "id": "00-0041438|player_receptions|under",
-   "text": "Removed: Carnell Tate under 4.5 receptions (FD -108), its game is outside this run's window."
+   "text": "Added: Carnell Tate under 4.5 receptions (DK -103), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0037252|player_reception_yds|over",
+   "text": "Added: Greg Dulcich over 23.5 receiving yards (DK -113), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0039337|player_reception_yds|under",
+   "text": "Added: Malik Nabers under 65.5 receiving yards (FD -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0041040|player_reception_yds|under",
+   "text": "Added: Antonio Williams under 44.5 receiving yards (DK -114), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0041512|player_rush_attempts|over",
+   "text": "Added: Jadarian Price over 7.5 rush attempts (DK -131), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0041029|player_receptions|under",
+   "text": "Added: Jordyn Tyson under 4.5 receptions (FD -140), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0033376|player_anytime_td|yes",
+   "text": "Added: Patrick Ricard anytime TD (FD +2700), B tier, because its game is now inside the window."
+  },
+  {
+   "id": "00-0040736|player_receptions|under",
+   "text": "Added: Mason Taylor under 2.5 receptions (FD -166), B tier, because its game is now inside the window."
   }
  ],
+ "removed": [],
  "line_moved": [],
  "price_moved": [],
- "status_changed": [],
+ "status_changed": [
+  {
+   "id": null,
+   "text": "Ruled out: Tee Higgins is questionable and has not practised this week. Legs that depend on it are off the board."
+  },
+  {
+   "id": null,
+   "text": "Ruled out: Tez Johnson is questionable and has not practised this week. Legs that depend on it are off the board."
+  },
+  {
+   "id": null,
+   "text": "Ruled out: starting QB Brock Purdy is out. Legs that depend on it are off the board."
+  },
+  {
+   "id": null,
+   "text": "Ruled out: starting QB Carson Beck is out. Legs that depend on it are off the board."
+  },
+  {
+   "id": null,
+   "text": "Ruled out: starting QB Justin Herbert is out. Legs that depend on it are off the board."
+  }
+ ],
  "tier_changed": [],
  "kicked_off": 0
 }
